@@ -53,3 +53,14 @@
     // Depois de trocados, teremos o seguinte resultado:
     console.log("O novo valor de a é", a) // O novo valor de a é 25
     console.log("O novo valor de b é", b) // O novo valor de b é 10
+
+// DESAFIOS
+let valor1 = prompt("Digite o primeiro valor:");
+let valor2 = prompt("Digite o segundo valor:");
+console.log(typeof(valor1), typeof(valor2));
+valor1 = Number(valor1);
+valor2 = Number(valor2);
+let x = valor1 + valor2;
+let y = valor1 * valor2;
+console.log("Soma dos valores = ", x);
+console.log("Multiplicação dos valores = ", y);
