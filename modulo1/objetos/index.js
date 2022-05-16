@@ -70,7 +70,7 @@
     console.log(funcaoRetorna(obj1));
 */
 
-/*
+///*
 // QUESTÃO 3
 // 3.a
     const carrinho = [];
@@ -98,7 +98,7 @@
     Fruta(fruta3);
 // 3.d
     console.log(carrinho)
-*/
+//*/
 
 //----------------------------------------------
 // DESAFIOS
@@ -137,17 +137,17 @@
     filme(filme1, filme2);
 */
 
-/*
+///*
 // QUESTÃO 3
-    const fruta4 = {
-        nome: "Banana",
-        disponibilidade: true,
-    }
-
     function inverteDisponibilidade(obj) {
         obj.disponibilidade = !obj.disponibilidade
         return obj
     }
 
-    console.log(inverteDisponibilidade(fruta4));
-*/
+    inverteDisponibilidade(fruta1);
+    console.log('alterando status fruta 1 =', carrinho);
+    inverteDisponibilidade(fruta2);
+    console.log('alterando status fruta 2 =', carrinho);
+    inverteDisponibilidade(fruta3);
+    console.log('alterando status fruta 3 =', carrinho);
+//*/
