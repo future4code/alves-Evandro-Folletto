@@ -110,7 +110,7 @@
     }
 */
 
-/*
+///*
 // QUESTÃO 2
     const nome = prompt("Digite seu nome");
     const tipoJogo = prompt("Digite o tipo de jogo:\n[IN] - internacional\n[DO] - doméstico");
@@ -154,25 +154,15 @@
 
     const valor = valorIngresso(etapaJogo, categoria);
 
-    function valorTotal_(tipoJogo, valor, quantidade) {
-        if (tipoJogo === 'IN') {
-            return valor * quantidade;
-        } else {
-            return valor * quantidade;
-        }
-    }
-
-    const valorTotal = valorTotal_(tipoJogo, valor, quantidade)
+    const valorTotal = valor * quantidade;
 
     console.log('---Dados da compra---');
     console.log(`Nome do cliente: ${nome}`);
-
     if (tipoJogo === 'IN') {
         console.log(`Tipo do jogo: Internacional`);
     } else {
         console.log(`Tipo do jogo: Nacional`);
     }
-
     if (etapaJogo === 'SF') {
         console.log(`Etapa do jogo: Semi-Final`);
     } else if (etapaJogo === 'DT') {
@@ -180,12 +170,9 @@
     } else {
         console.log(`Etapa do jogo: Final`);
     }
-
     console.log(`Categoria: ${categoria}`);
     console.log(`Quantidade de Ingressos: ${quantidade}`);
-
     console.log('---Valores---');
-
     if (tipoJogo === 'DO') {
         console.log(`Valor do ingresso: R$ ${valor}`);
         console.log(`Valor total: R$ ${valorTotal}`);
@@ -193,4 +180,4 @@
         console.log(`Valor do ingresso: U$ ${valor / 4.1}`);
         console.log(`Valor total: U$ ${valorTotal / 4.1}`);
     }
-*/
+//*/
