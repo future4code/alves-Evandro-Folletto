@@ -109,7 +109,7 @@
 // -----------------------------------------------
 // DESAFIOS
 // -----------------------------------------------
-///*
+/*
 // QUESTÃO 1
 // 1.a)
     const numero1 = Number(prompt('Vamos jogar. Jogador 1, digite seu número:'));
@@ -129,7 +129,7 @@
             console.log(`O número de tentativas foi: ${i}`);
         }
     }
-//*/
+*/
 
 /*
 // QUESTÃO 2
