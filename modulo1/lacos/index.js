@@ -109,7 +109,7 @@
 // -----------------------------------------------
 // DESAFIOS
 // -----------------------------------------------
-/*
+///*
 // QUESTÃO 1
 // 1.a)
     const numero1 = Number(prompt('Vamos jogar. Jogador 1, digite seu número:'));
@@ -129,12 +129,12 @@
             console.log(`O número de tentativas foi: ${i}`);
         }
     }
-*/
+//*/
 
 /*
 // QUESTÃO 2
     alert('O computador sorteu um número de 1 a 100, tente adivinhar, ok?');
-    const numero1 = Math.floor(Math.random() * 5 + 1);
+    const numero1 = Math.floor(Math.random() * 100 + 1);
     let numero2;
     let i = 0;
     while(numero2 !== numero1){
