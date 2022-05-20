@@ -20,7 +20,6 @@ function sorteiaCartas(){
 }
 
 if (confirm){
-
    cartas = sorteiaCartas();
    cartasJog = cartas[0];
    cartasCom = cartas[1];
@@ -28,34 +27,40 @@ if (confirm){
    let pontCom = cartasCom[0].valor + cartasCom[1].valor;
    
    let jogar = true;
-   while (jogar === true) {
+   while (jogar) {
       jogar = window.confirm(`Suas cartas são ${cartasJog.map(i => i.texto)}. \nA carta revelada do computador é ${cartasCom[0].texto} \nDeseja comprar mais uma carta?`);
-      if (jogar){
-         let novaCarta = comprarCarta();
-         cartasJog.push(novaCarta);
-         pontJog += novaCarta.valor;
+      if (jogar){ //lógica para a contagem das cartas do jogador
+         let novaCartaJog = comprarCarta();
+         cartasJog.push(novaCartaJog);
+         pontJog += novaCartaJog.valor;
          if (pontJog > 21){
             alert(`Usuário - Cartas: ${cartasJog.map(i => i.texto)} - Pontuação ${pontJog}. \nComputador - Cartas: ${cartasCom.map(i => i.texto)} - Pontuação ${pontCom}. \nO computador ganhou!`);
             jogar = false;
          }
-      } else{
+      } else{ //lógica para a contagem das cartas do computador
          jogar = false;
-         console.log('Jogador clicou em cancelar');
+         let jogarPC = true;
+
+         while (jogarPC) {
+            let novaCartaCom = comprarCarta();
+            cartasCom.push(novaCartaCom);
+            pontCom += novaCartaCom.valor;
+            if (pontCom > 21 || pontCom >= pontJog) {
+               jogarPC = false;
+            }
+         }
+
+         if (pontCom === pontJog){
+            alert(`Usuário - Cartas: ${cartasJog.map(i => i.texto)} - Pontuação ${pontJog}. \nComputador - Cartas: ${cartasCom.map(i => i.texto)} - Pontuação ${pontCom}. \nEmpate!`);
+         } else if (pontCom > 21) {
+            alert(`Usuário - Cartas: ${cartasJog.map(i => i.texto)} - Pontuação ${pontJog}. \nComputador - Cartas: ${cartasCom.map(i => i.texto)} - Pontuação ${pontCom}. \nUsuário ganhou!`);
+         } else if (pontCom <= 21 && pontJog > pontCom) {
+            alert(`Usuário - Cartas: ${cartasJog.map(i => i.texto)} - Pontuação ${pontJog}. \nComputador - Cartas: ${cartasCom.map(i => i.texto)} - Pontuação ${pontCom}. \nUsuário ganhou!`);
+         }  else if (pontCom <= 21 && pontJog < pontCom) {
+            alert(`Usuário - Cartas: ${cartasJog.map(i => i.texto)} - Pontuação ${pontJog}. \nComputador - Cartas: ${cartasCom.map(i => i.texto)} - Pontuação ${pontCom}. \nComputador ganhou!`);            
+         }
       }
    }
-
-
-
-   // console.log(`Usuário - cartas: ${carta1Jogador.texto} e ${carta2Jogador.texto} - pontuação ${pontJogador}`);
-   // console.log(`Computador - cartas: ${carta1Computador.texto} e ${carta2Computador.texto} - pontuação ${pontComputador}`);
-
-   // if(pontJogador > pontComputador){
-   //    console.log("O usuário ganhou!");
-   // }else if(pontJogador < pontComputador){
-   //    console.log("O computador ganhou!");
-   // }else {
-   //    console.log("Empate!");
-   // }
-}else {
+} else {
    alert('O jogo acabou');
 }
