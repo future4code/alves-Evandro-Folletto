@@ -55,8 +55,8 @@ function retornaNumerosPares(array) {
     // DESAFIO
     /*
     const arrayPares = []
-    for (i=0 ; i<array.length ; i++) {
-        if (array[i]%2 === 0) arrayPares.push(array[i])
+    for (valor of array) {
+        if (valor%2 === 0) arrayPares.push(valor)
     }
     return arrayPares
     */
@@ -119,10 +119,14 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
     return tipo
 }
 
-// EXERCÍCIO 10 ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>REVERR
+// EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
     const arrayOrdenado = array.sort( (a, b) => a - b )
-    return [arrayOrdenado[array.length-2], arrayOrdenado[1]]
+    if (array.length !== 1) {
+        return [arrayOrdenado[array.length-2], arrayOrdenado[1]]
+    } else {
+        return [arrayOrdenado[0], arrayOrdenado[0]]
+    }
 }
 
 // EXERCÍCIO 11
