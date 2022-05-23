@@ -109,13 +109,31 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+    let arrayAutorizacao = [];
+    for (i=0 ; i<pessoas.length ; i++) {
+        if (pessoas[i].altura >= 1.5 && pessoas[i].idade > 14 && pessoas[i].idade < 60 ) arrayAutorizacao.push(pessoas[i])
+    }
+    return arrayAutorizacao
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    let arrayNaoAutorizacao = [];
+    for (i=0 ; i<pessoas.length ; i++) {
+        if (pessoas[i].altura < 1.5 || pessoas[i].idade <= 14 || pessoas[i].idade >= 60 ) arrayNaoAutorizacao.push(pessoas[i])
+    }
+    return arrayNaoAutorizacao
 }
+
+// const teste = [
+// 	{ nome: "Paula", idade: 12, altura: 1.8},
+// 	{ nome: "João", idade: 20, altura: 1.3},
+// 	{ nome: "Pedro", idade: 15, altura: 1.9},
+// 	{ nome: "Luciano", idade: 22, altura: 1.8},
+// 	{ nome: "Artur", idade: 10, altura: 1.2},
+// 	{ nome: "Soter", idade: 70, altura: 1.9}
+// ];
+// console.log(retornaPessoasAutorizadas(teste));
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
