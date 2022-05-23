@@ -63,12 +63,32 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+    let arrayPares = [];
+    let parar = false;
+    let i = 0;
+    while (parar === false) {
+        if (i % 2 === 0) arrayPares.push(i)
+        parar = arrayPares.length === n ? true : false
+        i++
+    }
+    return arrayPares
 }
+
+console.log(retornaNPrimeirosPares(10));
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
+    let tipo;
+    if (ladoA === ladoB && ladoA === ladoC) {
+        tipo = "Equilátero";
+    } else if (ladoA !== ladoB && ladoA !== ladoC && ladoB !== ladoC) {
+        tipo = "Escaleno";
+    } else {
+        tipo = "Isósceles";
+    }
+    
+    //else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC)
+    return tipo
 }
 
 // EXERCÍCIO 10
