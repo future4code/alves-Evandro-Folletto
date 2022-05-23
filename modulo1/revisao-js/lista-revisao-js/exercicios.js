@@ -24,11 +24,42 @@ function retornaArrayInvertido(array) {
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
     return array.sort( (a, b) => a - b )
+
+    // DESAFIO
+    /*
+    let arrayCrescente = [];
+    let indice;
+    const tamanhoInicial = array.length;
+    for (i=0 ; i<tamanhoInicial ; i++) {
+        let menor = array[0];
+        indice = 0;
+        for (j=1 ; j<array.length ; j++) {
+            if (array[j] < menor) {
+                menor = array[j];
+                indice = j;
+            } else {
+                menor = menor;
+            }
+        }
+        arrayCrescente.push(menor);
+        array.splice(indice,1);
+    }
+    return arrayCrescente
+    */
 }
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
     return array.filter( valor => valor%2 === 0 )
+
+    // DESAFIO
+    /*
+    const arrayPares = []
+    for (i=0 ; i<array.length ; i++) {
+        if (array[i]%2 === 0) arrayPares.push(array[i])
+    }
+    return arrayPares
+    */
 }
 
 // EXERCÍCIO 05
@@ -67,14 +98,12 @@ function retornaNPrimeirosPares(n) {
     let parar = false;
     let i = 0;
     while (parar === false) {
-        if (i % 2 === 0) arrayPares.push(i)
-        parar = arrayPares.length === n ? true : false
-        i++
+        if (i % 2 === 0) arrayPares.push(i);
+        parar = arrayPares.length == n ? true : false;
+        i++;
     }
-    return arrayPares
+    return arrayPares;
 }
-
-console.log(retornaNPrimeirosPares(10));
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
@@ -87,11 +116,10 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
         tipo = "Isósceles";
     }
     
-    //else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC)
     return tipo
 }
 
-// EXERCÍCIO 10
+// EXERCÍCIO 10 ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>REVERR
 function retornaSegundoMaiorESegundoMenor(array) {
     const arrayOrdenado = array.sort( (a, b) => a - b )
     return [arrayOrdenado[array.length-2], arrayOrdenado[1]]
@@ -125,27 +153,44 @@ function retornaPessoasNaoAutorizadas(pessoas) {
     return arrayNaoAutorizacao
 }
 
-// const teste = [
-// 	{ nome: "Paula", idade: 12, altura: 1.8},
-// 	{ nome: "João", idade: 20, altura: 1.3},
-// 	{ nome: "Pedro", idade: 15, altura: 1.9},
-// 	{ nome: "Luciano", idade: 22, altura: 1.8},
-// 	{ nome: "Artur", idade: 10, altura: 1.2},
-// 	{ nome: "Soter", idade: 70, altura: 1.9}
-// ];
-// console.log(retornaPessoasAutorizadas(teste));
-
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (i=0 ; i<contas.length ; i++) {
+        let somaContas = 0;
+        for (j=0 ; j<contas[i].compras.length ; j++) {
+            somaContas += contas[i].compras[j];
+        }
+        contas[i].saldoTotal = contas[i].saldoTotal - somaContas;
+        contas[i].compras = [];
+    }
+    return contas
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    return consultas.sort( (a, b) => {
+        if (a.nome < b.nome) {
+            return -1
+        } else if (a.nome > b.nome) {
+            return 1
+        } else {
+            return 0
+        }
+    })
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    consultas.map( a => a.dataDaConsulta = a.dataDaConsulta.split('/').reverse().join());
+    consultas.sort( (a, b) => {
+        if (a.dataDaConsulta < b.dataDaConsulta) {
+            return -1
+        } else if (a.dataDaConsulta > b.dataDaConsulta) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+    consultas.map( a => a.dataDaConsulta = a.dataDaConsulta.split(',').reverse().join().replaceAll(',','/'));
+    return consultas;
 }
