@@ -2,7 +2,6 @@
 //    -> NÃO COMENTE NENHUMA DAS FUNÇÕES DECLARADAS!!! 
 //    -> NÃO MODIFIQUE OS PARÂMETROS DAS FUNÇÕES!!! ()
 
-
 // EXERCÍCIO 01
 function retornaTamanhoArray(array) {
     return array.length
@@ -10,7 +9,16 @@ function retornaTamanhoArray(array) {
 
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
-  
+    return array.reverse()
+
+    // DESAFIO
+    /*
+    let array2 = [];
+    for (i=0 ; i<=array.length-1 ; i++) {
+        array2[i] = array[array.length-1-i]
+    }
+    return array2
+    */
 }
 
 // EXERCÍCIO 03
