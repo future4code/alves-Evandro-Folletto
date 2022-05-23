@@ -52,7 +52,13 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    return (
+        {
+            maiorNumero: Math.max(num1, num2),
+            maiorDivisivelPorMenor: Math.max(num1,num2) % Math.min(num1,num2) === 0,
+            diferenca: Math.max(num1,num2) - Math.min(num1,num2)
+        }
+    )
 }
 
 // EXERCÍCIO 08
