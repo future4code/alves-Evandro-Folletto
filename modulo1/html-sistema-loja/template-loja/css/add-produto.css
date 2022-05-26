@@ -1,0 +1,92 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    color: white;
+}
+
+header h1{
+    background-color: rgb(25, 0, 255);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+header p{
+    background-color: rgb(72, 188, 255);
+    margin: 0;
+    text-align: center;
+    color: black;
+    padding: 5px;
+}
+
+nav {
+    text-align: center;
+    background-color: rgb(126, 126, 126);
+    margin-top: 25px;
+    padding: 5px;
+}
+
+nav a {
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(0, 127, 150);
+    margin-left: 25px;
+    padding: 5px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px;    
+}
+
+.container {
+    max-width: 640px;
+    margin: 0px auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    background-color: rgb(138, 235, 252);
+}
+
+form button {
+    border: none;
+    background-color: rgb(0, 127, 150);
+    color: rgb(255, 255, 255);
+    font-size: 18px;;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+form button:hover {
+    background-color: rgb(90, 138, 146);;
+}
+
+form input, form label, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+    /* border: solid 2px black; */
+}
+
+form input {
+    font-size: 24px;
+    height: 50px;
+    padding: 0 0px;
+}
+
+form input:focus {
+    outline: 1px solid red;
+}
