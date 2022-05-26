@@ -80,6 +80,9 @@ div a {
 #container-de-descricao>ol {
     padding: 15px 0px;
     margin: 0px 375px 0px 375px;
+
+    /* magin: auto
+    width: ft-content */
 }
 
 #container-de-descricao>p {
@@ -113,6 +116,11 @@ div:last-child {
 table {
     width: 60%;
 }
+
+td {
+    text-align: center;
+    vertical-align: middle;
+ }
 
 td button {
     background-color: #fadf63;
