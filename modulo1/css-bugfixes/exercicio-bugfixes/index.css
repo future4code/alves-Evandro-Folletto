@@ -31,6 +31,8 @@ img {
 
 div>p:first-child {
     display: inline;
+    padding-top: 50px;
+    background-color: red;
 }
 
 div img {
