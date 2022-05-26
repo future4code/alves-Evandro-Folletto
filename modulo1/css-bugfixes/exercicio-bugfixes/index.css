@@ -30,7 +30,6 @@ img {
 }
 
 div>p:first-child {
-    /* display: inline; */
     display: block;
 }
 
@@ -80,10 +79,13 @@ div a {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+    margin: 0px 375px 0px 375px;
 }
 
 #container-de-descricao>p {
     padding-top: 150px;
+    width: 200px;
+    margin: auto;
 }
 
 #container-para-comprar {
