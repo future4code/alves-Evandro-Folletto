@@ -130,6 +130,10 @@ td button {
     color: black;
 }
 
+td>img:first-child {
+    width: 50px;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
