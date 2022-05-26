@@ -30,9 +30,8 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
-    padding-top: 50px;
-    background-color: red;
+    /* display: inline; */
+    display: block;
 }
 
 div img {
@@ -81,6 +80,10 @@ div a {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+}
+
+#container-de-descricao>p {
+    padding-top: 150px;
 }
 
 #container-para-comprar {
