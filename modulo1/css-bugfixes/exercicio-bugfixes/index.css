@@ -157,3 +157,7 @@ td>img:first-child {
 #back-button:hover {
     background-color: #635a3d
 }
+
+td>button:hover {
+    background-color: #cead41
+}
