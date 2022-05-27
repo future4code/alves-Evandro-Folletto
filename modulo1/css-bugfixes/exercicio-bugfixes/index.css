@@ -46,7 +46,7 @@ div img {
 }
 
 div a {
-    text-decoration: none;    
+    text-decoration: none;
 }
 
 .botao-amarelo {
@@ -87,15 +87,14 @@ div a {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
-    margin: 0px 850px 0px 850px;
-
-    /* margin: auto;
-    width: ft-content; */
+    /* margin: 0px 850px 0px 850px; */
+    margin: auto;
+    width: fit-content;
 }
 
 #container-de-descricao>p {
     padding-top: 150px;
-    width: 200px;
+    width: 250px;
     margin: auto;
 }
 
@@ -122,6 +121,10 @@ div:last-child {
 
 table {
     width: 60%;
+}
+
+div table {
+    margin: 0 auto;
 }
 
 td {
@@ -162,4 +165,9 @@ td>img:first-child {
 
 td>button:hover {
     background-color: #cead41
+}
+
+#back-button{
+    display: block;
+    margin: 0 auto;
 }
