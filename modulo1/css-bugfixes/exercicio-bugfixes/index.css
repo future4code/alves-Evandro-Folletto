@@ -34,7 +34,8 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    width: 15px;
+    /* background: black; */
 }
 
 div a {
@@ -79,10 +80,10 @@ div a {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
-    margin: 0px 375px 0px 375px;
+    margin: 0px 850px 0px 850px;
 
-    /* magin: auto
-    width: ft-content */
+    /* margin: auto;
+    width: ft-content; */
 }
 
 #container-de-descricao>p {
@@ -100,7 +101,6 @@ div a {
     padding: 100px 0;
     font-size: 60px;
 }
-
 
 /**
   *
@@ -139,6 +139,10 @@ td>img:first-child {
     height: 100px;
 }
 
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
 
 #back-button {
     background-color: white;
