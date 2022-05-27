@@ -19,6 +19,10 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
 }
 
 button:focus {
@@ -132,11 +136,6 @@ td button {
 
 td>img:first-child {
     width: 50px;
-}
-
-.container-do-search {
-    margin-top: 20px;
-    height: 100px;
 }
 
 .container-do-search {
