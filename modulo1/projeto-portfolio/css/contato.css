@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: lightgray;
+}
+
+.cabecalho {
+    width: 100%;
+    background-color: #333;
+    border-bottom: solid 5px #4faddb;
+    height: 80px;
+    box-sizing: content-box;
+    text-align: center;
+}
+
+.menu {
+    vertical-align: top;
+    height: 80px;
+    padding: 25px;
+}
+
+.menu ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #eee;
+    font-size: 22px;
+    padding: 15px;
+}
+
+.menu a:hover {
+    background-color: #4faddb;
+}
+
+.envie {
+    text-align: center;
+}
+
+.apresentacao {
+    margin-top: 75px;
+    text-align: center;
+}
+
+.eu {
+    border-radius: 50%;
+    width: 200px;
+    margin-bottom: 200px;
+}
+
+.redes-index {
+    margin: 0 auto;
+    max-width: 1300px;
+    border-radius: 15px;
+    height: 100px;
+    text-align: center;
+}
+
+.redes-index img {
+    width: 100px;
+    margin: 0 20px;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    border-top: solid 5px #4faddb;
+}
+
+footer p {
+    color: white;
+    font-size: 18px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    font-size: 20px;
+}
+
+input {
+    height: 40px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px rgb(117, 117, 117);
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form {
+    display: block;
+    margin: 0 auto;
+}
+
+.form-grid {
+    margin: 0 auto;
+    max-width: 740px;
+     border-radius: 15px;
+}
+
+.form-group {
+    display: inline-block;
+    width: 242px;
+    margin: 0px;
+    padding: 10px;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+textarea {
+    border-radius: 5px;
+    border: solid 1px rgb(117, 117, 117);
+    width: 100%;
+    height: 200px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    border: none;
+    background-color: #4ba8d6;
+    color: black;
+    font-size: 20px;;
+    font-weight: 700px;
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #136188;
+    color: white;
+}
+
+.redes {
+    margin: 0 auto;
+    max-width: 740px;
+    border-radius: 15px;
+    height: 100px;
+    text-align: center;
+}
+
+.redes img {
+    width: 100px;
+    margin: 0 71px;
+}

@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: lightgray;
+}
+
+.cabecalho {
+    width: 100%;
+    background-color: #333;
+    border-bottom: solid 5px #4faddb;
+    height: 80px;
+    box-sizing: content-box;
+    text-align: center;
+}
+
+.menu {
+    vertical-align: top;
+    height: 80px;
+    padding: 25px;
+}
+
+.menu ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #eee;
+    font-size: 22px;
+    padding: 15px;
+}
+
+.menu a:hover {
+    background-color: #4faddb;
+}
+
+.skills {
+    margin: 0 500px;
+    font-size: 20px;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    border-top: solid 5px #4faddb;
+}
+
+footer p {
+    color: white;
+    font-size: 18px;
+}
