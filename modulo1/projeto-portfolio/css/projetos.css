@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: lightgray;
+}
+
+.cab {
+    background-color: #9bc9e0;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 15px;
+    text-align: center;
+    height: 80px;
+}
+
+h3 {
+    margin: 10px;
+    text-align: center;
+}
+
+.desc {
+    text-align: center;
+    font-size: 16px;
+    margin: 0 350px;
+}
+
+.tecn {
+    text-align: center;
+    font-size: 16px;
+    /* margin: 0 50px; */
+}
+
+img {
+    margin: 0px;
+}
+
+.imagem {
+    text-align: center;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    border-top: solid 5px #4faddb;
+}
+
+footer p {
+    color: white;
+    font-size: 18px;
+}
