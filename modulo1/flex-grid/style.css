@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: mediumvioletred;
+    height: 60px;
+    padding: 0 35px;
+}
+
+img {
+    width: 20px;
+    max-height: 65%;
+}
+
+.confeitaria img {
+    width: 20px;
+}
+
+.confeitaria h1 {
+    display: inline;
+    padding: 20px;
+}
+
+.esquerda li{
+    padding: 10px 20px;
+}
+
+.todo-menu li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-menu div img {
+    padding: 0 15px;
+}
+
+button {
+    width: 50px;    
+    height: 20px;    
+}
+
+.linha {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.esquerda {
+    background-color: #f2d0e0;
+    width: 20%;
+    height: 809px;
+}
+
+.direita {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    width: 80%;
+}
+
+.bolo {
+    box-shadow: 0 4px 20px 0 darkgray;
+    width: 260px;
+    height: 370px;
+}
+
+.bolo img{
+    width: 100%;
+    max-height: 90%;
+}
+
+.bolo-info h2, .bolo-info p {
+    text-align: center;
+}
+
+footer {
+    background-color: mediumvioletred;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    text-align: center;
+    padding-top: 21px;
+}
