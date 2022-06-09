@@ -85,7 +85,9 @@ class Post extends React.Component {
   }
 
   onClickCompartilhar = () => {
-    console.log('Botão compartilhar foi clicado');
+    this.setState({
+      compartilhando: !this.state.compartilhando
+    })    
   }
 
   aoEnviarComentario = () => {
@@ -95,10 +97,14 @@ class Post extends React.Component {
     })
   }
 
-  aoFazerCompartilhamento = () => {
+  aoFazerCompartilhamento = (e) => {
+    // console.log('clicou em compartilhar');
+    // console.log(e.target.id);
+    if(Number(e.target.id)===1){console.log("Post compartilhado no Instagram")}
+    if(Number(e.target.id)===2){console.log("Post compartilhado no Facebook")}
+    if(Number(e.target.id)===3){console.log("Post compartilhado no Twitter")}
     this.setState({
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      compartilhando: false,
     })
   }
 
@@ -124,7 +130,12 @@ class Post extends React.Component {
 
     let componenteCompartilhar
     if(this.state.compartilhando) {
-      componenteCompartilhar = <SecaoCompartilhar aoCompartilhar={this.aoFazerCompartilhamento}/>
+      componenteCompartilhar = <SecaoCompartilhar
+        icone1={instagram}
+        icone2={facebook}
+        icone3={twitter}
+        aoCompartilhar={this.aoFazerCompartilhamento}
+      />
     }
 
     return <PostContainer>
@@ -148,9 +159,7 @@ class Post extends React.Component {
         />
 
         <IconeCompartilhar 
-          icone1={instagram}
-          icone2={facebook}
-          icone3={twitter}
+          icone={iconeCompartilhar}
           onClickIcone={this.onClickCompartilhar}
         />
 
