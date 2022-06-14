@@ -35,11 +35,15 @@ export default class App extends Component {
     if (this.state.pagina === 4) return <Agradecimento/>
   }
 
+  exibeBotao = () => {
+    if (this.state.pagina === 1 || this.state.pagina === 2 || this.state.pagina === 3) return <Botao onClick={() => this.proximaEtapa()}>Próxima etapa</Botao>
+  }
+
   render(){
     return (        
       <CaixaPrincipal>
         {this.exibeTela()}
-        <Botao onClick={() => this.proximaEtapa()}>Próxima etapa</Botao>
+        {this.exibeBotao()}
       </CaixaPrincipal>
     );
   }
