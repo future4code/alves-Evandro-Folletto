@@ -91,6 +91,7 @@ class App extends React.Component {
     }
   }
 
+  // Desafio 1: deletar tarefas individualmente
   deletarTarefa = (id) => {
     console.log(id);
     const novaListaTarefas = this.state.tarefas.filter( tarefa => {
@@ -99,8 +100,14 @@ class App extends React.Component {
     this.setState({tarefas: novaListaTarefas});
   }
 
+  // Desafio 3: editar tarefas
   editarTarefa = (id, texto) => {
     this.setState({inputValue: texto, editandoID: id});
+  }
+
+  // Desafio 5: deletar todas as tarefas
+  deletarTodasTarefas = () => {
+    this.setState({tarefas: []});
   }
 
   selectTarefa = (id) => {
@@ -118,6 +125,7 @@ class App extends React.Component {
     this.setState({tarefas: novaListaTarefas});
   }
 
+  // Desafio 2: visualizar tarefas conforme seleção do usuário
   onChangeFilter = (event) => {
     this.setState({filtro: event.target.value});
   }
@@ -166,11 +174,11 @@ class App extends React.Component {
                   <Botao onClick={() => this.editarTarefa(tarefa.id, tarefa.texto)}>Editar</Botao>
                   <Botao onClick={() => this.deletarTarefa(tarefa.id)}>Excluir</Botao>
                 </Edicao>
-
               </AddTarefa>
             )
           })}
         </TarefaList>
+        <button onClick={() => this.deletarTodasTarefas()}>Excluir todas Tarefas</button>
       </div>
     )
   }
