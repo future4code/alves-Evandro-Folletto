@@ -4,12 +4,24 @@ import './styles.css'
 
 const TarefaList = styled.ul`
   padding: 0;
-  width: 200px;
+  width: 300px;
+`
+
+const AddTarefa = styled.div`
+  display: flex;
+  justify-content: space-between;
+  
+  margin: 10px;
 `
 
 const Tarefa = styled.li`
   text-align: left;
+  /* list-style-type: none; */
   text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
+`
+
+const Excluir = styled.button`
+  width: 60px;
 `
 
 const InputsContainer = styled.div`
@@ -25,23 +37,22 @@ class App extends React.Component {
           id: Date.now(),
           texto: 'Texto da primeira tarefa',
           completa: false
-        },
-        {
-          id: Date.now(),
-          texto: 'Texto da segunda tarefa',
-          completa: true
         }
       ],
       inputValue: '',
       filtro: ''
     }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.tarefas === prevState.tarefas) return;
+
     localStorage.setItem('tarefas', JSON.stringify(this.state.tarefas))
   };
 
   componentDidMount() {
     const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+
+    if (!tarefas) return;
     this.setState({tarefas});
   };
 
@@ -57,6 +68,14 @@ class App extends React.Component {
     }
     const copiaTarefas = [...this.state.tarefas, novaTarefa];
     this.setState({tarefas: copiaTarefas});
+  }
+
+  deletarTarefa = (id) => {
+    console.log(id);
+    const novaListaTarefas = this.state.tarefas.filter( tarefa => {
+      return id !== tarefa.id
+    })
+    this.setState({tarefas: novaListaTarefas});
   }
 
   selectTarefa = (id) => {
@@ -110,12 +129,17 @@ class App extends React.Component {
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
-              <Tarefa
-                completa={tarefa.completa}
-                onClick={() => this.selectTarefa(tarefa.id)}
-              >
-                {tarefa.texto}
-              </Tarefa>
+              <AddTarefa>
+                <Tarefa
+                  completa={tarefa.completa}
+                  onClick={() => this.selectTarefa(tarefa.id)}
+                >
+                  {tarefa.texto}
+                </Tarefa>
+                
+                <Excluir onClick={() => this.deletarTarefa(tarefa.id)}>Excluir</Excluir>
+
+              </AddTarefa>
             )
           })}
         </TarefaList>
