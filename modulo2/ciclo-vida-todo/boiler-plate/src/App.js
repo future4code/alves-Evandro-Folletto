@@ -20,8 +20,12 @@ const Tarefa = styled.li`
   text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
 `
 
-const Excluir = styled.button`
-  width: 60px;
+const Edicao = styled.div`
+`
+
+const Botao = styled.button`
+  width: 55px;
+  margin-left: 10px;
 `
 
 const InputsContainer = styled.div`
@@ -40,7 +44,8 @@ class App extends React.Component {
         }
       ],
       inputValue: '',
-      filtro: ''
+      filtro: '',
+      editandoID: ''
     }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,7 +72,23 @@ class App extends React.Component {
       completa: false
     }
     const copiaTarefas = [...this.state.tarefas, novaTarefa];
-    this.setState({tarefas: copiaTarefas});
+
+    if (this.state.editandoID === '') {
+      this.setState({tarefas: copiaTarefas, inputValue: ''});
+    } else {
+      const novaListaTarefas = this.state.tarefas.map( tarefa => {
+        if (this.state.editandoID === tarefa.id) {
+          const novaTarefa = {
+            ...tarefa,
+            texto: this.state.inputValue
+          }
+          return novaTarefa
+        } else {
+          return tarefa
+        }
+      })
+      this.setState({tarefas: novaListaTarefas, editandoID: '', inputValue: ''});
+    }
   }
 
   deletarTarefa = (id) => {
@@ -76,6 +97,10 @@ class App extends React.Component {
       return id !== tarefa.id
     })
     this.setState({tarefas: novaListaTarefas});
+  }
+
+  editarTarefa = (id, texto) => {
+    this.setState({inputValue: texto, editandoID: id});
   }
 
   selectTarefa = (id) => {
@@ -137,7 +162,10 @@ class App extends React.Component {
                   {tarefa.texto}
                 </Tarefa>
                 
-                <Excluir onClick={() => this.deletarTarefa(tarefa.id)}>Excluir</Excluir>
+                <Edicao>
+                  <Botao onClick={() => this.editarTarefa(tarefa.id, tarefa.texto)}>Editar</Botao>
+                  <Botao onClick={() => this.deletarTarefa(tarefa.id)}>Excluir</Botao>
+                </Edicao>
 
               </AddTarefa>
             )
