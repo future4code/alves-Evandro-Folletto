@@ -45,7 +45,8 @@ class App extends React.Component {
       ],
       inputValue: '',
       filtro: '',
-      editandoID: ''
+      editandoID: '',
+      inputPesquisa: ''
     }
 
   componentDidUpdate(prevProps, prevState) {
@@ -93,7 +94,6 @@ class App extends React.Component {
 
   // Desafio 1: deletar tarefas individualmente
   deletarTarefa = (id) => {
-    console.log(id);
     const novaListaTarefas = this.state.tarefas.filter( tarefa => {
       return id !== tarefa.id
     })
@@ -108,6 +108,11 @@ class App extends React.Component {
   // Desafio 5: deletar todas as tarefas
   deletarTodasTarefas = () => {
     this.setState({tarefas: []});
+  }
+
+  // Desafio 6: filtrar por nome
+  filtrarPorNome = (event) => {
+    this.setState({inputPesquisa: event.target.value});
   }
 
   selectTarefa = (id) => {
@@ -131,14 +136,27 @@ class App extends React.Component {
   }
 
   render() {
+    // Desafio 5: filtrar pelo nome da tarefa
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
         case 'pendentes':
-          return !tarefa.completa
+          if (tarefa.texto.includes(this.state.inputPesquisa)) {
+            return !tarefa.completa
+          } else {
+            return false
+          }
         case 'completas':
-          return tarefa.completa
+          if (tarefa.texto.includes(this.state.inputPesquisa)) {
+            return tarefa.completa
+          } else {
+            return false
+          }
         default:
-          return true
+          if (tarefa.texto.includes(this.state.inputPesquisa)) {
+            return true
+          } else {
+            return false
+          }
       }
     })
 
@@ -158,7 +176,9 @@ class App extends React.Component {
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
           </select>
+          <input value={this.state.inputPesquisa} onChange={this.filtrarPorNome}/>
         </InputsContainer>
+
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
@@ -169,7 +189,7 @@ class App extends React.Component {
                 >
                   {tarefa.texto}
                 </Tarefa>
-                
+
                 <Edicao>
                   <Botao onClick={() => this.editarTarefa(tarefa.id, tarefa.texto)}>Editar</Botao>
                   <Botao onClick={() => this.deletarTarefa(tarefa.id)}>Excluir</Botao>
@@ -178,6 +198,7 @@ class App extends React.Component {
             )
           })}
         </TarefaList>
+
         <button onClick={() => this.deletarTodasTarefas()}>Excluir todas Tarefas</button>
       </div>
     )
