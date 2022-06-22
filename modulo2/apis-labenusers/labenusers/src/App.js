@@ -62,7 +62,6 @@ export default class App extends Component {
   };
 
   removerUsuario = (event) => {
-
     const confirm = window.confirm('Tem certeza que deseja deletar esse usuário?');
     if (confirm){
       const id = event.target.id;
@@ -83,7 +82,6 @@ export default class App extends Component {
         alert('Erro: usuário não foi deletado com sucesso');
       });
     }
-
   };
 
   buscarUsuarioID = (event) => {
@@ -103,7 +101,29 @@ export default class App extends Component {
     .catch(erro => {
       alert('Erro: usuário não foi encontrado');
     });
+  };
 
+  editarUsuario = (event) => {
+    const id = event.target.id;
+    const link = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
+    axios.get(link,
+      {
+        name: this.state.name,
+        email: this.state.email
+      },
+      {
+        headers:
+        {
+          Authorization: "evandro-folletto-alves"
+        }
+      },
+    )
+    .then(resposta => {
+      alert('Usuário alterado com sucesso')
+    })
+    .catch(erro => {
+      alert('Erro: usuário não foi alterado com sucesso');
+    });
   };
   
   alteraNome = (event) => {
@@ -144,6 +164,11 @@ export default class App extends Component {
         usuarioDetalhado={this.state.usuarioDetalhado}
         alteraPagina={this.alteraPagina}
         removerUsuario={this.removerUsuario}
+        editarUsuario={this.editarUsuario}
+        alteraNome={this.alteraNome}
+        alteraEmail={this.alteraEmail}
+        // email={this.state.email}
+        // name={this.state.name}
       />
     )
   }
