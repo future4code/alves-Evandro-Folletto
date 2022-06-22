@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import axios from "axios";
 
-import Pagina1 from "./components/Pagina1";
-import Pagina2 from "./components/Pagina2";
-import Pagina3 from "./components/Pagina3";
+import Pagina1 from "./components/pagina1/Pagina1";
+import Pagina2 from "./components/pagina2/Pagina2";
+import Pagina3 from "./components/pagina3/Pagina3";
 
 const Caixa = styled.div`
-  border: 1px solid blue;
+  border: 3px solid gray;
+  background-color: lightgrey;
   width: 600px;
-  height: 300px;
+  height: 400px;
 `
 
 export default class App extends Component {
@@ -103,29 +104,6 @@ export default class App extends Component {
     });
   };
 
-  editarUsuario = (event) => {
-    const id = event.target.id;
-    const link = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
-    axios.get(link,
-      {
-        name: this.state.name,
-        email: this.state.email
-      },
-      {
-        headers:
-        {
-          Authorization: "evandro-folletto-alves"
-        }
-      },
-    )
-    .then(resposta => {
-      alert('Usuário alterado com sucesso')
-    })
-    .catch(erro => {
-      alert('Erro: usuário não foi alterado com sucesso');
-    });
-  };
-  
   alteraNome = (event) => {
     this.setState({ name: event.target.value })
   };
@@ -137,8 +115,16 @@ export default class App extends Component {
   alteraPagina = (event) => {
     if (event.target.name === "listaUsuarios") this.setState({ pagina: 2 })
     if (event.target.name === "voltar") this.setState({ pagina: 1 })
-    if (event.target.name === "voltarpg2") this.setState({ pagina: 2 })
   };
+
+  irPagina1 = () => {
+    this.setState({pagina: 1});
+  }
+
+  irPagina2 = () => {
+    this.setState({pagina: 2});
+    this.mostrarUsuarios();
+  }
 
   exibeTela = () => {
     if (this.state.pagina === 1) return (
@@ -157,6 +143,11 @@ export default class App extends Component {
         alteraPagina={this.alteraPagina}
         removerUsuario={this.removerUsuario}
         buscarUsuarioID={this.buscarUsuarioID}
+        alteraSearchUser={this.alteraSearchUser}
+        searchUser={this.state.searchUser}
+        buscarUsuarioPesquisa={this.buscarUsuarioPesquisa}
+        irPagina1={this.irPagina1}
+        irPagina2={this.irPagina2}
       />
     )
     if (this.state.pagina === 3) return (
@@ -164,11 +155,8 @@ export default class App extends Component {
         usuarioDetalhado={this.state.usuarioDetalhado}
         alteraPagina={this.alteraPagina}
         removerUsuario={this.removerUsuario}
-        editarUsuario={this.editarUsuario}
-        alteraNome={this.alteraNome}
-        alteraEmail={this.alteraEmail}
-        // email={this.state.email}
-        // name={this.state.name}
+        mostrarUsuarios={this.mostrarUsuarios}
+        irPagina2={this.irPagina2}
       />
     )
   }
@@ -177,7 +165,6 @@ export default class App extends Component {
     return (
       <Caixa>
         {this.exibeTela()}
-        {/* {this.mostrarUsuarios()} */}
       </Caixa>
     )
   }
