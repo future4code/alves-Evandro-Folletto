@@ -18,21 +18,25 @@ export default class Pagina2 extends Component {
   };
 
   buscarUsuarioPesquisa = (event) => {
-    const link = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${this.state.searchUser}&email=`;
-    axios.get(link,
-      {
-        headers:
+    if (this.state.searchUser === "") {
+      alert('É necessário preencher algo no campo de busca')
+    } else {
+      const link = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/search?name=${this.state.searchUser}&email=`;
+      axios.get(link,
         {
-          Authorization: "evandro-folletto-alves"
-        }
-      },
-    )
-    .then(resposta => {
-      this.setState({renderizacaoAtual: 'usuarioPesquisado', resultadoPesquisa: resposta.data});
-    })
-    .catch(erro => {
-      alert('Erro: não ocorreu tudo bem com a busca')
-    });
+          headers:
+          {
+            Authorization: "evandro-folletto-alves"
+          }
+        },
+      )
+      .then(resposta => {
+        this.setState({renderizacaoAtual: 'usuarioPesquisado', resultadoPesquisa: resposta.data});
+      })
+      .catch(erro => {
+        alert('Erro: não ocorreu tudo bem com a busca')
+      });
+    }
   };
 
   escolheTela = () => {
