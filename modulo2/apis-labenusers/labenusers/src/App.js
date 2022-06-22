@@ -112,11 +112,6 @@ export default class App extends Component {
     this.setState({ email: event.target.value })
   };
 
-  alteraPagina = (event) => {
-    if (event.target.name === "listaUsuarios") this.setState({ pagina: 2 })
-    if (event.target.name === "voltar") this.setState({ pagina: 1 })
-  };
-
   irPagina1 = () => {
     this.setState({pagina: 1});
   }
@@ -140,12 +135,8 @@ export default class App extends Component {
     if (this.state.pagina === 2) return (
       <Pagina2
         usuarios={this.state.usuarios}
-        alteraPagina={this.alteraPagina}
         removerUsuario={this.removerUsuario}
         buscarUsuarioID={this.buscarUsuarioID}
-        alteraSearchUser={this.alteraSearchUser}
-        searchUser={this.state.searchUser}
-        buscarUsuarioPesquisa={this.buscarUsuarioPesquisa}
         irPagina1={this.irPagina1}
         irPagina2={this.irPagina2}
       />
@@ -153,9 +144,7 @@ export default class App extends Component {
     if (this.state.pagina === 3) return (
       <Pagina3
         usuarioDetalhado={this.state.usuarioDetalhado}
-        alteraPagina={this.alteraPagina}
         removerUsuario={this.removerUsuario}
-        mostrarUsuarios={this.mostrarUsuarios}
         irPagina2={this.irPagina2}
       />
     )
