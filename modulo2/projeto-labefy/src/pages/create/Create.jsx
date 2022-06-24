@@ -33,32 +33,32 @@ const Titulo = styled.h2`
   text-align: center;
 `
 
-const Botoes = styled.div`
+const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-const Criar = styled.button`
+const ButtonCreate = styled.button`
   height: 30px;
   width: 100%;
-  margin: 50px 10px 0 20px;
+  margin: 50px 20px 0 10px;
   text-align: center;
   background-color: lightgreen;
   border: 1px solid black;
   cursor: pointer;
 `
 
-const Lista = styled.button`
+const ButtonBack = styled.button`
   height: 30px;
   width: 100%;
-  margin: 50px 20px 0 10px;
+  margin: 50px 10px 0 20px;
   text-align: center;
   border: 1px solid black;
   background-color: lightblue;
   cursor: pointer;
 ` 
 
-export default class App extends Component {
+export default class Create_ extends Component {
 
   render() {
     return (
@@ -70,14 +70,14 @@ export default class App extends Component {
           <Label>Nome da playlist:</Label>
           <Entrada 
             type="text" 
-            onChange={this.props.alteraNomePlaylist}
-            value={this.props.nomePlaylist}
+            onChange={this.props.changeNamePlaylist}
+            value={this.props.namePlaylist}
           />
 
-          <Botoes>
-            <Criar onClick={this.props.criarPlaylist}>Criar</Criar>
-            <Lista onClick={this.props.mostrarPlaylists}>Ver playlists</Lista>
-          </Botoes>
+          <Buttons>
+            <ButtonBack onClick={() => this.props.changeScreen("list")}>Voltar</ButtonBack>
+            <ButtonCreate onClick={this.props.createPlaylist}>Criar</ButtonCreate>
+          </Buttons>
         </Formulario>
 
       </Body>
