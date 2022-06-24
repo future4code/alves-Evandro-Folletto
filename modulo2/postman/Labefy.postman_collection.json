@@ -1,0 +1,2276 @@
+{
+	"info": {
+		"_postman_id": "98107e40-463b-4ad2-b099-b7f835a99f56",
+		"name": "Labefy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21552787"
+	},
+	"item": [
+		{
+			"name": "Desafios",
+			"item": [
+				{
+					"name": "Desafio 1 - Ver todas as playlists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Ver músicas playlist geral",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Ver músicas playlist mpb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Adicionando música playlist mpb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Partido Alto\", \r\n    \"artist\": \"Cássia Eller\",\r\n    \"url\": \"https://www.youtube.com/watch?v=3BbxzwCEb-E\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Ver músicas playlist mpb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Ver músicas playlist country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Adicionando música playlist country",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"One Horse Town\", \r\n    \"artist\": \"Blackberry Smoke\",\r\n    \"url\": \"https://www.youtube.com/watch?v=T80B7s7ekGo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 1 - Ver músicas playlist country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 2 - Criar playlist com nome já existente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"geral\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 3 - Buscando por playlist que não existe",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=teste",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "teste"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 4 - Ver músicas playlist mpb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 4 - Deletar música ID inexistente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks",
+								":trackId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								},
+								{
+									"key": "trackId",
+									"value": "e8bf85f0-19b3-4982-b24b-f9f607b3053144444"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 5 - Procurar playlist ID inexistente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=sadasd",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "sadasd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 6 - Criar playlist sem nome",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 7.a - Ver todas as playlists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 7.b - Busca playlist geral",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=geral",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "geral"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desafio 7.c - Ver músicas playlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "teste"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exercícios",
+			"item": [
+				{
+					"name": "Exercício 1 - Criar playlist rock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"rock\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 1 - Criar playlist metal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"metal\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 1 - Criar playlist indie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"indie\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 2 - Ver todas as playlists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música rock 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bohemian Rhapsody\", \r\n    \"artist\": \"Queen\",\r\n    \"url\": \"https://www.youtube.com/watch?v=fJ9rUzIMcZQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música rock 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Thunderstruck\", \r\n    \"artist\": \"AC/DC\",\r\n    \"url\": \"https://www.youtube.com/watch?v=n_GFN3a0yj0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música metal 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A Love Unreal\", \r\n    \"artist\": \"Black Label Society\",\r\n    \"url\": \"https://www.youtube.com/watch?v=R98MHlsbUeU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música metal 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cold reader\", \r\n    \"artist\": \"Stone Sour\",\r\n    \"url\": \"https://www.youtube.com/watch?v=oFssYFsw76o\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música indie 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Machu Picchu\", \r\n    \"artist\": \"The strokes\",\r\n    \"url\": \"https://www.youtube.com/watch?v=Xt_F4J4O-xo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "66fda2ef-9bef-4863-9991-86334aac9aa5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 3 - Adicionar música indie 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Do I Wanna Know?\", \r\n    \"artist\": \"Arctic Monkeys\",\r\n    \"url\": \"https://www.youtube.com/watch?v=bpOSxM0rNPM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "66fda2ef-9bef-4863-9991-86334aac9aa5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 4 - Visualizar playlist rock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 4 - Visualizar playlist metal",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 4 - Visualizar playlist indie",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "66fda2ef-9bef-4863-9991-86334aac9aa5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 5 - Pesquisar por palavra chave",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=met",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "met"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 5 - Adicionar música 3 playlist metal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"People = Shit\", \r\n    \"artist\": \"Slipknot\",\r\n    \"url\": \"https://www.youtube.com/watch?v=qqK1FrO3BdM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 5 - Adicionar música 4 playlist metal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Korn\", \r\n    \"artist\": \"Word up\",\r\n    \"url\": \"https://www.youtube.com/watch?v=kyOcIbRRkiw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 6 - Visualizar playlist metal",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 7 - Adicionar música ruim",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sweet Child O' Mine\", \r\n    \"artist\": \"Guns N' Roses\",\r\n    \"url\": \"https://www.youtube.com/watch?v=1w7OgIMMRc4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 8 - Visualizar playlist rock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 9 - Deletando música ruim",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks",
+								":trackId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								},
+								{
+									"key": "trackId",
+									"value": "2caf6e94-5b9f-4edb-a377-1088a01e422c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 9 - Adicionar música 3 playlist rock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Future Days\", \r\n    \"artist\": \"Pearl Jam\",\r\n    \"url\": \"https://www.youtube.com/watch?v=nigF1ulBCQE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 9 - Adicionar música 4 playlist rock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Breakout\", \r\n    \"artist\": \"Foo Fighters\",\r\n    \"url\": \"https://www.youtube.com/watch?v=4eNBM17tkjI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 10 - Visualizar playlist rock",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.a - Apagando playlist rock",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "e309f496-fae0-4ca3-aa4f-29bb5eca40b6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.a - Apagando playlist metal",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "dc44e478-b1ca-49fa-8ea2-b5b5ff80bcde"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.a - Apagando playlist indie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "66fda2ef-9bef-4863-9991-86334aac9aa5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.a - Ver todas as playlists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.b - Criar playlist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"geral\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.b - Ver todas as playlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.c - Adicionar música geral 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Baba O'Riley\", \r\n    \"artist\": \"The Who\",\r\n    \"url\": \"https://www.youtube.com/watch?v=gY5rztWa1TM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.c - Adicionar música geral 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Feet Don't Fail Me\", \r\n    \"artist\": \"Queens of the Stone Age\",\r\n    \"url\": \"https://www.youtube.com/watch?v=LxijhTgxkyk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.c - Adicionar música geral 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ruby\", \r\n    \"artist\": \"Kaiser Chiefs\",\r\n    \"url\": \"https://www.youtube.com/watch?v=qObzgUfCl28\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.c - Ver músicas playlist geral",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.d - Deletar uma música playlist geral",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks",
+								":trackId"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								},
+								{
+									"key": "trackId",
+									"value": "7723c7f9-8562-4405-8227-7a53104f4fb2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.d - Ver as músicas da playlist geral",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "9cafb4c7-db90-41ee-aa52-1576168091fc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Criando playlist mpb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mpb\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Criando playlist country",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"country\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Ver todas as playlists",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Adicionando música playlist mpb",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"All Star\", \r\n    \"artist\": \"Nando Reis\",\r\n    \"url\": \"https://www.youtube.com/watch?v=C4HeeSug3J8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Adicionando música playlist country",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"In Hell I'll Be In Good Company\", \r\n    \"artist\": \"The Dead South\",\r\n    \"url\": \"https://www.youtube.com/watch?v=B9FzVhw8_bY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Ver músicas playlist mpb",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "60c516b1-70ea-4cb8-8603-64385db750da"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Ver músicas playlist country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exercício 11.e - Ver músicas playlist geral",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "evandro-folletto-alves",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+							"protocol": "https",
+							"host": [
+								"us-central1-labenu-apis",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"labefy",
+								"playlists",
+								":playlistId",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "playlistId",
+									"value": "0d4263cf-8061-498d-8676-8e60490b0064"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
