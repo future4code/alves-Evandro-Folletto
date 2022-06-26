@@ -1,20 +1,11 @@
 import styled from 'styled-components';
-
-// @font-face {
-//   font-family: 'RobotoMono';
-//   src: url("./fonts/RobotoMono-Thin.ttf");
-// }
+import font from "./../../assets/fonts/RobotoMono-Thin.ttf";
 
 export const Body = styled.body`
-
   @font-face {
     font-family: 'RobotoMono';
-    src: url("./../../assets/fonts/RobotoMono-Thin.ttf");
+    src: url(${font});
   }
-  /* font-family: 'RobotoMono'; */
-  /* src: url("./../../assets/fonts/RobotoMono-Thin.ttf"); */
-  font-family: 'RobotoMono', monospace;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,6 +21,7 @@ export const Container = styled.body`
   border-radius: 15px;
   background: #b6b6b6;
   width: 400px;
+  font-family: 'RobotoMono', monospace;
 `
 
 export const Titulo = styled.h2`

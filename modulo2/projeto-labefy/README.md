@@ -22,12 +22,16 @@ Desenvolvido por: Evandro Paulo Folletto
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-<img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
 </div>
 
-# Autores
-Márleo Piber da Rosa, Olavo Marques do Nascimento, Evandro Paulo Folletto
+# Autor
+Evandro Paulo Folletto
 
 # Imagens
-<img src="./src/components/img/Site_2.png"/>
+<img src="./src/assets/img/Site_1.png"/>
+<img src="./src/assets/img/Site_2.png"/>
+<img src="./src/assets/img/Site_3.png"/>
+<img src="./src/assets/img/Site_4.png"/>
+<img src="./src/assets/img/Site_5.png"/>
