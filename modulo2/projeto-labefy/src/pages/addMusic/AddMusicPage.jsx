@@ -112,7 +112,8 @@ export default class Add_ extends Component {
           />
 
           <Buttons>
-            <ButtonBack onClick={() => this.props.changeScreen("list")}>Voltar</ButtonBack>
+            {/* <ButtonBack onClick={() => this.props.changeScreen("details")}>Voltar</ButtonBack> */}
+            <ButtonBack onClick={this.props.addToList}>Voltar</ButtonBack>
             <ButtonCreate onClick={this.props.addMusic}>Adicionar</ButtonCreate>
           </Buttons>
         </Formulario>

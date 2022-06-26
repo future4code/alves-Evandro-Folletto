@@ -1,7 +1,21 @@
 import React, {Component} from "react";
 import styled from "styled-components";
 
+// @font-face {
+//   font-family: 'RobotoMono';
+//   src: url("./fonts/RobotoMono-Thin.ttf");
+// }
+
 const Body = styled.body`
+
+  @font-face {
+    font-family: 'RobotoMono';
+    src: url("./../../assets/fonts/RobotoMono-Thin.ttf");
+  }
+  /* font-family: 'RobotoMono'; */
+  /* src: url("./../../assets/fonts/RobotoMono-Thin.ttf"); */
+  font-family: 'RobotoMono', monospace;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +72,8 @@ export default class Home_ extends Component {
           <Titulo>Bem vindo(a) ao Labefy</Titulo>
 
           <Botoes>
-            <ButtonList value={1} onClick={this.props.mostrarPlaylists}>Ver Playlists</ButtonList>
+            {/* <ButtonList value={1} onClick={this.props.mostrarPlaylists}>Ver Playlists</ButtonList> */}
+            <ButtonList onClick={this.props.homeToList}>Ver Playlists</ButtonList>
             <ButtonAbout onClick={() => this.props.changeScreen("about")}>Sobre</ButtonAbout>
           </Botoes>
         </Formulario>

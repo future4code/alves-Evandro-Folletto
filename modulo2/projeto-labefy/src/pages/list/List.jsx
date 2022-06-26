@@ -88,7 +88,8 @@ export default class ListPlaylists extends Component {
         <Lista key={playlist.id}>
           <Usuario>{playlist.name}</Usuario>
           <ButtonsUp>
-            <ButtonDetails id={playlist.id} value={playlist.name} onClick={this.props.detailPlaylist}>Ver</ButtonDetails>
+            {/* <ButtonDetails id={playlist.id} value={playlist.name} onClick={this.props.detailPlaylist}>Ver</ButtonDetails> */}
+            <ButtonDetails id={playlist.id} value={playlist.name} onClick={this.props.listToDetail}>Ver</ButtonDetails>
             <ButtonRemove id={playlist.id} onClick={this.props.removerPlaylist}>Remover</ButtonRemove>
           </ButtonsUp>
         </Lista>
