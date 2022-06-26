@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.body`
+export const Body = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

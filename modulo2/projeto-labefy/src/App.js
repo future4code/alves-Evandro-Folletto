@@ -59,97 +59,15 @@ export default class App extends Component {
       },
     )
     .then(res => {
-      console.log('Playlist criada com sucesso')
+      alert('Playlist criada com sucesso');
       this.mostrarPlaylists();
     })
     .catch(err => {
-      console.log('Playlist não criada com sucesso')
+      alert('Playlist não criada com sucesso');
     });
     this.setState({namePlaylist: ""})
   };
   
-  // mostrarPlaylists = (event) => {
-  //   // console.log('foi clicado em mostrar playlists', event.target.value)
-  //   axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-  //   {
-  //     headers:
-  //     {
-  //       Authorization: "evandro-folletto-alves"
-  //     }
-  //   },
-  //   )
-  //   .then(res => {
-  //     // console.log(res.data.result.list);
-  //     this.setState({playlists: res.data.result.list});
-  //     // if (Number(event.target.value) === 1) this.changeScreen("list")
-  //     this.changeScreen("list")
-  //   })
-  //   .catch(err => {
-  //     console.log('As playlist não foram carregadas');
-  //     // alert('Erro: não foi possível mostrar os usuários cadastrados')
-  //   });
-  // };
-  
-  // detailPlaylist = (event) => {
-  //   const id = event.target.id;
-  //   axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
-  //   {
-  //     headers:
-  //     {
-  //       Authorization: "evandro-folletto-alves"
-  //     }
-  //   },
-  //   )
-  //   .then(res => {
-  //     this.setState({playlistMusics: res.data.result.tracks, playlistDetailID: id, playlistDetailName: event.target.value});
-  //     this.changeScreen("details")
-  //   })
-  //   .catch(err => {
-  //     alert('Erro: não foi possível mostrar os usuários cadastrados')
-  //   });
-  // };
-
-  // removeMusic = (event) => {
-  //   const id = event.target.id;
-  //   axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.state.playlistDetailID}/tracks/${id}`,
-  //   {
-  //     headers:
-  //     {
-  //       Authorization: "evandro-folletto-alves"
-  //     }
-  //   },
-  //   )
-  //   .then(res => {
-  //     console.log('A música foi deletada com sucesso')
-  //     this.mostrarPlaylists();
-  //     this.detailPlaylist();
-  //     this.changeScreen("details");
-  //   })
-  //   .catch(err => {
-  //     console.log('A música não foi deletada com sucesso')
-  //     console.log(err);
-  //     // alert('Erro: não foi possível mostrar os usuários cadastrados - aqui')
-  //   });
-  // };
-
-  // mostrarPlaylists = () => {
-  //   axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-  //   {
-  //     headers:
-  //     {
-  //       Authorization: "evandro-folletto-alves"
-  //     }
-  //   },
-  //   )
-  //   .then(res => {
-  //     this.setState({playlists: res.data.result.list});
-  //     console.log('passou pelo mostrarPlaylists')
-  //   })
-  //   .catch(err => {
-  //     console.log('As playlist não foram carregadas');
-  //   });
-  // };
-
   mostrarPlaylists = async() => {
     try
       {
@@ -187,23 +105,6 @@ export default class App extends Component {
       alert('Playlist não deletada com sucesso')
     });
   };
-
-  // detailPlaylist = (id) => {
-  //   axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`,
-  //   {
-  //     headers:
-  //     {
-  //       Authorization: "evandro-folletto-alves"
-  //     }
-  //   },
-  //   )
-  //   .then(res => {
-  //     this.setState({playlistMusics: res.data.result.tracks, playlistDetailID: id});
-  //   })
-  //   .catch(err => {
-  //     alert('Erro: não foi possível mostrar os usuários cadastrados')
-  //   });
-  // };
 
   detailPlaylist = async (id) => {
     try
@@ -243,7 +144,7 @@ export default class App extends Component {
       this.setState({addMusicName: "", addMusicArtist: "", addMusicUrl: ""})
     })
     .catch(err => {
-      console.log(err);
+      alert('A música não foi adicionada com sucesso');
     });
   };
 

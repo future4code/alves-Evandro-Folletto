@@ -10,7 +10,7 @@ export default class About_ extends Component {
           <Titulo>Projeto Labefy</Titulo>
 
           <Text>
-            O Projeto Labefy foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API desenvolvida pela equipe da Labenu via axios. 
+            O Projeto Labefy foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API desenvolvida pela equipe da Labenu, via axios. 
           </Text>
 
           <Text>
@@ -20,7 +20,7 @@ export default class About_ extends Component {
           <Text>
             <b>getAllPlaylists: </b> ver todas as playlists cadastradas;
             <br/>
-            <b>getPlaylistsTracks:</b> ver as músicas cadastradas em uma determinada playlists;
+            <b>getPlaylistTracks:</b> ver as músicas cadastradas em uma determinada playlist;
             <br/>
             <b>createPlaylist:</b> criar uma nova playlist;
             <br/>

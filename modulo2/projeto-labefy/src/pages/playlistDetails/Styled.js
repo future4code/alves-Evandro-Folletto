@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.body`
+export const Body = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,6 +51,10 @@ export const Description = styled.div`
   flex-direction: column;
   justify-content: center;
   margin: 0 20px;
+`
+
+export const Vazia = styled.p`
+  font-size: 20px;
 `
 
 export const MusicName = styled.h4`

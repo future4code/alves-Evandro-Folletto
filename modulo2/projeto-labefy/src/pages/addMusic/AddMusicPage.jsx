@@ -12,7 +12,7 @@ export default class Add_ extends Component {
 
           <Label>Playlist:</Label>
           <NamePlaylist 
-            disabled="true"
+            disabled={true}
             type="text"
             value={this.props.playlistDetailName}
           />
