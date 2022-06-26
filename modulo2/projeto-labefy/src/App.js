@@ -59,12 +59,11 @@ export default class App extends Component {
       },
     )
     .then(res => {
-      console.log('playlist criada com sucesso')
-      // alert('Usuário criado com sucesso')
+      console.log('Playlist criada com sucesso')
+      this.mostrarPlaylists();
     })
     .catch(err => {
-      console.log('playlist não criada com sucesso')
-      // alert('Erro: usuário não foi criado')
+      console.log('Playlist não criada com sucesso')
     });
     this.setState({namePlaylist: ""})
   };
@@ -153,21 +152,21 @@ export default class App extends Component {
 
   mostrarPlaylists = async() => {
     try
-    {
-      const res = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
-        {
-          headers:
+      {
+        const res = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
           {
-            Authorization: "evandro-folletto-alves"
+            headers:
+            {
+              Authorization: "evandro-folletto-alves"
+            }
           }
-        }
-      )
-      this.setState({playlists: res.data.result.list})
-    }
+        )
+        this.setState({playlists: res.data.result.list})
+      }
     catch(err) 
-    {
-      alert('Playlist não carregada')
-    }
+      {
+        alert('Playlist não carregada')
+      }
   };
 
   removerPlaylist = (event) => {
@@ -240,14 +239,11 @@ export default class App extends Component {
     },
     )
     .then(res => {
-      console.log('A música foi adicionada com sucesso')
+      alert('A música foi adicionada com sucesso');
       this.setState({addMusicName: "", addMusicArtist: "", addMusicUrl: ""})
-      // this.mostrarPlaylists();
-      // this.changeScreen("list");
     })
     .catch(err => {
       console.log(err);
-      // alert('Erro: não foi possível mostrar os usuários cadastrados - aqui')
     });
   };
 
@@ -267,26 +263,6 @@ export default class App extends Component {
       alert('A música não foi deletada com sucesso')
     });
   };
-
-  // removeMusic = async (idMusic) => {
-  //   try 
-  //   {
-  //     const res = await axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.state.playlistDetailID}/tracks/${idMusic}`,
-  //       {
-  //         headers:
-  //         {
-  //           Authorization: "evandro-folletto-alves"
-  //         }
-  //       }
-  //     )
-  //     console.log('Música foi deletada com sucesso');
-  //     this.detailPlaylist(this.state.playlistDetailID);
-  //   } 
-  //   catch (err) 
-  //   {
-  //     console.log('Música não foi deletada com sucesso')
-  //   }
-  // };
 
   homeToList = () => {
     this.mostrarPlaylists();
@@ -312,14 +288,17 @@ export default class App extends Component {
     this.changeScreen("details");
   }
 
+  createToList = () => {
+    this.createPlaylist();
+    this.changeScreen("list");
+  }
+
   escolheTela = () => {
     switch(this.state.currentScreen) {
       case "home":
         return (
           <Home
             changeScreen={this.changeScreen}
-            mostrarPlaylists={this.mostrarPlaylists}
-
             homeToList={this.homeToList}
           />
         )
@@ -329,8 +308,6 @@ export default class App extends Component {
             playlists={this.state.playlists}
             changeScreen={this.changeScreen}
             removerPlaylist={this.removerPlaylist}
-            detailPlaylist={this.detailPlaylist}
-
             listToDetail={this.listToDetail}
           />
         )
@@ -340,9 +317,9 @@ export default class App extends Component {
         return (
           <Create 
             changeScreen={this.changeScreen}
-            createPlaylist={this.createPlaylist}
             changeNamePlaylist={this.changeNamePlaylist}
             namePlaylist={this.state.namePlaylist}
+            createToList={this.createToList}
           />
         )
       case "details":
@@ -351,7 +328,6 @@ export default class App extends Component {
             playlistMusics={this.state.playlistMusics}
             changeScreen={this.changeScreen}
             playlistDetailName={this.state.playlistDetailName}
-            removeMusic={this.removeMusic}
             removeToRemove={this.removeToRemove}
           />
         )
@@ -359,16 +335,15 @@ export default class App extends Component {
         return (
           <AddMusic
             changeScreen={this.changeScreen}
-            addMusic={this.addMusic}
+            playlistDetailName={this.state.playlistDetailName}
             changeAddMusicName={this.changeAddMusicName}
             addMusicName={this.state.addMusicName}
             changeAddMusicArtist={this.changeAddMusicArtist}
             addMusicArtist={this.state.addMusicArtist}
             changeAddMusicUrl={this.changeAddMusicUrl}
             addMusicUrl={this.state.addMusicUrl}
-            playlistDetailName={this.state.playlistDetailName}
-            
             addToList={this.addToList}
+            addMusic={this.addMusic}
           />
         ) 
       default:
