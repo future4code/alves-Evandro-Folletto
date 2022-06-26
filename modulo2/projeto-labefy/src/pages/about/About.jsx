@@ -20,7 +20,7 @@ export default class About_ extends Component {
           <Text>
             <b>getAllPlaylists: </b> ver todas as playlists cadastradas;
             <br/>
-            <b>getPlaylistsTracks:</b> ver as músicadas cadastradas em uma determinada playlists;
+            <b>getPlaylistsTracks:</b> ver as músicas cadastradas em uma determinada playlists;
             <br/>
             <b>createPlaylist:</b> criar uma nova playlist;
             <br/>
