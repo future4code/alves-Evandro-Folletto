@@ -9,6 +9,7 @@ export default class ListPlaylists extends Component {
       return (
         <Lista key={playlist.id}>
           <PlaylistName>{playlist.name}</PlaylistName>
+          {console.log(playlist)}
           <ButtonsUp>
             <ButtonDetails id={playlist.id} value={playlist.name} onClick={this.props.listToDetail}>Ver</ButtonDetails>
             <ButtonRemove id={playlist.id} onClick={this.props.removerPlaylist}>Excluir</ButtonRemove>
