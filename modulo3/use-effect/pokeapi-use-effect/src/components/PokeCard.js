@@ -4,6 +4,12 @@ import axios from "axios";
 function PokeCard(props) {
   const [pokemon, setPokemon] = useState({});
 
+  // ----------------------------------
+  // DUAS OPÇÕES DE USO DO useEffect():
+  // ----------------------------------
+  
+  // 1a Opção:
+  // ----------------------------------
   useEffect( () => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${props.pokeName}`)
@@ -13,7 +19,23 @@ function PokeCard(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [pokemon]);
+  }, [props.pokeName]); // ou pokemon?
+
+  // 2a Opção:
+  // ----------------------------------
+  // const getPokemons = () => {
+  //   axios
+  //     .get(`https://pokeapi.co/api/v2/pokemon/${props.pokeName}`)
+  //     .then((res) => {
+  //       setPokemon(res.data)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+  // useEffect( () => {
+  //   getPokemons()
+  // },[pokemon])
 
   return (
     <figure>
