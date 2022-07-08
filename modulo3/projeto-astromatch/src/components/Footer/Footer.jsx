@@ -1,11 +1,23 @@
 import React from 'react';
-import {Container, BotaoDislike, BotaoLike} from "./styled_footer"
+import {Container, ImgDislike, ImgLike, BotaoResetar} from "./styled_footer";
+import img_like from './../../assets/img/like.png';
+import img_dislike from './../../assets/img/dislike.png';
 
 export default function Footer_(props) {
   return (
     <Container>
-      <BotaoDislike value={false} onClick={props.changeCont}>Dislike</BotaoDislike>
-      <BotaoLike value={true} onClick={props.changeCont}>Like</BotaoLike>
+      {props.erro === true ?
+        <>
+        {/* <ImgDislike src={img_dislike} onClick={props.click_dislike} /> */}
+        {/* <ImgLike src={img_like} onClick={props.click_like} /> */}
+        <BotaoResetar onClick={props.clear}>Resetar Perfis</BotaoResetar>
+        </>
+      :
+        <>
+        <ImgDislike src={img_dislike} onClick={props.click_dislike} />
+        <ImgLike src={img_like} onClick={props.click_like} />
+        </>
+      }
     </Container>
   );
 };

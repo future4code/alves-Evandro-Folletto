@@ -4,24 +4,24 @@ import GlobalStyle from './styles/global';
 import axios from "axios";
 
 function App() {
-  useEffect(() => {
-    getAProfileToChoose()
-  }, [])
+  
+  // const getAProfileToChoose = () => {
+  //   console.log("entrou na função");
+  //   axios
+  //     .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/evandro-folletto-alves/person`)
+  //     .then( res => console.log(res.data.profile.name) )
+  //     .catch( error => alert('Deu erro!') )
+  // }
 
-  const getAProfileToChoose = async () => {
-  try {
-    let profile = await axios.get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/evandro/person`)
-    // setPerfil(profile.data.profile)
-    console.log(profile.data.profile.name)
-  } catch (error) {
-    alert('Ops! Ocorreu um erro no site, mas já estamos trabalhando para que você continue conhecendo novas pessoas!')
-  }
-  }
+  // useEffect(() => {
+  //   console.log("entrou no useEffect");
+  //   getAProfileToChoose()
+  // }, [])
 
   return (
     <div>
       <GlobalStyle/>
-      {/* <Home/> */}
+      <Home/>
     </div>
   );
 }

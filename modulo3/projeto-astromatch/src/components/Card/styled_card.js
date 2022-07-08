@@ -7,18 +7,29 @@ export const Card = styled.div`
 `
 
 export const ContentImg = styled.div`
-  width: 200px;
+  margin: 20px 0 0 0;
+  width: 250px;
+  height: 250px;
 `
 
 export const Image = styled.img`
-  margin: 20px 0 0 0;
-  width: 100%;
+  max-width: 100%;
+  width: 250px;
+  height: 250px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  object-fit: contain;
+  /* object-fit: cover; */
+  background-color: #cd3d44;
 `
 
-export const Description = styled.h3`
+export const Description = styled.h2`
   margin: 20px 0 0 0;
 `
 
 export const Bio = styled.p`
-  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 20px;
 `

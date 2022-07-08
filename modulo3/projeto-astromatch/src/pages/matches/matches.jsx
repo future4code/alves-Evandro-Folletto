@@ -1,8 +1,20 @@
 import React from 'react';
-import {TelaInteira, Main} from "./styled_matches"
-import Header from "../../components/Header_matches/Header_matches"
+import {TelaInteira, Lista, Main, ImgPerfil, ImgChat, Esquerda, Name, Aviso} from "./styled_matches";
+import Header from "../../components/Header_matches/Header_matches";
+import img_chat from './../../assets/img/messenger.png';
 
 export default function Matches(props) {
+  const listaMatches = props.listMatchesMe.map( matche => {
+    return (
+      <Lista key={matche.id}>
+        <Esquerda>
+          <ImgPerfil src={matche.photo}/>
+          <Name>{matche.name}</Name>
+        </Esquerda>
+        <ImgChat src={img_chat}/>
+      </Lista>
+    )
+  })
   return (
     <TelaInteira>
 
@@ -11,9 +23,11 @@ export default function Matches(props) {
       />
 
       <Main>
-        {props.listMatches.map( match => {
-          return <div>{match.name}</div>
-        })}
+        {listaMatches.length > 0 ?
+        listaMatches
+        :
+        <Aviso>Lista de Matches vazia :(</Aviso>
+        }
       </Main>
 
     </TelaInteira>

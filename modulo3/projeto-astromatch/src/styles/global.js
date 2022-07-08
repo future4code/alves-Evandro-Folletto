@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import img_fundo from "./../assets/img/bg.svg";
+import font_title from "./../assets/fonts/static/Raleway-Thin.ttf";
 
 export default createGlobalStyle`
   * {
@@ -14,10 +16,27 @@ export default createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(${img_fundo});
+  }
+
+  h1 {
+    @font-face {
+      font-family: 'Raleway';
+      src: local('Raleway'),
+      url(${font_title})
+    }
+  }
+
+  p {
+    @font-face {
+      font-family: sans-serif;
+      src: local('Raleway'),
+      url(${font_title})
+    }
   }
 
   body, input, button {
-    font: 14px Roboto, sans-serif;
+    /* font: 14px sans-serif; */
   }
 
   button {
