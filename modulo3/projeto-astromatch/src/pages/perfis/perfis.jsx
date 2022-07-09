@@ -1,5 +1,5 @@
 import React from 'react';
-import {TelaInteira, Main, Aviso} from "./styled_perfis"
+import {TelaInteira, Main, Aviso, Match} from "./styled_perfis"
 import Header from "../../components/Header_perfis/Header_perfis"
 import Footer from "./../../components/Footer/Footer"
 import Card from "./../../components/Card/Card"
@@ -14,15 +14,15 @@ export default function Perfis(props) {
       />
 
       <Main>
-        {props.perfil && props.perfil !== {} ?
+        {/* {props.perfil && props.perfil !== {} ? */}
+        {props.erro === false ?
         <Card 
           perfil={props.perfil}
           erro={props.erro}
         />
         :
         <>
-        {/* <Aviso>Carregandoo</Aviso> */}
-        <h1>Carregandoooooooooooooooooooooooooooooooooooooooooo</h1>
+        <Aviso>Os perfis acabaram. Clique em "Resetar" para continuar</Aviso>
         </>
         }
       </Main>

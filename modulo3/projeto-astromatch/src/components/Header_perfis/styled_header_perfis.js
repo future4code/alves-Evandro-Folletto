@@ -10,7 +10,7 @@ export const Header = styled.div`
 `
 
 export const ImgHome = styled.img`
-  width: 50px;
+  width: 45px;
   margin: 5px;
   padding: 5px;
   &:hover {
@@ -20,10 +20,23 @@ export const ImgHome = styled.img`
   }
 `
 
-export const Titulo = styled.h1`
+export const Titulo = styled.div`
+  display: flex;
   text-align: center;
 `
  
+export const Astro = styled.h1`
+  color: #910000;
+  margin: 0 0 0 10px;
+`
+
+export const Match = styled.h1`
+  color: #646464;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+`
+
 export const ImgMatches = styled.img`
   width: 40px;
   &:hover {

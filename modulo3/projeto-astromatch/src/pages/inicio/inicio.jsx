@@ -1,5 +1,5 @@
 import React from 'react';
-import { TelaInteira, Titulo, Central, Astromatch, ImgAstro, Buttons, ButtonAbout, ButtonAstro } from "./styled_inicio";
+import { TelaInteira, Titulo, Central, Astro, Match, ImgAstro, Buttons, ButtonAbout, ButtonAstro } from "./styled_inicio";
 import img_astro from './../../assets/img/capacete.png';
 
 export default function Inicio(props) {
@@ -10,7 +10,8 @@ export default function Inicio(props) {
       
       <Central>
         <ImgAstro src={img_astro}/>
-        <Astromatch>Astromatch</Astromatch>
+        <Astro>astro</Astro>
+        <Match>match</Match>
       </Central>
 
       <Buttons>

@@ -8,9 +8,7 @@ export default function Footer_(props) {
     <Container>
       {props.erro === true ?
         <>
-        {/* <ImgDislike src={img_dislike} onClick={props.click_dislike} /> */}
-        {/* <ImgLike src={img_like} onClick={props.click_like} /> */}
-        <BotaoResetar onClick={props.clear}>Resetar Perfis</BotaoResetar>
+        <BotaoResetar onClick={props.clear}>Resetar</BotaoResetar>
         </>
       :
         <>

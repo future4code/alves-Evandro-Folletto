@@ -22,8 +22,16 @@ export const Central = styled.div`
   align-items: center;
 `
 
-export const Astromatch = styled.h1`
+export const Astro = styled.h1`
+  color: #910000;
   margin: 0 0 0 10px;
+`
+
+export const Match = styled.h1`
+  color: #646464;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #e7e7e7;
 `
 
 export const ImgAstro = styled.img`

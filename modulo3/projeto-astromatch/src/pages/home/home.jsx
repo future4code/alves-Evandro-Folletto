@@ -4,7 +4,7 @@ import About from "./../about/about";
 import Perfis from "./../perfis/perfis";
 import Matches from "./../matches/matches";
 import axios from "axios";
-// import { BASE_URL } from "../../constantes/BASE_URL";
+import {BASE_URL} from "./../../constants/BASE_URL";
 
 export default function Home() {
 
@@ -12,6 +12,7 @@ export default function Home() {
   const [perfil, setPerfil] = useState({});
   const [listMatchesMe, setListMatchesMe] = useState([]);
   const [erro, setErro] = useState(false);
+  // const [alertMatch, setAlertMatch] = useState(false);
 
   useEffect(() => {
     getAProfileToChoose()
@@ -20,48 +21,50 @@ export default function Home() {
   const nome = "evandro-150-alves"
   const getAProfileToChoose = () => {
     axios
-      .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nome}/person`)
+      .get(`${BASE_URL}/${nome}/person`)
       .then( res => {
         setPerfil(res.data.profile);
+        // setAlertMatch(false);
       })
       .catch( error => {
         setPerfil({})
-        // alert('Reinicie os matches');
         setErro(true);
       });
   }
 
   const getMatches = () => {
     axios
-      .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nome}/matches`)
+      .get(`${BASE_URL}/${nome}/matches`)
       .then( res => {
         setListMatchesMe(res.data.matches)
         changeScreen("matches");
       })
-      .catch( error => console.log('NÃO deu certo requisição de lista de matches') );
+      .catch( error => alert('NÃO deu certo requisição de lista de matches') );
   };
 
   const choosePerson = () => {
     axios
-      .post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nome}/choose-person`,
+      .post(`${BASE_URL}/${nome}/choose-person`,
       {
         "id": perfil.id,
         "choice": true
       })
       .then( res => {
         if(res.data.isMatch ) alert("hmm, deu match :)");
+        // if(res.data.isMatch ) setAlertMatch(true);
+        
       })
-      .catch( erro => console.log('NÃO deu certo o choosePerson') );
+      .catch( erro => alert('NÃO deu certo o choosePerson') );
   };
 
   const clear = () => {
     axios
-      .put(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/${nome}/clear`)
+      .put(`${BASE_URL}/${nome}/clear`)
       .then( res => {
         setErro(false);
         getAProfileToChoose();
       })
-      .catch( erro => console.log('NÃO deu certo o clear') );
+      .catch( erro => alert('NÃO deu certo o clear') );
   };
 
   const changeScreen = (screen) => {
@@ -101,6 +104,7 @@ export default function Home() {
           click_dislike={click_dislike}
           clear={clear}
           erro={erro}
+          // alertMatch={alertMatch}
           />
         )
       case "matches":

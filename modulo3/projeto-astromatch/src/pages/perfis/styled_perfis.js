@@ -13,6 +13,11 @@ export const Main = styled.div`
   background-color: #ffaaa4;
 `
 
-export const Aviso = styled.h3`
-  background-color: #ff776d;
+export const Aviso = styled.h2`
+  text-align: center;
+  margin: 200px 10px 0 10px;
+`
+
+export const Match = styled.div`
+  background-color: #ffaaa4;
 `

@@ -14,7 +14,6 @@ export const Main = styled.div`
   border-end-start-radius: 20px;
   border-end-end-radius: 20px;
   background-color: #ffaaa4;
-  /* overflow-y: scroll; */
   overflow: auto;
 `
 
@@ -23,7 +22,6 @@ export const Lista = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: solid 1px blue; */
   border-radius: 10px;
   background: #e65a58;
 `
