@@ -14,8 +14,7 @@ export default function Perfis(props) {
       />
 
       <Main>
-        {/* {props.perfil && props.perfil !== {} ? */}
-        {props.erro === false ?
+        {props.erro === false && props.perfil !== {} ?
         <Card 
           perfil={props.perfil}
           erro={props.erro}

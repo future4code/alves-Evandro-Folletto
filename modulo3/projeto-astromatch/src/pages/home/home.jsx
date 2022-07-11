@@ -12,22 +12,21 @@ export default function Home() {
   const [perfil, setPerfil] = useState({});
   const [listMatchesMe, setListMatchesMe] = useState([]);
   const [erro, setErro] = useState(false);
-  // const [alertMatch, setAlertMatch] = useState(false);
 
   useEffect(() => {
     getAProfileToChoose()
   }, [])
 
-  const nome = "evandro-150-alves"
+  const nome = "evandro-250-alves"
   const getAProfileToChoose = () => {
     axios
       .get(`${BASE_URL}/${nome}/person`)
       .then( res => {
         setPerfil(res.data.profile);
-        // setAlertMatch(false);
       })
       .catch( error => {
-        setPerfil({})
+        console.log(error)
+        alert('Estamos com problemas em obter um novo perfil')
         setErro(true);
       });
   }
@@ -51,10 +50,12 @@ export default function Home() {
       })
       .then( res => {
         if(res.data.isMatch ) alert("hmm, deu match :)");
-        // if(res.data.isMatch ) setAlertMatch(true);
         
       })
-      .catch( erro => alert('NÃO deu certo o choosePerson') );
+      .catch( erro => {
+        alert('NÃO deu certo o choosePerson');
+        clear();
+      });
   };
 
   const clear = () => {
@@ -104,7 +105,6 @@ export default function Home() {
           click_dislike={click_dislike}
           clear={clear}
           erro={erro}
-          // alertMatch={alertMatch}
           />
         )
       case "matches":
@@ -115,13 +115,21 @@ export default function Home() {
           />
         )
       default:
-        return <></>
+        return (
+          <Inicio 
+            changeScreen={changeScreen}
+          />
+        )
     }
   }
 
   return (
     <div>
-      {chooseScreen()}
+      {perfil !== {} ?
+      chooseScreen()
+      :
+      <p>carregando</p>
+      }
     </div>
   );
 };
