@@ -14,7 +14,8 @@ export default function Home() {
   const [erro, setErro] = useState(false);
 
   useEffect(() => {
-    getAProfileToChoose()
+    clear()
+    // getAProfileToChoose()
   }, [])
 
   const nome = "evandro-250-alves"
@@ -54,7 +55,7 @@ export default function Home() {
       })
       .catch( erro => {
         alert('NÃO deu certo o choosePerson');
-        clear();
+        // clear();
       });
   };
 
