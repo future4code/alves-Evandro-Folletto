@@ -23,6 +23,22 @@ export const Container = styled.div`
   /* } */
 `
 
+export const ImagemLixeira = styled.img`
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 0 0;
+  padding: 10px;
+  /* flex-basis: 3%; */
+  /* &:hover {
+    transition: background-color 1s;
+    background-color: #cfc9e8;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 0 10px 0 0;
+    padding: 10px;
+  } */
+`
+
 export const Lista = styled.div`
   /* vertical-align: middle; */
   display: flex;
@@ -97,7 +113,7 @@ export const ButtonCreate = styled.button`
 	}
 `
 
-export const ButtonLogout = styled.button`
+export const ButtonLogin = styled.button`
   font-size: 18px;
   height: 40px;
   width: 100%;

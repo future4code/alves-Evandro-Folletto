@@ -18,7 +18,7 @@ export const Router = () => {
         <Route path="applicationform" element={<ApplicationFormPage/>}/>
         <Route path="login" element={<LoginPage/>}/>
         <Route path="adminhome" element={<AdminHomePage/>}/>
-        <Route path="tripdetails" element={<TripDetailsPage/>}/>
+        <Route path="tripdetails/:id" element={<TripDetailsPage/>}/>
         <Route path="createtrip" element={<CreateTripPage/>}/>
         <Route path="about" element={<AboutPage/>}/>
         <Route path="*" element={<ErrorPage/>}/>

@@ -1,6 +1,39 @@
+import React, {useState} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {goToAdminHomePage} from "./../../routes/coordinator.js"
 import { Geral, Container, TituloCadastro, Titulo, Input, Buttons, ButtonBack, ButtonCreate } from './styled-LoginPage'
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  }
+  
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  }
+    
+  const onSubmitLogin = () => {
+    axios
+    .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/login`,
+    {
+      "email": email,
+      "password": password
+    })
+    .then( res => {
+      localStorage.setItem('token', res.data.token);
+      goToAdminHomePage(navigate)
+      console.log('Deu certo', res);
+    })
+    .catch( erro => {
+      console.log('Deu errado', erro);
+    });
+  }
 
   return (
     <Geral>
@@ -9,25 +42,23 @@ export default function LoginPage() {
 
         <Titulo>E-mail:</Titulo>
         <Input
-          type='text'
-        // onChange={this.chamarPrice}
-        // placeholder={"Preço"}
-        // value={this.state.price}
+          type='e-mail'
+          value={email}
+          onChange={onChangeEmail}
         >
         </Input>
 
         <Titulo>Senha:</Titulo>
         <Input
-          type='number'
-        // onChange={this.chamarPrice}
-        // placeholder={"Preço"}
-        // value={this.state.price}
+          type='password'
+          value={password}
+          onChange={onChangePassword}
         >
         </Input>
 
         <Buttons>
-          <ButtonBack>Voltar</ButtonBack>
-          <ButtonCreate>Entrar</ButtonCreate>
+          <ButtonBack onClick={()=>goToAdminHomePage(navigate)}>Voltar</ButtonBack>
+          <ButtonCreate onClick={onSubmitLogin}>Entrar</ButtonCreate>
         </Buttons>
 
       </Container>

@@ -17,3 +17,16 @@ export const goBack = (navigate) => {
 export const goToApplicationFormPage = (navigate) => {
   navigate("/applicationform");
 }
+
+export const goToLoginPage = (navigate) => {
+  navigate("/login");
+}
+
+export const goToIndex = (navigate) => {
+  navigate("/");
+}
+
+export const goToTripDetailsPage = (navigate, id) => {
+  console.log('Valor do ID que chegou no coordinator:', id);
+  navigate(`/tripdetails/${id}`);
+}
