@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Geral = styled.div`
   display: grid;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 80px 80px 1fr;
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
@@ -16,12 +16,22 @@ export const Header = styled.div`
   background-color: red;
 `
 
+export const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Text = styled.h1`
+
+`
+
 export const ButtonBack = styled.button`
-  margin: 0 0 0 10px;
+  margin: 0 0 0 20px;
 `
 
 export const ButtonSignUp = styled.button`
-  margin: 0 10px 0 0;
+  margin: 0 20px 0 0;
 `
 
 export const Buscar = styled.input`
