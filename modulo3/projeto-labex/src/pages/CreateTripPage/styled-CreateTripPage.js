@@ -23,10 +23,9 @@ export const Container = styled.div`
   /* } */
 `
 
-export const TituloCadastro = styled.p`
-  font-size: 30px;
-  color: white;
-  margin: 10px;
+export const Formulario = styled.form`
+  display: flex;
+  flex-direction: column;
 `
 
 export const Input = styled.input`

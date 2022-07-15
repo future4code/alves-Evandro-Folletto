@@ -3,13 +3,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Container } from '../ApplicationFormPage/styled-ApplicationFormPage';
 import { Geral, Lista, ImagemLixeira, Buttons, ButtonBack, ButtonCreate, ButtonLogin} from './styled-AdminHomePage'
-import { goToIndex, goToLoginPage, goToTripDetailsPage } from "./../../routes/coordinator.js"
+import { goToIndex, goToLoginPage, goToTripDetailsPage, goToCreatetripPage } from "./../../routes/coordinator.js"
 import img_lixeira from './../../assets/img/lixeira.png';
+import useProtectedPage from './../../hooks/useProtectedPage';
 
 export default function AdminHomePage() {
   const navigate = useNavigate();
+  useProtectedPage();
 
   const [trips, setTrips] = useState([]);
+
+  const token = localStorage.getItem('token');
 
   const getTrips = () => {
     axios
@@ -50,6 +54,12 @@ export default function AdminHomePage() {
     )
   })
 
+  const goToLogout = () => {
+    // localStorage.clear();
+    localStorage.removeItem("token");
+    goToIndex(navigate);
+  }
+  
   return (
     <Geral>
 
@@ -58,8 +68,8 @@ export default function AdminHomePage() {
 
         <Buttons>
           <ButtonBack onClick={()=>goToIndex(navigate)}>Voltar</ButtonBack>
-          <ButtonCreate>Criar Viagem</ButtonCreate>
-          <ButtonLogin onClick={()=>goToLoginPage(navigate)}>Login</ButtonLogin>
+          <ButtonCreate onClick={()=>goToCreatetripPage(navigate)}>Criar Viagem</ButtonCreate>
+          <ButtonLogin onClick={token === null ? ()=>goToLoginPage(navigate) : goToLogout}>{token === null ? "Login" : "Logout"}</ButtonLogin>
         </Buttons>
       
         {listaViagens}

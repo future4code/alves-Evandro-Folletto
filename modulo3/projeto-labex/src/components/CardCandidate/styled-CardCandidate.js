@@ -18,33 +18,34 @@ export const Container = styled.div`
 `
 
 export const Name = styled.p`
-  text-align: justify;
+  text-align: left;
   font-size: 18px;
   margin: 5px 10px;
 `
 
 export const Profession = styled.p`
-  text-align: justify;
+  text-align: left;
   font-size: 18px;
   margin: 5px 10px;
 `
 
 export const Age = styled.p`
-  text-align: justify;
+  text-align: left;
   font-size: 18px;
   margin: 5px 10px;
 `
 
 export const Country = styled.p`
-  text-align: justify;
+  text-align: left;
   font-size: 18px;
   margin: 5px 10px;
 `
 
 export const Text = styled.p`
-  text-align: justify;
+  text-align: left;
   font-size: 18px;
   margin: 5px 10px;
+  word-wrap: break-word;
 `
 
 export const Buttons = styled.div`

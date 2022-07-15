@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Geral, Container, Container2, Container3, Header, Lista, TextoVazio, Card, Card3, ButtonBack } from './styled-TripDetailsPage'
 import useProtectedPage from './../../hooks/useProtectedPage';
 import { goToAdminHomePage } from "./../../routes/coordinator.js"
-import Card2 from "./../../components/CardCandidate/CardCandidate.js"
+import CardCandidate from "./../../components/CardCandidate/CardCandidate.js"
 
 export default function TripDetailsPage() {
   const params = useParams();
@@ -69,7 +69,7 @@ export default function TripDetailsPage() {
   const listaCandidatos = candidates.map( candidate => {
     return (
       <Lista key={candidate.id}>
-        <Card2
+        <CardCandidate
           name={candidate.name}
           profession={candidate.profession}
           age={candidate.age}

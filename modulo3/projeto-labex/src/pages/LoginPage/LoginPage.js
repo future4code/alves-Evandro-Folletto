@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {goToAdminHomePage} from "./../../routes/coordinator.js"
+import {goToAdminHomePage, goToIndex} from "./../../routes/coordinator.js"
 import { Geral, Container, TituloCadastro, Titulo, Input, Buttons, ButtonBack, ButtonCreate } from './styled-LoginPage'
 
 export default function LoginPage() {
@@ -57,7 +57,7 @@ export default function LoginPage() {
         </Input>
 
         <Buttons>
-          <ButtonBack onClick={()=>goToAdminHomePage(navigate)}>Voltar</ButtonBack>
+          <ButtonBack onClick={()=>goToIndex(navigate)}>Voltar</ButtonBack>
           <ButtonCreate onClick={onSubmitLogin}>Entrar</ButtonCreate>
         </Buttons>
 

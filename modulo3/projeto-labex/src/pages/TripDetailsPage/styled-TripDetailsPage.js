@@ -19,7 +19,11 @@ export const Header = styled.div`
 export const Container = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr)); */
+  /* grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr)); */
+  /* grid-template-columns: minmax(0.9fr, 1fr) minmax(0.9fr, 1fr) minmax(0.9fr, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(100px, auto));
   justify-content: space-between;
   column-gap: 20px;
   margin: 20px;
@@ -58,6 +62,7 @@ export const Card3 = styled.div`
 
 export const Lista = styled.div`
   margin: 20px;
+  
 `
 
 export const Container2= styled.div`

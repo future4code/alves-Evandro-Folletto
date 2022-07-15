@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Geral, Header, Title, Text, ButtonBack, ButtonSignUp, MinValue, MaxValue, Buscar, OrderBy, Lista } from './styled-ListTripsPage'
-import { goBack, goToApplicationFormPage } from "./../../routes/coordinator.js";
+import { goToIndex, goToApplicationFormPage } from "./../../routes/coordinator.js";
 import Card from './../../components/Card';
 
 export default function ListTripsPage() {
@@ -15,7 +15,6 @@ export default function ListTripsPage() {
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips`)
       .then(res => {
         setTrips(res.data.trips);
-        console.log(res)
       })
       .catch(erro => alert('Deu errado o getTrip'))
   }
@@ -39,7 +38,7 @@ export default function ListTripsPage() {
   return (
     <Geral>
       <Header>
-        <ButtonBack onClick={() => goBack(navigate)}>Voltar</ButtonBack>
+        <ButtonBack onClick={() => goToIndex(navigate)}>Voltar</ButtonBack>
         <Buscar
           placeholder="Buscar"
         />

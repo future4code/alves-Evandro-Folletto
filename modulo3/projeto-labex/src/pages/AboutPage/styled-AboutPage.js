@@ -47,4 +47,4 @@ export const ButtonBack = styled.button`
     transform: scale(1.03);
     transition: transform .2s;
   }
-`  
+`
