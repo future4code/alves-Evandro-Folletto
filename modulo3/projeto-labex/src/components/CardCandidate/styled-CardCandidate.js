@@ -7,7 +7,9 @@ export const Container = styled.div`
   /* height: 250px; */
   box-shadow: 0.5px 0.5px 3px gray;
   border-radius: 5px;
-  background-color: #c3bbe3;
+  background-color: #187e91;
+  margin: 10px;
+  padding: 5px;
   /* @media screen and (max-device-width : 480px){ */
     /* max-width: 100vw; */
     /* display: flex; */
@@ -17,42 +19,18 @@ export const Container = styled.div`
   /* } */
 `
 
-export const Name = styled.p`
+export const Item = styled.p`
+  color:#ddd9ce;
   text-align: left;
   font-size: 18px;
   margin: 5px 10px;
-`
-
-export const Profession = styled.p`
-  text-align: left;
-  font-size: 18px;
-  margin: 5px 10px;
-`
-
-export const Age = styled.p`
-  text-align: left;
-  font-size: 18px;
-  margin: 5px 10px;
-`
-
-export const Country = styled.p`
-  text-align: left;
-  font-size: 18px;
-  margin: 5px 10px;
-`
-
-export const Text = styled.p`
-  text-align: left;
-  font-size: 18px;
-  margin: 5px 10px;
-  word-wrap: break-word;
 `
 
 export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 10px 0;
+  margin: 10px 0 5px 0;
   width: 100%;
   height: 50px;
 `
@@ -65,10 +43,11 @@ export const ButtonReprove = styled.button`
   text-align: center;
   border: none;
   border-radius: 10px;
-  background-color: #d2282e;
+  background-color: lightblue;
   &:hover {
     cursor: pointer;
-    background-color: #910000;
+    background-color: #3d3dff;
+    color: #ddd9ce;
     transform: scale(1.03);
     transition: transform .2s;
   }
@@ -80,12 +59,13 @@ export const ButtonAprove = styled.button`
   width: 100%;
   margin: 0 10px 0 5px;
   text-align: center;
-  background-color: #d2282e;
+  background-color: lightgreen;
   border: none;
   border-radius: 10px;
   &:hover {
     cursor: pointer;
-    background-color: #910000;
+    background-color: #00b900;
+    color: #ddd9ce;
     transform: scale(1.03);
     transition: transform .2s;
   }

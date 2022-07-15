@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Geral, Header, Title, Text, ButtonBack, ButtonSignUp, MinValue, MaxValue, Buscar, OrderBy, Lista } from './styled-ListTripsPage'
+import * as s from './styled-ListTripsPage'
 import { goToIndex, goToApplicationFormPage } from "./../../routes/coordinator.js";
 import Card from './../../components/Card';
 
@@ -77,16 +77,18 @@ export default function ListTripsPage() {
     })
 
   return (
-    <Geral>
-      <Header>
-        <ButtonBack onClick={() => goToIndex(navigate)}>Voltar</ButtonBack>
-        <Buscar
+    <s.Geral>
+
+      <s.Header>
+        <s.ButtonBack onClick={() => goToIndex(navigate)}>Voltar</s.ButtonBack>
+        <s.Buscar
           type="text"
           onChange={onBuscaNome}
           value={buscaNome}
           placeholder="Buscar por planeta"
         />
-        <OrderBy
+
+        <s.OrderBy
           // value={ordenacao}
           onChange={atualizaOrdenacao}
         >
@@ -95,32 +97,33 @@ export default function ListTripsPage() {
           <option value="data">Data</option>
           <option value="duracao-cre">Duração (crescente)</option>
           <option value="duracao-dec">Duração (decrescente)</option>
-        </OrderBy>
-        <MinValue
+        </s.OrderBy>
+
+        <s.MinValue
           type="number"
           onChange={onDuracaoMinima}
           value={duracaoMinima}
           placeholder="Duração mínima (dias)"
         />
-        <MaxValue
+        <s.MaxValue
           type="number"
           onChange={onDuracaoMaxima}
-          value={duracaoMaxima}        
+          value={duracaoMaxima}
           placeholder="Duração Máxima (dias)"
         />
-        <ButtonSignUp onClick={() => goToApplicationFormPage(navigate)}>Inscrever-se</ButtonSignUp>
-      </Header>
+        <s.ButtonSignUp onClick={() => goToApplicationFormPage(navigate)}>Inscrever-se</s.ButtonSignUp>
+      </s.Header>
 
-      <Title>
-        <Text>
+      <s.Title>
+        <s.Text>
           Lista de viagens disponíveis
-        </Text>
-      </Title>
+        </s.Text>
+      </s.Title>
 
-      <Lista>
+      <s.Lista>
         {listaTrips}
-      </Lista>
+      </s.Lista>
 
-    </Geral>
+    </s.Geral>
   );
 };

@@ -15,9 +15,10 @@ export const Container = styled.div`
   align-items: center;
   width: 25%;
   height: auto;
+  padding: 20px 0;
   border-radius: 10px;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 20px 0 rgba(0,0,0,0.19);
-  background-color: #9f93d2;
+  background-color: #5eb3c7;
   /* @media screen and (max-device-width : 480px){ */
   /* width: 90%; */
   /* } */
@@ -28,26 +29,45 @@ export const ImagemLixeira = styled.img`
   height: 40px;
   margin: 0 10px 0 0;
   padding: 10px;
-  /* flex-basis: 3%; */
-  /* &:hover {
-    transition: background-color 1s;
-    background-color: #cfc9e8;
+  flex-basis: 3%;
+  background-color: lightgray;
+  &:hover {
+    transition: background-color 0.5s;
+    background-color: #5eb3c7;
     cursor: pointer;
     border-radius: 50%;
     margin: 0 10px 0 0;
     padding: 10px;
-  } */
+  }
+`
+
+export const ButtonTrip = styled.button`
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  flex-basis: 90%;
+  font-size: 18px;
+  text-align: left;
+  background-color: lightgray;
+  &:hover {
+    cursor: pointer;
+    background-color: #006c7f;
+    /* transform: scale(1.03); */
+    transition: .4s;
+    color: #ddd9ce;
+  }
 `
 
 export const Lista = styled.div`
-  /* vertical-align: middle; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 20px;
+  width: 90%;
+  height: 50px;
+  margin: 15px;
   border-radius: 5px;
-  background-color: #b7aedd;
+  background-color: lightgray;
   box-shadow: 0.5px 0.5px 3px gray;
   /* @media screen and (max-device-width : 480px){ */
   /* width: 90%; */
@@ -55,76 +75,60 @@ export const Lista = styled.div`
   /* } */
 `
 
-export const ConjuntoDoCarrinho = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  /* @media screen and (max-device-width : 480px){ */
-  /* width: 100%; */
-  /* padding-left: 0; */
-/* } */
-`
-
-export const Titulo = styled.p`
-  font-size: 20px;
-  margin: 0 0 0 10px;
-  flex-basis: 77%;
-`
-
 export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-  border: solid 1px orange;
+  width: 90%;
+  margin: 20px 0;
 `
 
 export const ButtonBack = styled.button`
   font-size: 18px;
-  height: 40px;
-  width: 100%;
-  margin: 0 5px 0 10px;
+  color: #ddd9ce;
+  width: 100px;
+  height: 50px;
   text-align: center;
   border: none;
   border-radius: 10px;
-  background-color: lightblue;
+  background-color: #187e91;
   &:hover {
-		cursor: pointer;
-		background-color: #3d3dff;
-    border: none;
-	}
+    cursor: pointer;
+    background-color: #006c7f;
+    transform: scale(1.03);
+    transition: transform .2s;
+  }
 ` 
 
 export const ButtonCreate = styled.button`
   font-size: 18px;
-  height: 40px;
-  width: 100%;
-  margin: 0 5px;
+  color: #ddd9ce;
+  width: 150px;
+  height: 50px;
   text-align: center;
   border: none;
   border-radius: 10px;
-  background-color: lightgreen;
+  background-color: #187e91;
   &:hover {
-		cursor: pointer;
-		background-color: #00b900;
-    border: none;
-	}
+    cursor: pointer;
+    background-color: #006c7f;
+    transform: scale(1.03);
+    transition: transform .2s;
+  }
 `
 
 export const ButtonLogin = styled.button`
   font-size: 18px;
-  height: 40px;
-  width: 100%;
-  margin: 0 10px 0 5px;
+  color: #ddd9ce;
+  width: 100px;
+  height: 50px;
   text-align: center;
   border: none;
   border-radius: 10px;
-  background-color: lightgreen;
+  background-color: #187e91;
   &:hover {
-		cursor: pointer;
-		background-color: #00b900;
-    border: none;
-	}
+    cursor: pointer;
+    background-color: #006c7f;
+    transform: scale(1.03);
+    transition: transform .2s;
+  }
 `

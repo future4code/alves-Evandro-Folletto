@@ -19,6 +19,14 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `Paleta de cores`
+.color0 { #77bccc };
+.color1 { #5eb3c7 };
+.color2 { #47a1b5 };
+.color3 { #2f90a3 };
+.color4 { #187e91 };
+.color5 { #006c7f };
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\

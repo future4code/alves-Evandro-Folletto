@@ -1,23 +1,28 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Titulo, Buttons, ButtonTrip, ButtonAdmin, ButtonAbout } from "./styled-HomePage";
-import {goToListTripsPage, goToAdminHomePage, goToAboutPage} from "./../../routes/coordinator.js"
+import * as s from "./styled-HomePage";
+import {goToListTripsPage, goToAdminHomePage, goToAboutPage} from "./../../routes/coordinator.js";
+import img_astro from './../../assets/img/astronauta.png';
 
 export default function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <s.Container>
 
-      <Titulo>Seja bem vindo(a) ao</Titulo>
+      <s.Titulo>Seja bem vindo(a) ao</s.Titulo>
 
-      <Titulo>LabeX</Titulo>
+      <s.Central>
+        <s.ImgAstro src={img_astro}/>
+        <s.Titulo1>Labe</s.Titulo1>
+        <s.Titulo2>X</s.Titulo2>
+      </s.Central>
 
-      <Buttons>
-        <ButtonTrip onClick={()=>goToListTripsPage(navigate)}>Lista de viagens</ButtonTrip>
-        <ButtonAdmin onClick={()=>goToAdminHomePage(navigate)}>Área restrita</ButtonAdmin>
-        <ButtonAbout onClick={()=>goToAboutPage(navigate)}>Sobre</ButtonAbout>
-      </Buttons>
+      <s.Buttons>
+        <s.ButtonTrip onClick={()=>goToListTripsPage(navigate)}>Lista de viagens</s.ButtonTrip>
+        <s.ButtonAdmin onClick={()=>goToAdminHomePage(navigate)}>Área restrita</s.ButtonAdmin>
+        <s.ButtonAbout onClick={()=>goToAboutPage(navigate)}>Sobre</s.ButtonAbout>
+      </s.Buttons>
 
-    </Container>
+    </s.Container>
   );
 };

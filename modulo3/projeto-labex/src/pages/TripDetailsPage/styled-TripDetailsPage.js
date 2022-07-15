@@ -13,33 +13,62 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   /* margin: 10px */
-  background-color: red;
+  background-color: #5eb3c7;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+`
+
+export const ButtonBack = styled.button`
+  font-size: 18px;
+  color: #ddd9ce;
+  height: 35px;
+  width: 75px;
+  margin: 0 0 0 30px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #187e91;
+  &:hover {
+    cursor: pointer;
+    background-color: #006c7f;
+    transform: scale(1.03);
+    transition: transform .2s;
+  }
 `
 
 export const Container = styled.div`
   display: grid;
-  grid-template-rows: 1fr;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  /* grid-template-columns: repeat(auto-fill, minmax(min(30rem, 100%), 1fr)); */
-  /* grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr)); */
-  /* grid-template-columns: minmax(0.9fr, 1fr) minmax(0.9fr, 1fr) minmax(0.9fr, 1fr); */
-  grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
-  column-gap: 20px;
-  margin: 20px;
+  column-gap: 30px;
+  margin: 30px;
 `
 
-export const Card = styled.div`
+export const CardDosContainers = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #77bccc;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+`
+
+export const Titulo = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 10%;
+  color: #363636;
+`
+
+export const Container1 = styled.div`
+  flex-basis: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* height: 250px; */
-  box-shadow: 0.5px 0.5px 3px gray;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #c3bbe3;
-  border: solid 2px blue;
+  padding: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  text-align: left;
   /* @media screen and (max-device-width : 480px){ */
     /* max-width: 100vw; */
     /* display: flex; */
@@ -49,8 +78,34 @@ export const Card = styled.div`
     /* } */
 `
 
-export const Card3 = styled.div`
-  border: solid 2px blue;
+export const Container2= styled.div`
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+`
+
+export const Container3= styled.div`
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`
+
+export const CardAprovados = styled.div`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 22px;
+  height: 50px;
+  margin: 10px 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #187e91;
   /* @media screen and (max-device-width : 480px){ */
     /* max-width: 100vw; */
     /* display: flex; */
@@ -61,30 +116,21 @@ export const Card3 = styled.div`
 `
 
 export const Lista = styled.div`
-  margin: 20px;
-  
-`
-
-export const Container2= styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: center;
-  border: solid 2px blue;
-`
-
-export const Container3= styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: center;
-  border: solid 2px orange;
+  /* margin: 20px; */
 `
 
 export const TextoVazio= styled.div`
-  margin: 40vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
 `
 
-export const ButtonBack = styled.button`
-  margin: 20px;
+export const Item = styled.p`
+  text-align: justify;
+  font-size: 22px;
+  margin: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 `

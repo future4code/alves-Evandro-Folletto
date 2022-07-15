@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { Geral, Container, Container2, Container3, Header, Lista, TextoVazio, Card, Card3, ButtonBack } from './styled-TripDetailsPage'
+import * as s from './styled-TripDetailsPage'
 import useProtectedPage from './../../hooks/useProtectedPage';
 import { goToAdminHomePage } from "./../../routes/coordinator.js"
 import CardCandidate from "./../../components/CardCandidate/CardCandidate.js"
@@ -68,7 +68,7 @@ export default function TripDetailsPage() {
 
   const listaCandidatos = candidates.map( candidate => {
     return (
-      <Lista key={candidate.id}>
+      <s.Lista key={candidate.id}>
         <CardCandidate
           name={candidate.name}
           profession={candidate.profession}
@@ -78,52 +78,59 @@ export default function TripDetailsPage() {
           idCandidate={candidate.id}
           decideCandidate={decideCandidate}
         />
-      </Lista>
+      </s.Lista>
     )
   })
 
   const listaAprovados = approved.map( candidate => {
     console.log(candidate.name)
     return (
-      <Card3 key={candidate.id}>
-        {candidate.name}
-      </Card3>
+      <s.CardAprovados key={candidate.id}>
+        Nome: {candidate.name}
+      </s.CardAprovados>
     )
   })
 
   return (
-    <Geral>
-      <Header>
-        <ButtonBack onClick={()=>goToAdminHomePage(navigate)}>Voltar</ButtonBack>
-      </Header>
-      <Container>
-        <Card>
-        <h1>Nome: {trip.name}</h1>
-        <p><strong>Descrição:</strong> {trip.description}</p>
-        <p><strong>Planeta:</strong> {trip.planet}</p>
-        <p><strong>Duração (dias):</strong> {trip.durationInDays}</p>
-        <p><strong>Data:</strong> {trip.date}</p>
-        </Card>
+    <s.Geral>
+      <s.Header>
+        <s.ButtonBack onClick={()=>goToAdminHomePage(navigate)}>Voltar</s.ButtonBack>
+      </s.Header>
+      <s.Container>
+        <s.CardDosContainers>
+          <s.Titulo>Detalhes da viagem</s.Titulo>
+          <s.Container1>
+            <s.Item><strong>Nome:</strong> {trip.name}</s.Item>
+            <s.Item><strong>Descrição:</strong> {trip.description}</s.Item>
+            <s.Item><strong>Planeta:</strong> {trip.planet}</s.Item>
+            <s.Item><strong>Duração (dias):</strong> {trip.durationInDays}</s.Item>
+            <s.Item><strong>Data:</strong> {trip.date}</s.Item>
+          </s.Container1>
+        </s.CardDosContainers>
 
-        <Container2>
-          <h2>Candidatos pendentes</h2>  
-          {
-            listaCandidatos.length !== 0 ? listaCandidatos
-            :
-            <TextoVazio>A lista de candidatos está vazia</TextoVazio>
-          }
-        </Container2>
+        <s.CardDosContainers>
+          <s.Titulo>Candidatos pendentes</s.Titulo>
+          <s.Container2>
+            {
+              listaCandidatos.length !== 0 ? listaCandidatos
+              :
+              <s.TextoVazio>A lista de candidatos está vazia!</s.TextoVazio>
+            }
+          </s.Container2>
+        </s.CardDosContainers>
 
-        <Container3>
-          <h2>Candidatos aprovados</h2>
+        <s.CardDosContainers>
+          <s.Titulo>Candidatos aprovados</s.Titulo>
+          <s.Container3>
           {
             listaAprovados.length !== 0 ? listaAprovados
             :
-            <TextoVazio>A lista de aprovados está vazia</TextoVazio>
+            <s.TextoVazio>A lista de aprovados está vazia!</s.TextoVazio>
           }          
-        </Container3>
-      </Container>
+        </s.Container3>
+        </s.CardDosContainers>
+      </s.Container>
 
-    </Geral>
+    </s.Geral>
   );
 }; 
