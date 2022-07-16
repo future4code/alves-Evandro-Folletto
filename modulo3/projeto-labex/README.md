@@ -1,23 +1,69 @@
-# Getting Started with Create React App
+# `Projeto`
+Projeto LabeX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `Link`
+https://folletto-labex.surge.sh
 
-## Available Scripts
 
-In the project directory, you can run:
+# `Descrição`
+O Projeto LabeX foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API desenvolvida pela equipe da Labenu, via axios.
+Trata-se de uma ferramenta onde tanto usuários quanto administradores podem navegar: </br>
+Os usuários podem verificar as viagens disponíveis e candidatar-se para as mesmas; </br>
+Os administradores podem visualizar as viagens disponíveis, criar novas e detetar as existentes. Além disso, é possível ver detalhes das viagens, onde são apresentados os usuários que estão pendentes de aprovação/reprovação e também aqueles já foram aprovados.
 
-### `npm start`
+As requisições utilizadas para realizar este projeto foram:
+- **Get Trips:** retorna todas as viagens presentes no banco de dados;
+- **Get Trip Detail:** retorna os detalhes de uma viagem específica (incluindo candidatos aprovados e os dependentes de aprovação/reprovação);
+- **Create Trip:** endpoint que cria uma nova viagem.
+- **Apply to Trip:** recebe informações de um candidato e o relaciona a uma viagem.
+- **Delete Trip:** endpoint que deleta uma determinada viagem;
+- **Login:** endpoint para fazer login de um usuário.
+- **Decide Candidate:** endpoint para decidir a aprovação ou reprovação de um candidato para uma viagem.
+- **Populate***: endpoint para popular o banco de dados para testes;
+- **Signup***: endpoint utilizado para criar usuário admin.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*endpoints utilizados apenas em desenvolvimento
+</br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Desenvolvido por: Evandro Paulo Folletto
+[Acessar repostório no GitHub](https://github.com/future4code/alves-Evandro-Folletto/pull/35)
+[Acessar documentação da API](https://documenter.getpostman.com/view/9133542/TzCTZkQr#9416bc30-1a6c-4afe-9c45-c414f3353efd)
 
-### `npm test`
+# `Modo de usar`
+Ao iniciar a ferramenta, o usuário pode escolher entre as opções "Sobre" e "Astromatch". Na opção "Sobre" é mostrada uma breve descrição do projeto. Já a opção "Astromatch" leva o usuário para a aplicação em si. </br>
+Nela, são listados perfis (com as informações de nome, foto, idade e descrição) um de cada vez para o usuário e este tem a opção de dar "like" ou "disklike":
+- Caso o usuário optar por "dislike", nada ocorre e um novo perfil é mostrado na tela.
+- Caso o usuário optar por "like" e o perfil atual também deu "like" para o usuário (essa informação vem da API), uma mensagem de "match" é exibida na tela e este perfil é inserido em uma lista de matches (tarefa também feita pela API). </br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+No canto superior direito existe um ícone que leva o usuário para a tela de matches, e lá é exibida uma lista de matches. Caso a lista esteja vazia, uma mensagem indicando tal situação é mostrada. </br>
+Ao finalizar a lista de perfis disponíveis, uma mensagem é exibida e o usuário deve resertar a lista e pode iniciar novamente o processo de "likes" e "dislikes", para isso, um botão "Resetar" é apresentado no lugar do botões de "like" e "dislike".
+
+# `Instalando e rodando o projeto`
+Para usar localmente o projeto, basta:
+- npm install
+- npm run start
+
+# `Tecnologias utilizadas`
+<div>
+<img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white">
+</div>
+
+# `Autor`
+Evandro Paulo Folletto
+
+# `Imagens`
+<img src="./src/assets/img/readme/site1.png"/>
+<img src="./src/assets/img/readme/site2.png"/>
+<img src="./src/assets/img/readme/site3.png"/>
+<img src="./src/assets/img/readme/site4.png"/>
+
 
 ### `Paleta de cores`
 .color0 { #77bccc };
@@ -26,53 +72,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 .color3 { #2f90a3 };
 .color4 { #187e91 };
 .color5 { #006c7f };
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Geral, Container, Formulario, Titulo, Input, TextArea, Buttons, ButtonBack, ButtonCreate, SelectOrdenar, OptionOrdenar, DivSelect, Data, DataInput } from './styled-CreateTripPage'
+// import { Geral, Container, Formulario, Titulo, Input, TextArea, Buttons, ButtonBack, ButtonCreate, SelectOrdenar, OptionOrdenar, DivSelect, Data, DataInput } from './styled-CreateTripPage'
+import * as s from './styled-CreateTripPage'
 import useForm from "./../../hooks/useForm";
 import { goToAdminHomePage } from "./../../routes/coordinator.js"
 
@@ -53,11 +54,12 @@ export default function CreateTripPage() {
   }
 
   return (
-    <Geral>
-      <Container>
+    <s.Geral>
+      <s.Container>
+        <s.TituloCadastro>Criar viagem</s.TituloCadastro>
 
-        <Formulario onSubmit={cadastrar}>
-          <input
+        <s.Formulario onSubmit={cadastrar}>
+          <s.Input
             name={"nome"}
             value={form.nome}
             onChange={onChange}
@@ -68,7 +70,7 @@ export default function CreateTripPage() {
             title={"O nome deve ter no mínimo 5 letras"}
           />
 
-          <select
+          <s.Selecionar
             name={"planeta"}
             value={form.planeta}
             onChange={onChange}
@@ -83,9 +85,9 @@ export default function CreateTripPage() {
             <option value="Urano">Urano</option>
             <option value="Netuno">Netuno</option>
             <option value="Plutão">Plutão</option>
-          </select>
+          </s.Selecionar>
 
-          <input
+          <s.Input
             name={"data"}
             value={form.data}
             onChange={onChange}
@@ -97,7 +99,7 @@ export default function CreateTripPage() {
             title={"Não podem ser escolhidas datas no passado"}
           />
 
-          <input
+          <s.Input
             name={"texto"}
             value={form.texto}
             onChange={onChange}
@@ -108,7 +110,7 @@ export default function CreateTripPage() {
             title={"São necessários pelo menos 30 caracters"}
           />
 
-          <input
+          <s.Input
             name={"duracao"}
             value={form.duracao}
             onChange={onChange}
@@ -119,13 +121,13 @@ export default function CreateTripPage() {
             title={"A duração mínima deve ser de 50 dias"}
           />
 
-          {/* <Buttons> */}
-          <button onClick={() => goToAdminHomePage(navigate)}>Voltar</button>
-          <button>Enviar</button>
-          {/* </Buttons> */}
-        </Formulario>
+          <s.Buttons>
+            <s.ButtonBack onClick={() => goToAdminHomePage(navigate)}>Voltar</s.ButtonBack>
+            <s.ButtonCreate>Enviar</s.ButtonCreate>
+          </s.Buttons>
+        </s.Formulario>
 
-      </Container>
-    </Geral>
+      </s.Container>
+    </s.Geral>
   );
 };
