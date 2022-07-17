@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { Geral, Container, Formulario, Titulo, Input, TextArea, Buttons, ButtonBack, ButtonCreate, SelectOrdenar, OptionOrdenar, DivSelect, Data, DataInput } from './styled-CreateTripPage'
 import * as s from './styled-CreateTripPage'
 import useForm from "./../../hooks/useForm";
 import { goToAdminHomePage } from "./../../routes/coordinator.js"
-
-
+import { BASE_URL } from "./../../constants/BASE_URL";
 
 export default function CreateTripPage() {
   const navigate = useNavigate();
@@ -13,7 +11,7 @@ export default function CreateTripPage() {
   const createTrip = (nome, planeta, data, texto, duracao) => {
     const token = localStorage.getItem('token');
     axios
-      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips`,
+      .post(`${BASE_URL}/trips`,
       {
         "name": nome,
         "planet": planeta,
@@ -28,9 +26,14 @@ export default function CreateTripPage() {
         }
       })
       .then(res => {
-        console.log('Deu certo a criação de uma viagem = ',res)
+        alert(`A viagem "${nome}" foi criada com sucesso!`)
       })
-      .catch(erro => alert('Deu errado a criação de uma viagem'))
+      .catch(erro => {
+        if(erro.statusCode >= 400 && erro.statusCode < 500) {
+          alert("Ocorreu algum erro no formulário, revise suas informações");
+        } else if (erro.statusCode >= 500 && erro.statusCode < 600)
+        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+      })
   }
 
   const { form, onChange, cleanFields } = useForm({
@@ -99,7 +102,7 @@ export default function CreateTripPage() {
             title={"Não podem ser escolhidas datas no passado"}
           />
 
-          <s.Input
+          <s.InputDescricao
             name={"texto"}
             value={form.texto}
             onChange={onChange}
@@ -114,7 +117,7 @@ export default function CreateTripPage() {
             name={"duracao"}
             value={form.duracao}
             onChange={onChange}
-            placeholder="Duração"
+            placeholder="Duração (dias)"
             required
             type={"number"}
             pattern={"^.{50,}"}

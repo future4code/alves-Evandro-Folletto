@@ -19,9 +19,9 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 20px 0 rgba(0,0,0,0.19);
   background-color: #5eb3c7;
-  /* @media screen and (max-device-width : 480px){ */
-  /* width: 90%; */
-  /* } */
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    width: 90%;
+  }
 `
 
 export const ImagemLixeira = styled.img`
@@ -85,7 +85,7 @@ export const Buttons = styled.div`
 export const ButtonBack = styled.button`
   font-size: 18px;
   color: #ddd9ce;
-  width: 100px;
+  width: 30%;
   height: 50px;
   text-align: center;
   border: none;
@@ -102,7 +102,7 @@ export const ButtonBack = styled.button`
 export const ButtonCreate = styled.button`
   font-size: 18px;
   color: #ddd9ce;
-  width: 150px;
+  width: 30%;
   height: 50px;
   text-align: center;
   border: none;
@@ -119,7 +119,7 @@ export const ButtonCreate = styled.button`
 export const ButtonLogin = styled.button`
   font-size: 18px;
   color: #ddd9ce;
-  width: 100px;
+  width: 30%;
   height: 50px;
   text-align: center;
   border: none;

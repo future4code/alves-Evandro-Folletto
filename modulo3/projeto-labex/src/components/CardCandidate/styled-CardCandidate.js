@@ -24,6 +24,9 @@ export const Item = styled.p`
   text-align: left;
   font-size: 18px;
   margin: 5px 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 `
 
 export const Buttons = styled.div`

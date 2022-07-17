@@ -18,9 +18,9 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 20px 0 rgba(0,0,0,0.19);
   background-color: #187e91;
-  /* @media screen and (max-device-width : 480px){ */
-  /* width: 90%; */
-  /* } */
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    width: 90%;
+  }
 `
 
 export const Formulario = styled.form`
@@ -67,18 +67,18 @@ export const Input = styled.input`
   }
 `
 
-export const TextArea = styled.textarea`
-  font-family: sans-serif;
-  font-size: 18px;
+export const InputCandidatura = styled.textarea`
   width: 90%;
-  height: 75px;
-  margin: 0 0 10px 0;
-  padding: 5px 0 0 5px;
+  height: 70px;
+  font-size: 18px;
+  text-align: bottom;
   border: none;
   border-radius: 5px;
+  margin: 0 0 20px 0;
+  padding: 5px;
   background-color: #e7e4f3;
   &:focus {
-    border: solid 2px #6f59c5;
+    border: solid 1px gray;
     outline: 0;
   }
 `

@@ -5,6 +5,7 @@ import * as s from './styled-AdminHomePage'
 import { goToIndex, goToLoginPage, goToTripDetailsPage, goToCreatetripPage } from "./../../routes/coordinator.js"
 import img_lixeira from './../../assets/img/lixeira.png';
 import useProtectedPage from './../../hooks/useProtectedPage';
+import { BASE_URL } from "./../../constants/BASE_URL";
 
 export default function AdminHomePage() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function AdminHomePage() {
 
   const getTrips = () => {
     axios
-    .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips`)
+    .get(`${BASE_URL}/trips`)
     .then( res => {
       setTrips(res.data.trips);
     }) 
@@ -27,28 +28,32 @@ export default function AdminHomePage() {
     getTrips();
   },[])
 
-  const deleteTrip = (id) => {
-    const token = localStorage.getItem('token');
-    axios
-    .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips/${id}`,
-    {
-      headers: 
+  const deleteTrip = (id, name) => {
+    const confirm = window.confirm(`Deseja realmentar deletar a viagem "${name}"?`);
+
+    if(confirm) {
+      const token = localStorage.getItem('token');
+      axios
+      .delete(`${BASE_URL}/trips/${id}`,
       {
-        auth: token
-      }
-    })
-    .then( res => {
-      console.log('Trip deletada com sucesso');
-      getTrips();
-    }) 
-    .catch( erro => alert('Não foi possível deletar a trip clicada'))
+        headers: 
+        {
+          auth: token
+        }
+      })
+      .then( res => {
+        alert(`A viagem "${name}" foi deletada com sucesso!`);
+        getTrips();
+      }) 
+      .catch( erro => alert(`A viagem "${name}" não foi deletada com sucesso!`))
+    }
   }
 
   const listaViagens =trips.map(trip => {
     return (
       <s.Lista key={trip.id}>
         <s.ButtonTrip id={trip.id} onClick={()=>goToTripDetailsPage(navigate, trip.id)}>{trip.name}</s.ButtonTrip>
-        <s.ImagemLixeira onClick={()=>deleteTrip(trip.id)} src={img_lixeira} />
+        <s.ImagemLixeira onClick={()=>deleteTrip(trip.id, trip.name)} src={img_lixeira} />
       </s.Lista>
     )
   })

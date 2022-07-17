@@ -26,13 +26,12 @@ export default function TripDetailsPage() {
       }
     })
     .then( res => {
-      console.log('Deu certo os detalhes da viagem:', res.data.trip);
       setTrip(res.data.trip);
       setCandidates(res.data.trip.candidates);
       setApproved(res.data.trip.approved);
     })
     .catch( erro => {
-      console.log('Deu errado os detalhes da viagem', erro);
+      alert('Houve um erro ao carregar a lista de viagens');
     });
   }
 
@@ -42,10 +41,6 @@ export default function TripDetailsPage() {
 
   const decideCandidate = (idCandidate, valor) => {
     const token = localStorage.getItem('token');
-    console.log("token = ",token);
-    console.log("ID candidato = ",idCandidate);
-    console.log("ID trip = ",trip.id);
-    console.log("resposta = ",valor);
     axios
     .put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips/${trip.id}/candidates/${idCandidate}/decide`,
     {
@@ -58,17 +53,18 @@ export default function TripDetailsPage() {
       }
     })
     .then( res => {
-      console.log('Deu certo a escolha do candidato', res);
       TripDetails()
     })
-    .catch( erro => {
-      console.log('Deu errado a escolha do candidato', erro);
-    });
+    .catch(erro => {
+      if(erro.statusCode >= 400 && erro.statusCode < 500) {
+        alert("Ocorreu algum erro no formulário, revise suas informações");
+      } else if (erro.statusCode >= 500 && erro.statusCode < 600)
+        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+    })
   }
 
   const listaCandidatos = candidates.map( candidate => {
     return (
-      <s.Lista key={candidate.id}>
         <CardCandidate
           name={candidate.name}
           profession={candidate.profession}
@@ -78,12 +74,10 @@ export default function TripDetailsPage() {
           idCandidate={candidate.id}
           decideCandidate={decideCandidate}
         />
-      </s.Lista>
     )
   })
 
   const listaAprovados = approved.map( candidate => {
-    console.log(candidate.name)
     return (
       <s.CardAprovados key={candidate.id}>
         Nome: {candidate.name}
@@ -93,10 +87,13 @@ export default function TripDetailsPage() {
 
   return (
     <s.Geral>
+
       <s.Header>
         <s.ButtonBack onClick={()=>goToAdminHomePage(navigate)}>Voltar</s.ButtonBack>
       </s.Header>
+
       <s.Container>
+
         <s.CardDosContainers>
           <s.Titulo>Detalhes da viagem</s.Titulo>
           <s.Container1>
@@ -126,9 +123,10 @@ export default function TripDetailsPage() {
             listaAprovados.length !== 0 ? listaAprovados
             :
             <s.TextoVazio>A lista de aprovados está vazia!</s.TextoVazio>
-          }          
-        </s.Container3>
+          }
+          </s.Container3>
         </s.CardDosContainers>
+
       </s.Container>
 
     </s.Geral>

@@ -41,6 +41,12 @@ export const Container = styled.div`
   justify-content: space-between;
   column-gap: 30px;
   margin: 30px;
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 10px;
+  }
 `
 
 export const CardDosContainers = styled.div`
@@ -49,6 +55,9 @@ export const CardDosContainers = styled.div`
   border-radius: 10px;
   background-color: #77bccc;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    margin: 0 0 10px 0;
+  }
 `
 
 export const Titulo = styled.h1`
@@ -57,6 +66,9 @@ export const Titulo = styled.h1`
   align-items: center;
   flex-basis: 10%;
   color: #363636;
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    margin-top: 10px;
+  }
 `
 
 export const Container1 = styled.div`
@@ -96,16 +108,17 @@ export const Container3= styled.div`
 `
 
 export const CardAprovados = styled.div`
-  display: flex;
-  justify-content: left;
-  align-items: center;
+  text-align: left;
   font-size: 22px;
-  height: 50px;
+  height: auto;
   margin: 10px 20px;
   padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: #187e91;
+  /* overflow-wrap: break-word; */
+  /* word-wrap: break-word; */
+  word-break: break-word;
   /* @media screen and (max-device-width : 480px){ */
     /* max-width: 100vw; */
     /* display: flex; */
@@ -113,10 +126,6 @@ export const CardAprovados = styled.div`
     /* align-items: center; */
     /* width: 100%; */
     /* } */
-`
-
-export const Lista = styled.div`
-  /* margin: 20px; */
 `
 
 export const TextoVazio= styled.div`

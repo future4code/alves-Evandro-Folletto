@@ -18,7 +18,7 @@ export default function HomePage() {
       </s.Central>
 
       <s.Buttons>
-        <s.ButtonTrip onClick={()=>goToListTripsPage(navigate)}>Lista de viagens</s.ButtonTrip>
+        <s.ButtonTrip onClick={()=>goToListTripsPage(navigate)}>Listar viagens</s.ButtonTrip>
         <s.ButtonAdmin onClick={()=>goToAdminHomePage(navigate)}>Área restrita</s.ButtonAdmin>
         <s.ButtonAbout onClick={()=>goToAboutPage(navigate)}>Sobre</s.ButtonAbout>
       </s.Buttons>

@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { goToListTripsPage } from "./../../routes/coordinator.js"
-// import { Geral, Container, TituloCadastro, Titulo, Input, TextArea, Buttons, ButtonBack, ButtonCreate, SelectOrdenar, OptionOrdenar, DivSelect } from './styled-ApplicationFormPage'
 import * as s from './styled-ApplicationFormPage'
 import useForm from "./../../hooks/useForm";
+import { BASE_URL } from "./../../constants/BASE_URL"
+import { useGetTrips } from "./../../hooks/useRequestData";
 
 export default function ApplicationFormPage() {
   const navigate = useNavigate();
 
-  const [trips, setTrips] = useState([]);
-
-  const getTrips = () => {
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips`)
-      .then(res => {
-        setTrips(res.data.trips);
-        console.log(res.data.trips)
-      })
-      .catch(erro => alert('Deu errado o getTrip'))
-  }
-
-  useEffect(() => {
-    getTrips();
-  }, [])
-
+  const trips = useGetTrips('/trips',[])
+  
   const applyToTrip = (idViagem, nome, idade, texto, profissao, pais) => {
     axios
-      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips/${idViagem}/apply`,
+      .post(`${BASE_URL}/trips/${idViagem}/apply`,
         {
           "name": nome,
           "age": idade,
@@ -36,10 +22,14 @@ export default function ApplicationFormPage() {
           "country": pais
         })
       .then(res => {
-        console.log("Deu certo a aplicação pra viagem")
-        console.log(res)
+        alert("Candidatura enviada com sucesso!")
       })
-      .catch(erro => alert("Deu errado a aplicação pra viagem"))
+      .catch(erro => {
+        if(erro.statusCode >= 400 && erro.statusCode < 500) {
+          alert("Ocorreu algum erro no formulário, revise suas informações");
+        } else if (erro.statusCode >= 500 && erro.statusCode < 600)
+        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+      })
   }
 
   const { form, onChange, cleanFields } = useForm({
@@ -55,6 +45,8 @@ export default function ApplicationFormPage() {
     event.preventDefault();
     cleanFields();
     applyToTrip(
+    // useApplyToTrip(
+      // `/trips/${form.idViagem}/apply`,
       form.idViagem,
       form.nome,
       form.idade,
@@ -106,7 +98,7 @@ export default function ApplicationFormPage() {
             title={"A idade deve ser no mínimo 18 anos"}
           />
 
-          <s.Input
+          <s.InputCandidatura
             name={"texto"}
             value={form.texto}
             onChange={onChange}

@@ -10,7 +10,6 @@ export default function useProtectedPage() {
       const token = localStorage.getItem('token');
     
       if (token === null) {
-        console.log("Não está logado!!");
         goToLoginPage(navigate);
       }
     },[navigate])

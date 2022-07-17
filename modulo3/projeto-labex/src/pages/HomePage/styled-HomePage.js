@@ -9,6 +9,9 @@ export const Container = styled.div`
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   background-color: #77bccc;
+    @media screen and (max-device-width : 480px){
+      max-width: 100vw;
+    }
 `
 
 export const Titulo = styled.h1`

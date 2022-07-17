@@ -17,7 +17,7 @@ export default createGlobalStyle`
     background-color: #d5ebf0;
     /* background-image: url({img_fundo}); */
   }
-  body, input, button {
+  body, input, textarea, button {
     font: 14px sans-serif;
   }
 `

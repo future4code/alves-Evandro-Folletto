@@ -27,7 +27,6 @@ export const goToIndex = (navigate) => {
 }
 
 export const goToTripDetailsPage = (navigate, id) => {
-  console.log('Valor do ID que chegou no coordinator:', id);
   navigate(`/tripdetails/${id}`);
 }
 

@@ -8,13 +8,9 @@ export const Container = styled.div`
   box-shadow: 0.5px 0.5px 3px gray;
   border-radius: 5px;
   background-color: #187e91;
-  /* @media screen and (max-device-width : 480px){ */
-    /* max-width: 100vw; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* width: 100%; */
-  /* } */
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    margin: 0 10px 10px 10px;
+  }
 `
 
 export const Item = styled.p`

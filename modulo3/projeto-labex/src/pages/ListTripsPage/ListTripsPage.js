@@ -1,31 +1,17 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
 import * as s from './styled-ListTripsPage'
-import { goToIndex, goToApplicationFormPage } from "./../../routes/coordinator.js";
-import Card from './../../components/Card';
+import Card from '../../components/CardList/Card';
+import Header from '../../components/HeaderListTripsPage/Header';
+import { useGetTrips } from "./../../hooks/useRequestData";
 
 export default function ListTripsPage() {
-  const navigate = useNavigate();
 
-  const [trips, setTrips] = useState([]);
   const [buscaNome, setBuscaNome] = useState("");
   const [duracaoMinima, setDuracaoMinima] = useState("");
   const [duracaoMaxima, setDuracaoMaxima] = useState("");
   const [ordenacao, setOrdenacao] = useState("título");
 
-  const getTrips = () => {
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/evandro-folletto-alves/trips`)
-      .then(res => {
-        setTrips(res.data.trips);
-      })
-      .catch(erro => alert('Deu errado o getTrip'))
-  }
-
-  useEffect(() => {
-    getTrips();
-  }, [])
+  const trips = useGetTrips('/trips',[])
 
   const onDuracaoMinima = (event) => {
     setDuracaoMinima(event.target.value);
@@ -79,40 +65,15 @@ export default function ListTripsPage() {
   return (
     <s.Geral>
 
-      <s.Header>
-        <s.ButtonBack onClick={() => goToIndex(navigate)}>Voltar</s.ButtonBack>
-        <s.Buscar
-          type="text"
-          onChange={onBuscaNome}
-          value={buscaNome}
-          placeholder="Buscar por planeta"
-        />
-
-        <s.OrderBy
-          // value={ordenacao}
-          onChange={atualizaOrdenacao}
-        >
-          <option value="" disabled selected>Ordenar por:</option>
-          <option value="planeta">Nome dos Planetas</option>
-          <option value="data">Data</option>
-          <option value="duracao-cre">Duração (crescente)</option>
-          <option value="duracao-dec">Duração (decrescente)</option>
-        </s.OrderBy>
-
-        <s.MinValue
-          type="number"
-          onChange={onDuracaoMinima}
-          value={duracaoMinima}
-          placeholder="Duração mínima (dias)"
-        />
-        <s.MaxValue
-          type="number"
-          onChange={onDuracaoMaxima}
-          value={duracaoMaxima}
-          placeholder="Duração Máxima (dias)"
-        />
-        <s.ButtonSignUp onClick={() => goToApplicationFormPage(navigate)}>Inscrever-se</s.ButtonSignUp>
-      </s.Header>
+      <Header
+        onBuscaNome={onBuscaNome}
+        // buscaNome={buscaNome}
+        atualizaOrdenacao={atualizaOrdenacao}
+        onDuracaoMinima={onDuracaoMinima}
+        onDuracaoMaxima={onDuracaoMaxima}
+        // duracaoMinima={duracaoMinima}
+        // duracaoMaxima={duracaoMaxima}
+      />
 
       <s.Title>
         <s.Text>
