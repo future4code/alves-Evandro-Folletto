@@ -6,13 +6,13 @@ export default function AboutPage() {
   const navigate = useNavigate();
 
   return (
-    <s.Geral>
+    <s.General>
 
-      <s.Textos>
-        <s.Titulo>Projeto Astromatch</s.Titulo>
+      <s.Texts>
+        <s.Title>Projeto Astromatch</s.Title>
         
         <s.Text>
-          O Projeto LabeX foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API desenvolvida pela equipe da Labenu, via axios.
+          O Projeto LabeX foi desenvolvido como uma ativage dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API desenvolvida pela equipe da Labenu, via axios.
         </s.Text>
 
         <s.Text>
@@ -49,13 +49,13 @@ export default function AboutPage() {
           *endpoints utilizados apenas em desenvolvimento
         </s.Text>
 
-        <s.DesenvolvidoPor>
+        <s.DevelopedBy>
           Desenvolvido por: Evandro Paulo Folletto
-        </s.DesenvolvidoPor>
-      </s.Textos>
+        </s.DevelopedBy>
+      </s.Texts>
 
 
       <s.ButtonBack onClick={()=>goBack(navigate)}>Voltar</s.ButtonBack>
-    </s.Geral>
+    </s.General>
   );
 };

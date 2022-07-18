@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Geral = styled.div`
+export const General = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,7 +17,7 @@ export const Geral = styled.div`
     overflow-y: auto;
   }
 `
-export const Titulo = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   margin: 10px 0 10px 0;
   color:#e7e4f3;
@@ -26,7 +26,7 @@ export const Titulo = styled.h1`
   }
 `
 
-export const Textos = styled.div`
+export const Texts = styled.div`
   display: flex;
   flex-direction: column;
   color:#e7e4f3;
@@ -42,7 +42,7 @@ export const Text = styled.div`
   }
 `
 
-export const DesenvolvidoPor = styled.div`
+export const DevelopedBy = styled.div`
   margin: 0 20px 10px 20px;
   font-size: 19px;
   text-align: left;

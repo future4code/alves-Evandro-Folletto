@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Geral = styled.div`
+export const General = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,11 @@ export const Container = styled.div`
   }
 `
 
-export const ImagemLixeira = styled.img`
+export const PanelTitle = styled.h1`
+  color: #e7e4f3;
+`
+
+export const ImageTrash = styled.img`
   width: 40px;
   height: 40px;
   margin: 0 10px 0 0;
@@ -57,9 +61,12 @@ export const ButtonTrip = styled.button`
     transition: .4s;
     color: #ddd9ce;
   }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 `
 
-export const Lista = styled.div`
+export const List = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,10 +76,6 @@ export const Lista = styled.div`
   border-radius: 5px;
   background-color: lightgray;
   box-shadow: 0.5px 0.5px 3px gray;
-  /* @media screen and (max-device-width : 480px){ */
-  /* width: 90%; */
-  /* margin: 5px; */
-  /* } */
 `
 
 export const Buttons = styled.div`
@@ -97,6 +100,9 @@ export const ButtonBack = styled.button`
     transform: scale(1.03);
     transition: transform .2s;
   }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 ` 
 
 export const ButtonCreate = styled.button`
@@ -114,6 +120,9 @@ export const ButtonCreate = styled.button`
     transform: scale(1.03);
     transition: transform .2s;
   }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 `
 
 export const ButtonLogin = styled.button`
@@ -130,5 +139,8 @@ export const ButtonLogin = styled.button`
     background-color: #006c7f;
     transform: scale(1.03);
     transition: transform .2s;
+  }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
   }
 `

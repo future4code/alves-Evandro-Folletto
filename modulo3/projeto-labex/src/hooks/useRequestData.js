@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "./../constants/BASE_URL";
 
 function useGetTrips(complemento, initialState){
-  const [data, setData] = useState(initialState);
+  const [date, setData] = useState(initialState);
   const url = `${BASE_URL}${complemento}`;
 
   useEffect(() => {
@@ -15,20 +15,20 @@ function useGetTrips(complemento, initialState){
     .catch(erro => alert('Ocorreu um erro ao carregar a lista de viagens'))
   },[])
 
-  return data;
+  return date;
 }
 
-function useApplyToTrip(complemento, nome, idade, texto, profissao, pais){
+function useApplyToTrip(complemento, name, age, text, profession, country){
   const url = `${BASE_URL}${complemento}`;
 
   axios
   .post(url,
     {
-      "name": nome,
-      "age": idade,
-      "applicationText": texto,
-      "profession": profissao,
-      "country": pais
+      "name": name,
+      "age": age,
+      "applicationText": text,
+      "profession": profession,
+      "country": country
     })
   .then(res => {
     alert("Candidatura enviada com sucesso!")

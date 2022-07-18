@@ -11,74 +11,73 @@ export default function ApplicationFormPage() {
 
   const trips = useGetTrips('/trips',[])
   
-  const applyToTrip = (idViagem, nome, idade, texto, profissao, pais) => {
+  const applyToTrip = (idTrip, name, age, text, profession, country) => {
     axios
-      .post(`${BASE_URL}/trips/${idViagem}/apply`,
+      .post(`${BASE_URL}/trips/${idTrip}/apply`,
         {
-          "name": nome,
-          "age": idade,
-          "applicationText": texto,
-          "profession": profissao,
-          "country": pais
+          "name": name,
+          "age": age,
+          "applicationText": text,
+          "profession": profession,
+          "country": country
         })
       .then(res => {
         alert("Candidatura enviada com sucesso!")
       })
-      .catch(erro => {
-        if(erro.statusCode >= 400 && erro.statusCode < 500) {
-          alert("Ocorreu algum erro no formulário, revise suas informações");
-        } else if (erro.statusCode >= 500 && erro.statusCode < 600)
-        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+      .catch(error => {
+        const errorCode = error.response.request.status;
+        if(errorCode >= 400 && errorCode < 500) {
+          alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+        } else if (errorCode >= 500 && errorCode < 600)
+          alert("Ocorreu um erro no servidor, tente novamente mais tarde");
       })
   }
 
   const { form, onChange, cleanFields } = useForm({
-    idViagem: "",
-    nome: "",
-    idade: "",
-    texto: "",
-    profissao: "",
-    pais: "",
+    idTrip: "",
+    name: "",
+    age: "",
+    text: "",
+    profession: "",
+    country: "",
   })
 
-  const cadastrar = (event) => {
+  const register = (event) => {
     event.preventDefault();
     cleanFields();
     applyToTrip(
-    // useApplyToTrip(
-      // `/trips/${form.idViagem}/apply`,
-      form.idViagem,
-      form.nome,
-      form.idade,
-      form.texto,
-      form.profissao,
-      form.pais
+      form.idTrip,
+      form.name,
+      form.age,
+      form.text,
+      form.profession,
+      form.country
     );
   }
 
   return (
-    <s.Geral>
+    <s.General>
       <s.Container>
-        <s.TituloCadastro>Inscrever-se</s.TituloCadastro>
+        <s.TitleRegistration>Inscrever-se</s.TitleRegistration>
 
-        <s.Formulario onSubmit={cadastrar}>
+        <s.Form onSubmit={register}>
 
-          <s.Selecionar
-            name={"idViagem"}
-            value={form.idViagem}
+          <s.Select
+            name={"idTrip"}
+            value={form.idTrip}
             onChange={onChange}
           >
             <option value="" selected disabled>Escolha uma viagem</option>
             {trips.map(trip => {
               return (
-                <option value={trip.id}>{trip.name} - {trip.planet}</option>
+                <option key={trip.id} value={trip.id}>{trip.name} - {trip.planet}</option>
               )
             })}
-          </s.Selecionar>
+          </s.Select>
 
           <s.Input
-            name={"nome"}
-            value={form.nome}
+            name={"name"}
+            value={form.name}
             onChange={onChange}
             placeholder="Nome"
             required
@@ -88,8 +87,8 @@ export default function ApplicationFormPage() {
           />
 
           <s.Input
-            name={"idade"}
-            value={form.idade}
+            name={"age"}
+            value={form.age}
             onChange={onChange}
             placeholder="Idade"
             required
@@ -99,8 +98,8 @@ export default function ApplicationFormPage() {
           />
 
           <s.InputCandidatura
-            name={"texto"}
-            value={form.texto}
+            name={"text"}
+            value={form.text}
             onChange={onChange}
             placeholder="Texto da candidatura"
             required
@@ -110,8 +109,8 @@ export default function ApplicationFormPage() {
           />
 
           <s.Input
-            name={"profissao"}
-            value={form.profissao}
+            name={"profession"}
+            value={form.profession}
             onChange={onChange}
             placeholder="Profissão"
             required
@@ -120,10 +119,11 @@ export default function ApplicationFormPage() {
             title={"São necessários pelo menos 10 caracters"}
           />
 
-          <s.Selecionar
-            name={"pais"}
-            value={form.pais}
+          <s.Select
+            name={"country"}
+            value={form.country}
             onChange={onChange}
+            // required
           >
             <option value="" selected disabled>Selecione seu país</option>
             <option value="Brasil">Brasil</option>
@@ -131,15 +131,15 @@ export default function ApplicationFormPage() {
             <option value="Paraguai">Paraguai</option>
             <option value="Uruguai">Uruguai</option>
             <option value="Chile">Chile</option>
-          </s.Selecionar>
+          </s.Select>
 
           <s.Buttons>
             <s.ButtonBack onClick={() => goToListTripsPage(navigate)}>Voltar</s.ButtonBack>
             <s.ButtonCreate>Enviar</s.ButtonCreate>
           </s.Buttons>
-        </s.Formulario>
+        </s.Form>
 
       </s.Container>
-    </s.Geral>
+    </s.General>
   );
 };

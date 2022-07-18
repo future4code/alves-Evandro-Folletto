@@ -54,6 +54,9 @@ export const ButtonReprove = styled.button`
     transform: scale(1.03);
     transition: transform .2s;
   }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 `
 
 export const ButtonAprove = styled.button`
@@ -71,5 +74,8 @@ export const ButtonAprove = styled.button`
     color: #ddd9ce;
     transform: scale(1.03);
     transition: transform .2s;
+  }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
   }
 `

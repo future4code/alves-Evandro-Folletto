@@ -18,11 +18,12 @@ export default function LoginPage() {
       localStorage.setItem('token', res.data.token);
       goToAdminHomePage(navigate)
     })
-    .catch(erro => {
-      if(erro.statusCode >= 400 && erro.statusCode < 500) {
-        alert("Ocorreu algum erro no formulário, revise suas informações");
-      } else if (erro.statusCode >= 500 && erro.statusCode < 600)
-      alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+    .catch(error => {
+      const errorCode = error.response.request.status;
+      if(errorCode >= 400 && errorCode < 500) {
+        alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      } else if (errorCode >= 500 && errorCode < 600)
+        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
     })
   }
 
@@ -31,7 +32,7 @@ export default function LoginPage() {
     password: "",
   })
 
-  const cadastrar = (event) => {
+  const register = (event) => {
     event.preventDefault();
     cleanFields();
     onSubmitLogin(
@@ -41,11 +42,11 @@ export default function LoginPage() {
   }
 
   return (
-    <s.Geral>
+    <s.General>
       <s.Container>
-        <s.TituloCadastro>Login</s.TituloCadastro>
+        <s.RegistrationTitle>Login</s.RegistrationTitle>
 
-        <s.Formulario onSubmit={cadastrar}>
+        <s.Form onSubmit={register}>
 
           <s.Input
             name={"email"}
@@ -67,11 +68,11 @@ export default function LoginPage() {
 
           <s.Buttons>
             <s.ButtonBack onClick={() => goToIndex(navigate)}>Voltar</s.ButtonBack>
-            <s.ButtonCreate>Enviar</s.ButtonCreate>
+            <s.ButtonLogin>Enviar</s.ButtonLogin>
           </s.Buttons>
-        </s.Formulario>
+        </s.Form>
 
       </s.Container>
-    </s.Geral>
+    </s.General>
   );
 };

@@ -30,6 +30,7 @@ export const ButtonBack = styled.button`
   }
   @media screen and (min-device-width : 320px) and (max-device-width : 480px){
     margin: 10px 0 5px 0;
+    color: black;
   }
 `
 
@@ -50,10 +51,11 @@ export const ButtonSignUp = styled.button`
   }
   @media screen and (min-device-width : 320px) and (max-device-width : 480px){
     margin: 5px 0 10px 0;
+    color: black;
   }
 `
 
-export const Buscar = styled.input`
+export const Search = styled.input`
   width: 175px;
   font-size: 16px;
   height: 35px;
@@ -87,6 +89,7 @@ export const OrderBy = styled.select`
   }
   @media screen and (min-device-width : 320px) and (max-device-width : 480px){
     margin: 5px 0 5px 0;
+    color: black;
   }
 `
 

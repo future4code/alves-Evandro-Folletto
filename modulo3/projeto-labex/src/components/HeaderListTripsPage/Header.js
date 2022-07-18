@@ -7,34 +7,34 @@ export default function Header_(props) {
   return (
     <s.Header>
       <s.ButtonBack onClick={() => goToIndex(navigate)}>Voltar</s.ButtonBack>
-      <s.Buscar
+      <s.Search
         type="text"
-        onChange={props.onBuscaNome}
-        // value={props.buscaNome}
+        onChange={props.onSearchName}
+        value={props.searchName}
         placeholder="Buscar por planeta"
       />
 
       <s.OrderBy
-        // value={ordenacao}
-        onChange={props.atualizaOrdenacao}
+        value={props.ordenation}
+        onChange={props.updateOrdenation}
       >
         <option value="" disabled selected>Ordenar por:</option>
-        <option value="planeta">Nome dos Planetas</option>
-        <option value="data">Data</option>
-        <option value="duracao-cre">Duração (crescente)</option>
-        <option value="duracao-dec">Duração (decrescente)</option>
+        <option value="planet">Nome dos Planetas</option>
+        <option value="date">Data</option>
+        <option value="duration-cre">Duração (crescente)</option>
+        <option value="duration-dec">Duração (decrescente)</option>
       </s.OrderBy>
 
       <s.MinValue
         type="number"
-        onChange={props.onDuracaoMinima}
-        value={props.duracaoMinima}
+        onChange={props.onMinimunDuration}
+        value={props.minimunDuration}
         placeholder="Duração mín. (dias)"
       />
       <s.MaxValue
         type="number"
-        onChange={props.onDuracaoMaxima}
-        value={props.duracaoMaxima}
+        onChange={props.onMaximunDuration}
+        value={props.maximunDuration}
         placeholder="Duração Máx. (dias)"
       />
       <s.ButtonSignUp onClick={() => goToApplicationFormPage(navigate)}>Inscrever-se</s.ButtonSignUp>

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-// import img_fundo from "./../assets/img/bg.jpg";
+import img_fundo from "./../assets/img/bg.png";
 
 export default createGlobalStyle`
   * {
@@ -15,7 +15,7 @@ export default createGlobalStyle`
     justify-content: center;
     align-items: center;
     background-color: #d5ebf0;
-    /* background-image: url({img_fundo}); */
+    background-image: url(${img_fundo});
   }
   body, input, textarea, button {
     font: 14px sans-serif;

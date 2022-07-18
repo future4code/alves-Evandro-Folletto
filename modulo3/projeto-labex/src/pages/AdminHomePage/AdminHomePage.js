@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import * as s from './styled-AdminHomePage'
 import { goToIndex, goToLoginPage, goToTripDetailsPage, goToCreatetripPage } from "./../../routes/coordinator.js"
-import img_lixeira from './../../assets/img/lixeira.png';
+import img_trash from './../../assets/img/trash.png';
 import useProtectedPage from './../../hooks/useProtectedPage';
 import { BASE_URL } from "./../../constants/BASE_URL";
 
@@ -51,10 +51,10 @@ export default function AdminHomePage() {
 
   const listaViagens =trips.map(trip => {
     return (
-      <s.Lista key={trip.id}>
+      <s.List key={trip.id}>
         <s.ButtonTrip id={trip.id} onClick={()=>goToTripDetailsPage(navigate, trip.id)}>{trip.name}</s.ButtonTrip>
-        <s.ImagemLixeira onClick={()=>deleteTrip(trip.id, trip.name)} src={img_lixeira} />
-      </s.Lista>
+        <s.ImageTrash onClick={()=>deleteTrip(trip.id, trip.name)} src={img_trash} />
+      </s.List>
     )
   })
 
@@ -65,10 +65,10 @@ export default function AdminHomePage() {
   }
   
   return (
-    <s.Geral>
+    <s.General>
 
       <s.Container>
-        <h1>Painel Administrativo</h1>
+        <s.PanelTitle>Painel Administrativo</s.PanelTitle>
 
         <s.Buttons>
           <s.ButtonBack onClick={()=>goToIndex(navigate)}>Voltar</s.ButtonBack>
@@ -79,6 +79,6 @@ export default function AdminHomePage() {
         {listaViagens}
       </s.Container>
 
-    </s.Geral>
+    </s.General>
   );
 };

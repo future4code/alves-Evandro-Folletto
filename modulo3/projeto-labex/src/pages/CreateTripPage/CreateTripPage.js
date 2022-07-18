@@ -8,15 +8,15 @@ import { BASE_URL } from "./../../constants/BASE_URL";
 export default function CreateTripPage() {
   const navigate = useNavigate();
 
-  const createTrip = (nome, planeta, data, texto, duracao) => {
+  const createTrip = (name, planet, date, text, duracao) => {
     const token = localStorage.getItem('token');
     axios
       .post(`${BASE_URL}/trips`,
       {
-        "name": nome,
-        "planet": planeta,
-        "date": data,
-        "description": texto,
+        "name": name,
+        "planet": planet,
+        "date": date,
+        "description": text,
         "durationInDays": duracao
       },
       {
@@ -26,45 +26,46 @@ export default function CreateTripPage() {
         }
       })
       .then(res => {
-        alert(`A viagem "${nome}" foi criada com sucesso!`)
+        alert(`A viagem "${name}" foi criada com sucesso!`)
       })
-      .catch(erro => {
-        if(erro.statusCode >= 400 && erro.statusCode < 500) {
-          alert("Ocorreu algum erro no formulário, revise suas informações");
-        } else if (erro.statusCode >= 500 && erro.statusCode < 600)
-        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+      .catch(error => {
+        const errorCode = error.response.request.status;
+        if(errorCode >= 400 && errorCode < 500) {
+          alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+        } else if (errorCode >= 500 && errorCode < 600)
+          alert("Ocorreu um erro no servidor, tente novamente mais tarde");
       })
   }
 
   const { form, onChange, cleanFields } = useForm({
-    nome: "",
-    planeta: "",
-    data: "",
-    texto: "",
+    name: "",
+    planet: "",
+    date: "",
+    text: "",
     duracao: "",
   })
   
-  const cadastrar = (event) => {
+  const register = (event) => {
     event.preventDefault();
     cleanFields();
     createTrip(
-      form.nome,
-      form.planeta,
-      form.data,
-      form.texto,
+      form.name,
+      form.planet,
+      form.date,
+      form.text,
       form.duracao
     );
   }
 
   return (
-    <s.Geral>
+    <s.General>
       <s.Container>
-        <s.TituloCadastro>Criar viagem</s.TituloCadastro>
+        <s.RegistrationTitle>Criar viagem</s.RegistrationTitle>
 
-        <s.Formulario onSubmit={cadastrar}>
+        <s.Form onSubmit={register}>
           <s.Input
-            name={"nome"}
-            value={form.nome}
+            name={"name"}
+            value={form.name}
             onChange={onChange}
             placeholder="Nome"
             required
@@ -73,9 +74,9 @@ export default function CreateTripPage() {
             title={"O nome deve ter no mínimo 5 letras"}
           />
 
-          <s.Selecionar
-            name={"planeta"}
-            value={form.planeta}
+          <s.Select
+            name={"planet"}
+            value={form.planet}
             onChange={onChange}
           >
             <option value="" selected disabled>Escolha um planeta</option>
@@ -88,11 +89,11 @@ export default function CreateTripPage() {
             <option value="Urano">Urano</option>
             <option value="Netuno">Netuno</option>
             <option value="Plutão">Plutão</option>
-          </s.Selecionar>
+          </s.Select>
 
           <s.Input
-            name={"data"}
-            value={form.data}
+            name={"date"}
+            value={form.date}
             onChange={onChange}
             placeholder="data"
             required
@@ -102,9 +103,9 @@ export default function CreateTripPage() {
             title={"Não podem ser escolhidas datas no passado"}
           />
 
-          <s.InputDescricao
-            name={"texto"}
-            value={form.texto}
+          <s.InputDescription
+            name={"text"}
+            value={form.text}
             onChange={onChange}
             placeholder="Descrição"
             required
@@ -128,9 +129,9 @@ export default function CreateTripPage() {
             <s.ButtonBack onClick={() => goToAdminHomePage(navigate)}>Voltar</s.ButtonBack>
             <s.ButtonCreate>Enviar</s.ButtonCreate>
           </s.Buttons>
-        </s.Formulario>
+        </s.Form>
 
       </s.Container>
-    </s.Geral>
+    </s.General>
   );
 };

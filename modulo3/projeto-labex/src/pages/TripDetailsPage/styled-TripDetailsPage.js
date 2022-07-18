@@ -81,13 +81,6 @@ export const Container1 = styled.div`
   word-wrap: break-word;
   word-break: break-word;
   text-align: left;
-  /* @media screen and (max-device-width : 480px){ */
-    /* max-width: 100vw; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* width: 100%; */
-    /* } */
 `
 
 export const Container2= styled.div`
@@ -119,13 +112,6 @@ export const CardAprovados = styled.div`
   /* overflow-wrap: break-word; */
   /* word-wrap: break-word; */
   word-break: break-word;
-  /* @media screen and (max-device-width : 480px){ */
-    /* max-width: 100vw; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* width: 100%; */
-    /* } */
 `
 
 export const TextoVazio= styled.div`

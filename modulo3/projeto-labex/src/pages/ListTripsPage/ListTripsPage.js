@@ -6,48 +6,48 @@ import { useGetTrips } from "./../../hooks/useRequestData";
 
 export default function ListTripsPage() {
 
-  const [buscaNome, setBuscaNome] = useState("");
-  const [duracaoMinima, setDuracaoMinima] = useState("");
-  const [duracaoMaxima, setDuracaoMaxima] = useState("");
-  const [ordenacao, setOrdenacao] = useState("título");
+  const [searchName, setSearchName] = useState("");
+  const [minimunDuration, setMinimunDuration] = useState("");
+  const [maximunDuration, setMaximunDuration] = useState("");
+  const [ordenation, setOrdenation] = useState("título");
 
   const trips = useGetTrips('/trips',[])
 
-  const onDuracaoMinima = (event) => {
-    setDuracaoMinima(event.target.value);
+  const onMinimunDuration = (event) => {
+    setMinimunDuration(event.target.value);
   }
 
-  const onDuracaoMaxima = (event) => {
-    setDuracaoMaxima(event.target.value);
+  const onMaximunDuration = (event) => {
+    setMaximunDuration(event.target.value);
   }
 
-  const onBuscaNome = (event) => {
-    setBuscaNome(event.target.value);
+  const onSearchName = (event) => {
+    setSearchName(event.target.value);
   }
 
-  const atualizaOrdenacao = (event) => {
-    setOrdenacao(event.target.value)
+  const updateOrdenation = (event) => {
+    setOrdenation(event.target.value)
   }
 
   const listaTrips = trips
     .filter( trip => {
-      return duracaoMinima === "" || Number(trip.durationInDays) >= duracaoMinima
+      return minimunDuration === "" || Number(trip.durationInDays) >= minimunDuration
     })
     .filter( trip => {
-      return duracaoMaxima === "" || Number(trip.durationInDays) <= duracaoMaxima
+      return maximunDuration === "" || Number(trip.durationInDays) <= minimunDuration
     })
     .filter( trip => {
-      return trip.planet.toLowerCase().includes(buscaNome.toLowerCase())
+      return trip.planet.toLowerCase().includes(searchName.toLowerCase())
     })
-    .sort( (viagemAtual, proximaViagem) => {
-      if (ordenacao === "planeta") {
-        return (1) * viagemAtual.planet.localeCompare(proximaViagem.planet)
-      } else if (ordenacao === "data") {
-        return (1) * (new Date(viagemAtual.dueDate).getTime() - new Date(proximaViagem.dueDate).getTime())
-      } else if (ordenacao === "duracao-cre") {
-        return (1) * (viagemAtual.durationInDays - proximaViagem.durationInDays)
+    .sort( (currentTrip, nextTrip) => {
+      if (ordenation === "planet") {
+        return (1) * currentTrip.planet.localeCompare(nextTrip.planet)
+      } else if (ordenation === "date") {
+        return (1) * (new Date(currentTrip.dueDate).getTime() - new Date(nextTrip.dueDate).getTime())
+      } else if (ordenation === "duration-cre") {
+        return (1) * (currentTrip.durationInDays - nextTrip.durationInDays)
       } else {
-        return (-1) * (viagemAtual.durationInDays - proximaViagem.durationInDays)
+        return (-1) * (currentTrip.durationInDays - nextTrip.durationInDays)
       }
     })
     .map( trip => {
@@ -66,13 +66,13 @@ export default function ListTripsPage() {
     <s.Geral>
 
       <Header
-        onBuscaNome={onBuscaNome}
-        // buscaNome={buscaNome}
-        atualizaOrdenacao={atualizaOrdenacao}
-        onDuracaoMinima={onDuracaoMinima}
-        onDuracaoMaxima={onDuracaoMaxima}
-        // duracaoMinima={duracaoMinima}
-        // duracaoMaxima={duracaoMaxima}
+        onSearchName={onSearchName}
+        searchName={searchName}
+        updateOrdenation={updateOrdenation}
+        onMinimunDuration={onMinimunDuration}
+        onMaximunDuration={onMaximunDuration}
+        minimunDuration={minimunDuration}
+        maximunDuration={maximunDuration}
       />
 
       <s.Title>
@@ -81,9 +81,9 @@ export default function ListTripsPage() {
         </s.Text>
       </s.Title>
 
-      <s.Lista>
+      <s.List>
         {listaTrips}
-      </s.Lista>
+      </s.List>
 
     </s.Geral>
   );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Geral = styled.div`
+export const General = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,20 +23,20 @@ export const Container = styled.div`
   }
 `
 
-export const Formulario = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 95%;
 `
 
-export const TituloCadastro = styled.h1`
+export const TitleRegistration = styled.h1`
   font-size: 30px;
-  color: white;
+  color: #e7e4f3;
   margin: 20px 0 30px 0;
 `
 
-export const Selecionar = styled.select`
+export const Select = styled.select`
   margin: 0 0 20px 0;
   height: 35px;
   width: 90%;
@@ -44,12 +44,6 @@ export const Selecionar = styled.select`
   font-size: 18px;
   border-radius: 5px;
   background: #e7e4f3;
-  /* @media screen and (max-device-width : 480px){ */
-    /* max-width: 100vw; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-  /* } */
 `
 
 export const Input = styled.input`
@@ -104,6 +98,9 @@ export const ButtonBack = styled.button`
 		background-color: #3d3dff;
     border: none;
 	}
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 `
 
 export const ButtonCreate = styled.button`
@@ -120,4 +117,7 @@ export const ButtonCreate = styled.button`
 		background-color: #00b900;
     border: none;
 	}
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
+    color: black;
+  }
 `
