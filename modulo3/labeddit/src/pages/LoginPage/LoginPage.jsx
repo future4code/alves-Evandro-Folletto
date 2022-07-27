@@ -1,34 +1,18 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import * as s from './styled-LoginPage';
 import useForm from "./../../hooks/useForm";
 import img_apresentacao from "./../../assets/img/reddit.png";
-import { goToSignUpPage, goToPostPage } from "./../../routes/coordinator.js"
-import { BASE_URL } from "./../../constants/BASE_URL";
+import { goToSignUpPage } from "./../../routes/coordinator.js";
+import { onSubmitLogin } from "./../../services/requests";
+import useUnprotectedPage from './../../hooks/useUnprotectedPage';
+import { GlobalContext } from "../../components/global/GlobalContext";
 
 export default function LoginPage() {
+  useUnprotectedPage();
   const navigate = useNavigate();
 
-  const onSubmitLogin = (email, password) => {
-    axios
-    .post(`${BASE_URL}/users/login`,
-    {
-      "email": email,
-      "password": password
-    })
-    .then( res => {
-      localStorage.setItem('token', res.data.token);
-      goToPostPage(navigate)
-    })
-    .catch(error => {
-      const errorCode = error.response.request.status;
-      if(errorCode >= 400 && errorCode < 500) {
-        alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
-      } else if (errorCode >= 500 && errorCode < 600)
-        alert("Ocorreu um erro no servidor, tente novamente mais tarde");
-    })
-  }
+  const { rightButtonText, setRightButtonText } = useContext(GlobalContext);
 
   const { form, onChange, cleanFields } = useForm({
     email: "",
@@ -37,11 +21,8 @@ export default function LoginPage() {
 
   const register = (event) => {
     event.preventDefault();
-    cleanFields();
-    onSubmitLogin(
-      form.email,
-      form.password,
-    );
+    rightButtonText === "Login" ? setRightButtonText("Logout") : setRightButtonText("Login");
+    onSubmitLogin(form, cleanFields, navigate);
   }
 
   return (
