@@ -67,3 +67,65 @@ export const Comments = styled.div`
   background-color: lightgreen;
   overflow: auto;
 `
+
+export const Item = styled.p`
+  /* text-align: justify;
+  font-size: 18px;
+  color: lightgray;
+  margin: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word; */
+`
+
+export const SectionSum = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #187e91;
+`
+
+export const ImageLike = styled.img`
+  width: 20px;
+  margin: 0 5px 0 0;
+  fill: orange;
+  /* padding: 10px; */
+  /* background-color: lightgray; */
+  &:hover {
+    transition: background-color 0.5s;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 50%;
+    /* margin: 0 10px 0 0; */
+    /* padding: 10px; */
+  }
+`  
+
+export const ImageDislike = styled.img`
+  width: 20px;
+  margin: 0 5px 0 0;
+  /* padding: 10px; */
+  /* background-color: lightgray; */
+  &:hover {
+    transition: background-color 0.5s;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 50%;
+    /* margin: 0 10px 0 0; */
+    /* padding: 10px; */
+  }
+`
+
+export const ImageMessage = styled.img`
+  width: 20px;
+  margin: 0 5px 0 0;
+  /* padding: 10px; */
+  /* background-color: lightgray; */
+  &:hover {
+    transition: background-color 0.5s;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 50%;
+    /* margin: 0 10px 0 0; */
+    /* padding: 10px; */
+  }
+`

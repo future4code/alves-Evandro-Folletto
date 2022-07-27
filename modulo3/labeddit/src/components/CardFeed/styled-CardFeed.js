@@ -46,15 +46,10 @@ export const SectionSum = styled.div`
   background-color: #187e91;
 `
 
-export const SectionLike = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 10px 0 0;
-`
-
 export const ImageLike = styled.img`
   width: 20px;
   margin: 0 5px 0 0;
+  fill: orange;
   /* padding: 10px; */
   /* background-color: lightgray; */
   &:hover {
@@ -67,13 +62,22 @@ export const ImageLike = styled.img`
   }
 `  
 
-export const SectionDislike = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 0 0 10px;
+export const ImageDislike = styled.img`
+  width: 20px;
+  margin: 0 5px 0 0;
+  /* padding: 10px; */
+  /* background-color: lightgray; */
+  &:hover {
+    transition: background-color 0.5s;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 50%;
+    /* margin: 0 10px 0 0; */
+    /* padding: 10px; */
+  }
 `
 
-export const ImageDislike = styled.img`
+export const ImageMessage = styled.img`
   width: 20px;
   margin: 0 5px 0 0;
   /* padding: 10px; */

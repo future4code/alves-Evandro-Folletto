@@ -7,11 +7,15 @@ import { goToFeedPage, goToLoginPage } from "./../../routes/coordinator.js"
 
 export default function Header(props) {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const tokenUserEmail = localStorage.getItem('useremail');
 
   const { rightButtonText, setRightButtonText } = useContext(GlobalContext);
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("useremail");
+    localStorage.removeItem("pagina");
   }
 
   const rightButtonAction = () => {
@@ -26,17 +30,27 @@ export default function Header(props) {
 
   return (
     <s.Header>
-      <s.Auxiliar>
+      <s.Line1>
+        {
+          tokenUserEmail !== null ? 
+            <p>Olá, {tokenUserEmail}</p>
+          :
+            null
+        }
+      </s.Line1>
+      <s.Line2>
+        <s.Auxiliar>
           {
             Object.values(props).length === 0 ? 
               null
             :
               <button onClick={()=>goToFeedPage(navigate)}>Voltar</button>
           }
-      </s.Auxiliar>
-      <s.Logo src={img_logo} alt="Logo" />
-      <s.RightButton onClick={rightButtonAction}>{rightButtonText}</s.RightButton>
-    </s.Header>
+        </s.Auxiliar>
+        <s.Logo src={img_logo} alt="Logo" />
+        <s.RightButton onClick={rightButtonAction}>{rightButtonText}</s.RightButton>
+      </s.Line2>
 
+    </s.Header>
   )
 }

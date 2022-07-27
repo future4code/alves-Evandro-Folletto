@@ -11,12 +11,13 @@ import { onSubmitCreatePost } from "./../../services/requests";
 export default function FeedPage() {
   useProtectedPage();
   const token = localStorage.getItem('token');
+  let pagina = Number(localStorage.getItem('pagina'));
 
   const [posts, setPosts] = useState([]);
 
   function getPosts() {
     axios
-      .get(`${BASE_URL}/posts`,
+      .get(`${BASE_URL}/posts?page=${pagina}&size=5`,
         {
           headers:
           {
@@ -25,7 +26,7 @@ export default function FeedPage() {
         })
       .then(res => {
         setPosts(res.data);
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch(error => {
         const errorCode = error.response.request.status;
@@ -49,6 +50,12 @@ export default function FeedPage() {
     onSubmitCreatePost(form, token, cleanFields, getPosts);
   }
 
+  const changePage = (value) => {
+    pagina = Math.max(pagina + value, 1);
+    localStorage.setItem('pagina', pagina);
+    getPosts();
+  }
+
   const listaPosts = posts.map(post => {
     return (
       <CardFeed key={post.id}
@@ -58,7 +65,9 @@ export default function FeedPage() {
         body={post.body}
         voteSum={post.voteSum}
         commentCount={post.commentCount}
+        userVote={post.userVote}
         token={token}
+        getPosts={getPosts}
       />
     )
   });
@@ -93,8 +102,19 @@ export default function FeedPage() {
         </s.Post>
 
         <s.Feed>
-          {listaPosts}
+          {
+            listaPosts.length !==0 ? 
+              listaPosts 
+            :
+              <p>Carregando</p>
+          }
         </s.Feed>
+
+        <s.Paginacao>
+          <button onClick={()=>changePage(-1)}>Anterior</button>
+          {pagina}
+          <button onClick={()=>changePage(1)}>Próxima</button>
+        </s.Paginacao>
       </s.Container>
     </s.General>
   )

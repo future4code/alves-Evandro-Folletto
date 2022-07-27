@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as s from './styled-SignUpPage';
 import useForm from "./../../hooks/useForm";
 import useUnprotectedPage from './../../hooks/useUnprotectedPage';
 import Header from "./../../components/header/Header";
 import { onSubmitSignUp } from "./../../services/requests";
+import { GlobalContext } from "../../components/global/GlobalContext";
 
 export default function SignUpPage() {
   useUnprotectedPage();
   const navigate = useNavigate();
+  const { rightButtonText, setRightButtonText } = useContext(GlobalContext);
 
   const { form, onChange, cleanFields } = useForm({
     username: "",
@@ -18,8 +20,7 @@ export default function SignUpPage() {
 
   const register = (event) => {
     event.preventDefault();
-    onSubmitSignUp(form, cleanFields, navigate
-    );
+    onSubmitSignUp(form, cleanFields, navigate, setRightButtonText);
   }
 
   return (

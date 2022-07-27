@@ -95,3 +95,10 @@ export const Feed = styled.div`
   width: 100%;
   overflow: auto;
 `
+
+export const Paginacao = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: lightcoral;
+`

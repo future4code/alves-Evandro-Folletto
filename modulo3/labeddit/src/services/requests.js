@@ -1,12 +1,14 @@
 import axios from "axios";
 import { BASE_URL } from "./../constants/BASE_URL";
-import { goToFeedPage } from "./../routes/coordinator.js"
+import { goToFeedPage } from "./../routes/coordinator.js";
 
 export const onSubmitLogin = (body, cleanFields, navigate) => {
   axios
   .post(`${BASE_URL}/users/login`, body)
   .then( res => {
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('useremail', body.email);
+    localStorage.setItem('pagina', 1);
     cleanFields();
     goToFeedPage(navigate);
   })
@@ -19,13 +21,14 @@ export const onSubmitLogin = (body, cleanFields, navigate) => {
   })
 }
 
-export const onSubmitSignUp = (body, cleanFields, navigate) => {
+export const onSubmitSignUp = (body, cleanFields, navigate, setRightButtonText) => {
   axios
   .post(`${BASE_URL}/users/signup`, body)
   .then( res => {
     localStorage.setItem('token', res.data.token);
     alert("Cadastro realizado com sucesso!");
     cleanFields();
+    setRightButtonText('Logout');
     goToFeedPage(navigate);
   })
   .catch(error => {
@@ -61,7 +64,7 @@ export const onSubmitCreatePost = (body, token, cleanFields, getPosts) => {
   })
 }
 
-export const onSubmitCreateComment = (body, id, token, cleanFields, getPostComments) => {
+export const onSubmitCreateComment = (body, id, token, cleanFields, getPostComments, getPosts) => {
   axios
   .post(`${BASE_URL}/posts/${id}/comments`,
   body,
@@ -74,7 +77,8 @@ export const onSubmitCreateComment = (body, id, token, cleanFields, getPostComme
   .then( res => {
     alert("Comentário enviado com sucesso!");
     cleanFields();
-    getPostComments(token)
+    getPostComments(token);
+    getPosts();
   })
   .catch(error => {
     const errorCode = error.response.request.status;
@@ -85,7 +89,7 @@ export const onSubmitCreateComment = (body, id, token, cleanFields, getPostComme
   })
 }
 
-export const onSubmitCreatePostVote = (value, id, token) => {
+export const onSubmitCreatePostVote = (id, token, getPosts) => {
   axios
   .post(`${BASE_URL}/posts/${id}/votes`,
   {
@@ -97,10 +101,7 @@ export const onSubmitCreatePostVote = (value, id, token) => {
       Authorization: token
     }
   })
-  .then( res => {
-    alert("Like realizado com sucesso!");
-    // getPostComments(token)
-  })
+  .then( res => getPosts(token))
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
@@ -110,7 +111,7 @@ export const onSubmitCreatePostVote = (value, id, token) => {
   })
 }
 
-export const onSubmitChangePostVote = (value, id, token) => {
+export const onSubmitChangePostVote = (id, token, getPosts) => {
   axios
   .put(`${BASE_URL}/posts/${id}/votes`,
   {
@@ -122,9 +123,106 @@ export const onSubmitChangePostVote = (value, id, token) => {
       Authorization: token
     }
   })
+  .then( res => getPosts(token))
+  .catch(error => {
+    const errorCode = error.response.request.status;
+    if(errorCode >= 400 && errorCode < 500) {
+      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+    } else if (errorCode >= 500 && errorCode < 600)
+      alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+  })
+}
+
+export const onSubmitCreateCommentVote = (id, token, getPostComments) => {
+  axios
+  .post(`${BASE_URL}/comments/${id}/votes`,
+  {
+    "direction": 1
+  },
+  {
+    headers:
+    {
+      Authorization: token
+    }
+  })
   .then( res => {
-    alert("Dislike realizado com sucesso!");
-    // getPostComments(token)
+    console.log('deu certo')
+    // getPostComments(token, id)
+    getPostComments()
+  })
+  .catch(error => {
+    const errorCode = error.response.request.status;
+    if(errorCode >= 400 && errorCode < 500) {
+      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+    } else if (errorCode >= 500 && errorCode < 600)
+      alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+  })
+}
+
+export const onSubmitChangeCommentVote = (id, token, getPostComments) => {
+  axios
+  .put(`${BASE_URL}/comments/${id}/votes`,
+  {
+    "direction": -1
+  },
+  {
+    headers:
+    {
+      Authorization: token
+    }
+  })
+  .then( res => {
+    console.log('deu certo')
+    // getPostComments(token, id)
+    getPostComments()
+  })
+  .catch(error => {
+    const errorCode = error.response.request.status;
+    if(errorCode >= 400 && errorCode < 500) {
+      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+    } else if (errorCode >= 500 && errorCode < 600)
+      alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+  })
+}
+
+export const onSubmitDeletePostVote = (id, token, getPosts) => {
+  console.log('entrei aqui para deletar um voto no post')
+  console.log('id:', id)
+  console.log('token:', token)
+  axios
+  .delete(`${BASE_URL}/posts/${id}/votes`,
+  {
+    headers:
+    {
+      Authorization: token
+    }
+  })
+  .then( res => {
+    getPosts(token)
+  })
+  .catch(error => {
+    const errorCode = error.response.request.status;
+    if(errorCode >= 400 && errorCode < 500) {
+      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+    } else if (errorCode >= 500 && errorCode < 600)
+      alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+  })
+}
+
+export const onSubmitDeleteCommentVote = (id, token, getPostComments) => {
+  console.log('entrei aquiiiiiiiiiii')
+  console.log('id =',id)
+  console.log('token =',token)
+  axios
+  .delete(`${BASE_URL}/comments/${id}/votes`,
+  {
+    headers:
+    {
+      Authorization: token
+    }
+  })
+  .then( res => {
+    getPostComments()
   })
   .catch(error => {
     const errorCode = error.response.request.status;
