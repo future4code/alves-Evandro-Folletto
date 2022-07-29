@@ -25,7 +25,7 @@ export const SectionInfos = styled.div`
 `
 
 export const Item = styled.p`
-  margin: 5px 0 0 8px;
+  padding: 5px 8px;
   /* overflow-wrap: break-word; */
   /* word-wrap: break-word; */
   word-break: break-word;
@@ -59,7 +59,6 @@ export const ImageMessage = styled.img`
 
 export const Left = styled.div`
   display: flex;
-  /* border: solid 1px blue; */
   margin: 0 0 0 8px;
 `
 

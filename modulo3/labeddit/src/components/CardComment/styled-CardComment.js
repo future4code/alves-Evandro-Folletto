@@ -23,7 +23,7 @@ export const SendBy = styled.p`
 `
 
 export const Item = styled.p`
-  margin: 5px 0 0 8px;
+  padding: 5px 8px 0 8px;
   /* overflow-wrap: break-word; */
   /* word-wrap: break-word; */
   word-break: break-word;

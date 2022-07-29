@@ -57,6 +57,8 @@ export const onSubmitSignUp = (body, cleanFields, navigate, setRightButtonText) 
   .post(`${BASE_URL}/users/signup`, body)
   .then( res => {
     localStorage.setItem('token', res.data.token);
+    localStorage.setItem('useremail', body.email);
+    localStorage.setItem('pagina', 1);
     alert("Cadastro realizado com sucesso!");
     cleanFields();
     setRightButtonText('Logout');

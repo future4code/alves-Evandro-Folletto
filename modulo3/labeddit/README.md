@@ -33,20 +33,26 @@ Desenvolvido por: Evandro Paulo Folletto
 [Acessar documentação da API](https://documenter.getpostman.com/view/9731983/U16eu7nT#intro)
 
 # `Modo de usar`
-Ao iniciar a ferramenta, o usuário pode escolher entre as opções "Listar viagens", "Área restrita" e "Sobre". 
+Ao iniciar a ferramenta, o usuário é a página onde o usuário será direcionado depende da condição de estar ou não logado. Caso o usuário não esteja logado, ele é redirecionado
+para a página de login. Nesta, o usuário deve fornecer o e-mail de cadastro e sua senha. No canto superior direito da página de login, existe um ícone de informação, onde o usuário pode clicar, e ao fazê-lo é exibida uma página de informações sobre o projeto. Também na página de login o usuário pode clicar em "Crir uma conta!".
 </br>
-a) Na opção "Sobre" é mostrada uma breve descrição do projeto.
+Na página de criar uma conta, o usuário deve fornecer as informações de Nome do usuário, E-mail, Senha e aceitar os termos do contrato e política de privacidade.
 </br>
-b) A opção "Listar viagens" leva o usuário para uma página que contém uma lista de viagens cadastradas no sistema, com as seguintes informações: nome da viagem, descrição, planeta, duração (em dias) e data. Na parte superior é exibido um cabeçalho com as opções:
-- um campo para buscar uma viagem por uma ou mais letras contida(as) no campo "planeta";
-- um campo para ordenar a lista de viagens com as seguintes opções: ordem alfabética dos planetas, data das viagens (da mais recente para a menos recente) e por duranção de tempo da viagem (tanto em ordem crescente quanto decrescente);
-- um campo para preencher a duração mínima de dias;
-- um campo para preencher a duração máxima de dias.
-
-Também é exibido um botão para voltar para a página inicial e outro para candidatar-se para uma viagem.
-Ao clicar no botão "Inscrever-se" o usuário é redirecionado para um formulário de inscrição, onde deve preencher os seguintes campos: selecionar a viagem, nome, idade, texto de candidatura, profissão e país.
+Ao criar um cadastro, o usuário automaticamente estará logado (uma mensagem "Olá, [e-mail do usuário]" é mostrada no canto superior direito da tela) e será redirecionado para a página "Feed", onde existem os posts dos demais usuários. Nesta página, o usuário pode:
+- criar um novo post, inserindo para tal um título e a descrição do post;
+- buscar um post que contenha alguma palavra chave, seja no título ou no post em si;
+- nos posts, o usuário pode dar "like" e "dislike" e ainda ver a informação de soma total de "likes" menos "dislikes", além de ver a quantidade de comentários que aquele determinado post tem;
+- também no post, no canto inferior direito é apresentado um botão de "compartilhar", que ao ser clicado abre as opções de compartilhamento deste post nos aplicativos Twitter, WhatsApp e Telegram.
+- na parte inferior da tela, está a informação de qual página o usuário se encontra atualmente. É possível carregar mais posts clicando em alguma das setas;
+- no canto superior direito da tela, existe um botão "Logout" que permite o usuário deslogar da sua conta, e, ao fazê-lo o aplicativo redireciona para a tela de login;
+- nos posts, é possível que o usuário clique no post em si, e então ele é redirecionado para a página de detalhes deste posts.
 </br>
-c) A opção "Área restrita" é a área do administrador, que requer que o mesmo esteja logado; caso não esteja, o mesmo é redirecionado para a página de login, onde deve fornecer os dados de e-mail e senha. Caso o usuário esteja logado, lhe é apresentada uma lista com as viagens cadastradas, assim como a opção de deletar e ver detalhes (para esta última opção basta clicar no nome). Caso o usuário clicar sobre o nome da viagem, ele é redirecionado para a página de detalhes desta, onde lhe são mostrados cards de informações de pessoas que requerem aprovação ou reprovação, para tal, basta o administrador clicar em reprovar ou aprovar. Em caso de aprovação o nome do usuário é apresentado na lista ao lado (lista de usuário aprovados). Ainda no Painel do Administrador é possível que este crie uma nova viagem, para tal, deve fornecer as seguintes informações: nome, planeta, data, descrição e duração (dias).
+Na página de detalhes do post, o mesmo está fixado na parte de cima da página, é possível que o usuário:
+- faça um comentário sobre este post, inserindo para tal apenas o texto;
+- dar "like" e "dislike" no comentário que está fixado no topo;
+- dar "like" e "dislike" nos comentários que estão abaixo;
+- no canto superior esquerdo existe um ícone para voltar para a tela de Feed;
+- no canto superior direito existe um botão "Logout" para o usuário deslogar da conta atual.
 
 # `Paleta de cores utilizada`
 .color1 { #834841 };
@@ -88,6 +94,3 @@ Evandro Paulo Folletto
 <img src="./src/assets/img/readme/site3.png"/>
 <img src="./src/assets/img/readme/site4.png"/>
 <img src="./src/assets/img/readme/site5.png"/>
-<img src="./src/assets/img/readme/site6.png"/>
-<img src="./src/assets/img/readme/site7.png"/>
-<img src="./src/assets/img/readme/site8.png"/>

@@ -27,7 +27,7 @@ export const Up = styled.div`
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
-  min-height: 200px;
+  /* min-height: 220px; */
   background-color: #f0f0f0;
 `
 
@@ -36,7 +36,7 @@ export const Up1 = styled.div`
   justify-content: center;
   width: 100%;
   margin: 10px 0 5px 0;
-  min-height: 100px;
+  /* min-height: 100px; */
 `
 
 export const Up2 = styled.div`
@@ -44,7 +44,7 @@ export const Up2 = styled.div`
   justify-content: center;
   width: 100%;
   margin: 5px 0 5px 0;
-  min-height: 100px;
+  /* min-height: 100px; */
 `
 
 export const PostTop = styled.div`
