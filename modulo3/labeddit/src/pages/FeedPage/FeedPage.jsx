@@ -6,24 +6,24 @@ import Header from "./../../components/header/Header";
 import { BASE_URL } from "./../../constants/BASE_URL";
 import CardFeed from "./../../components/CardFeed/CardFeed";
 import useForm from "./../../hooks/useForm";
-import { onSubmitCreatePost, useRequestData } from "./../../services/requests";
+import { onSubmitCreatePost } from "./../../services/requests";
 import img_back from "./../../assets/img/back.png";
 import img_next from "./../../assets/img/next.png";
 
 export default function FeedPage() {
   useProtectedPage();
   const token = localStorage.getItem('token');
-  let pagina = Number(localStorage.getItem('pagina'));
+  let page = Number(localStorage.getItem('page'));
 
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState('');
 
-  // const dados = useRequestData(`${BASE_URL}/posts?page=${pagina}&size=2`, token, []);
+  // const dados = useRequestData(`${BASE_URL}/posts?page=${page}&size=2`, token, []);
   // console.log(dados);
 
   function getPosts() {
     axios
-      .get(`${BASE_URL}/posts?page=${pagina}&size=5`,
+      .get(`${BASE_URL}/posts?page=${page}&size=5`,
         {
           headers:
           {
@@ -54,8 +54,8 @@ export default function FeedPage() {
   }
 
   const changePage = (value) => {
-    pagina = Math.max(pagina + value, 1);
-    localStorage.setItem('pagina', pagina);
+    page = Math.max(page + value, 1);
+    localStorage.setItem('page', page);
     getPosts();
   }
 
@@ -63,7 +63,7 @@ export default function FeedPage() {
     setSearch(event.target.value)
   }
 
-  const listaPosts = posts
+  const listPosts = posts
     .filter(post => {
       return post.title.toLowerCase().includes(search.toLowerCase()) || post.body.toLowerCase().includes(search.toLowerCase())
     })
@@ -120,11 +120,10 @@ export default function FeedPage() {
           </s.SearchBar>
         </s.Post>
 
-
         <s.Feed>
           {
-            listaPosts.length !==0 ? 
-              listaPosts 
+            listPosts.length !==0 ? 
+              listPosts 
             :
               <s.BoxLoading>
                 <s.Loading>Carregando posts...</s.Loading>
@@ -132,11 +131,15 @@ export default function FeedPage() {
           }
         </s.Feed>
 
-        <s.Paginacao>
-          <s.BackNext src={img_back} onClick={()=>changePage(-1)} alt="Voltar"></s.BackNext>
-          <s.Pgn>{pagina}</s.Pgn>
-          <s.BackNext src={img_next} onClick={()=>changePage(1)} alt="Avançar"></s.BackNext>
-        </s.Paginacao>
+        <s.Pagination>
+          <s.ButtonBack disabled={page === 1 ? true : false} onClick={()=>changePage(-1)}>
+            <s.Img src={img_back} alt="Voltar"/>
+          </s.ButtonBack>
+          <s.Pgn>{page}</s.Pgn>
+          <s.ButtonNext onClick={()=>changePage(1)}>
+            <s.Img src={img_next} alt="Próxima"/>
+          </s.ButtonNext>
+        </s.Pagination>
       </s.Container>
     </s.General>
   )

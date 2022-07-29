@@ -84,7 +84,6 @@ export const PostButton = styled.button`
   font-size: 18px;
   height: 30px;
   width: 75%;
-  /* margin: 0 0 10px 0; */
   text-align: center;
   border: none;
   border-radius: 5px;
@@ -127,7 +126,7 @@ export const Feed = styled.div`
   overflow: auto;
 `
 
-export const Paginacao = styled.div`
+export const Pagination = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,13 +145,36 @@ export const Pgn = styled.div`
   background-color: #fffafa;
 `
 
-export const BackNext = styled.img`
+export const ButtonBack = styled.button`
+  background-color: #9a5d56;
+  border: none;
   width: 30px;
   &:hover {
 		cursor: pointer;
     transform: scale(1.1);
     transition: transform .2s;
-	}
+	};
+  &:disabled {
+    cursor: default;
+    transform: none;
+    transition: none;
+    opacity: 0.5;
+  }
+`
+
+export const ButtonNext = styled.button`
+  background-color: #9a5d56;
+  border: none;
+  width: 30px;
+  &:hover {
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	};
+`
+
+export const Img = styled.img`
+  width: 30px;
 `
 
 export const BoxLoading = styled.div`

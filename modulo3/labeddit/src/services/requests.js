@@ -39,7 +39,7 @@ export const onSubmitLogin = (body, cleanFields, navigate) => {
   .then( res => {
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('useremail', body.email);
-    localStorage.setItem('pagina', 1);
+    localStorage.setItem('page', 1);
     cleanFields();
     goToFeedPage(navigate);
   })
@@ -58,7 +58,7 @@ export const onSubmitSignUp = (body, cleanFields, navigate, setRightButtonText) 
   .then( res => {
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('useremail', body.email);
-    localStorage.setItem('pagina', 1);
+    localStorage.setItem('page', 1);
     alert("Cadastro realizado com sucesso!");
     cleanFields();
     setRightButtonText('Logout');
@@ -179,8 +179,6 @@ export const onSubmitCreateCommentVote = (id, token, getPostComments) => {
     }
   })
   .then( res => {
-    console.log('deu certo')
-    // getPostComments(token, id)
     getPostComments()
   })
   .catch(error => {
@@ -204,11 +202,7 @@ export const onSubmitChangeCommentVote = (id, token, getPostComments) => {
       Authorization: token
     }
   })
-  .then( res => {
-    console.log('deu certo')
-    // getPostComments(token, id)
-    getPostComments()
-  })
+  .then( res => getPostComments())
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
@@ -219,9 +213,6 @@ export const onSubmitChangeCommentVote = (id, token, getPostComments) => {
 }
 
 export const onSubmitDeletePostVote = (id, token, getPosts) => {
-  console.log('entrei aqui para deletar um voto no post')
-  console.log('id:', id)
-  console.log('token:', token)
   axios
   .delete(`${BASE_URL}/posts/${id}/votes`,
   {
@@ -230,9 +221,7 @@ export const onSubmitDeletePostVote = (id, token, getPosts) => {
       Authorization: token
     }
   })
-  .then( res => {
-    getPosts(token)
-  })
+  .then( res => getPosts(token))
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
@@ -243,9 +232,6 @@ export const onSubmitDeletePostVote = (id, token, getPosts) => {
 }
 
 export const onSubmitDeleteCommentVote = (id, token, getPostComments) => {
-  console.log('entrei aquiiiiiiiiiii')
-  console.log('id =',id)
-  console.log('token =',token)
   axios
   .delete(`${BASE_URL}/comments/${id}/votes`,
   {
@@ -254,9 +240,7 @@ export const onSubmitDeleteCommentVote = (id, token, getPostComments) => {
       Authorization: token
     }
   })
-  .then( res => {
-    getPostComments()
-  })
+  .then( res => getPostComments())
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {

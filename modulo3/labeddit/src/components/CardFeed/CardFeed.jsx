@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import * as s from "./styled-CardFeed";
 import { goToPostPage } from "./../../routes/coordinator.js";
@@ -14,12 +14,10 @@ import img_whatsapp from "./../../assets/img/whatsapp.png";
 import { onSubmitCreatePostVote } from "./../../services/requests";
 import { onSubmitChangePostVote } from "./../../services/requests";
 import { onSubmitDeletePostVote } from "./../../services/requests";
-import { GlobalContext } from "../../components/global/GlobalContext";
 
 export default function CardFeed(props) {
   const navigate = useNavigate();
 
-  const { postDetail, setPostDetail } = useContext(GlobalContext);
   const [viewSM, setViewSM] = useState(false);
 
   const onClickLikeDislike = (value) => {
@@ -39,15 +37,6 @@ export default function CardFeed(props) {
   }
 
   const saveAndGoToPostPage = (navigate, id, username, body, voteSum, commentCount, userVote) => {
-    const infosSave = {
-      username,
-      body,
-      voteSum,
-      commentCount,
-      userVote
-    }
-    localStorage.setItem('infosSave', JSON.stringify(infosSave))
-    // setPostDetail(infosSave);
     goToPostPage(navigate, id);
   }
 
@@ -59,7 +48,6 @@ export default function CardFeed(props) {
 
   return (
     <s.Container>
-      {/* <s.SectionInfos onClick={()=>goToPostPage(navigate, props.id)}> */}
       <s.SectionInfos onClick={()=>saveAndGoToPostPage(navigate, props.id, props.username, props.body, props.voteSum, props.commentCount, props.userVote)}>
         <s.SendBy> Enviado por: {props.username} </s.SendBy>
         <s.Item> <strong>{props.title}</strong> </s.Item>

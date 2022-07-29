@@ -10,7 +10,7 @@ import { GlobalContext } from "../../components/global/GlobalContext";
 export default function SignUpPage() {
   useUnprotectedPage();
   const navigate = useNavigate();
-  const { rightButtonText, setRightButtonText } = useContext(GlobalContext);
+  const { setRightButtonText } = useContext(GlobalContext);
 
   const { form, onChange, cleanFields } = useForm({
     username: "",

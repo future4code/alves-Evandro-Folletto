@@ -20,13 +20,6 @@ export const Container = styled.div`
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 10px 0 rgba(0,0,0,0.15);
 `
 
-export const Header = styled.div`
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* background-color: lightblue; */
-`
-
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,7 +32,6 @@ export const Apresentation = styled.div`
   justify-content: center;
   align-items: center;
   flex-basis: 30%;
-  /* border: solid 1px red; */
 `
 
 export const Title = styled.h1`

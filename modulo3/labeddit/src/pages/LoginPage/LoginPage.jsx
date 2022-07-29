@@ -32,15 +32,15 @@ export default function LoginPage() {
 
         <s.Up>
           <s.Info>
-            <s.ImagemInfo src={img_info} onClick={()=>goToAboutPage(navigate)} alt="Informações"/>            
+            <s.ImageInfo src={img_info} onClick={()=>goToAboutPage(navigate)} alt="Informações"/>            
           </s.Info>
           <s.Apresentation>
-            <s.Imagem src={img_apresentacao} alt="Logo Apresentação"/>
-            <s.Titulo>
-              <s.Titulo1>Lab</s.Titulo1>
-              <s.Titulo2><u>Eddit</u></s.Titulo2>
-            </s.Titulo>
-            <s.Subtitulo>O projeto de rede social da Labenu</s.Subtitulo>
+            <s.Image src={img_apresentacao} alt="Logo Apresentação"/>
+            <s.Title>
+              <s.Title1>Lab</s.Title1>
+              <s.Title2><u>Eddit</u></s.Title2>
+            </s.Title>
+            <s.Subtitle>O projeto de rede social da Labenu</s.Subtitle>
           </s.Apresentation>
         </s.Up>
 
@@ -68,10 +68,6 @@ export default function LoginPage() {
             </s.Buttons>
           </s.Form>
         </s.Down>
-
-
-
-
 
       </s.Container>
     </s.General>

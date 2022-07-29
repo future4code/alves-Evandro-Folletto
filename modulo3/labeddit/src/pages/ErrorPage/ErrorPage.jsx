@@ -9,7 +9,6 @@ export default function ErrorPage() {
   return (
     <s.General>
       <s.Container>
-
         <s.Up>
           <s.Apresentation>
             <s.Imagem src={img_apresentacao} alt="Logo Apresentação"/>
@@ -24,7 +23,6 @@ export default function ErrorPage() {
         <s.Down>
           <s.Alert>Página não encontrada :(</s.Alert>
         </s.Down>
-
       </s.Container>
     </s.General>
   )

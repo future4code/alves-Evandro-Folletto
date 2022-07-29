@@ -16,7 +16,7 @@ export default function Header(props) {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("useremail");
-    localStorage.removeItem("pagina");
+    localStorage.removeItem("page");
   }
 
   const rightButtonAction = () => {

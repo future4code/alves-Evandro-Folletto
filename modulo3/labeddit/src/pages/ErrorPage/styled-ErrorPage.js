@@ -30,17 +30,6 @@ export const Up = styled.div`
   flex-basis: 50%;
 `
 
-export const Down = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  flex-basis: 50%;
-`
-
-export const Alert = styled.h2`
-`
-
 export const Apresentation = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +51,17 @@ export const Titulo1 = styled.h1`
 
 export const Titulo2 = styled.h1`
   color: #834841;
+`
+
+export const Down = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  flex-basis: 50%;
+`
+
+export const Alert = styled.h2`
 `
 
 export const Subtitulo = styled.p`

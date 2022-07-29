@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useNavigate } from "react-router-dom";
 import * as s from "./styled-CardComment";
 import img_like from "./../../assets/img/like.png";
 import img_like2 from "./../../assets/img/like2.png";
@@ -10,7 +9,6 @@ import { onSubmitChangeCommentVote } from "./../../services/requests";
 import { onSubmitDeleteCommentVote } from "./../../services/requests";
 
 export default function CardFeed(props) {
-  // const navigate = useNavigate();
 
   const onClickLikeDislike = (value) => {
     if (value === 1) {

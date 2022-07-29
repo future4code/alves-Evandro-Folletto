@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import * as s from './styled-PostPage';
@@ -8,7 +8,6 @@ import { BASE_URL } from "./../../constants/BASE_URL";
 import CardComment from "./../../components/CardComment/CardComment";
 import useForm from "./../../hooks/useForm";
 import { onSubmitCreateComment } from "./../../services/requests";
-import { GlobalContext } from "../../components/global/GlobalContext";
 import img_like from "./../../assets/img/like.png";
 import img_like2 from "./../../assets/img/like2.png";
 import img_dislike from "./../../assets/img/dislike.png";
@@ -22,15 +21,9 @@ export default function PostPage() {
   useProtectedPage();
   const params = useParams();
   const token = localStorage.getItem('token');
-  let pagina = Number(localStorage.getItem('pagina'));
+  let page = Number(localStorage.getItem('page'));
   const [postComments, setPostComments] = useState([]);
   const [posts, setPosts] = useState([]);
-
-  // const { postDetail, setPostDetail } = useContext(GlobalContext);
-  // console.log('valor no post details:',postDetail);
-
-  // const postDetail = JSON.parse(localStorage.getItem('infosSave'));
-  // console.log(postDetail)
 
   function getPostComments() {
     axios
@@ -43,7 +36,6 @@ export default function PostPage() {
         })
       .then(res => {
         setPostComments(res.data)
-        console.log(res.data)
       })
       .catch(error => {
         const errorCode = error.response.request.status;
@@ -59,7 +51,7 @@ export default function PostPage() {
 
   function getPosts() {
     axios
-      .get(`${BASE_URL}/posts?page=${pagina}&size=5`,
+      .get(`${BASE_URL}/posts?page=${page}&size=5`,
         {
           headers:
           {
@@ -149,9 +141,9 @@ export default function PostPage() {
                   </s.SectionSum>
                 </s.PostTop>
               :
-                <s.Aviso>
+                <s.Warning>
                   <h3>Carregando dados do post...</h3>
-                </s.Aviso>
+                </s.Warning>
             }
           </s.Up1>
 

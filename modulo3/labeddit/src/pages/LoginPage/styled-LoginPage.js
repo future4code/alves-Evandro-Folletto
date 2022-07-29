@@ -45,7 +45,7 @@ export const Info = styled.div`
   flex-basis: 15%;
 `
 
-export const ImagemInfo = styled.img`
+export const ImageInfo = styled.img`
   width: 30px;
   margin: 10px 20px 0 0;
   &:hover {
@@ -63,24 +63,24 @@ export const Apresentation = styled.div`
   flex-basis: 85%;
 `
 
-export const Imagem = styled.img`
+export const Image = styled.img`
   width: 70px;
   margin: 0 0 10px 0;
 `
 
-export const Titulo = styled.div`
+export const Title = styled.div`
   display: flex;
   margin: 0 0 10px 0;
 `
 
-export const Titulo1 = styled.h1`
+export const Title1 = styled.h1`
 `
 
-export const Titulo2 = styled.h1`
+export const Title2 = styled.h1`
   color: #834841;
 `
 
-export const Subtitulo = styled.p`
+export const Subtitle = styled.p`
   font-size: 16px;
 `
 

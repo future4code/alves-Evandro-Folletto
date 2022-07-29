@@ -13,7 +13,6 @@ export const General = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   align-items: center;
   width: 375px;
   height: 667px;
@@ -24,7 +23,6 @@ export const Container = styled.div`
 
 export const Up = styled.div`
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   width: 100%;
   flex-basis: 10%;
