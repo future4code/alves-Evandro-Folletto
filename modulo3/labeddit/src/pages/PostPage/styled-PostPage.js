@@ -17,115 +17,152 @@ export const Container = styled.div`
   align-items: center;
   width: 375px;
   height: 667px;
-  border: solid 1px red;
   border-radius: 20px;
   background-color: white;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 10px 0 rgba(0,0,0,0.15);
 `
 
-export const Post = styled.div`
+export const Up = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   width: 100%;
-  height: 100px;
+  min-height: 200px;
+  background-color: #f0f0f0;
+`
+
+export const Up1 = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0 5px 0;
+  min-height: 100px;
+`
+
+export const Up2 = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 5px 0 5px 0;
+  min-height: 100px;
+`
+
+export const PostTop = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid 1px gray;
+  border-radius: 10px;
   background-color: lightgray;
+  width: 75%;
 `
 
-export const CommentText = styled.div`
-  width: 100%;
-  /* height: 100px; */
-  padding: 10px;
-  background-color: lightcoral;
+export const SendBy = styled.p`
+  margin: 5px 0 0 8px;
+  font-size: 12px;
 `
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 95%; */
+  width: 75%;
 `
 
 export const PostText = styled.textarea`
-  width: 90%;
+  width: 100%;
   height: 70px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: bottom;
-  border: none;
+  border: solid 1px black;
   border-radius: 5px;
-  margin: 0 0 20px 0;
+  margin: 0 0 5px 0;
   padding: 5px;
-  background-color: #e7e4f3;
   &:focus {
-    border: solid 1px gray;
+    border: solid 2px #b2726b;
     outline: 0;
   }
 `
 
 export const PostButton = styled.button`
+  font-size: 18px;
+  height: 30px;
+  width: 100%;
+  margin: 5px 0 10px 0;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #9a5d56;
+  color: #fffafa;
+  &:hover {
+		cursor: pointer;
+		background-color: #834841;
+    border: none;
+    transform: scale(1.03);
+    transition: transform .2s;
+	}
 `
 
 export const Comments = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  /* height: 100px; */
-  background-color: lightgreen;
   overflow: auto;
 `
 
 export const Item = styled.p`
-  /* text-align: justify;
-  font-size: 18px;
-  color: lightgray;
-  margin: 10px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word; */
+  margin: 5px 8px 0 8px;
+  word-break: break-word;
 `
 
 export const SectionSum = styled.div`
   display: flex;
   align-items: center;
-  background-color: #187e91;
+  margin: 10px 0 5px 8px;
 `
 
-export const ImageLike = styled.img`
+export const ImageLD = styled.img`
   width: 20px;
-  margin: 0 5px 0 0;
-  fill: orange;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
   &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
-`  
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	}
+`
 
-export const ImageDislike = styled.img`
-  width: 20px;
-  margin: 0 5px 0 0;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
-  &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
+export const Value = styled.div`
+  margin: 0 10px;
 `
 
 export const ImageMessage = styled.img`
   width: 20px;
-  margin: 0 5px 0 0;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
-  &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
+  margin: 0 0 0 20px;
+`
+
+export const LikesAndDislikes = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 10px 0 0;
+  padding: 2px 5px 2px 5px;
+  border: solid 1px gray;
+  border-radius: 15px;
+  background-color: lightgray;
+`
+
+export const Messages = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 10px;
+  padding: 2px;
+  border: solid 1px gray;
+  border-radius: 15px;
+  background-color: lightgray;
+`
+
+export const Aviso = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

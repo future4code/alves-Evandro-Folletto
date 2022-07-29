@@ -17,91 +17,132 @@ export const Container = styled.div`
   align-items: center;
   width: 375px;
   height: 667px;
-  border: solid 1px red;
   border-radius: 20px;
   background-color: white;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2), 0 10px 10px 0 rgba(0,0,0,0.15);
+`
+
+export const Up = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-basis: 50%;
+`
+
+export const Down = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  flex-basis: 50%;
+`
+
+export const Info = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+  flex-basis: 15%;
+`
+
+export const ImagemInfo = styled.img`
+  width: 30px;
+  margin: 10px 20px 0 0;
+  &:hover {
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	}
+`
+
+export const Apresentation = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 85%;
+`
+
+export const Imagem = styled.img`
+  width: 70px;
+  margin: 0 0 10px 0;
+`
+
+export const Titulo = styled.div`
+  display: flex;
+  margin: 0 0 10px 0;
+`
+
+export const Titulo1 = styled.h1`
+`
+
+export const Titulo2 = styled.h1`
+  color: #834841;
+`
+
+export const Subtitulo = styled.p`
+  font-size: 16px;
 `
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 95%; */
-`
-
-export const Apresentation = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-export const Imagem = styled.img`
-  width: 50px;
-`
-
-export const Titulo = styled.h2`
-`
-
-export const Subtitulo = styled.p`
 `
 
 export const Input = styled.input`
-  /* width: 90%;
-  height: 35px;
+  width: 75%;
+  height: 50px;
   font-size: 18px;
-  border: none;
+  border: solid 1px;
   border-radius: 5px;
   margin: 0 0 20px 0;
   padding: 0 0 0 5px;
-  background-color: #e7e4f3;
   &:focus {
-    border: solid 1px gray;
+    border: solid 2px #b2726b;
     outline: 0;
-  } */
+  }
 `
 
 export const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin: 30px 0 30px 0; */
-  /* width: 90%; */
+  align-items: center;
+  width: 100%;
+  margin: 20px 0 0 0;
 `
 
 export const ButtonLogin = styled.button`
-  /* font-size: 18px;
+  font-size: 18px;
   height: 40px;
-  width: 50%;
-  margin: 0 5px 0 0;
+  width: 75%;
+  margin: 0 0 10px 0;
   text-align: center;
   border: none;
-  border-radius: 10px;
-  background-color: lightblue;
+  border-radius: 20px;
+  background-color: #9a5d56;
+  color: #fffafa;
   &:hover {
 		cursor: pointer;
-		background-color: #3d3dff;
+		background-color: #834841;
     border: none;
+    transform: scale(1.02);
+    transition: transform .2s;
 	}
-  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
-    color: black;
-  } */
 `
 
 export const ButtonSignUp = styled.button`
-  /* font-size: 18px;
+  font-size: 18px;
   height: 40px;
-  width: 50%;
-  margin: 0 0 0 5px;
+  width: 75%;
   text-align: center;
-  border: none;
-  border-radius: 10px;
-  background-color: lightgreen;
+  border: solid 1px black;
+  border-radius: 20px;
   &:hover {
 		cursor: pointer;
-		background-color: #00b900;
-    border: none;
+		background-color: #ececec;
+    transform: scale(1.02);
+    transition: transform .2s;
 	}
-  @media screen and (min-device-width : 320px) and (max-device-width : 480px){
-    color: black;
-  } */
 ` 

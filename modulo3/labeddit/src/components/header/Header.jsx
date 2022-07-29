@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as s from './styled-Header';
 import img_logo from "./../../assets/img/reddit.png";
+import img_buttonBack from "./../../assets/img/buttonBack.png";
 import { GlobalContext } from "../../components/global/GlobalContext";
 import { goToFeedPage, goToLoginPage } from "./../../routes/coordinator.js"
 
@@ -27,30 +28,36 @@ export default function Header(props) {
       goToLoginPage(navigate);
     }
   }
+  
+  const pgnOrigin = Object.values(props)[0];
 
   return (
     <s.Header>
-      <s.Line1>
-        {
-          tokenUserEmail !== null ? 
-            <p>Olá, {tokenUserEmail}</p>
-          :
-            null
-        }
-      </s.Line1>
+      {
+        pgnOrigin === 'signUpPage' ?
+          null
+        :
+          <s.Line1>
+            {
+              tokenUserEmail !== null ? 
+                <s.Hello>Olá, {tokenUserEmail}</s.Hello>
+              :
+                null
+            }
+          </s.Line1>
+      }
       <s.Line2>
         <s.Auxiliar>
           {
-            Object.values(props).length === 0 ? 
-              null
+            pgnOrigin === 'postPage' ? 
+              <s.ButtonBack src={img_buttonBack} onClick={()=>goToFeedPage(navigate)} />
             :
-              <button onClick={()=>goToFeedPage(navigate)}>Voltar</button>
+              null
           }
         </s.Auxiliar>
         <s.Logo src={img_logo} alt="Logo" />
         <s.RightButton onClick={rightButtonAction}>{rightButtonText}</s.RightButton>
       </s.Line2>
-
     </s.Header>
   )
 }

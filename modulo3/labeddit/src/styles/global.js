@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-// import img_fundo from "./../assets/img/bg.png";
+import img_fundo from "./../assets/img/bg.svg";
 
 export default createGlobalStyle`
   * {
@@ -14,9 +14,19 @@ export default createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d5ebf0;
-    /* background-image: url({img_fundo}); */
+    /* background-color: #c4a6a2; */
+    background-image: url(${img_fundo});
   }
+
+  ::-webkit-scrollbar {
+     width: 2px
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: lightgrey;
+    border-radius: 3px;
+  }
+
   body, input, textarea, button {
     font: 14px sans-serif;
   }

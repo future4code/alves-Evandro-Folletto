@@ -4,90 +4,114 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* height: 250px; */
   margin: 10px;
-  /* padding: 5px; */
-  border-radius: 5px;
-  /* background-color: #187e91; */
+  border-radius: 10px;
+  background-color: lightgray;
   cursor: pointer;
-  /* @media screen and (min-device-width : 320px) and (max-device-width : 480px){
-    margin: 0 10px 10px 10px;
-  } */
+  width: 75%;
 `
 
 export const SectionInfos = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #187e91;
   &:hover {
     transition: background-color 0.5s;
-    background-color: green;
+    background-color: gray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     cursor: pointer;
-    /* border-radius: 50%; */
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
   }
 `
 
 export const Item = styled.p`
-  /* text-align: justify;
-  font-size: 18px;
-  color: lightgray;
-  margin: 10px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word; */
-` 
+  margin: 5px 0 0 8px;
+  /* overflow-wrap: break-word; */
+  /* word-wrap: break-word; */
+  word-break: break-word;
+`
+
+export const SendBy = styled.p`
+  margin: 5px 0 0 8px;
+  font-size: 12px;
+`
 
 export const SectionSum = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #187e91;
+  margin: 10px 0 5px 0;
 `
 
-export const ImageLike = styled.img`
+export const ImageLD = styled.img`
   width: 20px;
-  margin: 0 5px 0 0;
-  fill: orange;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
   &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
-`  
-
-export const ImageDislike = styled.img`
-  width: 20px;
-  margin: 0 5px 0 0;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
-  &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	}
 `
 
 export const ImageMessage = styled.img`
   width: 20px;
-  margin: 0 5px 0 0;
-  /* padding: 10px; */
-  /* background-color: lightgray; */
+  margin: 0 0 0 10px;
+`
+
+export const Left = styled.div`
+  display: flex;
+  /* border: solid 1px blue; */
+  margin: 0 0 0 8px;
+`
+
+export const LikesAndDislikes = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 10px 0 0;
+  padding: 2px 5px 2px 5px;
+  border: solid 1px gray;
+  border-radius: 15px;
+  background-color: lightgray;
+`
+
+export const Messages = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 10px;
+  padding: 2px;
+  border: solid 1px gray;
+  border-radius: 15px;
+  background-color: lightgray;
+`
+
+export const Right = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const ImageShare = styled.img`
+  width: 20px;
+  margin: 0 8px 0 0;
   &:hover {
-    transition: background-color 0.5s;
-    background-color: lightgray;
-    cursor: pointer;
-    border-radius: 50%;
-    /* margin: 0 10px 0 0; */
-    /* padding: 10px; */
-  }
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	}
+`
+
+export const ImageSocialMidia = styled.img`
+  width: 20px;
+`
+
+export const Value = styled.p`
+  margin: 0 10px;
+  font-size: 14px;
+`
+
+export const SM = styled.a`
+  margin: 0 2px;
+  &:hover {
+		cursor: pointer;
+    transform: scale(1.1);
+    transition: transform .2s;
+	}
 `

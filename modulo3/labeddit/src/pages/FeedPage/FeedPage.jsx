@@ -6,7 +6,9 @@ import Header from "./../../components/header/Header";
 import { BASE_URL } from "./../../constants/BASE_URL";
 import CardFeed from "./../../components/CardFeed/CardFeed";
 import useForm from "./../../hooks/useForm";
-import { onSubmitCreatePost } from "./../../services/requests";
+import { onSubmitCreatePost, useRequestData } from "./../../services/requests";
+import img_back from "./../../assets/img/back.png";
+import img_next from "./../../assets/img/next.png";
 
 export default function FeedPage() {
   useProtectedPage();
@@ -14,6 +16,10 @@ export default function FeedPage() {
   let pagina = Number(localStorage.getItem('pagina'));
 
   const [posts, setPosts] = useState([]);
+  const [search, setSearch] = useState('');
+
+  // const dados = useRequestData(`${BASE_URL}/posts?page=${pagina}&size=2`, token, []);
+  // console.log(dados);
 
   function getPosts() {
     axios
@@ -24,10 +30,7 @@ export default function FeedPage() {
             Authorization: token
           }
         })
-      .then(res => {
-        setPosts(res.data);
-        console.log(res.data);
-      })
+      .then(res => setPosts(res.data))
       .catch(error => {
         const errorCode = error.response.request.status;
         if (errorCode >= 400 && errorCode < 500) {
@@ -56,21 +59,29 @@ export default function FeedPage() {
     getPosts();
   }
 
-  const listaPosts = posts.map(post => {
-    return (
-      <CardFeed key={post.id}
-        id={post.id}
-        username={post.username}
-        title={post.title}
-        body={post.body}
-        voteSum={post.voteSum}
-        commentCount={post.commentCount}
-        userVote={post.userVote}
-        token={token}
-        getPosts={getPosts}
-      />
-    )
-  });
+  const onChangeSearch = (event) => {
+    setSearch(event.target.value)
+  }
+
+  const listaPosts = posts
+    .filter(post => {
+      return post.title.toLowerCase().includes(search.toLowerCase()) || post.body.toLowerCase().includes(search.toLowerCase())
+    })
+    .map(post => {
+      return (
+        <CardFeed key={post.id}
+          id={post.id}
+          username={post.username}
+          title={post.title}
+          body={post.body}
+          voteSum={post.voteSum}
+          commentCount={post.commentCount}
+          userVote={post.userVote}
+          token={token}
+          getPosts={getPosts}
+        />
+      )
+    });
 
   return (
     <s.General>
@@ -84,7 +95,7 @@ export default function FeedPage() {
               name={"title"}
               value={form.title}
               onChange={onChange}
-              placeholder="Título"
+              placeholder="Título do post"
               required
               type={"text"}
             />
@@ -93,27 +104,38 @@ export default function FeedPage() {
               name={"body"}
               value={form.body}
               onChange={onChange}
-              placeholder="Escreva seu post"
+              placeholder="Escreva seu post..."
               type={"text"}
             />
 
             <s.PostButton>Enviar</s.PostButton>
           </s.Form>
+
+          <s.SearchBar>
+            <s.SearchInput
+              value={search}
+              onChange={onChangeSearch}
+              placeholder="Buscar por..." 
+            />
+          </s.SearchBar>
         </s.Post>
+
 
         <s.Feed>
           {
             listaPosts.length !==0 ? 
               listaPosts 
             :
-              <p>Carregando</p>
+              <s.BoxLoading>
+                <s.Loading>Carregando posts...</s.Loading>
+              </s.BoxLoading>
           }
         </s.Feed>
 
         <s.Paginacao>
-          <button onClick={()=>changePage(-1)}>Anterior</button>
-          {pagina}
-          <button onClick={()=>changePage(1)}>Próxima</button>
+          <s.BackNext src={img_back} onClick={()=>changePage(-1)} alt="Voltar"></s.BackNext>
+          <s.Pgn>{pagina}</s.Pgn>
+          <s.BackNext src={img_next} onClick={()=>changePage(1)} alt="Avançar"></s.BackNext>
         </s.Paginacao>
       </s.Container>
     </s.General>

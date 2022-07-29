@@ -25,23 +25,23 @@ export default function CardFeed(props) {
       } else {
         onSubmitChangeCommentVote(props.id, props.token, props.getPostComments);
       }
-    } 
+    }
   }
 
   return (
     <s.Container>
       <s.SectionInfos>
-        <s.Item> Enviado por: {props.username} </s.Item>
-        <s.Item> <strong>{props.title}</strong> </s.Item>
+        <s.SendBy> Enviado por: {props.username} </s.SendBy>
         <s.Item> {props.body} </s.Item>
       </s.SectionInfos>
 
       <s.SectionSum>
-          <s.ImageLike src={props.userVote === 1 ? img_like2 : img_like} alt="Imagem like" onClick={()=>onClickLikeDislike(1)}/>
-          <s.Item>{props.voteSum === null ? 0 : props.voteSum}</s.Item>
-          <s.ImageDislike src={props.userVote === -1 ? img_dislike2 : img_dislike} alt="Imagem dislike" onClick={()=>onClickLikeDislike(-1)}/>
+        <s.LikesAndDislikes>
+          <s.ImageLD src={props.userVote === 1 ? img_like2 : img_like} alt="Imagem like" onClick={() => onClickLikeDislike(1)} />
+          <s.Value>{props.voteSum === null ? 0 : props.voteSum}</s.Value>
+          <s.ImageLD src={props.userVote === -1 ? img_dislike2 : img_dislike} alt="Imagem dislike" onClick={() => onClickLikeDislike(-1)} />
+        </s.LikesAndDislikes>
       </s.SectionSum>
-
     </s.Container>
   )
 }

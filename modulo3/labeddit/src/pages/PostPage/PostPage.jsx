@@ -22,6 +22,7 @@ export default function PostPage() {
   useProtectedPage();
   const params = useParams();
   const token = localStorage.getItem('token');
+  let pagina = Number(localStorage.getItem('pagina'));
   const [postComments, setPostComments] = useState([]);
   const [posts, setPosts] = useState([]);
 
@@ -58,17 +59,14 @@ export default function PostPage() {
 
   function getPosts() {
     axios
-      .get(`${BASE_URL}/posts`,
+      .get(`${BASE_URL}/posts?page=${pagina}&size=5`,
         {
           headers:
           {
             Authorization: token
           }
         })
-      .then(res => {
-        setPosts(res.data);
-        console.log(res.data);
-      })
+      .then(res => setPosts(res.data))
       .catch(error => {
         const errorCode = error.response.request.status;
         if (errorCode >= 400 && errorCode < 500) {
@@ -81,11 +79,9 @@ export default function PostPage() {
     getPosts();
   }, [])
 
-  const postDetail = posts.filter( post => {
+  const postDetail = posts.filter(post => {
     return post.id === params.id;
   })
-
-  console.log(postDetail)
 
   const { form, onChange, cleanFields } = useForm({
     body: "",
@@ -96,7 +92,6 @@ export default function PostPage() {
   }
 
   const onClickLikeDislike = (value) => {
-    console.log(postDetail.userVote)
     if (value === 1) {
       if (postDetail[0].userVote === 1) {
         onSubmitDeletePostVote(params.id, token, getPosts);
@@ -112,7 +107,7 @@ export default function PostPage() {
     }
   }
 
-  const listComments = postComments.map( comment => {
+  const listComments = postComments.map(comment => {
     return (
       <CardComment key={comment.id}
         id={comment.id}
@@ -131,40 +126,48 @@ export default function PostPage() {
   return (
     <s.General>
       <s.Container>
-        <Header a={'postPage'}/>
+        <Header a={'postPage'} />
 
-        <s.Post>
-          {
-            postDetail.length !== 0 ?
-            <>
-              <s.Item>Enviado por: {postDetail[0].username}</s.Item> 
-              <s.Item>{postDetail[0].body}</s.Item>
-              <s.SectionSum>
-                <s.ImageLike src={postDetail[0].userVote === 1 ? img_like2 : img_like} alt="Imagem like" onClick={()=>onClickLikeDislike(1)}/>
-                <s.Item>{postDetail[0].voteSum === null ? 0 : postDetail[0].voteSum}</s.Item>
-                <s.ImageDislike src={postDetail[0].userVote === -1 ? img_dislike2 : img_dislike} alt="Imagem dislike" onClick={()=>onClickLikeDislike(-1)}/>
-                <s.ImageMessage src={img_message} alt="Imagem dislike"/>
-                <s.Item>{postDetail[0].commentCount === null ? 0 : postDetail[0].commentCount}</s.Item>
-              </s.SectionSum>
-            </>
-            :
-            <p>carregando</p>
-          }
+        <s.Up>
+          <s.Up1>
+            {
+              postDetail.length !== 0 ?
+                <s.PostTop>
+                  <s.SendBy>Enviado por: {postDetail[0].username}</s.SendBy>
+                  <s.Item> <strong>{postDetail[0].title}</strong> </s.Item>
+                  <s.Item>{postDetail[0].body}</s.Item>
+                  <s.SectionSum>
+                    <s.LikesAndDislikes>
+                      <s.ImageLD src={postDetail[0].userVote === 1 ? img_like2 : img_like} alt="Imagem like" onClick={() => onClickLikeDislike(1)} />
+                      <s.Value>{postDetail[0].voteSum === null ? 0 : postDetail[0].voteSum}</s.Value>
+                      <s.ImageLD src={postDetail[0].userVote === -1 ? img_dislike2 : img_dislike} alt="Imagem dislike" onClick={() => onClickLikeDislike(-1)} />
+                    </s.LikesAndDislikes>
+                    <s.Messages>
+                      <s.ImageMessage src={img_message} alt="Imagem dislike" />
+                      <s.Value>{postDetail[0].commentCount === null ? 0 : postDetail[0].commentCount}</s.Value>
+                    </s.Messages>
+                  </s.SectionSum>
+                </s.PostTop>
+              :
+                <s.Aviso>
+                  <h3>Carregando dados do post...</h3>
+                </s.Aviso>
+            }
+          </s.Up1>
 
-        </s.Post>
-
-        <s.CommentText>
-          <s.Form onSubmit={comment}>
-            <s.PostText
-              name={"body"}
-              value={form.body}
-              onChange={onChange}
-              placeholder="Escreva seu post"
-              type={"text"}
-            />
-            <s.PostButton>Responder</s.PostButton>
-          </s.Form>
-        </s.CommentText>
+          <s.Up2>
+            <s.Form onSubmit={comment}>
+              <s.PostText
+                name={"body"}
+                value={form.body}
+                onChange={onChange}
+                placeholder="Escreva seu comentário..."
+                type={"text"}
+              />
+              <s.PostButton>Responder</s.PostButton>
+            </s.Form>
+          </s.Up2>
+        </s.Up>
 
         <s.Comments>
           {listComments}

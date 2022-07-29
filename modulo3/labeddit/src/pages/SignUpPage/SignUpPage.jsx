@@ -27,11 +27,12 @@ export default function SignUpPage() {
     <s.General>
       <s.Container>
 
-        <Header/>
+        <Header a={'signUpPage'}/>
 
         <s.Main>
           <s.Apresentation>
-            Olá, boas vindas ao LabEddit ;)
+            <s.Title>Olá, boas vindas ao</s.Title>
+            <s.Title>LabEddit ;)</s.Title>
           </s.Apresentation>
           <s.Form onSubmit={register}>
             <s.Input
@@ -61,9 +62,11 @@ export default function SignUpPage() {
               type={"password"}
             />
 
-            <s.Aviso>
-              Ao continuar, você concorda com o nosso Contrato de usuário e nossa Política de Privacidade
-            </s.Aviso>
+            <s.Alert>
+              <s.Text>
+                Ao continuar, você concorda com o nosso <s.BlueText>Contrato de usuário</s.BlueText> e nossa <s.BlueText>Política de Privacidade</s.BlueText>
+              </s.Text>
+            </s.Alert>
 
             <s.AceptTerms>
               <s.MetInput 
@@ -72,12 +75,10 @@ export default function SignUpPage() {
                 required
                 type='checkbox'
               />
-              <label>Eu concordo em receber emails sobre coisas legais no Labeddit</label>
+              <s.Text>Eu concordo em receber emails sobre coisas legais no Labeddit</s.Text>
             </s.AceptTerms>
 
-            <s.Buttons>
-              <s.ButtonLogin>Cadastrar</s.ButtonLogin>
-            </s.Buttons>
+            <s.ButtonSignUp>Cadastrar</s.ButtonSignUp>
           </s.Form>
         </s.Main>
 

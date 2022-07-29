@@ -1,6 +1,37 @@
+// import {useState, useEffect} from 'react';
 import axios from "axios";
 import { BASE_URL } from "./../constants/BASE_URL";
 import { goToFeedPage } from "./../routes/coordinator.js";
+
+// export const useRequestData = (url, token, estadoInicial) => {
+//   const [posts, setPosts] = useState(estadoInicial)
+//   function getPosts() {
+//     axios
+//       .get(url,
+//         {
+//           headers:
+//           {
+//             Authorization: token
+//           }
+//         })
+//       .then(res => {
+//         setPosts(res.data);
+//         console.log(res.data);
+//       })
+//       .catch(error => {
+//         console.log(error)
+//         const errorCode = error.response.request.status;
+//         if (errorCode >= 400 && errorCode < 500) {
+//           alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+//         } else if (errorCode >= 500 && errorCode < 600)
+//           alert("Ocorreu um erro no servidor, tente novamente mais tarde");
+//       })
+//   }
+//   useEffect(() => {
+//     getPosts();
+//   }, [url])
+//   return [posts, setPosts]
+// }
 
 export const onSubmitLogin = (body, cleanFields, navigate) => {
   axios
