@@ -24,8 +24,10 @@ export default function PostPage() {
   let page = Number(localStorage.getItem('page'));
   const [postComments, setPostComments] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   function getPostComments() {
+    setLoading(true);
     axios
       .get(`${BASE_URL}/posts/${params.id}/comments`,
         {
@@ -35,7 +37,8 @@ export default function PostPage() {
           }
         })
       .then(res => {
-        setPostComments(res.data)
+        setPostComments(res.data);
+        setLoading(false);
       })
       .catch(error => {
         const errorCode = error.response.request.status;
@@ -161,9 +164,16 @@ export default function PostPage() {
           </s.Up2>
         </s.Up>
 
-        <s.Comments>
-          {listComments}
-        </s.Comments>
+        {
+          loading === false ? 
+            <s.Comments>
+              {listComments}
+            </s.Comments>
+          :
+            <s.Loading>
+              <h3>Carregando comentários...</h3>
+            </s.Loading>
+        }
       </s.Container>
     </s.General>
   )

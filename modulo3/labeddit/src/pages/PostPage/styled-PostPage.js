@@ -109,6 +109,14 @@ export const Comments = styled.div`
   overflow: auto;
 `
 
+export const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`
+
 export const Item = styled.p`
   margin: 5px 8px 0 8px;
   word-break: break-word;
