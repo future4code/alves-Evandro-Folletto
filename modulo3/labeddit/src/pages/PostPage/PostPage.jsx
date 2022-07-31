@@ -62,7 +62,7 @@ export default function PostPage() {
       .catch(error => {
         const errorCode = error.response.request.status;
         if (errorCode >= 400 && errorCode < 500) {
-          alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+          alert("Ocorreu algum erro ao carregar os posts na página de posts");
         } else if (errorCode >= 500 && errorCode < 600)
           alert("Ocorreu um erro no servidor, tente novamente mais tarde");
       })

@@ -16,10 +16,8 @@ import { goToFeedPage } from "./../routes/coordinator.js";
 //         })
 //       .then(res => {
 //         setPosts(res.data);
-//         console.log(res.data);
 //       })
 //       .catch(error => {
-//         console.log(error)
 //         const errorCode = error.response.request.status;
 //         if (errorCode >= 400 && errorCode < 500) {
 //           alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
@@ -30,7 +28,7 @@ import { goToFeedPage } from "./../routes/coordinator.js";
 //   useEffect(() => {
 //     getPosts();
 //   }, [url])
-//   return [posts, setPosts]
+//   return [posts]
 // }
 
 export const onSubmitLogin = (body, cleanFields, navigate) => {
@@ -45,8 +43,9 @@ export const onSubmitLogin = (body, cleanFields, navigate) => {
   })
   .catch(error => {
     const errorCode = error.response.request.status;
+    console.log(error.response.request.status);
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro de preenchimento no formulário de login, revise suas informações");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -67,7 +66,7 @@ export const onSubmitSignUp = (body, cleanFields, navigate, setRightButtonText) 
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro de preenchimento no formulário de criar usuário, revise suas informações");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -86,12 +85,12 @@ export const onSubmitCreatePost = (body, token, cleanFields, getPosts) => {
   .then( res => {
     alert("Post enviado com sucesso!");
     cleanFields();
-    getPosts(token)
+    // getPosts(token)
   })
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro de preenchimento no formulário de criar post, revise suas informações");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -116,7 +115,7 @@ export const onSubmitCreateComment = (body, id, token, cleanFields, getPostComme
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro de preenchimento no formulário de criar comentário, revise suas informações");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -138,7 +137,7 @@ export const onSubmitCreatePostVote = (id, token, getPosts) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar dar like na página de posts");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -160,7 +159,7 @@ export const onSubmitChangePostVote = (id, token, getPosts) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar dar dislike na página de posts");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -184,7 +183,7 @@ export const onSubmitCreateCommentVote = (id, token, getPostComments) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar like na página de comentários");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -206,7 +205,7 @@ export const onSubmitChangeCommentVote = (id, token, getPostComments) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar dar like na página de comentários");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -225,7 +224,7 @@ export const onSubmitDeletePostVote = (id, token, getPosts) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar remover like/dislike na página de posts");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })
@@ -244,7 +243,7 @@ export const onSubmitDeleteCommentVote = (id, token, getPostComments) => {
   .catch(error => {
     const errorCode = error.response.request.status;
     if(errorCode >= 400 && errorCode < 500) {
-      alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
+      alert("Ocorreu algum erro ao tentar remover like/dislike na página de comentários");
     } else if (errorCode >= 500 && errorCode < 600)
       alert("Ocorreu um erro no servidor, tente novamente mais tarde");
   })

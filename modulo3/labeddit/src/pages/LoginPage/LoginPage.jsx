@@ -63,7 +63,7 @@ export default function LoginPage() {
               type={"password"}
             />
             <s.Buttons>
-              <s.ButtonLogin>Continuar</s.ButtonLogin>
+              <s.ButtonLogin type={'submit'}>Continuar</s.ButtonLogin>
               <s.ButtonSignUp onClick={()=>goToSignUpPage(navigate)}>Crie uma conta!</s.ButtonSignUp>
             </s.Buttons>
           </s.Form>

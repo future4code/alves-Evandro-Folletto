@@ -23,15 +23,19 @@ export default function CardFeed(props) {
   const onClickLikeDislike = (value) => {
     if (value === 1) {
       if (props.userVote === 1) {
-        onSubmitDeletePostVote(props.id, props.token, props.getPosts)
+        // onSubmitDeletePostVote(props.id, props.token, props.getPosts);
+        onSubmitDeletePostVote(props.id, props.token);
       } else {
-        onSubmitCreatePostVote(props.id, props.token, props.getPosts);
+        // onSubmitCreatePostVote(props.id, props.token, props.getPosts);
+        onSubmitCreatePostVote(props.id, props.token);
       }
     } else {
       if (props.userVote === -1) {
-        onSubmitDeletePostVote(props.id, props.token, props.getPosts)
+        // onSubmitDeletePostVote(props.id, props.token, props.getPosts);
+        onSubmitDeletePostVote(props.id, props.token);
       } else {
-        onSubmitChangePostVote(props.id, props.token, props.getPosts);
+        // onSubmitChangePostVote(props.id, props.token, props.getPosts);
+        onSubmitChangePostVote(props.id, props.token);
       }      
     }
   }

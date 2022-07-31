@@ -54,12 +54,14 @@ export default function SignUpPage() {
             />
 
             <s.Input
-              name={"password"}
+              type={"password"}
               value={form.password}
               onChange={onChange}
               placeholder="Senha"
+              name={"password"}
               required
-              type={"password"}
+              pattern={"^.{8,}"}
+              title={"A senha deve ter no mínimo 8 e no máximo 30 caracters"}
             />
 
             <s.Alert>
@@ -78,7 +80,7 @@ export default function SignUpPage() {
               <s.Text>Eu concordo em receber emails sobre coisas legais no Labeddit</s.Text>
             </s.AceptTerms>
 
-            <s.ButtonSignUp>Cadastrar</s.ButtonSignUp>
+            <s.ButtonSignUp type={'submit'}>Cadastrar</s.ButtonSignUp>
           </s.Form>
         </s.Main>
 

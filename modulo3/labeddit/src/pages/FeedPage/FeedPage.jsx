@@ -22,22 +22,24 @@ export default function FeedPage() {
   // console.log(dados);
 
   function getPosts() {
-    axios
-      .get(`${BASE_URL}/posts?page=${page}&size=5`,
-        {
-          headers:
+    if(token !== null) {
+      axios
+        .get(`${BASE_URL}/posts?page=${page}&size=5`,
           {
-            Authorization: token
-          }
+            headers:
+            {
+              Authorization: token
+            }
+          })
+        .then(res => setPosts(res.data))
+        .catch(error => {
+          const errorCode = error.response.request.status;
+          if (errorCode >= 400 && errorCode < 500) {
+            alert("Ocorreu algum erro ao tentar carregar os posts na página feed");
+          } else if (errorCode >= 500 && errorCode < 600)
+            alert("Ocorreu um erro no servidor, tente novamente mais tarde");
         })
-      .then(res => setPosts(res.data))
-      .catch(error => {
-        const errorCode = error.response.request.status;
-        if (errorCode >= 400 && errorCode < 500) {
-          alert("Ocorreu algum erro de preenchimento no formulário, revise suas informações");
-        } else if (errorCode >= 500 && errorCode < 600)
-          alert("Ocorreu um erro no servidor, tente novamente mais tarde");
-      })
+    }
   }
   useEffect(() => {
     getPosts();
