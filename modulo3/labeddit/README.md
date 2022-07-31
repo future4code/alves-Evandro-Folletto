@@ -1,5 +1,5 @@
 # `Projeto`
-Projeto LabeX
+Projeto LabEddit
 
 # `Link`
 https://folletto-labeddit.surge.sh
