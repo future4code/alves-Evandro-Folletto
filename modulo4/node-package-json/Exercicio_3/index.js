@@ -1,21 +1,18 @@
+// carrega o pacote fs
 const fs = require('fs');
 
-const dados = fs.readFileSync(__dirname + "/save.json", err => {
-  if (err) {
-    return console.error(err)
-  }
-  // feito
-});
+// abre o arquivo "save.json" e salva em uma variável
+let listaTarefas = JSON.parse(fs.readFileSync(__dirname + "/save.json"));
 
-console.log('o valor lido é:',dados)
+// recebe o valor do usuário
+const novaTarefa = process.argv[2];
 
-// if (dados === undefined) {
-//   let listaTarefas = [];
-// } else {
-//   let listaTarefas = JSON.parse(dados);
-// }
+// armazena a tarefa que o usuário digitou e coloca dentro do array carregado
+if(novaTarefa){
+  listaTarefas.push(novaTarefa);
+} else {
+  console.log('É necessário digitar alguma tarefa');
+}
 
-// const novaTarefa = process.argv[2];
-// listaTarefas.push(novaTarefa)
-
-// fs.writeFileSync(__dirname + '/save.json', listaTarefas);
+// salva novamente o arquivo
+fs.writeFileSync(__dirname + '/save.json', JSON.stringify(listaTarefas));
