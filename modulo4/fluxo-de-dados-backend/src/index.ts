@@ -42,24 +42,41 @@ app.put("/create", (req: Request, res: Response) => {
   }
 })
 
-// Exercício 4
+// Exercício 4 / 10
 app.get("/products", (req: Request, res: Response) => {
-  res.send(products);
+  const search = req.query.search as string;
+
+  if(search === undefined){
+    res.send(products);
+  } else {
+    const newListProducts = products.filter( (product:any) => {
+      return product.name.toLowerCase().includes(search.toLowerCase());
+    })
+    res.send(newListProducts);
+  }
 })
 
-// Exercício 5 / 8
+// Exercício 5 / 8 / 11
 app.put("/editprice", (req: Request, res: Response) => {
   try {
-    const { id, price } = req.body;
+    const { id, name, price } = req.body;
 
-    if(typeof(price) !== 'number'){
+    if(!price && !name){
+      res.statusCode = 401;
+      throw new Error('Nenhum dos dois valores para edição foi repassado!');
+    }
+    if(price && typeof(price) !== 'number'){
       res.statusCode = 401;
       throw new Error('A variável price precisa ser um número!');
     }
-    if(typeof(price) === 'number' && price <= 0){
+    if(price && typeof(price) === 'number' && price <= 0){
       res.statusCode = 401;
       throw new Error('A variável price precisa ser um número maior que zero!');
     }
+    if(name && typeof(name) !== 'string'){
+      res.statusCode = 401;
+      throw new Error('A variável name precisa ser uma string!');
+    }    
     if(typeof(id) !== 'number'){
       res.statusCode = 401;
       throw new Error('A variável id precisa ser um número!');
@@ -74,7 +91,14 @@ app.put("/editprice", (req: Request, res: Response) => {
 
     products.forEach( (product:any) => {
       if(product.id === id) {
-        product.price = price;
+        if(price && name) {
+          product.name = name;
+          product.price = price;
+        } else if (price) {
+          product.price = price;
+        } else if (name) {
+          product.name = name;
+        }
       }
     })
 
