@@ -121,7 +121,7 @@ app.get("/user", (req: Request, res: Response) => {
 // Criar um enum para ter apenas categorias pré-definidas para o type
 
 // Exercício 4
-app.put("/user", (req: Request, res: Response) => {
+app.post("/user", (req: Request, res: Response) => {
   const { id, name, email, type, age } = req.body;
 
   try {
@@ -166,6 +166,36 @@ app.put("/user", (req: Request, res: Response) => {
 // Nada. A criação funcionou normalmente
 // 4.b)
 // Não. Pois o POST é utilizado para criar novo usuário e o PUT seria para alguma característica específica ou editar algo.
+
+// Exercício 5
+app.put("/user", (req: Request, res: Response) => {
+  users[users.length-1].name = users[users.length-1].name.split('-')[0] + '-ALTERADO'
+  res.send(users);
+})
+
+// Exercício 6
+app.patch("/user", (req: Request, res: Response) => {
+  users[users.length-1].name = users[users.length-1].name.split('-')[0] + '-REALTERADO'
+  res.send(users);
+})
+
+// Exercício 7
+app.delete("/user/:id", (req: Request, res: Response) => {
+  try {
+    const userID = Number(req.params.id);
+    const idExist = users.find( user => user.id === userID )
+    if(!idExist){
+      res.statusCode = 401;
+      throw new Error('Não encontramos cadastrado para o ID digitado!');
+    }
+    users = users.filter( user => {
+      return user.id !== userID
+    })
+    res.send(users);
+  } catch (error:any) {
+    res.status(res.statusCode).send({ message: error.message })
+  }
+})
 
 app.listen(3003, () => {
   console.log('Servidor rodadando na porta 3003...')
