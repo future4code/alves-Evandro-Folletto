@@ -123,7 +123,8 @@ app.put("/deposit", (req: Request, res: Response) => {
         account.balance += value;
         const newTransaction: any = {
           value,
-          date: new Date(),
+          // date: new Date(),
+          date: (new Date()).toLocaleDateString(),
           description: "Depósito de dinheiro",
         }
         account.extract.push(newTransaction);
@@ -136,21 +137,20 @@ app.put("/deposit", (req: Request, res: Response) => {
 })
 
 function stringDateInDate(vencimento: string) {
-  const vencArray = vencimento.split('/');
-
-  const aux = vencArray[0];
-  vencArray[0] = vencArray[2];
-  vencArray[2] = aux;
-  const dataString = vencArray.join("-");
+  let vencArray = vencimento.split('/');
+  const aux = [vencArray[2], vencArray[1], vencArray[0]];
+  vencArray = aux;
+  const dataString = vencArray.join("/");
+  
   return new Date(dataString)
 }
 
 // Pagar conta
 app.post("/pay", (req: Request, res: Response) => {
   try {
-    let { cpf, description, value, vencimento } = req.body;
-    vencimento = vencimento ? stringDateInDate(vencimento) : new Date();
-    if (vencimento < new Date()) {
+    let { cpf, description, value, date } = req.body;
+    date = date ? stringDateInDate(date) : new Date();
+    if (date < new Date()) {
       res.statusCode = 401;
       throw new Error('A data não pode ser inferior a data atual!');
     }
@@ -171,7 +171,7 @@ app.post("/pay", (req: Request, res: Response) => {
         const newTransaction: any = {
           description,
           value,
-          vencimento,
+          date: date.toLocaleDateString(),
           jaDescontado: false,
         }
         account.extract.push(newTransaction);
@@ -188,11 +188,16 @@ app.put("/balance", (req: Request, res: Response) => {
   accounts.forEach((account: any) => {
     let sumArray = 0;
     for(let i=0 ; i<account.extract.length ; i++){
-      if(account.extract[i].description === "Transferência realizada") {
+      if(account.extract[i].description === "Transferência realizada" && !account.extract[i].jaDescontado) {
         sumArray += account.extract[i].value;
-      } else if(account.extract[i].description === "Transferência recebida") {
+        account.extract[i].jaDescontado = true;
+      } else if(account.extract[i].description === "Transferência recebida" && !account.extract[i].jaDescontado) {
         sumArray -= account.extract[i].value;
-      } else if(account.extract[i].description !== "Depósito de dinheiro" && stringDateInDate(account.extract[i].date) < new Date() && !account.extract[i].jaDescontado){
+        account.extract[i].jaDescontado = true;
+      // } else if(account.extract[i].description !== "Depósito de dinheiro" && stringDateInDate(account.extract[i].date) < new Date() && !account.extract[i].jaDescontado){
+      } else if(account.extract[i].description !== "Depósito de dinheiro" && !account.extract[i].jaDescontado){
+        console.log(account.extract[i].date)
+        // stringDateInDate(account.extract[i].date)
         sumArray += account.extract[i].value;
         account.extract[i].jaDescontado = true;
       }
@@ -237,7 +242,8 @@ app.post("/transfer", (req: Request, res: Response) => {
         const newTransaction: any = {
           description: "Transferência realizada",
           value,
-          date: new Date(),
+          // date: new Date(),
+          date: (new Date()).toLocaleDateString(),
           jaDescontado: false,
         }
         account.extract.push(newTransaction);
@@ -248,7 +254,8 @@ app.post("/transfer", (req: Request, res: Response) => {
         const newTransaction: any = {
           description: "Transferência recebida",
           value,
-          date: new Date(),
+          // date: new Date(),
+          date: (new Date()).toLocaleDateString(),
           jaDescontado: false,
         }
         account.extract.push(newTransaction);
@@ -259,6 +266,19 @@ app.post("/transfer", (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(res.statusCode).send({ message: error.message });
   }
+})
+
+app.get("/teste", (req: Request, res: Response) => {
+  // const data = "30/05/2022";
+  // const data2 = data.toLocaleDateString()
+
+  // const data = (new Date()).toLocaleDateString()
+  // res.send(`data: ${data}, tipo: ${typeof(data)}`);
+
+  // const data = new Date();
+  // const data2 = data.toLocaleDateString()
+  // res.send(`data: ${data}, tipo: ${typeof(data)} | data2: ${data2}, tipo: ${typeof(data2)}`);
+
 })
 
 app.listen(3003, () => {

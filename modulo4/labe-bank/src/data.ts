@@ -9,11 +9,13 @@ export let accounts: any = [
         value: 10,
         date: '10/01/2022',
         description: 'lanche',
+        jaDescontado: false,
       },
       {
         value: 20,
         date: '10/02/2022',
         description: 'almoço',
+        jaDescontado: false,
       }
     ]
   },
@@ -27,6 +29,7 @@ export let accounts: any = [
         value: 30,
         date: '10/05/2022',
         description: 'janta',
+        jaDescontado: false,
       }
     ]
   },
