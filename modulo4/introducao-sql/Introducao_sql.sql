@@ -1,33 +1,23 @@
-# `Exercício 1`
-## a)
-id VARCHAR(255) PRIMARY KEY,
-  -- VARCHAR(255): no máximo 255 caracteres.
-  -- PRIMARY KEY: chave primária
-name VARCHAR (255) NOT NULL,
-  -- VARCHAR(255): no máximo 255 caracteres.
-  -- NOT NULL: não pode ser nulo
-salary FLOAT NOT NULL,
-  -- FLOAT: número não inteiro, que pode ter valores decimais
-  -- NOT NULL: não pode ser nulo
-birth_date DATE NOT NULL,
-  -- DATE: variável do tipo data
-  -- NOT NULL: não pode ser nulo
-gender VARCHAR(6) NOT NULL
-  -- VARCHAR(6): no máximo 6 caracteres.
-  -- NOT NULL: não pode ser nulo
+-- EXERCÍCIO 1
+CREATE TABLE Actor (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR (255) NOT NULL,
+    salary FLOAT NOT NULL,
+    birth_date DATE NOT NULL,
+    gender VARCHAR(6) NOT NULL
+);
 
-## b)
-	SHOW DATABASES;
-		-- mostra o database atual
-	SHOW TABLES;
-		-- mostra todas as tabelas 
+-- EXERCÍCIO 2
+INSERT INTO Actor (id, name, salary, birth_date, gender)
+VALUES(
+  "001", 
+  "Tony Ramos",
+  400000,
+  "1948-08-25", 
+  "male"
+);
 
-## c)
-	DESCRIBE Actor
-		-- mostra todas as colunas, tidos das variáveis das colunas, a opção de ser nulo ou não, chave primária.
-
-# `Exercício 2`
-## a)
+-- a)
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "002", 
@@ -37,20 +27,17 @@ VALUES(
   "female"
 );
 
-## b)
+-- b)
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "002", 
-  "Juliana Paes",
-  1000000,
-  "1970-02-21", 
+  "Gloria Pires",
+  1200000,
+  "1963-08-23", 
   "female"
 );
 
-Error Code: 1062. Duplicate entry '002' for key 'PRIMARY'. </br>
-Este erro significa que foi tentado adicionar uma key que já está cadastrada.
-
-## c)
+-- c)
 INSERT INTO Actor (id, name, salary)
 VALUES(
   "003", 
@@ -60,9 +47,6 @@ VALUES(
   "female"
 );
 
-Error Code: 1136. Column count doesn't match value count at row 1. </br>
-Foram repassadas três colunas (id, name, salary) e preenchidas 5 colunas.
-
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "003", 
@@ -72,7 +56,7 @@ VALUES(
   "female"
 );
 
-## d)
+-- d)
 INSERT INTO Actor (id, salary, birth_date, gender)
 VALUES(
   "004",
@@ -80,9 +64,6 @@ VALUES(
   "1949-04-18", 
   "male"
 );
-
-Error Code: 1364. Field 'name' doesn't have a default value. </br>
-A variável "name" está marcada como não nula e não foi atribuído valor para está.
 
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
@@ -93,7 +74,7 @@ VALUES(
   "male"
 );
 
-## e)
+-- e)
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "005", 
@@ -102,9 +83,6 @@ VALUES(
   1979-03-26, 
   "female"
 );
-
-Error Code: 1292. Incorrect date value: '1950' for column 'birth_date' at row 1. </br>
-O formato de entrada do dado data está errado.
 
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
@@ -115,7 +93,7 @@ VALUES(
   "female"
 );
 
-## f)
+-- f)
 INSERT INTO Actor (id, name, salary, birth_date, gender)
 VALUES(
   "006", 
@@ -134,37 +112,39 @@ VALUES(
   "female"
 );
 
-# `Exercício 3`
-a)
+-- EXERCÍCIO 3
+SELECT * FROM Actor;
+SELECT id, salary from Actor;
+SELECT id, name from Actor WHERE gender = "male";
+-- a)
 	SELECT * from Actor WHERE gender = "female";	
-b)
+-- b)
 	SELECT salary from Actor WHERE name = "Tony Ramos";
-c)
+-- c)
 	SELECT * from Actor WHERE gender = "invalid";
-  A resposta é "null" em todas as colunas, pois não foi encontrado o valor "invalid" para nenhuma posição da variável "gender".
-d)
+-- d)
 	SELECT id, name, salary from Actor WHERE salary <= 500000;
-e)
-	SELECT id, nome from Actor WHERE id = "002"; </br>
-  Error Code: 1054. Unknown column 'nome' in 'field list' </br>
-  Este erro significa que não encontrou uma coluna chamada 'nome'
-  SELECT id, name from Actor WHERE id = "002";
+-- e)
+	SELECT id, nome from Actor WHERE id = "002";
+    SELECT id, name from Actor WHERE id = "002";
+    
+-- EXERCÍCIO 4
+SELECT * FROM Actor 
+WHERE (name LIKE "%A" OR name LIKE "%J") AND salary > 300000;
+-- a) 
+	-- a query seleciona atores com nome começando com letras "A" ou "J" cujos salários sejam maiores que 300000.
+-- b)
+	SELECT * FROM Actor 
+    WHERE (name NOT LIKE "A%" AND salary > 350000);
+-- c)
+	SELECT * FROM Actor 
+    WHERE (name LIKE "%G%" OR name LIKE "%g%");
+-- d)
+	SELECT * FROM Actor 
+    WHERE ( (name LIKE "%A%" OR name LIKE "%a%" OR name LIKE "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000);
 
-# `Exercício 4`
-a)
-  a query seleciona atores com nome começando com letras "A" ou "J" cujos salários sejam maiores que 300000.
-b)
-	SELECT * FROM Actor 
-  WHERE (name NOT LIKE "A%" AND salary > 350000);
-c)
-	SELECT * FROM Actor 
-  WHERE (name LIKE "%G%" OR name LIKE "%g%");
-d)
-	SELECT * FROM Actor 
-  WHERE ( (name LIKE "%A%" OR name LIKE "%a%" OR name LIKE "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000);
-
-# `Exercício 5`
-a)
+-- EXERCÍCIO 5
+-- a)
 CREATE TABLE Filmes (
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR (255) NOT NULL UNIQUE,
@@ -173,7 +153,7 @@ CREATE TABLE Filmes (
     rating INT NOT NULL
 );
 
-b)
+-- b)
 INSERT INTO Filmes (id, title, synopsis, relese_Date, rating)
 VALUES(
   "001", 
@@ -183,7 +163,7 @@ VALUES(
   7
 );
 
-c)
+-- c)
 INSERT INTO Filmes (id, title, synopsis, relese_Date, rating)
 VALUES(
   "002", 
@@ -193,7 +173,7 @@ VALUES(
   10
 );
 
-d)
+-- d)
 INSERT INTO Filmes (id, title, synopsis, relese_Date, rating)
 VALUES(
   "003", 
@@ -203,7 +183,7 @@ VALUES(
   8
 );
 
-e)
+-- e)
 INSERT INTO Filmes (id, title, synopsis, relese_Date, rating) 
 VALUES(
 	"004",
@@ -213,22 +193,23 @@ VALUES(
     9
 );
 
-# `Exercício 6`
-a)
+-- EXERCÍCIO 6
+-- a)
 	SELECT id, title, rating FROM Filmes WHERE id="001";
-b)
+-- b)
 	SELECT * FROM Filmes WHERE title="Deus é Brasileiro";
-c)
+-- c)
 	SELECT id, title, synopsis, rating FROM Filmes WHERE rating >= 7;
 
-# `Exercício 7`
-a)
+
+-- EXERCÍCIO 7
+-- a)
 	SELECT * FROM Filmes WHERE title LIKE "%vida%";
-b)
+-- b)
 	SELECT * FROM Filmes 
-  WHERE (title LIKE "%vida%" OR synopsis LIKE "%vida%");
-c)
+    WHERE (title LIKE "%vida%" OR synopsis LIKE "%vida%");
+-- c)
 	SELECT * FROM Filmes WHERE relese_Date < "2022-08-22";
-d)
+-- d)
 	SELECT * FROM Filmes 
-  WHERE ( (relese_Date < "2022-08-22") AND (title LIKE "%vida%" OR synopsis LIKE "%vida%") AND (rating >= 7) );
+    WHERE ( (relese_Date < "2022-08-22") AND (title LIKE "%vida%" OR synopsis LIKE "%vida%") AND (rating >= 7) );
