@@ -137,5 +137,27 @@ GROUP BY gender;
 -- f)
 	SELECT MIN(rating)
     FROM Filmes;
+    
+-- EXERCÍCIO 8
+-- a)
+	SELECT *
+    FROM Filmes
+    ORDER BY title ASC;
+-- b)
+	SELECT *
+    FROM Filmes
+    ORDER BY title DESC
+    LIMIT 5;
+-- c)
+	SELECT *
+    FROM Filmes
+    WHERE playing_limit_date > CURDATE()
+    ORDER BY relese_date DESC
+    LIMIT 3;
+-- d)
+	SELECT *
+    FROM Filmes
+    ORDER BY rating DESC
+    LIMIT 3;
 
 SELECT * FROM Filmes;
