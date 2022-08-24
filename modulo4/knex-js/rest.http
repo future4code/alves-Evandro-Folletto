@@ -1,0 +1,11 @@
+GET http://localhost:3003/users/001
+Content-Type: application/json
+
+###
+// b)
+GET http://localhost:3003/users
+Content-Type: application/json
+
+{
+  "name": "Gloria Pires"
+}
