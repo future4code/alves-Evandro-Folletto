@@ -2,10 +2,76 @@ GET http://localhost:3003/users/001
 Content-Type: application/json
 
 ###
-// b)
-GET http://localhost:3003/users
+// Exercício 1 - b)
+GET http://localhost:3003/actor
 Content-Type: application/json
 
 {
   "name": "Gloria Pires"
 }
+
+###
+// Exercício 1 - c)
+GET http://localhost:3003/gender
+Content-Type: application/json
+
+{
+  "gender": "male"
+}
+
+###
+POST http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "011",
+  "name": "Samuel",
+  "salary": 56000,
+  "dateOfBirth": "1980-05-09",
+  "gender": "male"
+}
+
+###
+// Exercício 2 - b)
+DELETE http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "010"
+}
+
+###
+// Exercício 2 - c)
+GET http://localhost:3003/avgsalary
+Content-Type: application/json
+
+{
+  "gender": "male"
+}
+
+###
+// Exercício 3 - a)
+GET http://localhost:3003/actor/004
+
+###
+// Exercício 3 - b)
+GET http://localhost:3003/actor?gender=male
+# Content-Type: application/json
+
+// ------------------------------------------
+// EXERCÍCIO 3
+// ------------------------------------------
+
+###
+// letra a)
+PUT http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "001",
+  "salary": 500000
+}
+
+###
+// letra b)
+DELETE http://localhost:3003/actor/009
