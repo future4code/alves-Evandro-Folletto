@@ -151,3 +151,83 @@ app.delete("/actor/:id", async (req: Request, res: Response) => {
     });
   }
 });
+
+// -------------------------------------------------------------------------------
+// EXERCÍCIO 5
+// -------------------------------------------------------------------------------
+const createMovie = async (
+  id: string,
+  title: string,
+  synopsis: string,
+  releaseDate: Date,
+  rating: number
+) => {
+  await connection("Filmes")
+    .insert({
+      id: id,
+      title: title,
+      synopsis: synopsis,
+      relese_Date: releaseDate,
+      rating: rating,
+    })
+    .into("Filmes");
+};
+
+app.post("/movie", async (req: Request, res: Response) => {
+  try {
+    const {id, title, synopsis, relese_Date, rating} = req.body;
+    await createMovie(id, title, synopsis, new Date(relese_Date), rating)
+    res.status(200).send("Filme adicionado com sucesso!");
+  } catch (err:any) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
+// -------------------------------------------------------------------------------
+// EXERCÍCIO 6
+// -------------------------------------------------------------------------------
+const getAll = async (): Promise<any> => {
+  const dados = await connection("Filmes")
+    .select('*')
+    .limit(15);
+
+    return dados;
+};
+
+app.get("/movie/all", async (req: Request, res: Response) => {
+  try {
+    const filmes = await getAll()
+    res.status(200).send(filmes);
+  } catch (err:any) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
+// -------------------------------------------------------------------------------
+// EXERCÍCIO 7
+// -------------------------------------------------------------------------------
+const searchMovie = async (movie: string): Promise<any> => {
+  const filmes = await connection("Filmes")
+    .select('*')
+    // .where('title', 'like', `%${movie}%`)
+    .where('title', 'like', `%${movie}%`)
+    // .where('synopsis', 'like', `%${movie}%`)
+
+    return filmes;
+};
+
+app.get("/movie/search", async (req: Request, res: Response) => {
+  try {
+    const search = req.query.query as string;
+    const movies = await searchMovie(search);
+    res.status(200).send(movies);
+  } catch (err:any) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
