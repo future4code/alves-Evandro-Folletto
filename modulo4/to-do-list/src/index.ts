@@ -1,10 +1,11 @@
 import app from './app';
-import createUser from './endpoint/createUser';
-import getUser from './endpoint/getUser';
-import editUser from './endpoint/editUser';
-import createTask from './endpoint/createTask';
-import getTask from './endpoint/getTask';
-import getAllUsers from './endpoint/getAllUsers';
+import createUser from './endpoint/1-createUser';
+import getUserById from './endpoint/2-getUserById';
+import editUser from './endpoint/3-editUser';
+import createTask from './endpoint/4-createTask';
+import getTaskById from './endpoint/5-getTaskById';
+import getAllUsers from './endpoint/6-getAllUsers';
+import getAllTasksByUser from './endpoint/7-getAllTasksByUser';
 
 // 1 - criar usuário
 app.post('/user', createUser);
@@ -13,7 +14,7 @@ app.post('/user', createUser);
 app.get('/user/all', getAllUsers);
 
 // 2 - obter usuário por id
-app.get('/user/:id', getUser);
+app.get('/user/:id', getUserById);
 
 // 3 - editar usuário
 app.put('/user/edit/:id', editUser);
@@ -22,5 +23,7 @@ app.put('/user/edit/:id', editUser);
 app.post('/task', createTask);
 
 // 5 - obter tarefa pelo id
-app.get('/task/:id', getTask);
+app.get('/task/:id', getTaskById);
 
+// 7 - obter todas as tarefas criadas por um usuário
+app.get('/task', getAllTasksByUser);

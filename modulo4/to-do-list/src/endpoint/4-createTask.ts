@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import insertTask from "../data/insertTask";
+import insertTask from "../data/4-insertTask";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {

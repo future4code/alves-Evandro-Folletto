@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import selectTaskById from "../data/selectTaskById";
+import updateUser from "../data/3-updateUser";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
-    const id = req.params.id;
-    const task = await selectTaskById(id);
-    if(!task[0].length){
-      res.status(200).send(task[0]);
-    } else {
+    const id = Number(req.params.id);
+    const {name, nickname} = req.body;
+    if (!name || !nickname) {
       res.statusCode = 400;
-      throw new Error('Tarefa não encontrada!');
+      throw new Error('Existem dados faltantes!');
     }
+    updateUser(id, name, nickname);
+    res.status(200).send("Dados atualizados com sucesso!");
   } catch (error:any) {
     if (res.statusCode === 200) {
       res.status(500).send(error.message)

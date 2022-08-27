@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
-import insertUser from "../data/insertUser";
+import selectTaskById from "../data/5-selectTaskById";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
-    const {name, nickname, email} = req.body;
-    if (!name || !nickname || !email) {
+    const id = req.params.id;
+    const task = await selectTaskById(id);
+    if(!task[0].length){
+      res.status(200).send(task[0]);
+    } else {
       res.statusCode = 400;
-      throw new Error('Existem dados faltantes!');
+      throw new Error('Tarefa não encontrada!');
     }
-    insertUser(name, nickname, email);
-    res.status(200).send("Usuário cadastrado com sucesso!");
   } catch (error:any) {
     if (res.statusCode === 200) {
       res.status(500).send(error.message)

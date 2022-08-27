@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import selectAllUsers from "../data/selectAllUsers";
+import selectAllUsers from "../data/6-selectAllUsers";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
