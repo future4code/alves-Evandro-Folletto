@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
-import responsibleTask from "../data/9-responsibleTask";
+import getUsersResponsibleTask from "../data/10-selectUsersResponsibleTask";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
-    const {task_id, responsible_user_id} = req.body;
-    if (!task_id || !responsible_user_id) {
+    const id = req.params.id;
+    const users = await getUsersResponsibleTask(id);
+    if(!users.length){
       res.statusCode = 400;
-      throw new Error('Existem dados faltantes!');
+      throw new Error('Não foram encontradas tarefas para este ID!');
+    } else {
+      res.status(200).send(users[0]);
     }
-    responsibleTask(task_id, responsible_user_id);
-    res.status(200).send("Responsabilidade atribuída com sucesso!");
   } catch (error:any) {
     if (res.statusCode === 200) {
       res.status(500).send(error.message)

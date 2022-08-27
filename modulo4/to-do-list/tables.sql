@@ -16,8 +16,10 @@ CREATE TABLE Tasks (
 );
 
 CREATE TABLE Responsible (
-	task_id VARCHAR(255) PRIMARY KEY,
-    responsible_user_id VARCHAR(255) NOT NULL
+	responsible_id VARCHAR(255) PRIMARY KEY,
+	task_id VARCHAR(255) NOT NULL,
+    responsible_user_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (responsible_user_id) REFERENCES Users(id)
 );
 
 DROP TABLE Users;
@@ -28,4 +30,10 @@ SELECT *
 FROM Tasks
 JOIN Users
 ON Users.id = Tasks.creatorUserId
-WHERE Users.id = 1661555153887
+WHERE Users.id = 1661555153887;
+
+SELECT *
+FROM Users
+JOIN Responsible
+ON Users.id = Responsible.responsible_user_id
+WHERE Responsible.task_id = 1661609777500
