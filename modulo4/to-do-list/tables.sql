@@ -15,6 +15,17 @@ CREATE TABLE Tasks (
     FOREIGN KEY (creatorUserId) REFERENCES Users(id)
 );
 
-DROP TABLE Users;
+CREATE TABLE Responsible (
+	task_id VARCHAR(255) PRIMARY KEY,
+    responsible_user_id VARCHAR(255) NOT NULL
+);
 
+DROP TABLE Users;
 DROP TABLE Tasks;
+DROP TABLE Responsible;
+
+SELECT *
+FROM Tasks
+JOIN Users
+ON Users.id = Tasks.creatorUserId
+WHERE Users.id = 1661555153887

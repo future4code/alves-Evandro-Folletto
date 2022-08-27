@@ -14,8 +14,7 @@ export default async (req:Request, res:Response): Promise<any> => {
     console.log(!users.length)
 
     if(!users.length){
-      res.statusCode = 400;
-      throw new Error('Não foram encontrados usuários com este campo de busca!');
+      res.send([]);
     } else {
       res.status(200).send(users);
     }
