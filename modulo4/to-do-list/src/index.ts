@@ -6,6 +6,7 @@ import createTask from './endpoint/4-createTask';
 import getTaskById from './endpoint/5-getTaskById';
 import getAllUsers from './endpoint/6-getAllUsers';
 import getAllTasksByUser from './endpoint/7-getAllTasksByUser';
+import searchUser from './endpoint/8-searchUser';
 
 // 1 - criar usuário
 app.post('/user', createUser);
@@ -27,3 +28,6 @@ app.get('/task/:id', getTaskById);
 
 // 7 - obter todas as tarefas criadas por um usuário
 app.get('/task', getAllTasksByUser);
+
+// 8 - pesquisar usuário
+app.get('/user', searchUser);

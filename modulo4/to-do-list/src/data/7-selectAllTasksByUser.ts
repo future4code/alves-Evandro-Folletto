@@ -10,5 +10,5 @@ export default async (id:string): Promise<any> => {
     WHERE Users.id = ${id}
   `)
 
-  return tasks
+  return tasks[0]
 };

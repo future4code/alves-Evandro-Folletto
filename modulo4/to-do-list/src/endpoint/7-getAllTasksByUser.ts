@@ -6,15 +6,15 @@ export default async (req:Request, res:Response): Promise<any> => {
     const id = req.query.creatorUserId as string;
     if (!id) {
       res.statusCode = 400;
-      throw new Error('É nececssário enviar o ID!');
+      throw new Error('É necessário enviar o ID!');
     }
 
     const task = await selectAllTasksByUser(id);
     if(!task.length){
-      res.status(200).send(task);
-    } else {
       res.statusCode = 400;
       throw new Error('Não foram encontradas tarefas para este ID!');
+    } else {
+      res.status(200).send(task);
     }
   } catch (error:any) {
     if (res.statusCode === 200) {
