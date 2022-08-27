@@ -11,7 +11,8 @@ CREATE TABLE Tasks (
 	description VARCHAR(255) NOT NULL,
     limitDate DATE not null,
     status VARCHAR(255) NOT NULL,
-    creatorUserId VARCHAR(255)
+    creatorUserId VARCHAR(255),
+    FOREIGN KEY (creatorUserId) REFERENCES Users(id)
 );
 
 DROP TABLE Users;
