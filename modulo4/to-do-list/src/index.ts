@@ -7,7 +7,7 @@ import getTaskById from './endpoint/5-getTaskById';
 import getAllUsers from './endpoint/6-getAllUsers';
 import getAllTasksByUser from './endpoint/7-getAllTasksByUser';
 import searchUser from './endpoint/8-searchUser';
-import responsibleTask from './endpoint/9-responsibleTask';
+import responsibleTask from './endpoint/9_16-responsibleTask';
 import getUsersResponsibleTask from './endpoint/10-getUsersResponsibleTask';
 import getTaskByIdAndYourResponsibles from './endpoint/11-getTaskByIdAndYourResponsibles';
 import updateStatusById from './endpoint/12-updateStatusById';
