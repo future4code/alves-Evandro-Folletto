@@ -14,12 +14,17 @@ import updateStatusById from './endpoint/12-updateStatusById';
 import getTasksByStatus from './endpoint/13-getTasksByStatus';
 import getTasksDelayed from './endpoint/14-getTasksDelayed';
 import deleteResponsibleTask from './endpoint/15-deleteResponsibleTask';
+import searchTaskByTerm from './endpoint/17-searchTaskByTerm';
 
 // 13 - obter todas as tarefas por status
 app.get('/task/search', getTasksByStatus);
 
 // 14 - obter taregas atrasadas
 app.get('/task/delayed', getTasksDelayed);
+
+// 17 - pesquisar tarefa por termos
+// app.get('/task?query=tarefa', searchTaskByTerm);
+app.get('/task/termo', searchTaskByTerm);
 
 // 1 - criar usuário
 app.post('/user', createUser);
@@ -59,3 +64,4 @@ app.put('/task/status/:id', updateStatusById);
 
 // 15 - retirar um usuário responsável por uma tarefa
 app.delete('/task/:taskId/responsible/:responsibleUserId', deleteResponsibleTask);
+

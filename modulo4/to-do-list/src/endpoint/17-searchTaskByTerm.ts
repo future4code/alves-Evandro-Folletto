@@ -1,21 +1,24 @@
 import { Request, Response } from "express";
-import selectUserBySearch from "../data/8-selectUserBySearch";
+import selectTaskByTerm from "../data/17-selectTaskByTerm";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
-    const query = req.query.query as string;
+    const query = req.query.termo as string;
+
+    console.log('entrei no 17, query =', query)
 
     if (!query) {
       res.statusCode = 400;
       throw new Error('É necessário enviar o campo de busca!');
     }
 
-    const users = await selectUserBySearch(query);
+    const tasks = await selectTaskByTerm(query);
 
-    if(!users.length){
+    if(!tasks.length){
       res.send([]);
+      res.status(200).send( {tasks: []} );
     } else {
-      res.status(200).send(users);
+      res.status(200).send( {tasks: tasks} );
     }
   } catch (error:any) {
     if (res.statusCode === 200) {
