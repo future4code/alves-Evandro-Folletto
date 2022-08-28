@@ -15,10 +15,17 @@ CREATE TABLE Tasks (
     FOREIGN KEY (creatorUserId) REFERENCES Users(id)
 );
 
+-- CREATE TABLE Responsible (
+-- 	responsible_id VARCHAR(255) PRIMARY KEY,
+-- 	task_id VARCHAR(255) NOT NULL,
+--  responsible_user_id VARCHAR(255) NOT NULL,
+--  FOREIGN KEY (responsible_user_id) REFERENCES Users(id)
+-- );
+
 CREATE TABLE Responsible (
-	responsible_id VARCHAR(255) PRIMARY KEY,
 	task_id VARCHAR(255) NOT NULL,
     responsible_user_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (task_id) REFERENCES Tasks(TaskId),
     FOREIGN KEY (responsible_user_id) REFERENCES Users(id)
 );
 
@@ -32,8 +39,18 @@ JOIN Users
 ON Users.id = Tasks.creatorUserId
 WHERE Users.id = 1661555153887;
 
+-- SELECT *
+-- FROM Users
+-- JOIN Responsible
+-- ON Users.id = Responsible.responsible_user_id
+-- JOIN Tasks
+-- ON Responsible.task_id = Tasks.TaskId
+-- WHERE Responsible.task_id = 1661609777500;
+
 SELECT *
 FROM Users
 JOIN Responsible
 ON Users.id = Responsible.responsible_user_id
-WHERE Responsible.task_id = 1661609777500
+JOIN Tasks
+ON Responsible.task_id = Tasks.TaskId
+WHERE Responsible.task_id = 1661609777500;
