@@ -11,6 +11,10 @@ import responsibleTask from './endpoint/9-responsibleTask';
 import getUsersResponsibleTask from './endpoint/10-getUsersResponsibleTask';
 import getTaskByIdAndYourResponsibles from './endpoint/11-getTaskByIdAndYourResponsibles';
 import updateStatusById from './endpoint/12-updateStatusById';
+import getTasksByStatus from './endpoint/13-getTasksByStatus';
+
+// 13 - obter todas as tarefas por status
+app.get('/task/search', getTasksByStatus);
 
 // 1 - criar usuário
 app.post('/user', createUser);

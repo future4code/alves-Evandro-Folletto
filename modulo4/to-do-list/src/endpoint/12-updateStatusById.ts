@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import taskExist from "../data/12.a-taskExist";
-import updateStatusById from "../data/12-updateStatusById";
+import updateStatusById from "../data/12.b-updateStatusById";
 
 export default async (req:Request, res:Response): Promise<any> => {
   try {
