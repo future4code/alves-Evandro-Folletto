@@ -12,7 +12,7 @@ import { baseURL } from "./baseURL";
 */
 
 // c)
-const getAllSubscribers = async () => {
+async function getAllSubscribers (): Promise<any[]> {
   const response = await axios.get(`${baseURL}/subscribers`)
   return response.data
 }
@@ -26,5 +26,4 @@ const main = async () => {
     console.log(resp)
   }
 }
-
 main()
