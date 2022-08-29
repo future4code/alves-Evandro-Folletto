@@ -16,6 +16,7 @@ import getTasksDelayed from './endpoint/14-getTasksDelayed';
 import deleteResponsibleTask from './endpoint/15-deleteResponsibleTask';
 import searchTaskByTerm from './endpoint/17-searchTaskByTerm';
 import deleteTask from './endpoint/19-deleteTask';
+import deleteUser from './endpoint/20-deleteUser';
 
 // 13 - obter todas as tarefas por status
 app.get('/task/search', getTasksByStatus);
@@ -67,3 +68,6 @@ app.delete('/task/:taskId/responsible/:responsibleUserId', deleteResponsibleTask
 
 // 19 - deletar tarefa
 app.delete('/task/:id', deleteTask);
+
+// 20 - deletar usuário
+app.delete('/user/:id', deleteUser);
