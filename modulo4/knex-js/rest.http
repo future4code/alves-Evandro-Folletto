@@ -1,0 +1,106 @@
+GET http://localhost:3003/users/001
+Content-Type: application/json
+
+###
+// Exercício 1 - b)
+GET http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "name": "Gloria Pires"
+}
+
+###
+// Exercício 1 - c)
+GET http://localhost:3003/gender
+Content-Type: application/json
+
+{
+  "gender": "male"
+}
+
+###
+POST http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "011",
+  "name": "Samuel",
+  "salary": 56000,
+  "dateOfBirth": "1980-05-09",
+  "gender": "male"
+}
+
+###
+// Exercício 2 - b)
+DELETE http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "010"
+}
+
+###
+// Exercício 2 - c)
+GET http://localhost:3003/avgsalary
+Content-Type: application/json
+
+{
+  "gender": "male"
+}
+
+###
+// Exercício 3 - a)
+GET http://localhost:3003/actor/004
+
+###
+// Exercício 3 - b)
+GET http://localhost:3003/actor?gender=male
+
+// ------------------------------------------
+// EXERCÍCIO 4
+// ------------------------------------------
+
+###
+// letra a)
+PUT http://localhost:3003/actor
+Content-Type: application/json
+
+{
+  "id": "001",
+  "salary": 500000
+}
+
+###
+// letra b)
+DELETE http://localhost:3003/actor/009
+
+// ------------------------------------------
+// EXERCÍCIO 5
+// ------------------------------------------
+
+###
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+  "id": "005",
+  "title": "tropa de elite",
+  "synopsis": "capitão nascimento e sua trupe",
+  "relese_Date": "01/01/2011",
+  "rating": 8
+}
+
+// ------------------------------------------
+// EXERCÍCIO 6
+// ------------------------------------------
+
+###
+GET http://localhost:3003/movie/all
+
+// ------------------------------------------
+// EXERCÍCIO 7
+// ------------------------------------------
+
+###
+GET http://localhost:3003/movie/search?query=Doce
