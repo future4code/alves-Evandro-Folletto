@@ -10,9 +10,9 @@ const sendNotifications = async(users:string[], message:string): Promise<void> =
         "subscriberId": id,
         "message": message
       });
+      console.log('ok');
     }
 
-    console.log('ok');
   } catch (error:any) {
     console.log('Error');
   }
