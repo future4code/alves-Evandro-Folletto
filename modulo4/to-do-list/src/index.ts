@@ -10,7 +10,7 @@ import searchUser from './endpoint/8-searchUser';
 import responsibleTask from './endpoint/9_16-responsibleTask';
 import getUsersResponsibleTask from './endpoint/10-getUsersResponsibleTask';
 import getTaskByIdAndYourResponsibles from './endpoint/11-getTaskByIdAndYourResponsibles';
-import updateStatusById from './endpoint/12-updateStatusById';
+import updateStatusById from './endpoint/12_18-updateStatusById';
 import getTasksByStatus from './endpoint/13-getTasksByStatus';
 import getTasksDelayed from './endpoint/14-getTasksDelayed';
 import deleteResponsibleTask from './endpoint/15-deleteResponsibleTask';
@@ -23,7 +23,6 @@ app.get('/task/search', getTasksByStatus);
 app.get('/task/delayed', getTasksDelayed);
 
 // 17 - pesquisar tarefa por termos
-// app.get('/task?query=tarefa', searchTaskByTerm);
 app.get('/task/termo', searchTaskByTerm);
 
 // 1 - criar usuário
@@ -50,7 +49,7 @@ app.get('/task', getAllTasksByUser);
 // 8 - pesquisar usuário
 app.get('/user', searchUser);
 
-// 9 - atribuir responsabilidade tarefa
+// 9 / 16 - atribuir responsabilidade tarefa
 app.post('/task/responsible', responsibleTask);
 
 // 10 - obter usuários responsáveis por uma tarefa
@@ -59,8 +58,8 @@ app.get('/task/:id/responsible', getUsersResponsibleTask);
 // 11 - obter tarefa pelo id e os seus responsáveis
 app.get('/task/:id/responsiblesTask', getTaskByIdAndYourResponsibles);
 
-// 12 - atualizar status de uma tarefa pelo seu ID
-app.put('/task/status/:id', updateStatusById);
+// 12 / 18 - atualizar status de uma tarefa pelo seu ID
+app.put('/task/status/edit', updateStatusById);
 
 // 15 - retirar um usuário responsável por uma tarefa
 app.delete('/task/:taskId/responsible/:responsibleUserId', deleteResponsibleTask);

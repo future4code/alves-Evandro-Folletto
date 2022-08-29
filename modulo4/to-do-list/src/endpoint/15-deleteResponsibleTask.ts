@@ -9,10 +9,6 @@ export default async (req:Request, res:Response): Promise<any> => {
     const taskId = req.params.taskId;
     const responsibleUserId = req.params.responsibleUserId;
 
-    console.log(taskId)
-    console.log(responsibleUserId)
-
-
     const task = await taskExist(taskId);
     if(!task.length){
       res.status(200).send("Não foi encontrada tarefa com esse ID!");

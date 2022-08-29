@@ -9,7 +9,5 @@ export default async (id:string): Promise<any> => {
   WHERE Responsible.task_id = ${id}
   `)
 
-  console.log(users[0]);
-
   return users
 };

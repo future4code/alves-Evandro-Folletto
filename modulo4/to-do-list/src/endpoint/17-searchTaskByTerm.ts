@@ -5,8 +5,6 @@ export default async (req:Request, res:Response): Promise<any> => {
   try {
     const query = req.query.termo as string;
 
-    console.log('entrei no 17, query =', query)
-
     if (!query) {
       res.statusCode = 400;
       throw new Error('É necessário enviar o campo de busca!');
