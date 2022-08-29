@@ -39,18 +39,16 @@ JOIN Users
 ON Users.id = Tasks.creatorUserId
 WHERE Users.id = 1661555153887;
 
--- SELECT *
--- FROM Users
--- JOIN Responsible
--- ON Users.id = Responsible.responsible_user_id
--- JOIN Tasks
--- ON Responsible.task_id = Tasks.TaskId
--- WHERE Responsible.task_id = 1661609777500;
-
 SELECT *
-FROM Users
-JOIN Responsible
+FROM Responsible
+JOIN Users
 ON Users.id = Responsible.responsible_user_id
-JOIN Tasks
-ON Responsible.task_id = Tasks.TaskId
 WHERE Responsible.task_id = 1661609777500;
+
+DELETE 
+FROM Responsible
+WHERE task_id = 1661610036058;
+
+DELETE 
+FROM Tasks 
+WHERE TaskId = 1661610036058;
