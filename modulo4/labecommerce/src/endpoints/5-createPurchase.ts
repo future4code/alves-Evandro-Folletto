@@ -9,6 +9,18 @@ export async function createPurchase(req: Request, res: Response): Promise<void>
       res.statusCode = 400;
       throw new Error('Existem dados faltantes!');
     }
+    if(typeof(user_id) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável user_id deve ser string!');
+    }
+    if(typeof(product_id) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável product_id deve ser string!');
+    }
+    if(typeof(quantity) !== 'number') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável quantity deve ser number!');
+    }
 
     const price: number = await selectProductById(product_id);
     if (!price) {
@@ -17,8 +29,8 @@ export async function createPurchase(req: Request, res: Response): Promise<void>
     }
     await insertPurchase(user_id, product_id, quantity, price);
 
-    res.status(200).send('Product criado com sucesso!');
-  } catch (error) {
-    res.status(500).send("Internal server error");
+    res.status(200).send('Compra efetuada com sucesso!');
+  } catch (error:any) {
+    res.status(500).send(error.message);
   }
 }

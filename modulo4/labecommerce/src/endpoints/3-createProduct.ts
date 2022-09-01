@@ -8,11 +8,23 @@ export async function createProduct(req: Request, res: Response): Promise<void> 
       res.statusCode = 400;
       throw new Error('Existem dados faltantes!');
     }
+    if (typeof(name) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável nome deve ser string!');
+    }
+    if (typeof(price) !== 'number') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável preço deve ser number!');
+    }
+    if (typeof(image_url) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável image_url deve ser string!');
+    }
     
     await insertProduct(name, price, image_url);
 
-    res.status(200).send('Product criado com sucesso!')
-  } catch (error) {
-    res.status(500).send("Internal server error")
+    res.status(200).send('Produto criado com sucesso!')
+  } catch (error:any) {
+    res.status(500).send(error.message)
   }
 }

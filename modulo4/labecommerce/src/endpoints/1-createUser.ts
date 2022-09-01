@@ -8,11 +8,19 @@ export async function createUser(req: Request, res: Response): Promise<void> {
       res.statusCode = 400;
       throw new Error('Existem dados faltantes!');
     }
-    
+    if (typeof(name) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável nome deve ser string!');
+    }
+    if (typeof(email) !== 'string') {
+      res.statusCode = 400;
+      throw new Error('O formato da variável email deve ser string!');
+    }
+
     await insertUser(name, email, password);
 
     res.status(200).send('Usuário(a) criado com sucesso!')
-  } catch (error) {
-    res.status(500).send("Internal server error")
+  } catch (error:any) {
+    res.status(500).send(error.message)
   }
 }

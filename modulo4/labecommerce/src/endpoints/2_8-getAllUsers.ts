@@ -27,7 +27,7 @@ export async function getAllUsers(req: Request, res: Response): Promise<void> {
     })    
 
     res.status(200).send(users)
-  } catch (error) {
-    res.status(500).send("Internal server error")
+  } catch (error:any) {
+    res.status(500).send(error.message)
   }
 }
