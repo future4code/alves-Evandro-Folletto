@@ -7,4 +7,4 @@ export default async (): Promise<[]> => {
   `)
 
   return users
-}; 
+};

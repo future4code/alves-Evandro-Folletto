@@ -28,4 +28,11 @@ JOIN labecommerce_users
 ON labecommerce_purchases.user_id = labecommerce_users.id
 JOIN labecommerce_products
 ON labecommerce_purchases.product_id = labecommerce_products.id
-WHERE labecommerce_purchases.user_id = 1662053109722;
+WHERE labecommerce_purchases.user_id = 1662053724548;
+
+SELECT labecommerce_users.id as user_id, labecommerce_purchases.product_id, labecommerce_products.name, labecommerce_purchases.total_price
+FROM labecommerce_users
+LEFT JOIN labecommerce_purchases
+ON labecommerce_users.id = labecommerce_purchases.user_id
+LEFT JOIN labecommerce_products
+ON labecommerce_purchases.product_id = labecommerce_products.id
