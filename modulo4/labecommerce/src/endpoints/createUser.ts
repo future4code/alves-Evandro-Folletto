@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import inserUser from "./../data/insertUser";
+import insertUser from "./../data/insertUser";
 
 export async function createUser(req: Request, res: Response): Promise<void> {
   try {
@@ -9,9 +9,9 @@ export async function createUser(req: Request, res: Response): Promise<void> {
       throw new Error('Existem dados faltantes!');
     }
     
-    await inserUser(name, email, password);
+    await insertUser(name, email, password);
 
-    res.status(200).send('deu certo')
+    res.status(200).send('Usuário(a) criado com sucesso!')
   } catch (error) {
     res.status(500).send("Internal server error")
   }
