@@ -2,7 +2,7 @@ import { app } from "./app";
 import { createUser } from "./endpoints/1-createUser";
 import { getAllUsers } from "./endpoints/2-getAllUsers";
 import { createProduct } from "./endpoints/3-createProduct";
-import { getAllProducts } from "./endpoints/4-getAllProducts";
+import { getAllProducts } from "./endpoints/4_7-getAllProducts";
 import { createPurchase } from "./endpoints/5-createPurchase";
 import { getPurchaseById } from "./endpoints/6-getPurchaseById";
 
