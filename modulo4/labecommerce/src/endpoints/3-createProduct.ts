@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import insertProduct from "./../data/insertProduct";
+import insertProduct from "../data/3-insertProduct";
 
 export async function createProduct(req: Request, res: Response): Promise<void> {
   try {

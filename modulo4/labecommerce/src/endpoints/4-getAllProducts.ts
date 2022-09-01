@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import selectAllProducts from "./../data/selectAllProducts";
+import selectAllProducts from "./../data/4-selectAllProducts";
 
 export async function getAllProducts(req: Request, res: Response): Promise<void> {
   try {

@@ -21,3 +21,11 @@ CREATE TABLE labecommerce_purchases (
 	quantity INT NOT NULL,
     total_price FLOAT NOT NULL
 );
+
+SELECT labecommerce_users.name, labecommerce_products.name
+FROM labecommerce_purchases
+JOIN labecommerce_users
+ON labecommerce_purchases.user_id = labecommerce_users.id
+JOIN labecommerce_products
+ON labecommerce_purchases.product_id = labecommerce_products.id
+WHERE labecommerce_purchases.user_id = 1662053109722;

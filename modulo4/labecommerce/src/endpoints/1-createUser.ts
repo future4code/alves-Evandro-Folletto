@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import insertUser from "./../data/insertUser";
+import insertUser from "./../data/1-insertUser";
 
 export async function createUser(req: Request, res: Response): Promise<void> {
   try {

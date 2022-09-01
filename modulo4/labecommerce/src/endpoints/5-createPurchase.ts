@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import insertPurchase from "./../data/insertPurchase";
-import selectProductById from "./../data/selectProductById";
+import selectProductById from "./../data/5.a-selectProductById";
+import insertPurchase from "./../data/5.b-insertPurchase";
 
 export async function createPurchase(req: Request, res: Response): Promise<void> {
   try {
