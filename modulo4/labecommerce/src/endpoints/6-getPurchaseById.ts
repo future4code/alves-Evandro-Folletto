@@ -24,7 +24,7 @@ export async function getPurchaseById(req: Request, res: Response): Promise<void
     }
 
     res.status(200).send(purchases);
-  } catch (error:any) {
+  } catch (error) {
     res.status(500).send(error.message);
   }
 }

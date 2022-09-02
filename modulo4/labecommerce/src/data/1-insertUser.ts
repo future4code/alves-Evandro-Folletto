@@ -8,4 +8,4 @@ export default async (name: string, email: string, password: any): Promise<any> 
     VALUES
       ('${id}', '${name}', '${email}', '${password}')
   `)
-}; 
+};

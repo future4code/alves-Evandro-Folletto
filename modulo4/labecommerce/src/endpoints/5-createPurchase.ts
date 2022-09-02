@@ -30,7 +30,7 @@ export async function createPurchase(req: Request, res: Response): Promise<void>
     await insertPurchase(user_id, product_id, quantity, price);
 
     res.status(200).send('Compra efetuada com sucesso!');
-  } catch (error:any) {
+  } catch (error) {
     res.status(500).send(error.message);
   }
 }

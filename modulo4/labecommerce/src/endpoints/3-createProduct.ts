@@ -24,7 +24,7 @@ export async function createProduct(req: Request, res: Response): Promise<void> 
     await insertProduct(name, price, image_url);
 
     res.status(200).send('Produto criado com sucesso!')
-  } catch (error:any) {
+  } catch (error) {
     res.status(500).send(error.message)
   }
 }

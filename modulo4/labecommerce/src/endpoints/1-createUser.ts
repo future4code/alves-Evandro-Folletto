@@ -20,7 +20,7 @@ export async function createUser(req: Request, res: Response): Promise<void> {
     await insertUser(name, email, password);
 
     res.status(200).send('Usuário(a) criado com sucesso!')
-  } catch (error:any) {
+  } catch (error) {
     res.status(500).send(error.message)
   }
-}
+};
