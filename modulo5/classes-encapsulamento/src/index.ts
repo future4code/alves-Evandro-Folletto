@@ -2,7 +2,7 @@
 // EXERCÍCIO 1
 // ---------------------------
 // a)
-  // Construtor serve para iniciar as variáveis. Chamamos o mesmo ao instanciar uma classe. No exemplo dado: new UserAccount()
+// Construtor serve para iniciar as variáveis. Chamamos o mesmo ao instanciar uma classe. No exemplo dado: new UserAccount()
 
 // b)
 // type Transaction = {
@@ -19,22 +19,28 @@ class UserAccount {
   private transactions: Transaction[] = [];
 
   constructor(
-     cpf: string,
-     name: string,
-     age: number,
+    cpf: string,
+    name: string,
+    age: number,
   ) {
-     console.log("Chamando o construtor da classe UserAccount")
-     this.cpf = cpf;
-     this.name = name;
-     this.age = age;
+    this.cpf = cpf;
+    this.name = name;
+    this.age = age;
+  }
+
+  public getTransation(){
+    this.transactions;
+  }
+
+  public setTransation(transacao: Transaction){
+    this.transactions.push(transacao);
   }
 }
 
-const novaConta = new UserAccount('111.111.111-11', 'Pedro', 25);
 // O Código gera um erro pois falto o tipo Transaction. Copiando o tipo do exercício 2, a mensagem é impressa 1 vez no terminal.
 
 // c)
-// Não
+// Utilizando os getters
 
 // ---------------------------
 // EXERCÍCIO 2
@@ -43,8 +49,8 @@ class Transaction {
   private description: string;
   private value: number;
   private date: string;
- 
-  constructor(description:string, value:number, date:string) {
+
+  constructor(description: string, value: number, date: string) {
     this.description = description;
     this.value = value;
     this.date = date;
@@ -63,4 +69,25 @@ class Transaction {
   }
 }
 
+// ---------------------------
+// EXERCÍCIO 3
+// ---------------------------
+class Bank {
+  private accounts: UserAccount[];
+
+  constructor(accounts: UserAccount[]) {
+    this.accounts = accounts;
+  }
+
+  public getAccounts(){
+    return this.accounts;
+  }
+}
+
+const novaConta = new UserAccount('111.111.111-11', 'Pedro', 25);
 const transacao1 = new Transaction('depósito', 20, '05/08/2022');
+const transacao2 = new Transaction('pagamento de luz', 40, '05/08/2022');
+novaConta.setTransation(transacao1);
+novaConta.setTransation(transacao2);
+const banco = new Bank([novaConta]);
+console.log(banco.getAccounts())
