@@ -5,11 +5,11 @@
   // Construtor serve para iniciar as variáveis. Chamamos o mesmo ao instanciar uma classe. No exemplo dado: new UserAccount()
 
 // b)
-type Transaction = {
-  description: string,
-  value: number,
-  date: string
-}
+// type Transaction = {
+//   description: string,
+//   value: number,
+//   date: string
+// }
 
 class UserAccount {
   private cpf: string;
@@ -31,7 +31,7 @@ class UserAccount {
 }
 
 const novaConta = new UserAccount('111.111.111-11', 'Pedro', 25);
-// A mensagem foi impressa 1 vez no terminal.
+// O Código gera um erro pois falto o tipo Transaction. Copiando o tipo do exercício 2, a mensagem é impressa 1 vez no terminal.
 
 // c)
 // Não
@@ -39,3 +39,28 @@ const novaConta = new UserAccount('111.111.111-11', 'Pedro', 25);
 // ---------------------------
 // EXERCÍCIO 2
 // ---------------------------
+class Transaction {
+  private description: string;
+  private value: number;
+  private date: string;
+ 
+  constructor(description:string, value:number, date:string) {
+    this.description = description;
+    this.value = value;
+    this.date = date;
+  }
+
+  public getDescription(): string {
+    return this.description
+  }
+
+  public getValue(): number {
+    return this.value
+  }
+
+  public getDate(): string {
+    return this.date
+  }
+}
+
+const transacao1 = new Transaction('depósito', 20, '05/08/2022');
