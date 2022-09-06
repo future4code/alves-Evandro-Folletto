@@ -166,7 +166,7 @@ class CommercialClient extends Commerce implements Client {
     return this.cnpj
   }
 
-  public getfloorsQuantity(): number {
+  public getFloorsQuantity(): number {
     return this.floorsQuantity
   }
 
@@ -188,3 +188,40 @@ console.log('Valor da conta de luz:', clienteComercial1.calculateBill());
   // neste exercício é recebido a variável cnpj. 
   // O valor unitário da luz é menor. 
   // Recebe a variável floorsQuantity.
+
+// -------------------------------
+// EXERCÍCIO 6
+// -------------------------------
+class IndustrialClient extends Industry implements Client {
+  constructor(
+    public name: string,
+    public registrationNumber: number,
+    public consumedEnergy: number,
+    private cnpj: string,
+
+    protected machinesQuantity: number,
+    cep: string
+  ) {
+    super(machinesQuantity, cep);
+  }
+
+  public getCnpj(): string {
+    return this.cnpj
+  }
+
+  public getMachinesQuantity(): number {
+    return this.machinesQuantity
+  }
+
+  public calculateBill(): number {
+    return this.machinesQuantity * 100 + this.consumedEnergy * 0.45
+  }
+}
+// a)
+// da classe indústria, pois é nessa classe que estão os dados de indústria.
+
+// b)
+// a interface de cliente, pois é nessa interfacec que estão os dados de cliente.
+
+// c)
+// pois não é necessário atualizar / editar nenhuma variável.
