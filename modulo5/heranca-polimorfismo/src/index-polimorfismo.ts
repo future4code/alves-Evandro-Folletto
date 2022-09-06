@@ -114,12 +114,13 @@ console.log('machinesQuantity:', industria1.getMachinesQuantity());
 // -------------------------------
 // EXERCÍCIO 4
 // -------------------------------
-class ResidentialClient extends Residence {
+class ResidentialClient extends Residence implements Client {
   constructor(
-    private cpf: string,
     public name: string,
     public registrationNumber: number,
     public consumedEnergy: number,
+    private cpf: string,
+
     protected residentsQuantity: number,
     cep: string
   ) {
@@ -135,12 +136,55 @@ class ResidentialClient extends Residence {
   }
 
   public calculateBill(): number {
-    return this.consumedEnergy*0.75
+    return this.consumedEnergy * 0.75
   }
 }
 console.log('---------- Exercício 4 ----------')
-const clienteResidencial1 = new ResidentialClient('111111111-11', 'Marcos', 2, 56, 3, '00000-000');
+const clienteResidencial1 = new ResidentialClient('Marcos', 2, 56, '111111111-11', 3, '00000-000');
 console.log(clienteResidencial1);
 console.log('Valor da conta de luz:', clienteResidencial1.calculateBill());
 // Propriedades: cpf, name, registrationNumber, consumedEnergy, residentsQuantity, cep
 // Métodos: getCpf(), getResidentsQuantity(), calculateBill()
+
+// -------------------------------
+// EXERCÍCIO 5
+// -------------------------------
+class CommercialClient extends Commerce implements Client {
+  constructor(
+    public name: string,
+    public registrationNumber: number,
+    public consumedEnergy: number,
+    private cnpj: string,
+    
+    protected floorsQuantity: number,
+    cep: string
+  ) {
+    super(floorsQuantity, cep);
+  }
+
+  public getCnpj(): string {
+    return this.cnpj
+  }
+
+  public getfloorsQuantity(): number {
+    return this.floorsQuantity
+  }
+
+  public calculateBill(): number {
+    return this.consumedEnergy * 0.53
+  }
+}
+console.log('---------- Exercício 5 ----------')
+const clienteComercial1 = new CommercialClient('Loja de roupas', 5, 678, '222222222-22', 2, '77777-777');
+console.log(clienteComercial1);
+console.log('Valor da conta de luz:', clienteComercial1.calculateBill());
+// a)
+// Semelhanças: 
+  // recebem a mesma quantidade de entradas.
+  // a estrutura de um modo geral é muito parecida.
+
+// b)
+// Diferenças: 
+  // neste exercício é recebido a variável cnpj. 
+  // O valor unitário da luz é menor. 
+  // Recebe a variável floorsQuantity.
