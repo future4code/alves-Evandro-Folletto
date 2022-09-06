@@ -32,8 +32,14 @@ class User {
     return this.name
   }
 
+  // exercício 4
+  // public introduceYourself(): void {
+  //   return console.log('Olá, bom dia!');
+  // }
+
+  // exercício 5
   public introduceYourself(): void {
-    return console.log('Olá, bom dia!');
+    return console.log(`Olá, sou ${this.name}. Bom dia!`);
   }
 }
 
@@ -95,7 +101,7 @@ console.log('Valor total da compra:', customoer1.purchaseTotal);
 // Não, pois o atributo herdado possui tipo "private"
 
 // -------------------------------
-// EXERCÍCIO 4
+// EXERCÍCIO 4 e 5
 // -------------------------------
-console.log('---------- Exercício 4 ----------');
+console.log('---------- Exercício 4 e 5 ----------');
 customoer1.introduceYourself();
