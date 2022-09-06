@@ -110,3 +110,37 @@ console.log('CEP indústria:', industria1.getCep());
 console.log('residentsQuantity:', residencia1.getResidentsQuantity());
 console.log('floorsQuantity:', comercio1.getFloorsQuantity());
 console.log('machinesQuantity:', industria1.getMachinesQuantity());
+
+// -------------------------------
+// EXERCÍCIO 4
+// -------------------------------
+class ResidentialClient extends Residence {
+  constructor(
+    private cpf: string,
+    public name: string,
+    public registrationNumber: number,
+    public consumedEnergy: number,
+    protected residentsQuantity: number,
+    cep: string
+  ) {
+    super(residentsQuantity, cep);
+  }
+
+  public getCpf(): string {
+    return this.cpf
+  }
+
+  public getResidentsQuantity(): number {
+    return this.residentsQuantity
+  }
+
+  public calculateBill(): number {
+    return this.consumedEnergy*0.75
+  }
+}
+console.log('---------- Exercício 4 ----------')
+const clienteResidencial1 = new ResidentialClient('111111111-11', 'Marcos', 2, 56, 3, '00000-000');
+console.log(clienteResidencial1);
+console.log('Valor da conta de luz:', clienteResidencial1.calculateBill());
+// Propriedades: cpf, name, registrationNumber, consumedEnergy, residentsQuantity, cep
+// Métodos: getCpf(), getResidentsQuantity(), calculateBill()
