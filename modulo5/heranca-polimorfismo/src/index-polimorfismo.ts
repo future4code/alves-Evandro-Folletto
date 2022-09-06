@@ -7,7 +7,7 @@ interface Client {
 
   registrationNumber: number;
   // Refere-se ao número de cadastro do cliente na concessionária
-	// como se fosse um id
+  // como se fosse um id
 
   consumedEnergy: number;
   // Refere-se à energia consumida pelo cliente no mês
@@ -37,10 +37,10 @@ console.log('Valor:', obj.calculateBill());
 // EXERCÍCIO 2
 // -------------------------------
 abstract class Place {
-  constructor(protected cep: string) {}
+  constructor(protected cep: string) { }
 
-	public getCep(): string {
-		return this.cep;
+  public getCep(): string {
+    return this.cep;
   }
 }
 // a)
@@ -49,3 +49,64 @@ abstract class Place {
 
 // b)
 // Seria necessário estender essa classe para uma filha e instanciar a filha.
+
+// -------------------------------
+// EXERCÍCIO 3
+// -------------------------------
+class Residence extends Place {
+  constructor(
+    protected residentsQuantity: number,
+    // Refere-se ao número de moradores da casa
+
+    cep: string
+  ) {
+    super(cep);
+  }
+
+  public getResidentsQuantity(): number {
+    return this.residentsQuantity
+  }
+}
+
+class Commerce extends Place {
+  constructor(
+    protected floorsQuantity: number,
+    // Refere-se à quantidade de andares do lugar
+
+    cep: string
+  ) {
+    super(cep);
+  }
+
+  public getFloorsQuantity(): number {
+    return this.floorsQuantity
+  }
+}
+
+class Industry extends Place {
+  constructor(
+    protected machinesQuantity: number,
+    // Refere-se à quantidade de máquinas do local 
+
+    cep: string
+  ) {
+    super(cep);
+  }
+
+  public getMachinesQuantity(): number {
+    return this.machinesQuantity
+  }
+}
+console.log('---------- Exercício 3 ----------')
+const residencia1 = new Residence(4, '11111-111');
+console.log('CEP residência:', residencia1.getCep());
+
+const comercio1 = new Commerce(2, '22222-222');
+console.log('CEP comércio:', comercio1.getCep());
+
+const industria1 = new Industry(12, '33333-333');
+console.log('CEP indústria:', industria1.getCep());
+
+console.log('residentsQuantity:', residencia1.getResidentsQuantity());
+console.log('floorsQuantity:', comercio1.getFloorsQuantity());
+console.log('machinesQuantity:', industria1.getMachinesQuantity());
