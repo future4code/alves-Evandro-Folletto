@@ -128,6 +128,11 @@ class Employers extends User {
   public getBaseSalary(): number {
     return this.baseSalary;
   }
+
+  // exercício 7
+  public calculateTotalSalary (): number {
+    return this.baseSalary + 400;
+  }
 }
 console.log('---------- Exercício 6 ----------');
 const funcionario1 = new Employers('001', 'abraao@gmail.com', 'Abraão', '12345', '01/01/2022', 2000);
@@ -138,3 +143,6 @@ console.log(funcionario1)
 
 // b)
 // id, email, name, password, admissionDate, baseASalary
+
+console.log('---------- Exercício 7 ----------');
+console.log('Salário total:', funcionario1.calculateTotalSalary())
