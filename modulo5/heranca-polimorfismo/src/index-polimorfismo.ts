@@ -32,3 +32,20 @@ console.log('Valor:', obj.calculateBill());
 
 // a)
 // Foi possível imprimir as 4 propriedades: name, registrationNumber, consumedEnergy e calculateBill.
+
+// -------------------------------
+// EXERCÍCIO 2
+// -------------------------------
+abstract class Place {
+  constructor(protected cep: string) {}
+
+	public getCep(): string {
+		return this.cep;
+  }
+}
+// a)
+// const teste = new Place('11111-111');
+// Erro: Cannot create an instance of an abstract class.
+
+// b)
+// Seria necessário estender essa classe para uma filha e instanciar a filha.
