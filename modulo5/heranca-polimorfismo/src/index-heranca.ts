@@ -105,3 +105,36 @@ console.log('Valor total da compra:', customoer1.purchaseTotal);
 // -------------------------------
 console.log('---------- Exercício 4 e 5 ----------');
 customoer1.introduceYourself();
+
+// -------------------------------
+// EXERCÍCIO 6
+// -------------------------------
+class Employers extends User {
+  constructor(
+    id: string,
+    email: string,
+    name: string,
+    password: string,
+    protected admissionDate: string,
+    protected baseSalary: number
+  ) {
+    super(id, email, name, password);
+  }
+
+  public getAdmissionDate(): string {
+    return this.admissionDate;
+  }
+
+  public getBaseSalary(): number {
+    return this.baseSalary;
+  }
+}
+console.log('---------- Exercício 6 ----------');
+const funcionario1 = new Employers('001', 'abraao@gmail.com', 'Abraão', '12345', '01/01/2022', 2000);
+console.log(funcionario1)
+
+// a)
+// Para o exercício 6 foi chamado apenas uma vez.
+
+// b)
+// id, email, name, password, admissionDate, baseASalary
