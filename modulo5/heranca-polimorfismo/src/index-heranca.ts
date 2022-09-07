@@ -153,7 +153,19 @@ console.log('Salário total:', funcionario1.calculateTotalSalary())
 // -------------------------------
 // EXERCÍCIO 8
 // -------------------------------
-class Seller extends Employee{}
+class Seller extends Employee{  
+
+  // exercício 9
+  private salesQuantity : number = 0
+
+  public getSalesQuantity (): number {
+    return this.salesQuantity;
+  }
+
+  public setSalesQuantity (valor: number): void {
+    this.salesQuantity = valor;
+  }
+}
 
 const vendedor1 = new Seller('002', 'maria@gmail.com', 'Maria', '11111', '02/02/2020', 5000);
 
@@ -170,3 +182,12 @@ console.log('Data de admissão:', vendedor1.getAdmissionDate);
 // O que foi possível imprimir: id, email, name, salário base, data de admissão
 // O que não foi possível imprimir: password
 // Não foi possível obter o password pois é uma variável privada sem getter.
+
+// -------------------------------
+// EXERCÍCIO 9
+// -------------------------------
+console.log('---------- Exercício 9 ----------');
+vendedor1.setSalesQuantity(10);
+console.log(vendedor1.getSalesQuantity());
+// a)
+// Não é possíve, pois a mesma é private. É necessário criar um método getter para tal.
