@@ -109,7 +109,7 @@ customoer1.introduceYourself();
 // -------------------------------
 // EXERCÍCIO 6
 // -------------------------------
-class Employers extends User {
+class Employee extends User {
   constructor(
     id: string,
     email: string,
@@ -135,7 +135,7 @@ class Employers extends User {
   }
 }
 console.log('---------- Exercício 6 ----------');
-const funcionario1 = new Employers('001', 'abraao@gmail.com', 'Abraão', '12345', '01/01/2022', 2000);
+const funcionario1 = new Employee('001', 'abraao@gmail.com', 'Abraão', '12345', '01/01/2022', 2000);
 console.log(funcionario1)
 
 // a)
@@ -144,5 +144,29 @@ console.log(funcionario1)
 // b)
 // id, email, name, password, admissionDate, baseASalary
 
+// -------------------------------
+// EXERCÍCIO 7
+// -------------------------------
 console.log('---------- Exercício 7 ----------');
 console.log('Salário total:', funcionario1.calculateTotalSalary())
+
+// -------------------------------
+// EXERCÍCIO 8
+// -------------------------------
+class Seller extends Employee{}
+
+const vendedor1 = new Seller('002', 'maria@gmail.com', 'Maria', '11111', '02/02/2020', 5000);
+
+// a)
+// Todos os parâmetros das classes User e Employee: id, email, name, password, admissionDate, baseSalary
+
+// b)
+console.log('---------- Exercício 8 ----------');
+console.log('ID:', vendedor1.getId());
+console.log('Email:', vendedor1.getEmail());
+console.log('Nome:', vendedor1.getName());
+console.log('Salário base:', vendedor1.getBaseSalary());
+console.log('Data de admissão:', vendedor1.getAdmissionDate);
+// O que foi possível imprimir: id, email, name, salário base, data de admissão
+// O que não foi possível imprimir: password
+// Não foi possível obter o password pois é uma variável privada sem getter.
