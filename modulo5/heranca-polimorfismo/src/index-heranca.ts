@@ -121,6 +121,9 @@ class Employee extends User {
     super(id, email, name, password);
   }
 
+  // exercício 11
+  static BENEFITS_VALUE:number = 400;
+
   public getAdmissionDate(): string {
     return this.admissionDate;
   }
@@ -131,7 +134,7 @@ class Employee extends User {
 
   // exercício 7
   public calculateTotalSalary (): number {
-    return this.baseSalary + 400;
+    return this.baseSalary + Employee.BENEFITS_VALUE;
   }
 }
 console.log('---------- Exercício 6 ----------');
@@ -158,6 +161,9 @@ class Seller extends Employee{
   // exercício 9
   private salesQuantity : number = 10
 
+  // exercício 11
+  static SELLING_COMMISSION:number = 5;
+
   public getSalesQuantity (): number {
     return this.salesQuantity;
   }
@@ -168,7 +174,7 @@ class Seller extends Employee{
 
   // exercício 10
   public calculateTotalSalary (): number {
-    return this.baseSalary + 400 + 5 * this.salesQuantity;
+    return this.baseSalary + 400 + Seller.SELLING_COMMISSION * this.salesQuantity;
   }
 }
 
