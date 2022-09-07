@@ -230,11 +230,55 @@ class IndustrialClient extends Industry implements Client {
 // EXERCÍCIO 7
 // -------------------------------
 class ClientManager {
-  constructor(
-    private clients: Client[] = [],
-  ) {}
+  private clients: Client[] = []
 
   public getClientsQuantity (): number {
     return this.clients.length
   }
+
+  public registerClient(client: Client): void {
+    this.clients.push(client)
+  }
+
+  public calculateBillOfClient(registrationNumber: number): number {
+    const foundClient = this.clients.find( (client) => {
+      return client.registrationNumber === registrationNumber
+    })
+
+    if(foundClient){
+      return foundClient.calculateBill();
+    }
+
+    return 0
+  }
+
+  public calculateTotalIncome(): number {
+    let total: number = 0;
+    this.clients.forEach( (client) => {
+      total += client.calculateBill();
+    })
+    return total;
+  }
+
+  public deleteUser(registrationNumber: number): void {
+    this.clients = this.clients.filter( (client) => {
+      return client.registrationNumber !== registrationNumber;
+    })
+  }
+
 }
+console.log('---------- Exercício 7 ----------')
+const clientManager = new ClientManager();
+
+const residentialClient = new ResidentialClient('Lucas', 1000, 10, '111.222.333-444', 3, '98765-432');
+clientManager.registerClient(residentialClient);
+
+const commercialClient = new CommercialClient('Decathlon', 2000, 100, '111.111.111/1111', 3, '30830-500');
+clientManager.registerClient(commercialClient);
+
+const industrialClient = new IndustrialClient('Votorantin', 3000, 1000, '222.222.222/0001', 40, '10940-200');
+clientManager.registerClient(industrialClient);
+
+console.log(clientManager);
+clientManager.deleteUser(2000);
+console.log(clientManager);
