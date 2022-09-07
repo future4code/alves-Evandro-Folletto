@@ -225,3 +225,16 @@ class IndustrialClient extends Industry implements Client {
 
 // c)
 // pois não é necessário atualizar / editar nenhuma variável.
+
+// -------------------------------
+// EXERCÍCIO 7
+// -------------------------------
+class ClientManager {
+  constructor(
+    private clients: Client[] = [],
+  ) {}
+
+  public getClientsQuantity (): number {
+    return this.clients.length
+  }
+}
