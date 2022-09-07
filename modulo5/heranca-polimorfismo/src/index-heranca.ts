@@ -156,7 +156,7 @@ console.log('Salário total:', funcionario1.calculateTotalSalary())
 class Seller extends Employee{  
 
   // exercício 9
-  private salesQuantity : number = 0
+  private salesQuantity : number = 10
 
   public getSalesQuantity (): number {
     return this.salesQuantity;
@@ -164,6 +164,11 @@ class Seller extends Employee{
 
   public setSalesQuantity (valor: number): void {
     this.salesQuantity = valor;
+  }
+
+  // exercício 10
+  public calculateTotalSalary (): number {
+    return this.baseSalary + 400 + 5 * this.salesQuantity;
   }
 }
 
@@ -191,3 +196,11 @@ vendedor1.setSalesQuantity(10);
 console.log(vendedor1.getSalesQuantity());
 // a)
 // Não é possíve, pois a mesma é private. É necessário criar um método getter para tal.
+
+// -------------------------------
+// EXERCÍCIO 10
+// -------------------------------
+console.log('---------- Exercício 10 ----------');
+const vendedor2 = new Seller('003', 'joao@gmail.com', 'João', '22222', '042/042/2021', 4000);
+console.log('Salário total:', vendedor2.calculateTotalSalary());
+// Foi impresso o valor correto.
