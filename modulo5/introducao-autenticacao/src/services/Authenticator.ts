@@ -8,7 +8,7 @@ type AuthenticationData = {
   id: string;
 }
 
-const expiresIn = "1min";
+// const expiresIn = "1min";
 
 export default function generateToken(input: AuthenticationData): string {
   const token = jwt.sign(
@@ -17,7 +17,7 @@ export default function generateToken(input: AuthenticationData): string {
     },
     process.env.JWT_KEY as string,
     {
-      expiresIn
+      expiresIn: process.env.EXPIRES_IN
     }
   );
   return token;

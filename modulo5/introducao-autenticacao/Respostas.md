@@ -11,3 +11,7 @@ Acredito que a vantagem de se utilizar string é poder combinar números com out
 # Exercício 3
 ### a)
 Ela garante que o valor que está na variável JWT_KEY seja uma string.
+
+# Exercício 7
+### a)
+tipa a variável payload para any, para não precisar criar um tipo que envolva JWT.
