@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import GenerateId from "../services/GenerateId";
 import generateToken from "./../services/Authenticator";
 import selectUserByEmail from "./../data/selectUserByEmail";
 
