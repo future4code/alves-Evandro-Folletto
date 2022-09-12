@@ -1,4 +1,4 @@
 import app from "./app";
-import getAllusers from "./endpoints/getAllusers";
+import createUser from "./endpoints/createUser";
 
-app.get("/user", getAllusers)
+app.post("/user", createUser)

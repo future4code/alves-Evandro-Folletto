@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
-import selectAllUsers from "./../data/selectAllUsers";
+import insertUser from "./../data/insertUser";
 
 export default async (req: Request, res: Response): Promise<any> => {
   try {
-    const users = await selectAllUsers();
-
-    if (!users.length) {
-      res.statusCode = 400;
-      throw new Error('Não foram encontrados usuários!');
-    }
+    const {id, email, password} = req.body;
+    const users = await insertUser(id, email, password);
 
     res.status(200).send(users)
   } catch (error:any) {
