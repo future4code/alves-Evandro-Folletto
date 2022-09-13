@@ -6,9 +6,9 @@ import insertUser from "./../data/insertUser";
 
 export default async (req: Request, res: Response): Promise<any> => {
   try {
-    const {email, password} = req.body;
-    if(!email){
-      throw new Error('É necessário preencher o campo e-mail!');
+    const {email, password, role} = req.body;
+    if(!email || !role){
+      throw new Error('Existem dados faltantes!');
     }
     if(!email.includes('@')){
       throw new Error('É necessário ter um @ no seu endereço de email!');
@@ -21,9 +21,9 @@ export default async (req: Request, res: Response): Promise<any> => {
 
     const hash = await generateHash(password);
 
-    await insertUser(id, email, hash);
+    await insertUser(id, email, hash, role);
 
-    const token = generateToken({id});
+    const token = generateToken({id, role});
 
     res.status(200).send({"token": token})
   } catch (error:any) {

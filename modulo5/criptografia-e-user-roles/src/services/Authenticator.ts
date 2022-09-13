@@ -1,17 +1,17 @@
 import * as jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { USER_ROLES } from "./../types";
 
 dotenv.config();
 
 type AuthenticationData = {
   id: string;
+  role: USER_ROLES
 }
 
 export const generateToken = (input: AuthenticationData): string => {
   const token = jwt.sign(
-    {
-      id: input.id,
-    },
+    input,
     process.env.JWT_KEY as string,
     {
       expiresIn: process.env.EXPIRES_IN
@@ -20,10 +20,8 @@ export const generateToken = (input: AuthenticationData): string => {
   return token;
 }
 
-export const verifyToken = (token: string): AuthenticationData => {
+// função chamada de getData() no exercício de ontem
+export const verifyToken = (token: string) => {
   const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
-  const result = {
-    id: payload.id,
-  };
-  return result;
+  return payload;
 };

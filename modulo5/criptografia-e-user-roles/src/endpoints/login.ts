@@ -21,7 +21,7 @@ export default async (req: Request, res: Response): Promise<any> => {
       throw new Error('Senha incorreta!');
     }
 
-    const token = generateToken({id:user.id});
+    const token = generateToken({id:user.id, role:user.role});
 
     res.status(200).send({"token": token})
   } catch (error:any) {
