@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
 
-export default function GenerateId(): string {
+export const GenerateId = (): string => {
   return v4();
 }
