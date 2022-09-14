@@ -47,40 +47,39 @@ export default class UserEndpoint {
     }
   }
 
-  // async login(req: Request, res: Response) {
-  //   try {
+  async login(req: Request, res: Response) {
+    try {
 
-  //     const { email, password } = req.body;
-  //     if (!email || !password) {
-  //       throw new MissingFields();
-  //     }
+      const { email, password } = req.body;
+      if (!email || !password) {
+        throw new MissingFields();
+      }
 
-  //     const userData = new UserDatabase();
-  //     const userDB = await userData.getUserByEmail(email);
-  //     if (!userDB) {
-  //       throw new InvalidCredential();
-  //     }
+      const userData = new UserDatabase();
+      const userDB = await userData.getUserByEmail(email);
+      if (!userDB) {
+        throw new InvalidCredential();
+      }
 
-  //     const hashManager = new HashManager()
-  //     const isPasswordCorrect = await hashManager.compare(password, userDB[0].password)
-  //     if (!isPasswordCorrect) {
-  //       throw new InvalidCredential();
-  //     }
+      const hashManager = new HashManager()
+      const isPasswordCorrect = await hashManager.compare(password, userDB[0].password)
+      if (!isPasswordCorrect) {
+        throw new InvalidCredential();
+      }
 
-  //     const payload: ITokenPayload = {
-  //       id: userDB[0].id,
-  //       role: userDB[0].role
-  //     }
+      const payload: ITokenPayload = {
+        id: userDB[0].id
+      }
 
-  //     const tokenData = new Authenticator();
-  //     const token = tokenData.generateToken(payload);
+      const tokenData = new Authenticator();
+      const token = tokenData.generateToken(payload);
 
-  //     res.status(200).send({ message: "Login realizado com sucesso!", token });
+      res.status(200).send({ message: "Login realizado com sucesso!", token });
 
-  //   } catch (error: any) {
-  //     res.status(error.statusCode || 500).send({ message: error.message });
-  //   }
-  // }
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message });
+    }
+  }
 
   // async edit(req: Request, res: Response) {
   //   try {
