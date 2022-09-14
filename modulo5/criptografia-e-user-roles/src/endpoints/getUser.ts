@@ -9,7 +9,6 @@ export default async (req: Request, res: Response): Promise<any> => {
     const dados = verifyToken(token);
 
     const user = await selectUserById(dados.id);
-    console.log(user)
 
     if(user[0].role !== "NORMAL"){
       throw new Error("Unauthorized");
