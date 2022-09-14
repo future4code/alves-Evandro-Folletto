@@ -22,7 +22,7 @@ export default class UserData extends BaseDataBase {
 
   async getUserById(id: string): Promise<IUserDB[] | undefined> {
     const [user] = await this.getConnetion().raw(`
-      SELECT *
+      SELECT cookenu_users.id, cookenu_users.name, cookenu_users.email
       FROM cookenu_users
       WHERE (cookenu_users.id = '${id}')
     `)

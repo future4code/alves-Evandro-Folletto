@@ -99,6 +99,28 @@ export default class UserEndpoint {
     }
   }
 
+  async getProfileById(req: Request, res: Response) {
+    try {
+      const id = req.params.id as string;
+      if (!id) {
+        throw new MissingFields();
+      }
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator()
+      const payload = authenticator.verifyToken(token)
+      
+      const userData = new UserDatabase()
+      const user = await userData.getUserById(id)
+
+      res.status(200).send({user: user[0]})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
+
   // async edit(req: Request, res: Response) {
   //   try {
   //     const token = req.headers.authorization as string;
