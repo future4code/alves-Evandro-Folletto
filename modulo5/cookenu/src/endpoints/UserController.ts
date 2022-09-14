@@ -8,7 +8,7 @@ import { NotAuthorized } from "../error/NotAuthorized";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
-import { IUserDB, USER_ROLES } from "../types";
+import { IUserDB } from "../types";
 
 export default class UserEndpoint {
   public async signup(req: Request, res: Response) {
@@ -120,48 +120,4 @@ export default class UserEndpoint {
       res.status(error.statusCode || 500).send({ message: error.message })
     }
   }
-
-  // async edit(req: Request, res: Response) {
-  //   try {
-  //     const token = req.headers.authorization as string;
-  //     if (!token) {
-  //       throw new InvalidCredential();
-  //     }
-  //     const { name, nickname } = req.body;
-      
-  //     const authenticator = new Authenticator()
-  //     const payload = authenticator.verifyToken(token)
-      
-  //     const userData = new UserDatabase()
-  //     await userData.editUserById(payload.id, name, nickname)
-
-  //     res.status(200).send("Atualizado com sucesso!")
-
-  //   } catch (error: any) {
-  //     res.status(error.statusCode || 500).send({ message: error.message })
-  //   }
-  // }
-
-  // async getUsers(req: Request, res: Response) {
-  //   try {
-  //     const token = req.headers.authorization
-  //     if (!token) {
-  //       throw new InvalidCredential();
-  //     }
-
-  //     const authenticator = new Authenticator();
-  //     const payload = authenticator.verifyToken(token)
-
-  //     if (payload.role !== USER_ROLES.ADMIN) {
-  //       throw new NotAuthorized();
-  //     }
-
-  //     const userData = new UserDatabase();
-  //     const users = await userData.getUsers();
-
-  //     res.status(200).send({ users: users });
-  //   } catch (error: any) {
-  //     res.status(error.statusCode || 500).send({ message: error.message })
-  //   }
-  // }
 }
