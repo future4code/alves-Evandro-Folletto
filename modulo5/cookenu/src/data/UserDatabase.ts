@@ -20,6 +20,15 @@ export default class UserData extends BaseDataBase {
     return user
   }
 
+  async getUserById(id: string): Promise<IUserDB[] | undefined> {
+    const [user] = await this.getConnetion().raw(`
+      SELECT *
+      FROM cookenu_users
+      WHERE (cookenu_users.id = '${id}')
+    `)
+    return user
+  }
+
   // async editUserById(id:string, name:string, nickname:string) {
   //   await this.getConnetion().raw(`
   //     UPDATE template
