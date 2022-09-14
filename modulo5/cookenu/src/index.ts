@@ -11,3 +11,4 @@ app.get("/user/profile", userController.getProfile);
 app.get("/user/:id", userController.getProfileById);
 
 app.post("/recipe", recipeController.create);
+app.get("/recipe/:id", recipeController.getRecipeById);

@@ -5,9 +5,10 @@ export interface IUserDB {
   password: string
 }
 
-// export interface IRecipeDB {
-//   id: string
-//   name: string,
-//   email: string
-//   password: string
-// }
+export interface IRecipeDB {
+  id: string
+  title: string,
+  description: string
+  date: string
+  user_id: string
+}

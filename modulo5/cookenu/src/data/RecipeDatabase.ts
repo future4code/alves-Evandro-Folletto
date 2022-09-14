@@ -1,5 +1,5 @@
 import Recipe from "../model/Recipe";
-// import { IRecipeDB } from "./../types";
+import { IRecipeDB } from "./../types";
 import { BaseDataBase } from "./BaseDataBase";
 
 export default class RecipeData extends BaseDataBase {
@@ -11,21 +11,12 @@ export default class RecipeData extends BaseDataBase {
     `)
   }
 
-  // async getUserByEmail(email: string): Promise<IUserDB[] | undefined> {
-  //   const [user] = await this.getConnetion().raw(`
-  //     SELECT *
-  //     FROM cookenu_users
-  //     WHERE (cookenu_users.email = "${email}")
-  //   `)
-  //   return user
-  // }
-
-  // async getUserById(id: string): Promise<IUserDB[] | undefined> {
-  //   const [user] = await this.getConnetion().raw(`
-  //     SELECT cookenu_users.id, cookenu_users.name, cookenu_users.email
-  //     FROM cookenu_users
-  //     WHERE (cookenu_users.id = '${id}')
-  //   `)
-  //   return user
-  // }
+  async getRecipeById(id: string): Promise<IRecipeDB[] | undefined> {
+    const [recipe] = await this.getConnetion().raw(`
+      SELECT *
+      FROM cookenu_recipies
+      WHERE (cookenu_recipies.id = '${id}')
+    `)
+    return recipe
+  }
 }
