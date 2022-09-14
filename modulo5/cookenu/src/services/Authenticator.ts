@@ -5,8 +5,7 @@ import { USER_ROLES } from "../types";
 dotenv.config();
 
 export interface ITokenPayload {
-  id: string,
-  role: USER_ROLES
+  id: string
 }
 
 export default class Authenticator {
