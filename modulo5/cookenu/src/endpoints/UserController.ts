@@ -5,6 +5,7 @@ import { InvalidCredential } from "../error/InvalidCredential";
 import { MissingFields } from "../error/MissingFields";
 import { EmailExist } from "../error/EmailExist";
 import { UnauthorizedFollow } from "../error/UnauthorizedFollow";
+import { UserNotExist } from "../error/UserNotExist";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
@@ -126,6 +127,49 @@ export default class UserEndpoint {
       if (!userToFollowId) {
         throw new MissingFields();
       }
+
+      const userData = new UserDatabase();
+
+      const user = await userData.getUserById(userToFollowId);
+      if (!user.length) {
+        throw new UserNotExist();
+      }
+
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator();
+      const payload = authenticator.verifyToken(token);
+
+      if(payload.id === userToFollowId){
+        throw new UnauthorizedFollow();
+      }
+
+      const id = new GenerateId().createId();
+
+      await userData.insertFollow(id, payload.id, userToFollowId);
+
+      res.status(200).send({message: "Followed successfully"})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
+
+  async unfollow(req: Request, res: Response) {
+    try {
+      const { userToUnfollowId } = req.body;
+      if (!userToUnfollowId) {
+        throw new MissingFields();
+      }
+
+      const userData = new UserDatabase();
+
+      const user = await userData.getUserById(userToUnfollowId);
+      if (!user.length) {
+        throw new UserNotExist();
+      }
+
       const token = req.headers.authorization as string;
       if (!token) {
         throw new InvalidCredential();
@@ -133,16 +177,13 @@ export default class UserEndpoint {
       const authenticator = new Authenticator()
       const payload = authenticator.verifyToken(token)
 
-      if(payload.id === userToFollowId){
+      if(payload.id === userToUnfollowId){
         throw new UnauthorizedFollow();
       }
- 
-      const id = new GenerateId().createId();
 
-      const userData = new UserDatabase()
-      await userData.insertFollow(id, payload.id, userToFollowId)
+      await userData.deleteFollow(payload.id, userToUnfollowId)
 
-      res.status(200).send({message: "Followed successfully"})
+      res.status(200).send({message: "Unfollowed successfully"})
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message })
     }

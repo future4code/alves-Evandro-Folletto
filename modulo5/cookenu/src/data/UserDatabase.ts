@@ -36,4 +36,12 @@ export default class UserData extends BaseDataBase {
       VALUES ('${id}', '${id_origin}', '${userToFollowId}')
     `)
   }
+
+  async deleteFollow(id_origin: string, userToFollowId: string) {
+    await this.getConnetion().raw(`
+      DELETE
+      FROM cookenu_followers
+      WHERE (cookenu_followers.id_origin = '${id_origin}' AND cookenu_followers.id_destination = '${userToFollowId}')
+    `)
+  }
 }
