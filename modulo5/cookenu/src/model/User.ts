@@ -1,9 +1,12 @@
+import { USER_ROLES } from "../types"
+
 export default class User {
   constructor(
     private id: string,
     private name: string,
     private email: string,
     private password: string,
+    private role: USER_ROLES = USER_ROLES.NORMAL
   ) {}
 
   public getId() {
@@ -20,5 +23,9 @@ export default class User {
 
   public getPassword() {
     return this.password
+  }
+
+  public getRole() {
+    return this.role
   }
 }

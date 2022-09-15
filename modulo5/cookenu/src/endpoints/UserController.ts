@@ -14,9 +14,9 @@ import { IUserDB } from "../types";
 export default class UserEndpoint {
   public async signup(req: Request, res: Response) {
     try {
-      const { name, email, password} = req.body;
+      const { name, email, password, role} = req.body;
 
-      if (!name || !email || !password) {
+      if (!name || !email || !password || !role) {
         throw new MissingFields();
       }
 
@@ -31,12 +31,13 @@ export default class UserEndpoint {
       const hashManager = new HashManager();
       const hash = await hashManager.hash(password);
 
-      const user = new User(id, name, email, hash);
+      const user = new User(id, name, email, hash, role);
 
       await userData.insertUser(user);
 
       const payload: ITokenPayload = {
-        id
+        id,
+        role
       }
 
       const tokenData = new Authenticator();
@@ -68,7 +69,8 @@ export default class UserEndpoint {
       }
 
       const payload: ITokenPayload = {
-        id: userDB[0].id
+        id: userDB[0].id,
+        role: userDB[0].role
       }
 
       const tokenData = new Authenticator();

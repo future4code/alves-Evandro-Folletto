@@ -7,8 +7,8 @@ export default class UserData extends BaseDataBase {
   async insertUser(user: User) {
     await this.getConnetion().raw(`
       INSERT
-      INTO cookenu_users (id, name, email, password)
-      VALUES ('${user.getId()}', '${user.getName()}', '${user.getEmail()}', '${user.getPassword()}')
+      INTO cookenu_users (id, name, email, password, role)
+      VALUES ('${user.getId()}', '${user.getName()}', '${user.getEmail()}', '${user.getPassword()}', '${user.getRole()}')
     `)
   }
 
