@@ -16,3 +16,4 @@ app.post("/user/unfollow", userController.unfollow);
 
 app.post("/recipe", recipeController.create);
 app.get("/recipe/:id", recipeController.getRecipeById);
+app.put("/recipe/edit", recipeController.editRecipeById);

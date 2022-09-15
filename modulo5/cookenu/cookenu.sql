@@ -26,12 +26,5 @@ SELECT * FROM cookenu_users;
 SELECT * FROM cookenu_recipies;
 SELECT * FROM cookenu_followers;
 
-SELECT cookenu_recipies.id, cookenu_recipies.title, cookenu_recipies.description, cookenu_recipies.date, cookenu_recipies.user_id, cookenu_users.name
-FROM cookenu_followers
-JOIN cookenu_recipies
-ON cookenu_followers.id_destination = cookenu_recipies.user_id
-JOIN cookenu_users
-ON cookenu_users.id = cookenu_recipies.user_id
-WHERE (cookenu_followers.id_origin = '2c4872dc-a4cc-478f-a942-da9b3868abe4');
-
+-- ALTER TABLE cookenu_users ADD COLUMN role enum("ADMIN", "NORMAL") DEFAULT "NORMAL" NOT NULL;
 -- DROP TABLE cookenu_followers

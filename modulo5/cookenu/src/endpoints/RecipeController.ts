@@ -8,7 +8,7 @@ import { NotAuthorized } from "../error/NotAuthorized";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
-import { IUserDB } from "../types";
+import { IUserDB, USER_ROLES } from "../types";
 import { RecipeNotFound } from "../error/RecipeNotFound";
 
 export default class RecipeEndpoint {
@@ -66,6 +66,37 @@ export default class RecipeEndpoint {
       }
 
       res.status(200).send({recipe: recipe[0]})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
+
+  async editRecipeById(req: Request, res: Response) {
+    try {
+      const { recipe_id, title, description} = req.body;
+      if (!recipe_id || !title || !description) {
+        throw new MissingFields();
+      }
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator();
+      const payload = authenticator.verifyToken(token);
+      
+      const recipeData = new RecipeDatabase();
+      const recipe = await recipeData.getRecipeById(recipe_id);
+      if (!recipe.length) {
+        throw new RecipeNotFound();
+      }
+
+      if(payload.role === USER_ROLES.NORMAL && payload.id !== recipe[0].user_id){
+        throw new NotAuthorized();
+      }
+
+      await recipeData.editRecipeById(recipe_id, title, description);
+
+      res.status(200).send("Receita editada com sucesso!");
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message })
     }

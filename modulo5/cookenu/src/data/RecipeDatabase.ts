@@ -19,4 +19,12 @@ export default class RecipeData extends BaseDataBase {
     `)
     return recipe
   }
+
+  async editRecipeById(id: string, title: string, description: string) {
+    await this.getConnetion().raw(`
+      UPDATE cookenu_recipies
+      SET cookenu_recipies.title = '${title}', cookenu_recipies.description = '${description}'
+      WHERE (cookenu_recipies.id = '${id}')
+    `)
+  }
 }
