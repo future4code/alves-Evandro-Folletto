@@ -26,5 +26,9 @@ SELECT * FROM cookenu_users;
 SELECT * FROM cookenu_recipies;
 SELECT * FROM cookenu_followers;
 
+DELETE 
+FROM cookenu_recipies
+WHERE (cookenu_recipies.user_id = 'a9a74c5b-bdae-4408-8ead-1bc29cfb1357')
+
 -- ALTER TABLE cookenu_users ADD COLUMN role enum("ADMIN", "NORMAL") DEFAULT "NORMAL" NOT NULL;
 -- DROP TABLE cookenu_followers

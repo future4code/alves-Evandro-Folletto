@@ -1,15 +1,17 @@
 import { Request, Response } from "express";
 import UserDatabase from "../data/UserDatabase";
+import RecipeDatabase from "../data/RecipeDatabase";
 import User from "../model/User";
 import { InvalidCredential } from "../error/InvalidCredential";
 import { MissingFields } from "../error/MissingFields";
 import { EmailExist } from "../error/EmailExist";
 import { UnauthorizedFollow } from "../error/UnauthorizedFollow";
 import { UserNotExist } from "../error/UserNotExist";
+import { NotAuthorized } from "../error/NotAuthorized";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
-import { IUserDB } from "../types";
+import { USER_ROLES } from "../types";
 
 export default class UserEndpoint {
   public async signup(req: Request, res: Response) {
@@ -130,6 +132,8 @@ export default class UserEndpoint {
         throw new MissingFields();
       }
 
+      // LÓGICA DE NÃO DEIXAR SEGUIR A MESMA PESSOA 2X
+
       const userData = new UserDatabase();
 
       const user = await userData.getUserById(userToFollowId);
@@ -210,6 +214,36 @@ export default class UserEndpoint {
       })
 
       res.status(200).send({recipies: feed})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
+
+  async delete(req: Request, res: Response) {
+    try {
+      const id = req.params.id as string;
+      if (!id) {
+        throw new MissingFields();
+      }
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator();
+      const payload = authenticator.verifyToken(token);
+
+      if(payload.role === USER_ROLES.NORMAL){
+          throw new NotAuthorized();
+      }
+
+      const recipeData = new RecipeDatabase();
+      await recipeData.deleteRecipeByIdUser(id);
+
+      const userData = new UserDatabase();
+      await userData.deleteReferencesFollow(id);
+      await userData.deleteUserById(id);
+
+      res.status(200).send("Usuário deletado com sucesso!");
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message })
     }

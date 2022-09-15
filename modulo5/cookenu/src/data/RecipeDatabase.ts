@@ -35,4 +35,12 @@ export default class RecipeData extends BaseDataBase {
       WHERE (cookenu_recipies.id = '${id}')
     `)
   }
+
+  async deleteRecipeByIdUser(id: string) {
+    await this.getConnetion().raw(`
+      DELETE 
+      FROM cookenu_recipies
+      WHERE (cookenu_recipies.user_id = '${id}')
+    `)
+  }
 }

@@ -13,6 +13,7 @@ app.get("/user/profile", userController.getProfile);
 app.get("/user/:id", userController.getProfileById);
 app.post("/user/follow", userController.follow);
 app.post("/user/unfollow", userController.unfollow);
+app.delete("/user/delete/:id", userController.delete);
 
 app.post("/recipe", recipeController.create);
 app.get("/recipe/:id", recipeController.getRecipeById);

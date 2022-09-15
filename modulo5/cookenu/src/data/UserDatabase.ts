@@ -46,6 +46,22 @@ export default class UserData extends BaseDataBase {
     `)
   }
 
+  async deleteReferencesFollow(id_delete: string) {
+    await this.getConnetion().raw(`
+      DELETE
+      FROM cookenu_followers
+      WHERE (cookenu_followers.id_origin = '${id_delete}' OR cookenu_followers.id_destination = '${id_delete}')
+    `)
+  }
+
+  async deleteUserById(id: string) {
+    await this.getConnetion().raw(`
+      DELETE
+      FROM cookenu_users
+      WHERE (cookenu_users.id = '${id}')
+    `)
+  }
+
   async recipiesFeed(id: string): Promise<IFeedDB[]> {
     const [feed] = await this.getConnetion().raw(`
       SELECT cookenu_recipies.id, cookenu_recipies.title, cookenu_recipies.description, cookenu_recipies.date, cookenu_recipies.user_id, cookenu_users.name

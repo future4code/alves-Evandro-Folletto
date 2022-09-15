@@ -3,12 +3,11 @@ import RecipeDatabase from "../data/RecipeDatabase";
 import Recipe from "../model/Recipe";
 import { InvalidCredential } from "../error/InvalidCredential";
 import { MissingFields } from "../error/MissingFields";
-import { EmailExist } from "../error/EmailExist";
 import { NotAuthorized } from "../error/NotAuthorized";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
-import { IUserDB, USER_ROLES } from "../types";
+import { USER_ROLES } from "../types";
 import { RecipeNotFound } from "../error/RecipeNotFound";
 
 export default class RecipeEndpoint {
