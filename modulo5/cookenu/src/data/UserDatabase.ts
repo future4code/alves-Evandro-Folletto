@@ -38,6 +38,15 @@ export default class UserData extends BaseDataBase {
     `)
   }
 
+  async getFollowDuplicate(id_origin: string, userToFollowId: string): Promise<IUserDB[] | undefined> {
+    const [user] = await this.getConnetion().raw(`
+      SELECT *
+      FROM cookenu_followers
+      WHERE (cookenu_followers.id_origin = '${id_origin}' AND cookenu_followers.id_destination = '${userToFollowId}')
+    `)
+    return user
+  }
+
   async deleteFollow(id_origin: string, userToFollowId: string) {
     await this.getConnetion().raw(`
       DELETE

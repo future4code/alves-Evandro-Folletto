@@ -6,6 +6,7 @@ import { InvalidCredential } from "../error/InvalidCredential";
 import { MissingFields } from "../error/MissingFields";
 import { EmailExist } from "../error/EmailExist";
 import { UnauthorizedFollow } from "../error/UnauthorizedFollow";
+import { UnauthorizedFollow2 } from "../error/UnauthorizedFollow2";
 import { UserNotExist } from "../error/UserNotExist";
 import { NotAuthorized } from "../error/NotAuthorized";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
@@ -132,10 +133,8 @@ export default class UserEndpoint {
         throw new MissingFields();
       }
 
-      // LÓGICA DE NÃO DEIXAR SEGUIR A MESMA PESSOA 2X
-
       const userData = new UserDatabase();
-
+      
       const user = await userData.getUserById(userToFollowId);
       if (!user.length) {
         throw new UserNotExist();
@@ -150,6 +149,11 @@ export default class UserEndpoint {
 
       if(payload.id === userToFollowId){
         throw new UnauthorizedFollow();
+      }
+
+      const userDuplicate = await userData.getFollowDuplicate(payload.id, userToFollowId);
+      if(userDuplicate.length){
+        throw new UnauthorizedFollow2();
       }
 
       const id = new GenerateId().createId();
