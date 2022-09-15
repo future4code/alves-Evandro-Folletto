@@ -188,4 +188,28 @@ export default class UserEndpoint {
       res.status(error.statusCode || 500).send({ message: error.message })
     }
   }
+
+  async feed(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+
+      const authenticator = new Authenticator()
+      const payload = authenticator.verifyToken(token)
+      
+      const userData = new UserDatabase();
+      const feed = await userData.recipiesFeed(payload.id)
+
+      feed.forEach( (data:any) => {
+        const [year, month, day] = data.date.split('-');
+        data.date = `${day}/${month}/${year}`
+      })
+
+      res.status(200).send({recipies: feed})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
 }

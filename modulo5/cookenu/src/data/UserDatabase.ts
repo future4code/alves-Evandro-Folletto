@@ -1,5 +1,6 @@
 import User from "../model/User";
 import { IUserDB } from "./../types";
+import { IFeedDB } from "./../types";
 import { BaseDataBase } from "./BaseDataBase";
 
 export default class UserData extends BaseDataBase {
@@ -43,5 +44,18 @@ export default class UserData extends BaseDataBase {
       FROM cookenu_followers
       WHERE (cookenu_followers.id_origin = '${id_origin}' AND cookenu_followers.id_destination = '${userToFollowId}')
     `)
+  }
+
+  async recipiesFeed(id: string): Promise<IFeedDB[]> {
+    const [feed] = await this.getConnetion().raw(`
+      SELECT cookenu_recipies.id, cookenu_recipies.title, cookenu_recipies.description, cookenu_recipies.date, cookenu_recipies.user_id, cookenu_users.name
+      FROM cookenu_followers
+      JOIN cookenu_recipies
+      ON cookenu_followers.id_destination = cookenu_recipies.user_id
+      JOIN cookenu_users
+      ON cookenu_users.id = cookenu_recipies.user_id
+      WHERE (cookenu_followers.id_origin = '${id}');
+    `)
+    return feed
   }
 }
