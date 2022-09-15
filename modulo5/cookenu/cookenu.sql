@@ -22,4 +22,5 @@ CREATE TABLE cookenu_followers (
 	FOREIGN KEY (id_destionation) REFERENCES cookenu_users(id)
 );
 
-SELECT * FROM template;
+SELECT * FROM cookenu_users;
+SELECT * FROM cookenu_recipies;

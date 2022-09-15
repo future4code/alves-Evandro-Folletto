@@ -4,7 +4,7 @@ import User from "../model/User";
 import { InvalidCredential } from "../error/InvalidCredential";
 import { MissingFields } from "../error/MissingFields";
 import { EmailExist } from "../error/EmailExist";
-import { NotAuthorized } from "../error/NotAuthorized";
+import { UnauthorizedFollow } from "../error/UnauthorizedFollow";
 import Authenticator, { ITokenPayload } from "../services/Authenticator";
 import GenerateId from "../services/GenerateId";
 import { HashManager } from "../services/HashManager";
@@ -49,7 +49,6 @@ export default class UserEndpoint {
 
   async login(req: Request, res: Response) {
     try {
-
       const { email, password } = req.body;
       if (!email || !password) {
         throw new MissingFields();
@@ -116,6 +115,34 @@ export default class UserEndpoint {
       const user = await userData.getUserById(id)
 
       res.status(200).send({user: user[0]})
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
+
+  async follow(req: Request, res: Response) {
+    try {
+      const { userToFollowId } = req.body;
+      if (!userToFollowId) {
+        throw new MissingFields();
+      }
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator()
+      const payload = authenticator.verifyToken(token)
+
+      if(payload.id === userToFollowId){
+        throw new UnauthorizedFollow();
+      }
+ 
+      const id = new GenerateId().createId();
+
+      const userData = new UserDatabase()
+      await userData.insertFollow(id, payload.id, userToFollowId)
+
+      res.status(200).send({message: "Followed successfully"})
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message })
     }

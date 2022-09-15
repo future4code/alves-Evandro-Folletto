@@ -29,19 +29,11 @@ export default class UserData extends BaseDataBase {
     return user
   }
 
-  // async editUserById(id:string, name:string, nickname:string) {
-  //   await this.getConnetion().raw(`
-  //     UPDATE template
-  //     SET template.name = '${name}', template.nickname = '${nickname}'
-  //     WHERE (template.id = '${id}')
-  //   `)
-  // }
-
-  // async getUsers(): Promise<IUserDB[]> {
-  //   const [users] = await this.getConnetion().raw(`
-  //     SELECT *
-  //     FROM template
-  //   `)
-  //   return users
-  // }
+  async insertFollow(id:string, id_origin: string, userToFollowId: string) {
+    await this.getConnetion().raw(`
+      INSERT
+      INTO cookenu_followers (id, id_origin, id_destination)
+      VALUES ('${id}', '${id_origin}', '${userToFollowId}')
+    `)
+  }
 }
