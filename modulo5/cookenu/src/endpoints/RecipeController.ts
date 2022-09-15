@@ -101,4 +101,35 @@ export default class RecipeEndpoint {
       res.status(error.statusCode || 500).send({ message: error.message })
     }
   }
+
+  async deleteRecipeById(req: Request, res: Response) {
+    try {
+      const id = req.params.id as string;
+      if (!id) {
+        throw new MissingFields();
+      }
+      const token = req.headers.authorization as string;
+      if (!token) {
+        throw new InvalidCredential();
+      }
+      const authenticator = new Authenticator();
+      const payload = authenticator.verifyToken(token);
+      
+      const recipeData = new RecipeDatabase();
+      const recipe = await recipeData.getRecipeById(id);
+      if (!recipe.length) {
+        throw new RecipeNotFound();
+      }
+
+      if(payload.role === USER_ROLES.NORMAL && payload.id !== recipe[0].user_id){
+        throw new NotAuthorized();
+      }
+
+      await recipeData.deleteRecipeById(id);
+
+      res.status(200).send("Receita deletada com sucesso!");
+    } catch (error: any) {
+      res.status(error.statusCode || 500).send({ message: error.message })
+    }
+  }
 }
