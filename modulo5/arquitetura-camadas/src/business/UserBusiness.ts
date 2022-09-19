@@ -68,4 +68,48 @@ export default class UserBusiness {
 
     return response
   }
+
+  public login = async (input: any) => {
+    const email = input.email
+    const password = input.password
+
+    if (!email || typeof email !== "string") {
+      throw new Error("Parâmetro 'email' inválido")
+    }
+
+    if (!email.includes('@')) {
+      throw new Error("Email inválido")
+    }
+
+    if (!password || typeof password !== "string") {
+      throw new Error("Parâmetro 'password' inválido")
+    }
+
+    if (password.length < 6) {
+      throw new Error("A senha deve possuir pelo menos 6 parâmatros")
+    }
+
+    const userDatabase = new UserDatabase()
+    const userExist = await userDatabase.getUserByEmail(email);
+    if (!userExist){
+      throw new Error("Email não cadastrado no sistema");
+    }
+
+    const hashManager = new HashManager()
+    const correctPassword = await hashManager.compare(password, userExist[0].password)
+
+    const payload: ITokenPayload = {
+      id: userExist[0].id,
+      role: userExist[0].role
+    }
+
+    const authenticator = new Authenticator()
+    const token = authenticator.generateToken(payload)
+
+    const response = {
+      token
+    }
+
+    return response
+  }
 }

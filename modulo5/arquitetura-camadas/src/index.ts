@@ -16,3 +16,4 @@ app.listen(process.env.PORT || 3003, () => {
 const userController = new UserController()
 
 app.post("/users/signup", userController.signup)
+app.get("/users/login", userController.login)
