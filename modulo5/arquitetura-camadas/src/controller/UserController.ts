@@ -62,4 +62,22 @@ export default class UserController {
       res.status(500).send({ message: "Erro inesperado" })
     }
   }
+
+  public delete = async (req: Request, res: Response) => {
+    try {
+      const token: string = req.headers.authorization as string;
+      const id: string = req.params.id;
+
+      const userBusiness = new UserBusiness();
+      await userBusiness.delete(token, id);
+
+      res.status(201).send("Usuário deletado com sucesso!")
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
+
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
 }

@@ -140,4 +140,37 @@ export default class UserBusiness {
 
     return response
   }
+
+  public delete = async (token: string, id: string) => {
+    if (!token) {
+      throw new Error("Não autorizado");
+    }
+    if (!id) {
+      throw new Error("É necessário informar o ID a ser deletado");
+    }
+
+    const userDatabase = new UserDatabase()
+    const userExist = await userDatabase.getUserById(id);
+    if (!userExist){
+      throw new Error("O ID que você deseja deletar não foi encontrado");
+    }
+
+    const payload = new Authenticator().getTokenPayload(token);
+
+    if (payload.id === id){
+      throw new Error("Você não pode remover a si mesmo");
+    }
+
+    if(payload.role === USER_ROLES.NORMAL){
+      throw new Error("Somente ADMIN pode deletar outro usuário");
+    }
+
+    await userDatabase.deleteUserById(id);
+
+    // const response = {
+    //   users
+    // }
+
+    // return response
+  }
 }

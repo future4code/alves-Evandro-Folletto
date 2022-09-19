@@ -60,4 +60,11 @@ export default class UserDatabase extends BaseDatabase {
     }
     return users
   }
+
+  public deleteUserById = async (id: string) => {
+    await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+      .delete()
+      .from(UserDatabase.TABLE_USERS)
+      .where({id})
+  }
 }
