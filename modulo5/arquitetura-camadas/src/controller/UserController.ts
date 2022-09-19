@@ -42,4 +42,24 @@ export default class UserController {
       res.status(500).send({ message: "Erro inesperado" })
     }
   }
+
+  public getUsers = async (req: Request, res: Response) => {
+    try {
+      const token: string = req.headers.authorization as string;
+      const search: string = req.query.search as string | '';
+      const page: number = Number(req.query.page) && Number(req.query.page) > 0 ? Number(req.query.page) : 1;
+      const size: number = Number(req.query.size) && Number(req.query.size) > 0 ? Number(req.query.size) : 5;
+
+      const userBusiness = new UserBusiness()
+      const response = await userBusiness.getUsers(token, search, page, size)
+
+      res.status(201).send(response)
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
+
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
 }

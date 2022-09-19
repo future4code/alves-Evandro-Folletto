@@ -34,4 +34,30 @@ export default class UserDatabase extends BaseDatabase {
     }
     return user
   }
+
+  public getUserById = async (id: string) => {
+    const user = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+      .select('*')
+      .from(UserDatabase.TABLE_USERS)
+      .where({id})
+
+    if (!user.length){
+      return undefined
+    }
+    return user
+  }
+
+  public getUserBySearch = async (search: string, size: number, offset: number) => {
+    const users = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+      .select('*')
+      .from(UserDatabase.TABLE_USERS)
+      .where('name', 'like', `%${search}%`)
+      .limit(size)
+      .offset(offset)
+
+    if (!users.length){
+      return undefined
+    }
+    return users
+  }
 }

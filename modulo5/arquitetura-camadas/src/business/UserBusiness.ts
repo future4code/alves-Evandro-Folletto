@@ -112,4 +112,32 @@ export default class UserBusiness {
 
     return response
   }
+
+  public getUsers = async (token: string, search: string, page: number, size: number) => {
+    if (!token) {
+      throw new Error("Não autorizado");
+    }
+
+    const payload = new Authenticator().getTokenPayload(token);
+
+    const userDatabase = new UserDatabase()
+    const userExist = await userDatabase.getUserById(payload.id);
+    if (!userExist){
+      throw new Error("Id não encontrado no sistema");
+    }
+
+    const offset: number = size * (page - 1);
+
+    const users = await userDatabase.getUserBySearch(search, size, offset);
+
+    if (!users){
+      throw new Error("Nenhum usuário encontrado");
+    }
+
+    const response = {
+      users
+    }
+
+    return response
+  }
 }
