@@ -17,7 +17,7 @@ export class User {
         private name: string,
         private email: string,
         private password: string,
-        private role: USER_ROLES
+        private role: USER_ROLES = USER_ROLES.NORMAL
     ) {}
 
     public getId = () => {
