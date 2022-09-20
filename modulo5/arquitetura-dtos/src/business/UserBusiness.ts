@@ -1,5 +1,5 @@
 import UserDatabase from "../database/UserDatabase"
-import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO } from "../model/User"
+import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO, IDeleteUsersInputDTO } from "../model/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -174,7 +174,10 @@ export default class UserBusiness {
     return response
   }
 
-  public delete = async (token: string, id: string) => {
+  public delete = async (input: IDeleteUsersInputDTO) => {
+    const token = input.token;
+    const id = input.id;
+
     if (!token) {
       throw new Error("Não autorizado");
     }
@@ -189,21 +192,24 @@ export default class UserBusiness {
     }
 
     const payload = new Authenticator().getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
 
     if (payload.id === id) {
       throw new Error("Você não pode remover a si mesmo");
     }
 
-    if (payload.role === USER_ROLES.NORMAL) {
+    if (payload.role !== USER_ROLES.ADMIN) {
       throw new Error("Somente ADMIN pode deletar outro usuário");
     }
 
     await userDatabase.deleteUserById(id);
 
-    // const response = {
-    //   users
-    // }
+    const response = {
+      message: "Usuário deletado com sucesso!"
+    }
 
-    // return response
+    return response
   }
 }

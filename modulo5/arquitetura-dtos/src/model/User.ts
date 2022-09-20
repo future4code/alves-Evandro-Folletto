@@ -46,6 +46,11 @@ export interface IGetUsersInputDBDTO {
   offset: number
 }
 
+export interface IDeleteUsersInputDTO {
+  token: string,
+  id: string
+}
+
 export class User {
   constructor(
     private id: string,
