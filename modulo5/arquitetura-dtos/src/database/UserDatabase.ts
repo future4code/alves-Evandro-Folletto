@@ -1,4 +1,4 @@
-import { IUserDB, User, IGetUsersInputDBDTO } from "../model/User";
+import { IUserDB, User, IGetUsersInputDBDTO, IEditInputDBDTO } from "../model/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export default class UserDatabase extends BaseDatabase {
@@ -36,7 +36,7 @@ export default class UserDatabase extends BaseDatabase {
   }
 
   public getUserById = async (id: string) => {
-    const user = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+    const user:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
       .select('*')
       .from(UserDatabase.TABLE_USERS)
       .where({id})
@@ -44,7 +44,7 @@ export default class UserDatabase extends BaseDatabase {
     if (!user.length){
       return undefined
     }
-    return user
+    return user[0]
   }
 
   public getUserBySearch = async (input:IGetUsersInputDBDTO) => {
@@ -70,5 +70,14 @@ export default class UserDatabase extends BaseDatabase {
       .delete()
       .from(UserDatabase.TABLE_USERS)
       .where({id})
+  }
+
+  public editUserById = async (user: User) => {
+    const userDB = this.toUserDBModel(user);
+
+    await BaseDatabase
+      .connection(UserDatabase.TABLE_USERS)
+      .update(userDB)
+      .where({id: userDB.id})
   }
 }

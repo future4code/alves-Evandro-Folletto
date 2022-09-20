@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import UserBusiness from "../business/UserBusiness";
-import { ISignupInputDTO, ILoginInputDTO, IGetUsersInputDTO, IDeleteUsersInputDTO } from './../model/User';
+import { ISignupInputDTO, ILoginInputDTO, IGetUsersInputDTO, IDeleteUsersInputDTO, IEditInputDTO } from './../model/User';
 
 export default class UserController {
   public signup = async (req: Request, res: Response) => {
@@ -75,6 +75,29 @@ export default class UserController {
 
       const userBusiness = new UserBusiness();
       const response = await userBusiness.delete(input);
+
+      res.status(201).send(response);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
+
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
+
+  public edit = async (req: Request, res: Response) => {
+    try {
+      const input: IEditInputDTO = {
+        id_edit: req.params.id,
+        token: req.headers.authorization as string,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+      }
+
+      const userBusiness = new UserBusiness();
+      const response = await userBusiness.edit(input);
 
       res.status(201).send(response);
     } catch (error: unknown) {

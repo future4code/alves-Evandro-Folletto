@@ -17,6 +17,22 @@ export interface ISignupInputDTO {
   password: string
 }
 
+export interface IEditInputDTO {
+  id_edit: string,
+  token: string,
+  name: string,
+  email: string,
+  password: string
+}
+
+export interface IEditInputDBDTO {
+  id_edit: string,
+  name: string,
+  email: string,
+  password: string,
+  role: USER_ROLES
+}
+
 export interface ISignupOutputDTO {
   message: string,
   token: string

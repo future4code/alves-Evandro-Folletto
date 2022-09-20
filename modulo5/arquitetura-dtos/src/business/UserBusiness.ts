@@ -1,5 +1,7 @@
 import UserDatabase from "../database/UserDatabase"
-import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO, IDeleteUsersInputDTO } from "../model/User"
+import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, 
+         ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO, 
+         IDeleteUsersInputDTO, IEditInputDTO, IEditInputDBDTO } from "../model/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -208,6 +210,64 @@ export default class UserBusiness {
 
     const response = {
       message: "Usuário deletado com sucesso!"
+    }
+
+    return response
+  }
+
+  public edit = async (input: IEditInputDTO) => {
+    const id_edit = input.id_edit;
+    const token = input.token;
+    const name = input.name;
+    const email = input.email;
+    const password = input.password;
+
+    if (!id_edit || !token || !name || !email || !password) {
+      throw new Error("Estão faltando parâmetros");
+    }
+
+    if (name.length < 3 || typeof name !== "string") {
+      throw new Error("Parâmetro 'name' inválido")
+    }
+
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
+    }
+
+    if (password.length < 6 || typeof password !== "string") {
+      throw new Error("Parâmetro 'password' inválido")
+    }
+
+    const userDatabase = new UserDatabase()
+    const userDB = await userDatabase.getUserById(id_edit);
+    if (!userDB) {
+      throw new Error("O ID que você deseja editar não foi encontrado");
+    }
+
+    const payload = new Authenticator().getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
+    if(payload.role === USER_ROLES.NORMAL && payload.id !== id_edit) {
+      throw new Error("Você só tem autorização para editar seus próprios dados!");
+    }
+
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role
+    )
+
+    user.setId(id_edit);
+    user.setName(name);
+    user.setPassword(password);
+
+    await userDatabase.editUserById(user);
+
+    const response = {
+      message: "Usuário editado com sucesso!"
     }
 
     return response
