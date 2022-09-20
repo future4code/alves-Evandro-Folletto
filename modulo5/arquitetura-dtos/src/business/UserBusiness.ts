@@ -1,5 +1,5 @@
 import UserDatabase from "../database/UserDatabase"
-import { User, USER_ROLES, ISignupInputDTO, ISignupOutputDTO } from "../model/User"
+import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO } from "../model/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -62,38 +62,49 @@ export default class UserBusiness {
     return response
   }
 
-  public login = async (input: any) => {
+  public login = async (input: ILoginInputDTO) => {
     const email = input.email
     const password = input.password
 
-    if (!email || typeof email !== "string") {
+    if (!email || !password) {
+      throw new Error("Parâmetros faltando")
+    }
+
+    if (typeof email !== "string") {
       throw new Error("Parâmetro 'email' inválido")
     }
 
-    if (!email.includes('@')) {
-      throw new Error("Email inválido")
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
     }
 
-    if (!password || typeof password !== "string") {
+    if (password.length < 6 || typeof password !== "string") {
       throw new Error("Parâmetro 'password' inválido")
     }
 
-    if (password.length < 6) {
-      throw new Error("A senha deve possuir pelo menos 6 parâmatros")
-    }
-
     const userDatabase = new UserDatabase()
-    const userExist = await userDatabase.getUserByEmail(email);
-    if (!userExist) {
+    const userDB = await userDatabase.getUserByEmail(email);
+    if (!userDB) {
       throw new Error("Email não cadastrado no sistema");
     }
 
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role,
+    )
+
     const hashManager = new HashManager()
-    const correctPassword = await hashManager.compare(password, userExist[0].password)
+    const correctPassword = await hashManager.compare(password, user.getPassword())
+    if (!correctPassword) {
+      throw new Error("Senha incorreta")
+    }
 
     const payload: ITokenPayload = {
-      id: userExist[0].id,
-      role: userExist[0].role
+      id: user.getId(),
+      role: user.getRole()
     }
 
     const authenticator = new Authenticator()

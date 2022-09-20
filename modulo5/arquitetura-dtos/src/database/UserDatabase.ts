@@ -24,7 +24,7 @@ export default class UserDatabase extends BaseDatabase {
   }
 
   public getUserByEmail = async (email: string) => {
-    const user = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+    const user:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
       .select('*')
       .from(UserDatabase.TABLE_USERS)
       .where({email: email})
@@ -32,7 +32,7 @@ export default class UserDatabase extends BaseDatabase {
     if (!user.length){
       return undefined
     }
-    return user
+    return user[0]
   }
 
   public getUserById = async (id: string) => {
