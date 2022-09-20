@@ -27,6 +27,25 @@ export interface ILoginInputDTO {
   password: string
 }
 
+export interface IGetUsersInputDTO {
+  token: string,
+  search: string,
+  page: number,
+  size: number
+}
+
+export interface IGetUsersOutputDTO {
+  id: string,
+  name: string,
+  email: string
+}
+
+export interface IGetUsersInputDBDTO {
+  search: string,
+  size: number,
+  offset: number
+}
+
 export class User {
   constructor(
     private id: string,

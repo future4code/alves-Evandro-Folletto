@@ -1,4 +1,4 @@
-import { IUserDB, User } from "../model/User";
+import { IUserDB, User, IGetUsersInputDBDTO } from "../model/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export default class UserDatabase extends BaseDatabase {
@@ -47,8 +47,12 @@ export default class UserDatabase extends BaseDatabase {
     return user
   }
 
-  public getUserBySearch = async (search: string, size: number, offset: number) => {
-    const users = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+  public getUserBySearch = async (input:IGetUsersInputDBDTO) => {
+    const search = input.search;
+    const size = input.size;
+    const offset = input.offset;
+
+    const users:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
       .select('*')
       .from(UserDatabase.TABLE_USERS)
       .where('name', 'like', `%${search}%`)

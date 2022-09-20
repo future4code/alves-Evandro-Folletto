@@ -1,5 +1,5 @@
 import UserDatabase from "../database/UserDatabase"
-import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO } from "../model/User"
+import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO } from "../model/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -117,12 +117,20 @@ export default class UserBusiness {
     return response
   }
 
-  public getUsers = async (token: string, search: string, page: number, size: number) => {
+  public getUsers = async (input: IGetUsersInputDTO) => {
+    const token = input.token;
+    const search = input.search;
+    const page = input.page;
+    const size = input.size;
+
     if (!token) {
       throw new Error("Não autorizado");
     }
 
     const payload = new Authenticator().getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
 
     const userDatabase = new UserDatabase()
     const userExist = await userDatabase.getUserById(payload.id);
@@ -132,11 +140,32 @@ export default class UserBusiness {
 
     const offset: number = size * (page - 1);
 
-    const users = await userDatabase.getUserBySearch(search, size, offset);
+    const getUsersInputDB: IGetUsersInputDBDTO = {
+      search,
+      size,
+      offset
+    }
 
-    if (!users) {
+    const usersDB = await userDatabase.getUserBySearch(getUsersInputDB);
+    if (!usersDB) {
       throw new Error("Nenhum usuário encontrado");
     }
+
+    const users = usersDB.map( userDB => {
+      const user = new User(
+        userDB.id,
+        userDB.name,
+        userDB.email,
+        userDB.password,
+        userDB.role
+      )
+      const userResponse: IGetUsersOutputDTO = {
+        id: user.getId(),
+        name: user.getName(),
+        email: user.getEmail(),
+      }
+      return userResponse
+    })
 
     const response = {
       users
