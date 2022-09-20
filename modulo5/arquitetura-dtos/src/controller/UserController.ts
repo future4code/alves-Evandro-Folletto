@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import UserBusiness from "../business/UserBusiness";
+import { ISignupInputDTO } from './../model/User';
 
 export default class UserController {
   public signup = async (req: Request, res: Response) => {
     try {
-      const input: any = {
+      const input: ISignupInputDTO = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
