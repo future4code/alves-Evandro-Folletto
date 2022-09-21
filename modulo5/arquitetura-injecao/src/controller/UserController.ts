@@ -3,6 +3,10 @@ import UserBusiness from "../business/UserBusiness";
 import { ISignupInputDTO, ILoginInputDTO, IGetUsersInputDTO, IDeleteUsersInputDTO, IEditInputDTO } from './../model/User';
 
 export default class UserController {
+  constructor(
+    private userBusiness: UserBusiness
+  ){}
+
   public signup = async (req: Request, res: Response) => {
     try {
       const input: ISignupInputDTO = {
@@ -11,8 +15,7 @@ export default class UserController {
         password: req.body.password
       }
 
-      const userBusiness = new UserBusiness()
-      const response = await userBusiness.signup(input)
+      const response = await this.userBusiness.signup(input)
 
       res.status(201).send(response)
     } catch (error: unknown) {
@@ -31,8 +34,7 @@ export default class UserController {
         password: req.body.password
       }
 
-      const userBusiness = new UserBusiness()
-      const response = await userBusiness.login(input)
+      const response = await this.userBusiness.login(input)
 
       res.status(201).send(response)
     } catch (error: unknown) {
@@ -53,8 +55,7 @@ export default class UserController {
         size: Number(req.query.size) && Number(req.query.size) > 0 ? Number(req.query.size) : 5
       } 
 
-      const userBusiness = new UserBusiness()
-      const response = await userBusiness.getUsers(input)
+      const response = await this.userBusiness.getUsers(input)
 
       res.status(201).send(response)
     } catch (error: unknown) {
@@ -73,8 +74,7 @@ export default class UserController {
         id: req.params.id
       } 
 
-      const userBusiness = new UserBusiness();
-      const response = await userBusiness.delete(input);
+      const response = await this.userBusiness.delete(input);
 
       res.status(201).send(response);
     } catch (error: unknown) {
@@ -96,8 +96,7 @@ export default class UserController {
         password: req.body.password
       }
 
-      const userBusiness = new UserBusiness();
-      const response = await userBusiness.edit(input);
+      const response = await this.userBusiness.edit(input);
 
       res.status(201).send(response);
     } catch (error: unknown) {
