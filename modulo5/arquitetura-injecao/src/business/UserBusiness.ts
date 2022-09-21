@@ -7,6 +7,13 @@ import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
 
 export default class UserBusiness {
+  constructor(
+    private userDatabase: UserDatabase,
+    private idGenerator: IdGenerator,
+    private hashManager: HashManager,
+    private authenticator: Authenticator
+  ){}
+
   public signup = async (input: ISignupInputDTO) => {
     const name = input.name;
     const email = input.email;
@@ -28,11 +35,10 @@ export default class UserBusiness {
       throw new Error("Parâmetro 'password' inválido")
     }
 
-    const idGenerator = new IdGenerator();
-    const id = idGenerator.generate();
+    
+    const id = this.idGenerator.generate();
 
-    const hashManager = new HashManager();
-    const hashPassword = await hashManager.hash(password);
+    const hashPassword = await this.hashManager.hash(password);
 
     const user = new User(
       id,
@@ -41,20 +47,20 @@ export default class UserBusiness {
       hashPassword
     );
 
-    const userDatabase = new UserDatabase();
-    const emailExist = await userDatabase.getUserByEmail(email);
+    
+    const emailExist = await this.userDatabase.getUserByEmail(email);
     if (emailExist) {
       throw new Error("Email já cadastrado");
     }
-    await userDatabase.createUser(user);
+    await this.userDatabase.createUser(user);
 
     const payload: ITokenPayload = {
       id: user.getId(),
       role: user.getRole()
     }
 
-    const authenticator = new Authenticator()
-    const token = authenticator.generateToken(payload)
+    
+    const token = this.authenticator.generateToken(payload)
 
     const response: ISignupOutputDTO = {
       message: 'Cadastro realizado com sucesso!',
@@ -84,8 +90,8 @@ export default class UserBusiness {
       throw new Error("Parâmetro 'password' inválido")
     }
 
-    const userDatabase = new UserDatabase()
-    const userDB = await userDatabase.getUserByEmail(email);
+    
+    const userDB = await this.userDatabase.getUserByEmail(email);
     if (!userDB) {
       throw new Error("Email não cadastrado no sistema");
     }
@@ -98,8 +104,8 @@ export default class UserBusiness {
       userDB.role,
     )
 
-    const hashManager = new HashManager()
-    const correctPassword = await hashManager.compare(password, user.getPassword())
+    
+    const correctPassword = await this.hashManager.compare(password, user.getPassword())
     if (!correctPassword) {
       throw new Error("Senha incorreta")
     }
@@ -109,8 +115,8 @@ export default class UserBusiness {
       role: user.getRole()
     }
 
-    const authenticator = new Authenticator()
-    const token = authenticator.generateToken(payload)
+    
+    const token = this.authenticator.generateToken(payload)
 
     const response = {
       token
@@ -129,13 +135,13 @@ export default class UserBusiness {
       throw new Error("Não autorizado");
     }
 
-    const payload = new Authenticator().getTokenPayload(token);
+    const payload = this.authenticator.getTokenPayload(token);
     if (!payload) {
       throw new Error("Token inválido");
     }
 
-    const userDatabase = new UserDatabase()
-    const userExist = await userDatabase.getUserById(payload.id);
+    
+    const userExist = await this.userDatabase.getUserById(payload.id);
     if (!userExist) {
       throw new Error("Id não encontrado no sistema");
     }
@@ -148,7 +154,7 @@ export default class UserBusiness {
       offset
     }
 
-    const usersDB = await userDatabase.getUserBySearch(getUsersInputDB);
+    const usersDB = await this.userDatabase.getUserBySearch(getUsersInputDB);
     if (!usersDB) {
       throw new Error("Nenhum usuário encontrado");
     }
@@ -187,13 +193,13 @@ export default class UserBusiness {
       throw new Error("É necessário informar o ID a ser deletado");
     }
 
-    const userDatabase = new UserDatabase()
-    const userExist = await userDatabase.getUserById(id);
+    
+    const userExist = await this.userDatabase.getUserById(id);
     if (!userExist) {
       throw new Error("O ID que você deseja deletar não foi encontrado");
     }
 
-    const payload = new Authenticator().getTokenPayload(token);
+    const payload = this.authenticator.getTokenPayload(token);
     if (!payload) {
       throw new Error("Token inválido");
     }
@@ -206,7 +212,7 @@ export default class UserBusiness {
       throw new Error("Somente ADMIN pode deletar outro usuário");
     }
 
-    await userDatabase.deleteUserById(id);
+    await this.userDatabase.deleteUserById(id);
 
     const response = {
       message: "Usuário deletado com sucesso!"
@@ -238,13 +244,13 @@ export default class UserBusiness {
       throw new Error("Parâmetro 'password' inválido")
     }
 
-    const userDatabase = new UserDatabase()
-    const userDB = await userDatabase.getUserById(id_edit);
+
+    const userDB = await this.userDatabase.getUserById(id_edit);
     if (!userDB) {
       throw new Error("O ID que você deseja editar não foi encontrado");
     }
 
-    const payload = new Authenticator().getTokenPayload(token);
+    const payload = this.authenticator.getTokenPayload(token);
     if (!payload) {
       throw new Error("Token inválido");
     }
@@ -264,7 +270,7 @@ export default class UserBusiness {
     user.setName(name);
     user.setPassword(password);
 
-    await userDatabase.editUserById(user);
+    await this.userDatabase.editUserById(user);
 
     const response = {
       message: "Usuário editado com sucesso!"
