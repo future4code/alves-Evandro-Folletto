@@ -70,60 +70,58 @@ export default class UserBusiness {
     return response
   }
 
-  // public login = async (input: ILoginInputDTO) => {
-  //   const email = input.email
-  //   const password = input.password
+  public login = async (input: ILoginInputDTO) => {
+    const email = input.email
+    const password = input.password
 
-  //   if (!email || !password) {
-  //     throw new Error("Parâmetros faltando")
-  //   }
+    if (!email || !password) {
+      throw new Error("Parâmetros faltando")
+    }
 
-  //   if (typeof email !== "string") {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
+    if (typeof email !== "string") {
+      throw new Error("Parâmetro 'email' inválido")
+    }
 
-  //   if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
+    }
 
-  //   if (password.length < 6 || typeof password !== "string") {
-  //     throw new Error("Parâmetro 'password' inválido")
-  //   }
+    if (password.length < 6 || typeof password !== "string") {
+      throw new Error("Parâmetro 'password' inválido")
+    }
 
+    const userDB = await this.userDatabase.getUserByEmail(email);
+    if (!userDB) {
+      throw new Error("Email não cadastrado no sistema");
+    }
+
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role,
+    )
     
-  //   const userDB = await this.userDatabase.getUserByEmail(email);
-  //   if (!userDB) {
-  //     throw new Error("Email não cadastrado no sistema");
-  //   }
+    const correctPassword = await this.hashManager.compare(password, user.getPassword())
+    if (!correctPassword) {
+      throw new Error("Senha incorreta");
+    }
 
-  //   const user = new User(
-  //     userDB.id,
-  //     userDB.name,
-  //     userDB.email,
-  //     userDB.password,
-  //     userDB.role,
-  //   )
-
+    const payload: ITokenPayload = {
+      id: user.getId(),
+      role: user.getRole()
+    }
     
-  //   const correctPassword = await this.hashManager.compare(password, user.getPassword())
-  //   if (!correctPassword) {
-  //     throw new Error("Senha incorreta")
-  //   }
+    const token = this.authenticator.generateToken(payload)
 
-  //   const payload: ITokenPayload = {
-  //     id: user.getId(),
-  //     role: user.getRole()
-  //   }
+    const response = {
+      message: "Login realizado com sucesso!",
+      token
+    }
 
-    
-  //   const token = this.authenticator.generateToken(payload)
-
-  //   const response = {
-  //     token
-  //   }
-
-  //   return response
-  // }
+    return response
+  }
 
   // public getUsers = async (input: IGetUsersInputDTO) => {
   //   const token = input.token;
