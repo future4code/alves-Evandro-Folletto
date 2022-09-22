@@ -12,7 +12,8 @@ export default class UserController {
       const input: ISignupInputDTO = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        role: req.body.role
       }
 
       const response = await this.userBusiness.signup(input)

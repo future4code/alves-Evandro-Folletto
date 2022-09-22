@@ -1,34 +1,33 @@
-CREATE TABLE cookenu_users (
+CREATE TABLE Labook_Users (
 	id VARCHAR(255) PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) UNIQUE NOT NULL,
-	password VARCHAR(255) NOT NULL
+	password VARCHAR(255) NOT NULL,
+    role ENUM("NORMAL", "ADMIN") DEFAULT "NORMAL"
 );
 
-CREATE TABLE cookenu_recipies (
+CREATE TABLE Labook_Posts (
 	id VARCHAR(255) PRIMARY KEY,
-	title VARCHAR(255) NOT NULL,
-	description VARCHAR(255) NOT NULL,
-	date VARCHAR(255) NOT NULL,
-    user_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES cookenu_users(id)
+	content VARCHAR(255) NOT NULL,
+	user_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id) REFERENCES Labook_Users(id)
 );
 
-CREATE TABLE cookenu_followers (
+CREATE TABLE Labook_Likes (
 	id VARCHAR(255) PRIMARY KEY,
-	id_origin VARCHAR(255) NOT NULL,
-    FOREIGN KEY (id_origin) REFERENCES cookenu_users(id),
-    id_destination VARCHAR(255) NOT NULL,
-	FOREIGN KEY (id_destination) REFERENCES cookenu_users(id)
+	post_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (post_id ) REFERENCES Labook_Posts(id),
+	user_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Labook_Users(id)
 );
 
-SELECT * FROM cookenu_users;
-SELECT * FROM cookenu_recipies;
-SELECT * FROM cookenu_followers;
+SELECT * FROM Labook_Users;
+SELECT * FROM Labook_Posts;
+SELECT * FROM Labook_Likes;
 
-DELETE 
-FROM cookenu_recipies
-WHERE (cookenu_recipies.user_id = 'a9a74c5b-bdae-4408-8ead-1bc29cfb1357')
+-- DELETE 
+-- FROM cookenu_recipies
+-- WHERE (cookenu_recipies.user_id = 'a9a74c5b-bdae-4408-8ead-1bc29cfb1357')
 
 -- ALTER TABLE cookenu_users ADD COLUMN role enum("ADMIN", "NORMAL") DEFAULT "NORMAL" NOT NULL;
 -- DROP TABLE cookenu_followers

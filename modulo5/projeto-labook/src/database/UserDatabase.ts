@@ -2,7 +2,7 @@ import { IUserDB, User, IGetUsersInputDBDTO, IEditInputDBDTO } from "../model/Us
 import { BaseDatabase } from "./BaseDatabase";
 
 export default class UserDatabase extends BaseDatabase {
-  public static TABLE_USERS = "Arq_Users"
+  public static TABLE_USERS = "Labook_Users"
 
   public toUserDBModel = (user: User) => {
     const userDB: IUserDB = {

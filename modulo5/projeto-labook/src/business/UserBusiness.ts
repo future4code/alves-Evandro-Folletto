@@ -1,6 +1,6 @@
 import UserDatabase from "../database/UserDatabase"
-import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ISignupOutputDTO, 
-         ILoginInputDTO, IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO, 
+import { User, USER_ROLES, IUserDB ,ISignupInputDTO, ILoginInputDTO, 
+         IGetUsersInputDTO, IGetUsersInputDBDTO, IGetUsersOutputDTO, 
          IDeleteUsersInputDTO, IEditInputDTO, IEditInputDBDTO } from "../model/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
@@ -18,6 +18,7 @@ export default class UserBusiness {
     const name = input.name;
     const email = input.email;
     const password = input.password;
+    const role = input.role;
 
     if (!name || !email || !password) {
       throw new Error("Estão faltando parâmetros");
@@ -27,15 +28,19 @@ export default class UserBusiness {
       throw new Error("Parâmetro 'name' inválido")
     }
 
-    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-      throw new Error("Parâmetro 'email' inválido")
-    }
-
     if (password.length < 6 || typeof password !== "string") {
       throw new Error("Parâmetro 'password' inválido")
     }
 
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
+    }
     
+    const emailExist = await this.userDatabase.getUserByEmail(email);
+    if (emailExist) {
+      throw new Error("Email já cadastrado");
+    }
+
     const id = this.idGenerator.generate();
 
     const hashPassword = await this.hashManager.hash(password);
@@ -44,14 +49,10 @@ export default class UserBusiness {
       id,
       name,
       email,
-      hashPassword
+      hashPassword,
+      role
     );
 
-    
-    const emailExist = await this.userDatabase.getUserByEmail(email);
-    if (emailExist) {
-      throw new Error("Email já cadastrado");
-    }
     await this.userDatabase.createUser(user);
 
     const payload: ITokenPayload = {
@@ -59,10 +60,9 @@ export default class UserBusiness {
       role: user.getRole()
     }
 
-    
     const token = this.authenticator.generateToken(payload)
 
-    const response: ISignupOutputDTO = {
+    const response = {
       message: 'Cadastro realizado com sucesso!',
       token: token
     }
