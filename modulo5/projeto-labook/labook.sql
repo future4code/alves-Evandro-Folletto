@@ -10,7 +10,7 @@ CREATE TABLE Labook_Posts (
 	id VARCHAR(255) PRIMARY KEY,
 	content VARCHAR(255) NOT NULL,
 	user_id VARCHAR(255) NOT NULL,
-    FOREIGN KEY (id) REFERENCES Labook_Users(id)
+    FOREIGN KEY (user_id) REFERENCES Labook_Users(id)
 );
 
 CREATE TABLE Labook_Likes (
