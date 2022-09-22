@@ -1,7 +1,7 @@
 import { IUserDB, User, IGetUsersInputDBDTO, IEditInputDBDTO } from "../model/User";
-import { BaseDatabase } from "./BaseDatabase";
+import { BaseDataBase } from "./BaseDatabase";
 
-export default class UserDatabase extends BaseDatabase {
+export default class UserData extends BaseDataBase {
   public static TABLE_USERS = "Labook_Users"
 
   public toUserDBModel = (user: User) => {
@@ -16,24 +16,26 @@ export default class UserDatabase extends BaseDatabase {
     return userDB
   }
 
-  public createUser = async (user: User) => {
-    const userDB = this.toUserDBModel(user)
+  // public createUser = async (user: User) => {
+  //   const userDB = this.toUserDBModel(user)
 
-    await BaseDatabase.connection(UserDatabase.TABLE_USERS)
-      .insert(userDB)
-  }
+  //   await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+  //     .insert(userDB)
+  // }
 
-  public getUserByEmail = async (email: string) => {
-    const user:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
-      .select('*')
-      .from(UserDatabase.TABLE_USERS)
-      .where({email: email})
+  // public getUserByEmail = async (email: string) => {
+  //   const user:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+  //     .select('*')
+  //     .from(UserDatabase.TABLE_USERS)
+  //     .where({email: email})
 
-    if (!user.length){
-      return undefined
-    }
-    return user[0]
-  }
+  //   if (!user.length){
+  //     return undefined
+  //   }
+  //   return user[0]
+  // }
+
+  // --------------------------------
 
   // public getUserById = async (id: string) => {
   //   const user:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)

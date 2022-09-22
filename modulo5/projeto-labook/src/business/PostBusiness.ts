@@ -27,41 +27,52 @@ export default class UserBusiness {
       throw new Error("Token inválido");
     }
 
-    const userDB = await this.postDatabase.getUserById(payload.id);
+    const userDB = await this.postDatabase.getUserById();
     if (!userDB) {
       throw new Error("ID não encontrado no banco de dados");
     }
 
-    const user = new User(
-      userDB.id,
-      userDB.name,
-      userDB.email,
-      userDB.password,
-      userDB.role,
-    );
+    // const user = new User(
+    //   userDB.id,
+    //   userDB.name,
+    //   userDB.email,
+    //   userDB.password,
+    //   userDB.role,
+    // );
 
-    const id = this.idGenerator.generate();
+    // const id = this.idGenerator.generate();
 
-    const post = new Post(
-      id,
-      content,
-      user.getId(),
-      0
-    );
+    // const post = new Post(
+    //   id,
+    //   content,
+    //   user.getId(),
+    //   0
+    // );
     
-    const input: IPostInputDBDTO = {
-      id: post.getId(),
-      content: post.getContent(),
-      user_id: post.getUserId()
-    };
+    // const input: IPostInputDBDTO = {
+    //   id: post.getId(),
+    //   content: post.getContent(),
+    //   user_id: post.getUserId()
+    // };
 
-    await this.postDatabase.createPost(input);
+    // await this.postDatabase.createPost(input);
 
-    const response = {
-      message: 'Post realizado com sucesso!'
+    // const response = {
+    //   message: 'Post realizado com sucesso!'
+    // }
+
+    // return response
+  }
+
+  public getAllPosts = async (token: string) => {
+    if (!token) {
+      throw new Error("Não autorizado");
     }
 
-    return response
+    const payload = this.authenticator.getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
   }
 
   // public login = async (input: ILoginInputDTO) => {
@@ -117,22 +128,6 @@ export default class UserBusiness {
   //   return response
   // }
 
-  // public getUsers = async (input: IGetUsersInputDTO) => {
-  //   const token = input.token;
-  //   const search = input.search;
-  //   const page = input.page;
-  //   const size = input.size;
-
-  //   if (!token) {
-  //     throw new Error("Não autorizado");
-  //   }
-
-  //   const payload = this.authenticator.getTokenPayload(token);
-  //   if (!payload) {
-  //     throw new Error("Token inválido");
-  //   }
-
-    
   //   const userExist = await this.userDatabase.getUserById(payload.id);
   //   if (!userExist) {
   //     throw new Error("Id não encontrado no sistema");

@@ -25,9 +25,23 @@ SELECT * FROM Labook_Users;
 SELECT * FROM Labook_Posts;
 SELECT * FROM Labook_Likes;
 
+INSERT
+INTO Labook_Likes (id, post_id, user_id)
+VALUES
+	('001', '5d9a9583-fb9c-41a2-9b54-4acda0b3899a', '2cd8cd71-8097-4756-b594-57ce5769b986'),
+	('002', 'c6768f8f-bbab-4235-8207-525321be0b31', '2cd8cd71-8097-4756-b594-57ce5769b986'),
+    ('003', 'c6768f8f-bbab-4235-8207-525321be0b31', '7d66b891-00df-4d64-bed0-5e188d4415a9');
+
+SELECT Labook_Posts.id as idPostagem, Labook_Users.name as user_name, Labook_Posts.content, COUNT(Labook_Likes.id) as curtidasTotais
+FROM Labook_Posts
+LEFT JOIN Labook_Likes
+ON Labook_Posts.id = Labook_Likes.post_id
+LEFT JOIN Labook_Users
+ON Labook_Users.id = Labook_Posts.user_id
+GROUP BY Labook_Posts.id;
+
 -- DELETE 
 -- FROM cookenu_recipies
 -- WHERE (cookenu_recipies.user_id = 'a9a74c5b-bdae-4408-8ead-1bc29cfb1357')
 
--- ALTER TABLE cookenu_users ADD COLUMN role enum("ADMIN", "NORMAL") DEFAULT "NORMAL" NOT NULL;
--- DROP TABLE cookenu_followers
+-- DROP TABLE Labook_Likes
