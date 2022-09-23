@@ -28,7 +28,7 @@ export default class UserBusiness {
     }
 
     const userDB = await this.postDatabase.getUserById(payload.id);
-    if (!userDB) {
+    if (!userDB.length) {
       throw new Error("ID não encontrado no banco de dados");
     }
 
@@ -124,6 +124,12 @@ export default class UserBusiness {
     const payload = this.authenticator.getTokenPayload(token);
     if (!payload) {
       throw new Error("Token inválido");
+    }
+
+    const postExist = await this.postDatabase.getPostById(post_id);
+    console.log(postExist)
+    if (!postExist.length) {
+      throw new Error("O ID do post que você quer dar like não existe!");
     }
 
     const likeExist = await this.postDatabase.getLike(payload.id, post_id);

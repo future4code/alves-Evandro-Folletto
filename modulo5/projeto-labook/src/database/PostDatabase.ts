@@ -25,7 +25,7 @@ export default class PostDatabase extends BaseDatabase {
       .into(PostDatabase.TABLE_POST)
   }
 
-  async getUserById(id: string): Promise<IUserDB[] | undefined> {
+  async getUserById(id: string): Promise<IUserDB[]> {
     const user:IUserDB[] = await this.getConnection()
       .select('*')
       .from(PostDatabase.TABLE_USERS)
@@ -33,7 +33,7 @@ export default class PostDatabase extends BaseDatabase {
     return user
   }
 
-  async getPostById(id: string): Promise<IPostDB[] | undefined> {
+  async getPostById(id: string): Promise<IPostDB[]> {
     const post:IPostDB[] = await this.getConnection()
       .select('*')
       .from(PostDatabase.TABLE_POST)
@@ -69,15 +69,11 @@ export default class PostDatabase extends BaseDatabase {
   }
 
   async getLike(id: string, post_id: string): Promise<ILikeDB[]> {
-    console.log('id:', id);
-    console.log('post_id:', post_id);
     const like:ILikeDB[] = await this.getConnection()
       .select('*')
       .from(PostDatabase.TABLE_LIKES)
       .where("post_id", post_id)
       .andWhere("user_id", id)
-
-    console.log(like)
     return like
   }
 
