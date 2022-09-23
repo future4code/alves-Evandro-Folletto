@@ -1,15 +1,13 @@
-import PostDatabase from "../database/PostDatabase"
-import { User, USER_ROLES } from "../model/User"
-import { Post, ILikeDB, IPostInputDBDTO } from "../model/Post"
-import { Authenticator, ITokenPayload } from "../services/Authenticator"
-import { HashManager } from "../services/HashManager"
-import { IdGenerator } from "../services/IdGenerator"
+import PostDatabase from "../database/PostDatabase";
+import { User, USER_ROLES } from "../model/User";
+import { Post, ILikeDB, IPostInputDBDTO } from "../model/Post";
+import { Authenticator} from "../services/Authenticator";
+import { IdGenerator } from "../services/IdGenerator";
 
 export default class UserBusiness {
   constructor(
     private postDatabase: PostDatabase,
     private idGenerator: IdGenerator,
-    // private hashManager: HashManager,
     private authenticator: Authenticator
   ){}
 
