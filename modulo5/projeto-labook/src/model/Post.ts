@@ -3,13 +3,11 @@
 //   ADMIN = "ADMIN"
 // }
 
-// export interface IPostDB {
-//   id: string,
-//   name: string,
-//   email: string,
-//   password: string,
-//   role: USER_ROLES
-// }
+export interface IPostDB {
+  id: string,
+  content: string,
+  user_id: string
+}
 
 // export interface ISignupInputDTO {
 //   name: string,

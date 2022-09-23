@@ -1,5 +1,5 @@
 import PostDatabase from "../database/PostDatabase"
-import { User } from "../model/User"
+import { User, USER_ROLES } from "../model/User"
 import { Post, IPostInputDBDTO } from "../model/Post"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
@@ -33,11 +33,11 @@ export default class UserBusiness {
     }
 
     const user = new User(
-      userDB.id,
-      userDB.name,
-      userDB.email,
-      userDB.password,
-      userDB.role,
+      userDB[0].id,
+      userDB[0].name,
+      userDB[0].email,
+      userDB[0].password,
+      userDB[0].role,
     );
 
     const id = this.idGenerator.generate();
@@ -86,44 +86,36 @@ export default class UserBusiness {
     return response
   }
 
-  // public delete = async (input: IDeleteUsersInputDTO) => {
-  //   const token = input.token;
-  //   const id = input.id;
+  public delete = async (token: string, id: string) => {
+    if (!token) {
+      throw new Error("Não autorizado");
+    }
 
-  //   if (!token) {
-  //     throw new Error("Não autorizado");
-  //   }
-  //   if (!id) {
-  //     throw new Error("É necessário informar o ID a ser deletado");
-  //   }
+    const payload = this.authenticator.getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
 
-    
-  //   const userExist = await this.userDatabase.getUserById(id);
-  //   if (!userExist) {
-  //     throw new Error("O ID que você deseja deletar não foi encontrado");
-  //   }
+    const postDB = await this.postDatabase.getPostById(id);
+    if (!postDB) {
+      throw new Error("O ID que você deseja deletar não foi encontrado");
+    }
 
-  //   const payload = this.authenticator.getTokenPayload(token);
-  //   if (!payload) {
-  //     throw new Error("Token inválido");
-  //   }
+    if (payload.role === USER_ROLES.NORMAL && payload.id !== postDB[0].user_id) {
+      throw new Error("Você não tem autorização para essa ação");
+    }
 
-  //   if (payload.id === id) {
-  //     throw new Error("Você não pode remover a si mesmo");
-  //   }
+    // PRIMEIRO DELETAR OS LIKES
+    await this.postDatabase.deleteLikeByIdPost(id);
 
-  //   if (payload.role !== USER_ROLES.ADMIN) {
-  //     throw new Error("Somente ADMIN pode deletar outro usuário");
-  //   }
+    await this.postDatabase.deletePostById(id);
 
-  //   await this.userDatabase.deleteUserById(id);
+    const response = {
+      message: "Post deletado com sucesso!"
+    }
 
-  //   const response = {
-  //     message: "Usuário deletado com sucesso!"
-  //   }
-
-  //   return response
-  // }
+    return response
+  }
 
   // public edit = async (input: IEditInputDTO) => {
   //   const id_edit = input.id_edit;

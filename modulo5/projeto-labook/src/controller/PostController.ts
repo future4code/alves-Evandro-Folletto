@@ -40,44 +40,22 @@ export default class PostController {
     }
   }
 
-  // public login = async (req: Request, res: Response) => {
-  //   try {
-  //     const input: ILoginInputDTO = {
-  //       email: req.body.email,
-  //       password: req.body.password
-  //       password: req.body.password
-  //     }
+  public delete = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string;
+      const id = req.params.id;
 
-  //     const response = await this.userBusiness.login(input)
+      const response = await this.postBusiness.delete(token, id);
 
-  //     res.status(201).send(response)
-  //   } catch (error: unknown) {
-  //     if (error instanceof Error) {
-  //       return res.status(400).send({ message: error.message })
-  //     }
+      res.status(201).send(response);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
 
-  //     res.status(500).send({ message: "Erro inesperado" })
-  //   }
-  // }
-
-  // public delete = async (req: Request, res: Response) => {
-  //   try {
-  //     const input: IDeleteUsersInputDTO = {
-  //       token: req.headers.authorization as string,
-  //       id: req.params.id
-  //     }
-
-  //     const response = await this.userBusiness.delete(input);
-
-  //     res.status(201).send(response);
-  //   } catch (error: unknown) {
-  //     if (error instanceof Error) {
-  //       return res.status(400).send({ message: error.message })
-  //     }
-
-  //     res.status(500).send({ message: "Erro inesperado" })
-  //   }
-  // }
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
 
   // public edit = async (req: Request, res: Response) => {
   //   try {
