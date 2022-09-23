@@ -1,5 +1,5 @@
 import { IUserDB, User, IGetUsersInputDBDTO, IEditInputDBDTO } from "../model/User";
-import { IPostDB, IPostInputDBDTO } from "../model/Post";
+import { IPostDB, ILikeDB, IPostInputDBDTO } from "../model/Post";
 import { BaseDatabase } from "./BaseDatabase";
 
 export default class PostDatabase extends BaseDatabase {
@@ -54,24 +54,6 @@ export default class PostDatabase extends BaseDatabase {
     return posts
   }
 
-  // public getUserBySearch = async (input:IGetUsersInputDBDTO) => {
-  //   const search = input.search;
-  //   const size = input.size;
-  //   const offset = input.offset;
-
-  //   const users:IUserDB[] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
-  //     .select('*')
-  //     .from(UserDatabase.TABLE_USERS)
-  //     .where('name', 'like', `%${search}%`)
-  //     .limit(size)
-  //     .offset(offset)
-
-  //   if (!users.length){
-  //     return undefined
-  //   }
-  //   return users
-  // }
-
   public deleteLikeByIdPost = async (id: string) => {
     await this.getConnection()
       .delete()
@@ -86,12 +68,22 @@ export default class PostDatabase extends BaseDatabase {
       .where({id})
   }
 
-  // public editUserById = async (user: User) => {
-  //   const userDB = this.toUserDBModel(user);
+  async getLike(id: string, post_id: string): Promise<ILikeDB[]> {
+    console.log('id:', id);
+    console.log('post_id:', post_id);
+    const like:ILikeDB[] = await this.getConnection()
+      .select('*')
+      .from(PostDatabase.TABLE_LIKES)
+      .where("post_id", post_id)
+      .andWhere("user_id", id)
 
-  //   await BaseDatabase
-  //     .connection(UserDatabase.TABLE_USERS)
-  //     .update(userDB)
-  //     .where({id: userDB.id})
-  // }
+    console.log(like)
+    return like
+  }
+
+  public like = async (like: ILikeDB) => {
+    await this.getConnection()
+      .insert(like)
+      .into(PostDatabase.TABLE_LIKES)
+  }
 }

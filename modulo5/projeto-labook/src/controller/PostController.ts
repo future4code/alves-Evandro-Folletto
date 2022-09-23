@@ -57,25 +57,20 @@ export default class PostController {
     }
   }
 
-  // public edit = async (req: Request, res: Response) => {
-  //   try {
-  //     const input: IEditInputDTO = {
-  //       id_edit: req.params.id,
-  //       token: req.headers.authorization as string,
-  //       name: req.body.name,
-  //       email: req.body.email,
-  //       password: req.body.password
-  //     }
+  public like = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string;
+      const post_id = req.params.id;
 
-  //     const response = await this.userBusiness.edit(input);
+      const response = await this.postBusiness.like(token, post_id);
 
-  //     res.status(201).send(response);
-  //   } catch (error: unknown) {
-  //     if (error instanceof Error) {
-  //       return res.status(400).send({ message: error.message })
-  //     }
+      res.status(201).send(response);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
 
-  //     res.status(500).send({ message: "Erro inesperado" })
-  //   }
-  // }
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
 }

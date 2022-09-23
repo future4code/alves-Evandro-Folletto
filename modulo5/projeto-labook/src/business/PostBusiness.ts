@@ -1,6 +1,6 @@
 import PostDatabase from "../database/PostDatabase"
 import { User, USER_ROLES } from "../model/User"
-import { Post, IPostInputDBDTO } from "../model/Post"
+import { Post, ILikeDB, IPostInputDBDTO } from "../model/Post"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"
 import { IdGenerator } from "../services/IdGenerator"
@@ -116,61 +116,35 @@ export default class UserBusiness {
     return response
   }
 
-  // public edit = async (input: IEditInputDTO) => {
-  //   const id_edit = input.id_edit;
-  //   const token = input.token;
-  //   const name = input.name;
-  //   const email = input.email;
-  //   const password = input.password;
+  public like = async (token: string, post_id: string) => {
+    if (!token) {
+      throw new Error("Não autorizado");
+    }
 
-  //   if (!id_edit || !token || !name || !email || !password) {
-  //     throw new Error("Estão faltando parâmetros");
-  //   }
+    const payload = this.authenticator.getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
 
-  //   if (name.length < 3 || typeof name !== "string") {
-  //     throw new Error("Parâmetro 'name' inválido")
-  //   }
+    const likeExist = await this.postDatabase.getLike(payload.id, post_id);
+    if (likeExist.length > 0) {
+      throw new Error("Você já deu like neste post");
+    }
 
-  //   if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
+    const id = this.idGenerator.generate();
 
-  //   if (password.length < 6 || typeof password !== "string") {
-  //     throw new Error("Parâmetro 'password' inválido")
-  //   }
+    const input:ILikeDB = {
+      id,
+      post_id,
+      user_id: payload.id
+    };
 
+    await this.postDatabase.like(input);
 
-  //   const userDB = await this.userDatabase.getUserById(id_edit);
-  //   if (!userDB) {
-  //     throw new Error("O ID que você deseja editar não foi encontrado");
-  //   }
+    const response = {
+      message: "Like efetuado com sucesso!"
+    }
 
-  //   const payload = this.authenticator.getTokenPayload(token);
-  //   if (!payload) {
-  //     throw new Error("Token inválido");
-  //   }
-  //   if(payload.role === USER_ROLES.NORMAL && payload.id !== id_edit) {
-  //     throw new Error("Você só tem autorização para editar seus próprios dados!");
-  //   }
-
-  //   const user = new User(
-  //     userDB.id,
-  //     userDB.name,
-  //     userDB.email,
-  //     userDB.password,
-  //     userDB.role
-  //   )
-
-  //   user.setId(id_edit);
-  //   user.setName(name);
-  //   user.setPassword(password);
-
-  //   await this.userDatabase.editUserById(user);
-
-  //   const response = {
-  //     message: "Usuário editado com sucesso!"
-  //   }
-
-  //   return response
-  // }
+    return response
+  }
 }

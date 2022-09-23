@@ -9,6 +9,12 @@ export interface IPostDB {
   user_id: string
 }
 
+export interface ILikeDB {
+  id: string,
+  post_id: string,
+  user_id: string
+}
+
 // export interface ISignupInputDTO {
 //   name: string,
 //   email: string,
