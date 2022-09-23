@@ -1,4 +1,4 @@
-import { IUserDB, User, IGetUsersInputDBDTO, IEditInputDBDTO } from "../model/User";
+import { IUserDB } from "../model/User";
 import { IPostDB, ILikeDB, IPostInputDBDTO } from "../model/Post";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -6,18 +6,6 @@ export default class PostDatabase extends BaseDatabase {
   public static TABLE_USERS = "Labook_Users";
   public static TABLE_POST = "Labook_Posts";
   public static TABLE_LIKES = "Labook_Likes";
-
-  // public toUserDBModel = (user: User) => {
-  //   const userDB: IUserDB = {
-  //     id: user.getId(),
-  //     name: user.getName(),
-  //     email: user.getEmail(),
-  //     password: user.getPassword(),
-  //     role: user.getRole()
-  //   }
-
-  //   return userDB
-  // }
 
   public createPost = async (post: IPostInputDBDTO) => {
     await this.getConnection()

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import PostBusiness from "../business/PostBusiness";
-import { ISignupInputDTO, ILoginInputDTO, IGetUsersInputDTO, IDeleteUsersInputDTO, IEditInputDTO } from './../model/User';
 
 export default class PostController {
   constructor(

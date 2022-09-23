@@ -18,49 +18,9 @@ export interface ISignupInputDTO {
   role: USER_ROLES
 }
 
-export interface IEditInputDTO {
-  id_edit: string,
-  token: string,
-  name: string,
-  email: string,
-  password: string
-}
-
-export interface IEditInputDBDTO {
-  id_edit: string,
-  name: string,
-  email: string,
-  password: string,
-  role: USER_ROLES
-}
-
 export interface ILoginInputDTO {
   email: string,
   password: string
-}
-
-export interface IGetUsersInputDTO {
-  token: string,
-  search: string,
-  page: number,
-  size: number
-}
-
-export interface IGetUsersOutputDTO {
-  id: string,
-  name: string,
-  email: string
-}
-
-export interface IGetUsersInputDBDTO {
-  search: string,
-  size: number,
-  offset: number
-}
-
-export interface IDeleteUsersInputDTO {
-  token: string,
-  id: string
 }
 
 export class User {
