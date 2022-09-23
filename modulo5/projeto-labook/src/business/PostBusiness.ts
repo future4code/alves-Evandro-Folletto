@@ -127,7 +127,6 @@ export default class UserBusiness {
     }
 
     const postExist = await this.postDatabase.getPostById(post_id);
-    console.log(postExist)
     if (!postExist.length) {
       throw new Error("O ID do post que você quer dar like não existe!");
     }
@@ -149,6 +148,30 @@ export default class UserBusiness {
 
     const response = {
       message: "Like efetuado com sucesso!"
+    }
+
+    return response
+  }
+
+  public dislike = async (token: string, post_id: string) => {
+    if (!token) {
+      throw new Error("Não autorizado");
+    }
+
+    const payload = this.authenticator.getTokenPayload(token);
+    if (!payload) {
+      throw new Error("Token inválido");
+    }
+
+    const likeExist = await this.postDatabase.getLike(payload.id, post_id);
+    if (!likeExist.length) {
+      throw new Error("Você não deu like neste post");
+    }
+
+    await this.postDatabase.dislike(payload.id, post_id);
+
+    const response = {
+      message: "Dislike efetuado com sucesso!"
     }
 
     return response

@@ -82,4 +82,12 @@ export default class PostDatabase extends BaseDatabase {
       .insert(like)
       .into(PostDatabase.TABLE_LIKES)
   }
+  
+  public dislike = async (id: string, post_id: string) => {
+    await this.getConnection()
+      .delete()
+      .from(PostDatabase.TABLE_LIKES)
+      .where("post_id", post_id)
+      .andWhere("user_id", id)
+  }
 }

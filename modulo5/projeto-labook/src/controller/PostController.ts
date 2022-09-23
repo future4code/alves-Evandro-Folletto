@@ -73,4 +73,21 @@ export default class PostController {
       res.status(500).send({ message: "Erro inesperado" })
     }
   }
+
+  public dislike = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string;
+      const post_id = req.params.id;
+
+      const response = await this.postBusiness.dislike(token, post_id);
+
+      res.status(201).send(response);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(400).send({ message: error.message })
+      }
+
+      res.status(500).send({ message: "Erro inesperado" })
+    }
+  }
 }
