@@ -105,7 +105,6 @@ export default class UserBusiness {
       throw new Error("Você não tem autorização para essa ação");
     }
 
-    // PRIMEIRO DELETAR OS LIKES
     await this.postDatabase.deleteLikeByIdPost(id);
 
     await this.postDatabase.deletePostById(id);
