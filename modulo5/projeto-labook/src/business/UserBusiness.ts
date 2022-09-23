@@ -15,112 +15,112 @@ export default class UserBusiness {
   ){}
 
   public signup = async (input: ISignupInputDTO) => {
-    // const name = input.name;
-    // const email = input.email;
-    // const password = input.password;
-    // const role = input.role;
+    const name = input.name;
+    const email = input.email;
+    const password = input.password;
+    const role = input.role;
 
-    // if (!name || !email || !password) {
-    //   throw new Error("Estão faltando parâmetros");
-    // }
+    if (!name || !email || !password) {
+      throw new Error("Estão faltando parâmetros");
+    }
 
-    // if (name.length < 3 || typeof name !== "string") {
-    //   throw new Error("Parâmetro 'name' inválido")
-    // }
+    if (name.length < 3 || typeof name !== "string") {
+      throw new Error("Parâmetro 'name' inválido")
+    }
 
-    // if (password.length < 6 || typeof password !== "string") {
-    //   throw new Error("Parâmetro 'password' inválido")
-    // }
+    if (password.length < 6 || typeof password !== "string") {
+      throw new Error("Parâmetro 'password' inválido")
+    }
 
-    // if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-    //   throw new Error("Parâmetro 'email' inválido")
-    // }
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
+    }
     
-    // const emailExist = await this.userDatabase.getUserByEmail(email);
-    // if (emailExist) {
-    //   throw new Error("Email já cadastrado");
-    // }
+    const emailExist = await this.userDatabase.getUserByEmail(email);
+    if (emailExist) {
+      throw new Error("Email já cadastrado");
+    }
 
-    // const id = this.idGenerator.generate();
+    const id = this.idGenerator.generate();
 
-    // const hashPassword = await this.hashManager.hash(password);
+    const hashPassword = await this.hashManager.hash(password);
 
-    // const user = new User(
-    //   id,
-    //   name,
-    //   email,
-    //   hashPassword,
-    //   role
-    // );
+    const user = new User(
+      id,
+      name,
+      email,
+      hashPassword,
+      role
+    );
 
-    // await this.userDatabase.createUser(user);
+    await this.userDatabase.createUser(user);
 
-    // const payload: ITokenPayload = {
-    //   id: user.getId(),
-    //   role: user.getRole()
-    // }
+    const payload: ITokenPayload = {
+      id: user.getId(),
+      role: user.getRole()
+    }
 
-    // const token = this.authenticator.generateToken(payload)
+    const token = this.authenticator.generateToken(payload)
 
-    // const response = {
-    //   message: 'Cadastro realizado com sucesso!',
-    //   token: token
-    // }
+    const response = {
+      message: 'Cadastro realizado com sucesso!',
+      token: token
+    }
 
-    // return response
+    return response
   }
 
   public login = async (input: ILoginInputDTO) => {
-  //   const email = input.email
-  //   const password = input.password
+    const email = input.email
+    const password = input.password
 
-  //   if (!email || !password) {
-  //     throw new Error("Parâmetros faltando")
-  //   }
+    if (!email || !password) {
+      throw new Error("Parâmetros faltando")
+    }
 
-  //   if (typeof email !== "string") {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
+    if (typeof email !== "string") {
+      throw new Error("Parâmetro 'email' inválido")
+    }
 
-  //   if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      throw new Error("Parâmetro 'email' inválido")
+    }
 
-  //   if (password.length < 6 || typeof password !== "string") {
-  //     throw new Error("Parâmetro 'password' inválido")
-  //   }
+    if (password.length < 6 || typeof password !== "string") {
+      throw new Error("Parâmetro 'password' inválido")
+    }
 
-  //   const userDB = await this.userDatabase.getUserByEmail(email);
-  //   if (!userDB) {
-  //     throw new Error("Email não cadastrado no sistema");
-  //   }
+    const userDB = await this.userDatabase.getUserByEmail(email);
+    if (!userDB) {
+      throw new Error("Email não cadastrado no sistema");
+    }
 
-  //   const user = new User(
-  //     userDB.id,
-  //     userDB.name,
-  //     userDB.email,
-  //     userDB.password,
-  //     userDB.role,
-  //   )
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role,
+    )
     
-  //   const correctPassword = await this.hashManager.compare(password, user.getPassword())
-  //   if (!correctPassword) {
-  //     throw new Error("Senha incorreta");
-  //   }
+    const correctPassword = await this.hashManager.compare(password, user.getPassword())
+    if (!correctPassword) {
+      throw new Error("Senha incorreta");
+    }
 
-  //   const payload: ITokenPayload = {
-  //     id: user.getId(),
-  //     role: user.getRole()
-  //   }
+    const payload: ITokenPayload = {
+      id: user.getId(),
+      role: user.getRole()
+    }
     
-  //   const token = this.authenticator.generateToken(payload)
+    const token = this.authenticator.generateToken(payload)
 
-  //   const response = {
-  //     message: "Login realizado com sucesso!",
-  //     token
-  //   }
+    const response = {
+      message: "Login realizado com sucesso!",
+      token
+    }
 
-  //   return response
+    return response
   }
 
   // public getUsers = async (input: IGetUsersInputDTO) => {

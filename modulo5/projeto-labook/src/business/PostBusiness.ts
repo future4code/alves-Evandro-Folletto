@@ -27,41 +27,41 @@ export default class UserBusiness {
       throw new Error("Token inválido");
     }
 
-    const userDB = await this.postDatabase.getUserById();
+    const userDB = await this.postDatabase.getUserById(payload.id);
     if (!userDB) {
       throw new Error("ID não encontrado no banco de dados");
     }
 
-    // const user = new User(
-    //   userDB.id,
-    //   userDB.name,
-    //   userDB.email,
-    //   userDB.password,
-    //   userDB.role,
-    // );
+    const user = new User(
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role,
+    );
 
-    // const id = this.idGenerator.generate();
+    const id = this.idGenerator.generate();
 
-    // const post = new Post(
-    //   id,
-    //   content,
-    //   user.getId(),
-    //   0
-    // );
+    const post = new Post(
+      id,
+      content,
+      user.getId(),
+      0
+    );
     
-    // const input: IPostInputDBDTO = {
-    //   id: post.getId(),
-    //   content: post.getContent(),
-    //   user_id: post.getUserId()
-    // };
+    const input: IPostInputDBDTO = {
+      id: post.getId(),
+      content: post.getContent(),
+      user_id: post.getUserId()
+    };
 
-    // await this.postDatabase.createPost(input);
+    await this.postDatabase.createPost(input);
 
-    // const response = {
-    //   message: 'Post realizado com sucesso!'
-    // }
+    const response = {
+      message: 'Post realizado com sucesso!'
+    }
 
-    // return response
+    return response
   }
 
   public getAllPosts = async (token: string) => {
@@ -73,101 +73,18 @@ export default class UserBusiness {
     if (!payload) {
       throw new Error("Token inválido");
     }
+    
+    const posts = await this.postDatabase.getAllPosts();
+    if (!posts.length) {
+      throw new Error("Não existem posts cadastrados");
+    }
+    
+    const response = {
+      posts
+    }
+
+    return response
   }
-
-  // public login = async (input: ILoginInputDTO) => {
-  //   const email = input.email
-  //   const password = input.password
-
-  //   if (!email || !password) {
-  //     throw new Error("Parâmetros faltando")
-  //   }
-
-  //   if (typeof email !== "string") {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
-
-  //   if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-  //     throw new Error("Parâmetro 'email' inválido")
-  //   }
-
-  //   if (password.length < 6 || typeof password !== "string") {
-  //     throw new Error("Parâmetro 'password' inválido")
-  //   }
-
-  //   const userDB = await this.userDatabase.getUserByEmail(email);
-  //   if (!userDB) {
-  //     throw new Error("Email não cadastrado no sistema");
-  //   }
-
-  //   const user = new User(
-  //     userDB.id,
-  //     userDB.name,
-  //     userDB.email,
-  //     userDB.password,
-  //     userDB.role,
-  //   )
-    
-  //   const correctPassword = await this.hashManager.compare(password, user.getPassword())
-  //   if (!correctPassword) {
-  //     throw new Error("Senha incorreta");
-  //   }
-
-  //   const payload: ITokenPayload = {
-  //     id: user.getId(),
-  //     role: user.getRole()
-  //   }
-    
-  //   const token = this.authenticator.generateToken(payload)
-
-  //   const response = {
-  //     message: "Login realizado com sucesso!",
-  //     token
-  //   }
-
-  //   return response
-  // }
-
-  //   const userExist = await this.userDatabase.getUserById(payload.id);
-  //   if (!userExist) {
-  //     throw new Error("Id não encontrado no sistema");
-  //   }
-
-  //   const offset: number = size * (page - 1);
-
-  //   const getUsersInputDB: IGetUsersInputDBDTO = {
-  //     search,
-  //     size,
-  //     offset
-  //   }
-
-  //   const usersDB = await this.userDatabase.getUserBySearch(getUsersInputDB);
-  //   if (!usersDB) {
-  //     throw new Error("Nenhum usuário encontrado");
-  //   }
-
-  //   const users = usersDB.map( userDB => {
-  //     const user = new User(
-  //       userDB.id,
-  //       userDB.name,
-  //       userDB.email,
-  //       userDB.password,
-  //       userDB.role
-  //     )
-  //     const userResponse: IGetUsersOutputDTO = {
-  //       id: user.getId(),
-  //       name: user.getName(),
-  //       email: user.getEmail(),
-  //     }
-  //     return userResponse
-  //   })
-
-  //   const response = {
-  //     users
-  //   }
-
-  //   return response
-  // }
 
   // public delete = async (input: IDeleteUsersInputDTO) => {
   //   const token = input.token;
