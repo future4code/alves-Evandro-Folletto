@@ -3,6 +3,7 @@ import { ToUpper } from './exercicios/Exercicio_1';
 import { ToArrayString } from './exercicios/Exercicio_2';
 import { ToNumber } from './exercicios/Exercicio_3';
 import { Length } from './exercicios/Exercicio_4';
+import { Round } from './exercicios/Exercicio_5';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -47,5 +48,13 @@ describe("Testando a função Length", () => {
     const input = 'teste'
     const result = Length(input)
     expect(result).toBe(5)
+  })
+})
+
+describe("Testando a função Round", () => {
+  test("A execução da função deve retornar um valor entre 1 e 10", () => {
+    const result = Round()
+    expect(result).toBeGreaterThanOrEqual(1)
+    expect(result).toBeLessThanOrEqual(10)
   })
 })
