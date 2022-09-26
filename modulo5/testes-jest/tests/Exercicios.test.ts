@@ -2,6 +2,7 @@ import { ParOuImpar } from './exercicios/Exercicio_0';
 import { ToUpper } from './exercicios/Exercicio_1';
 import { ToArrayString } from './exercicios/Exercicio_2';
 import { ToNumber } from './exercicios/Exercicio_3';
+import { Length } from './exercicios/Exercicio_4';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -38,5 +39,13 @@ describe("Testando a função ToNumber", () => {
     const input = '50'
     const result = ToNumber(input)
     expect(result).toBe(50)
+  })
+})
+
+describe("Testando a função Length", () => {
+  test("A entrada 'teste' deve retornar 5", () => {
+    const input = 'teste'
+    const result = Length(input)
+    expect(result).toBe(5)
   })
 })
