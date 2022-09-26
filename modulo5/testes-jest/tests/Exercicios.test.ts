@@ -4,6 +4,8 @@ import { ToArrayString } from './exercicios/Exercicio_2';
 import { ToNumber } from './exercicios/Exercicio_3';
 import { Length } from './exercicios/Exercicio_4';
 import { Round } from './exercicios/Exercicio_5';
+import { IUser } from './exercicios/Exercicio_6';
+import { SearchAstrodev } from './exercicios/Exercicio_6';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -11,7 +13,7 @@ describe("Testando a função parOuImpar", () => {
     const result = ParOuImpar(input)
     expect(result).toBe(true)
   })
-  
+
   test("A entrada 5 deve retornar false", () => {
     const input = 5
     const result = ParOuImpar(input)
@@ -56,5 +58,18 @@ describe("Testando a função Round", () => {
     const result = Round()
     expect(result).toBeGreaterThanOrEqual(1)
     expect(result).toBeLessThanOrEqual(10)
+  })
+})
+
+describe("Testando a função SearchAstrodev", () => {
+  test("A execução da função deve verificar que existe 'user' dentro da lista criada", () => {
+    const user: IUser = {
+      id: "3",
+      name: "Astrodev",
+      age: 50
+    }
+
+    const result = SearchAstrodev()
+    expect(result).toContainEqual(user)
   })
 })
