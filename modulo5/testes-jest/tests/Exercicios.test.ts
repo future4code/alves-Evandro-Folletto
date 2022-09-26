@@ -8,6 +8,7 @@ import { IUser } from './exercicios/Exercicio_6';
 import { SearchAstrodev } from './exercicios/Exercicio_6';
 import { CalcMean } from './exercicios/Exercicio_7';
 import { CalcAge } from './exercicios/Exercicio_8';
+import { TransformDate } from './exercicios/Exercicio_9';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -89,5 +90,13 @@ describe("Testando a função CalcAge", () => {
     const input = 2000
     const result = CalcAge(input)
     expect(result).toBe(22)
+  })
+})
+
+describe("Testando a função TransformDate", () => {
+  test("A entrada '2022/09/26' deve retornar '26/09/2022'", () => {
+    const input = '2022/09/26'
+    const result = TransformDate(input)
+    expect(result).toBe('26/09/2022')
   })
 })
