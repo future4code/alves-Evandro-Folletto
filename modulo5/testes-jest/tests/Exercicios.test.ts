@@ -1,4 +1,5 @@
-import { ParOuImpar } from './Exercicio_0';
+import { ParOuImpar } from './exercicios/Exercicio_0';
+import { ToUpper } from './exercicios/Exercicio_1';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -11,5 +12,13 @@ describe("Testando a função parOuImpar", () => {
     const input = 5
     const result = ParOuImpar(input)
     expect(result).toBe(false)
+  })
+})
+
+describe("Testando a função ToUpper", () => {
+  test("A entrada 'bananinha' deve retornar BANANINHA", () => {
+    const input = 'bananinha'
+    const result = ToUpper(input)
+    expect(result).toBe('BANANINHA')
   })
 })
