@@ -1,6 +1,7 @@
 import { ParOuImpar } from './exercicios/Exercicio_0';
 import { ToUpper } from './exercicios/Exercicio_1';
 import { ToArrayString } from './exercicios/Exercicio_2';
+import { ToNumber } from './exercicios/Exercicio_3';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -29,5 +30,13 @@ describe("Testando a função ToArrayString", () => {
     const input = 'dev'
     const result = ToArrayString(input)
     expect(result).toEqual(['d', 'e', 'v'])
+  })
+})
+
+describe("Testando a função ToNumber", () => {
+  test("A entrada '50' deve retornar 50", () => {
+    const input = '50'
+    const result = ToNumber(input)
+    expect(result).toBe(50)
   })
 })
