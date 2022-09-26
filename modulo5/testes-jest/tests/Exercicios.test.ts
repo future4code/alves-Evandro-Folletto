@@ -6,6 +6,7 @@ import { Length } from './exercicios/Exercicio_4';
 import { Round } from './exercicios/Exercicio_5';
 import { IUser } from './exercicios/Exercicio_6';
 import { SearchAstrodev } from './exercicios/Exercicio_6';
+import { CalcMean } from './exercicios/Exercicio_7';
 
 describe("Testando a função parOuImpar", () => {
   test("A entrada 10 deve retornar true", () => {
@@ -71,5 +72,13 @@ describe("Testando a função SearchAstrodev", () => {
 
     const result = SearchAstrodev()
     expect(result).toContainEqual(user)
+  })
+})
+
+describe("Testando a função CalcMean", () => {
+  test("A entrada [10, 4, 7, 6] deve retornar 7", () => {
+    const input = [10, 4, 7, 6]
+    const result = CalcMean(input)
+    expect(result).toBe(7)
   })
 })
