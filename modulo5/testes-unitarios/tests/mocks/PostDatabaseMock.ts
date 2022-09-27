@@ -1,7 +1,7 @@
-import { ILikeDB, IPostDB, Post } from "../models/Post"
-import { BaseDatabase } from "./BaseDatabase"
+import { ILikeDB, IPostDB, Post } from "./../../src/models/Post";
+import { BaseDatabase } from "./../../src/database/BaseDatabase";
 
-export class PostDatabase extends BaseDatabase {
+export class PostDatabaseMock extends BaseDatabase {
   public static TABLE_POSTS = "Labook_Posts"
   public static TABLE_LIKES = "Labook_Likes"
 
@@ -16,16 +16,16 @@ export class PostDatabase extends BaseDatabase {
   }
 
   public createPost = async (post: Post): Promise<void> => {
-    const postDB = this.toPostDBModel(post)
+    // const postDB = this.toPostDBModel(post)
 
-    await BaseDatabase
-      .connection(PostDatabase.TABLE_POSTS)
-      .insert(postDB)
+    // await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_POSTS)
+    //   .insert(postDB)
   }
 
   public getPosts = async (): Promise<IPostDB[]> => {
     const postsDB: IPostDB[] = await BaseDatabase
-      .connection(PostDatabase.TABLE_POSTS)
+      .connection(PostDatabaseMock.TABLE_POSTS)
       .select()
 
     return postsDB
@@ -33,7 +33,7 @@ export class PostDatabase extends BaseDatabase {
 
   public getLikes = async (postId: string): Promise<number> => {
     const result: any = await BaseDatabase
-      .connection(PostDatabase.TABLE_LIKES)
+      .connection(PostDatabaseMock.TABLE_LIKES)
       .select()
       .count("id AS likes")
       .where({ post_id: postId })
@@ -43,7 +43,7 @@ export class PostDatabase extends BaseDatabase {
 
   public findPostById = async (postId: string): Promise<IPostDB | undefined> => {
     const postsDB: IPostDB[] = await BaseDatabase
-      .connection(PostDatabase.TABLE_POSTS)
+      .connection(PostDatabaseMock.TABLE_POSTS)
       .select()
       .where({ id: postId })
 
@@ -52,14 +52,14 @@ export class PostDatabase extends BaseDatabase {
 
   public deletePost = async (postId: string): Promise<void> => {
     await BaseDatabase
-      .connection(PostDatabase.TABLE_POSTS)
+      .connection(PostDatabaseMock.TABLE_POSTS)
       .delete()
       .where({ id: postId })
   }
 
   public findLike = async (postId: string, userId: string): Promise<ILikeDB | undefined> => {
     const likesDB: ILikeDB[] = await BaseDatabase
-      .connection(PostDatabase.TABLE_LIKES)
+      .connection(PostDatabaseMock.TABLE_LIKES)
       .select()
       .where({ post_id: postId })
       .andWhere({ user_id: userId })
@@ -69,13 +69,13 @@ export class PostDatabase extends BaseDatabase {
 
   public addLike = async (likeDB: ILikeDB): Promise<void> => {
     await BaseDatabase
-      .connection(PostDatabase.TABLE_LIKES)
+      .connection(PostDatabaseMock.TABLE_LIKES)
       .insert(likeDB)
   }
 
   public removeLike = async (postId: string, userId: string): Promise<void> => {
     await BaseDatabase
-      .connection(PostDatabase.TABLE_LIKES)
+      .connection(PostDatabaseMock.TABLE_LIKES)
       .delete()
       .where({ post_id: postId })
       .andWhere({ user_id: userId })
