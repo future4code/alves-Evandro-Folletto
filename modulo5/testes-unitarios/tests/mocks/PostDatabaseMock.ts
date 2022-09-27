@@ -132,10 +132,10 @@ export class PostDatabaseMock extends BaseDatabase {
   }
 
   public removeLike = async (postId: string, userId: string): Promise<void> => {
-    await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_LIKES)
-      .delete()
-      .where({ post_id: postId })
-      .andWhere({ user_id: userId })
+    // await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_LIKES)
+    //   .delete()
+    //   .where({ post_id: postId })
+    //   .andWhere({ user_id: userId })
   }
 }

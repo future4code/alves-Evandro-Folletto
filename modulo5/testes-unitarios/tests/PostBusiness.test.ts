@@ -3,6 +3,7 @@ import { ICreatePostInputDTO } from './../src/models/Post';
 import { IGetPostsInputDTO } from './../src/models/Post';
 import { IDeletePostInputDTO } from './../src/models/Post';
 import { IAddLikeInputDTO } from './../src/models/Post';
+import { IRemoveLikeInputDTO } from './../src/models/Post';
 import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { PostDatabaseMock } from './mocks/PostDatabaseMock';
@@ -50,5 +51,14 @@ describe("Testando PostBusiness", () => {
     }
     const result = await postBusiness.addLike(input)
     expect(result.message).toBe("Like realizado com sucesso")
+  })
+
+  test("Ao remover like em um post, uma mensagem de sucesso deve ser exibida", async () => {
+    const input: IRemoveLikeInputDTO = {
+      token: "token-mock-admin",
+      postId: "201"
+    }
+    const result = await postBusiness.removeLike(input)
+    expect(result.message).toBe("Like removido com sucesso")
   })
 })
