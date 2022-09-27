@@ -2,6 +2,7 @@ import { PostBusiness } from './../src/business/PostBusiness';
 import { ICreatePostInputDTO } from './../src/models/Post';
 import { IGetPostsInputDTO } from './../src/models/Post';
 import { IDeletePostInputDTO } from './../src/models/Post';
+import { IAddLikeInputDTO } from './../src/models/Post';
 import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { PostDatabaseMock } from './mocks/PostDatabaseMock';
@@ -40,5 +41,14 @@ describe("Testando PostBusiness", () => {
     }
     const result = await postBusiness.deletePost(input)
     expect(result.message).toBe("Post deletado com sucesso")
+  })
+
+  test("Ao dar like em um post, uma mensagem de sucesso deve ser exibida", async () => {
+    const input: IAddLikeInputDTO = {
+      token: "token-mock-admin",
+      postId: "202"
+    }
+    const result = await postBusiness.addLike(input)
+    expect(result.message).toBe("Like realizado com sucesso")
   })
 })

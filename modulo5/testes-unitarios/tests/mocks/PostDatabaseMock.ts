@@ -107,19 +107,28 @@ export class PostDatabaseMock extends BaseDatabase {
   }
 
   public findLike = async (postId: string, userId: string): Promise<ILikeDB | undefined> => {
-    const likesDB: ILikeDB[] = await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_LIKES)
-      .select()
-      .where({ post_id: postId })
-      .andWhere({ user_id: userId })
+    // const likesDB: ILikeDB[] = await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_LIKES)
+    //   .select()
+    //   .where({ post_id: postId })
+    //   .andWhere({ user_id: userId })
 
-    return likesDB[0]
+    // return likesDB[0]
+    if (postId == "201" && userId == "id-mock") {
+      return {
+        id: "301",
+        post_id: "201",
+        user_id: "id-mock"
+      }
+    }
+
+    return undefined
   }
 
   public addLike = async (likeDB: ILikeDB): Promise<void> => {
-    await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_LIKES)
-      .insert(likeDB)
+    // await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_LIKES)
+    //   .insert(likeDB)
   }
 
   public removeLike = async (postId: string, userId: string): Promise<void> => {
