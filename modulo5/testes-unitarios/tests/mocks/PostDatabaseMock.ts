@@ -24,21 +24,44 @@ export class PostDatabaseMock extends BaseDatabase {
   }
 
   public getPosts = async (): Promise<IPostDB[]> => {
-    const postsDB: IPostDB[] = await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_POSTS)
-      .select()
+    // const postsDB: IPostDB[] = await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_POSTS)
+    //   .select()
 
-    return postsDB
+    // return postsDB
+
+    const postsDB: IPostDB[] = [
+      {
+          id: "201",
+          content: "Olá, sou novo por aqui!",
+          user_id: "101"
+      },
+      {
+          id: "202",
+          content: "Bom dia, família!",
+          user_id: "102"
+      },
+      {
+          id: "203",
+          content: "Receba!",
+          user_id: "103"
+      }
+    ]
+
+  return postsDB
   }
 
   public getLikes = async (postId: string): Promise<number> => {
-    const result: any = await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_LIKES)
-      .select()
-      .count("id AS likes")
-      .where({ post_id: postId })
+    // const result: any = await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_LIKES)
+    //   .select()
+    //   .count("id AS likes")
+    //   .where({ post_id: postId })
 
-    return result[0].likes as number
+    // return result[0].likes as number
+    if (postId == "201") return 1
+
+    return 0
   }
 
   public findPostById = async (postId: string): Promise<IPostDB | undefined> => {

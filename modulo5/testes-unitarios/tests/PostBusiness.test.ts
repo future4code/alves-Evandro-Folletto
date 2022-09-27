@@ -1,8 +1,10 @@
 import { PostBusiness } from './../src/business/PostBusiness';
 import { ICreatePostInputDTO } from './../src/models/Post';
+import { IGetPostsInputDTO } from './../src/models/Post';
 import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { PostDatabaseMock } from './mocks/PostDatabaseMock';
+import { Post } from './../src/models/Post';
 
 describe("Testando PostBusiness", () => {
   const postBusiness = new PostBusiness(
@@ -21,13 +23,12 @@ describe("Testando PostBusiness", () => {
     expect(result.post.getId()).toBe("id-mock")
   })
 
-  // test("Uma mensagem e um token são gerados quando o login é bem sucessido", async () => {
-  //   const input: ILoginInputDTO = {
-  //     email: "astrodev@gmail.com",
-  //     password: "bananinha"
-  //   }
-  //   const result = await userBusiness.login(input)
-  //   expect(result.message).toBe("Login realizado com sucesso")
-  //   expect(result.token).toBe("token-mock-admin")
-  // })
+  test("Todos os posts devem ser retornados quando o getPosts é bem sucessido", async () => {
+    const input: IGetPostsInputDTO = {
+      token: "token-mock-normal"
+    }
+    const result = await postBusiness.getPosts(input)
+    expect(result.posts.length).toBe(3)
+    expect(result.posts[0]).toBeInstanceOf(Post)
+  })
 })
