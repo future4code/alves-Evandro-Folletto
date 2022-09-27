@@ -1,6 +1,7 @@
 import { PostBusiness } from './../src/business/PostBusiness';
 import { ICreatePostInputDTO } from './../src/models/Post';
 import { IGetPostsInputDTO } from './../src/models/Post';
+import { IDeletePostInputDTO } from './../src/models/Post';
 import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { PostDatabaseMock } from './mocks/PostDatabaseMock';
@@ -30,5 +31,14 @@ describe("Testando PostBusiness", () => {
     const result = await postBusiness.getPosts(input)
     expect(result.posts.length).toBe(3)
     expect(result.posts[0]).toBeInstanceOf(Post)
+  })
+
+  test("Ao deletar um post, uma mensagem de sucesso deve ser exibida", async () => {
+    const input: IDeletePostInputDTO = {
+      token: "token-mock-admin",
+      postId: "201"
+    }
+    const result = await postBusiness.deletePost(input)
+    expect(result.message).toBe("Post deletado com sucesso")
   })
 })

@@ -32,23 +32,23 @@ export class PostDatabaseMock extends BaseDatabase {
 
     const postsDB: IPostDB[] = [
       {
-          id: "201",
-          content: "Olá, sou novo por aqui!",
-          user_id: "101"
+        id: "201",
+        content: "Olá, sou novo por aqui!",
+        user_id: "101"
       },
       {
-          id: "202",
-          content: "Bom dia, família!",
-          user_id: "102"
+        id: "202",
+        content: "Bom dia, família!",
+        user_id: "102"
       },
       {
-          id: "203",
-          content: "Receba!",
-          user_id: "103"
+        id: "203",
+        content: "Receba!",
+        user_id: "103"
       }
     ]
 
-  return postsDB
+    return postsDB
   }
 
   public getLikes = async (postId: string): Promise<number> => {
@@ -65,19 +65,45 @@ export class PostDatabaseMock extends BaseDatabase {
   }
 
   public findPostById = async (postId: string): Promise<IPostDB | undefined> => {
-    const postsDB: IPostDB[] = await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_POSTS)
-      .select()
-      .where({ id: postId })
+    // const postsDB: IPostDB[] = await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_POSTS)
+    //   .select()
+    //   .where({ id: postId })
 
-    return postsDB[0]
+    // return postsDB[0]
+
+    switch (postId) {
+      case "201":
+        return {
+          id: "201",
+          content: "Olá, sou novo por aqui!",
+          user_id: "101"
+        }
+
+      case "202":
+        return {
+          id: "202",
+          content: "Bom dia, família!",
+          user_id: "102"
+        }
+
+      case "203":
+        return {
+          id: "203",
+          content: "Receba!",
+          user_id: "103"
+        }
+
+      default:
+        return undefined
+    }
   }
 
   public deletePost = async (postId: string): Promise<void> => {
-    await BaseDatabase
-      .connection(PostDatabaseMock.TABLE_POSTS)
-      .delete()
-      .where({ id: postId })
+    // await BaseDatabase
+    //   .connection(PostDatabaseMock.TABLE_POSTS)
+    //   .delete()
+    //   .where({ id: postId })
   }
 
   public findLike = async (postId: string, userId: string): Promise<ILikeDB | undefined> => {
