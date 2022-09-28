@@ -36,7 +36,7 @@ describe("Testando UserBusiness", () => {
     expect(result.token).toBe("token-mock-admin")
   })
 
-  test("Erro quando 'name' não for do tipo string", async () => {
+  test("Erro em criar usuário quando 'name' não for do tipo string", async () => {
     expect.assertions(2);
 
     try {
@@ -55,7 +55,7 @@ describe("Testando UserBusiness", () => {
     }
   })
 
-  test("Erro quando 'email' não for do tipo string", async () => {
+  test("Erro em criar usuário quando 'email' não for do tipo string", async () => {
     expect.assertions(2);
 
     try {
@@ -74,7 +74,7 @@ describe("Testando UserBusiness", () => {
     }
   })
   
-  test("Erro quando 'password' não for do tipo string", async () => {
+  test("Erro em criar usuário quando 'password' não for do tipo string", async () => {
     expect.assertions(2);
 
     try {
@@ -93,7 +93,7 @@ describe("Testando UserBusiness", () => {
     }
   })
 
-  test("Erro quando 'name' não tiver mais que 3 caracters", async () => {
+  test("Erro em criar usuário quando 'name' não tiver mais que 3 caracters", async () => {
     expect.assertions(2);
 
     try {
@@ -112,7 +112,7 @@ describe("Testando UserBusiness", () => {
     }
   })
 
-  test("Erro quando 'password' não tiver mais que 6 caracters", async () => {
+  test("Erro em criar usuário quando 'password' não tiver mais que 6 caracters", async () => {
     expect.assertions(2);
 
     try {
@@ -131,7 +131,7 @@ describe("Testando UserBusiness", () => {
     }
   })
 
-  test("Erro quando 'email' não tiver formato válido", async () => {
+  test("Erro em criar usuário quando 'email' não tiver formato válido", async () => {
     expect.assertions(2);
 
     try {
@@ -150,7 +150,7 @@ describe("Testando UserBusiness", () => {
     }
   })
 
-  test("Erro quando 'email' já cadastrado", async () => {
+  test("Erro em criar usuário quando 'email' já cadastrado", async () => {
     expect.assertions(2);
 
     try {
@@ -165,6 +165,114 @@ describe("Testando UserBusiness", () => {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(409)
         expect(error.message).toBe("Email já cadastrado")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'email' não for do tipo string", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "fulanogmail.com",
+        password: "123123"
+      };
+      
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' inválido")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'password' não for do tipo string", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "fulano@gmail.com",
+        password: 123123
+      };
+      
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'password' não tiver mais que 6 caracters", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "fulano@gmail.com",
+        password: "12345"
+      };
+      
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido: mínimo de 6 caracteres")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'email' não tiver formato válido", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "fulanogmail.com",
+        password: "123456"
+      };
+
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' inválido")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'email' não tiver cadastrado", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "fulano@gmail.com",
+        password: "123456"
+      };
+
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(404)
+        expect(error.message).toBe("Email não cadastrado")
+      }
+    }
+  })
+
+  test("Erro em fazer login quando 'password' não for correto", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        email: "astrodev@gmail.com",
+        password: "bananinha",
+      };
+
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(401)
+        expect(error.message).toBe("Password incorreto")
       }
     }
   })
