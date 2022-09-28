@@ -5,6 +5,7 @@ import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { HashManagerMock } from './mocks/HashManagerMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { UserDatabaseMock } from './mocks/UserDatabaseMock';
+import { BaseError } from '../src/errors/BaseError';
 
 describe("Testando UserBusiness", () => {
   const userBusiness = new UserBusiness(
@@ -16,7 +17,7 @@ describe("Testando UserBusiness", () => {
 
   test("Uma mensagem e um token são gerados quando o signup é bem sucessido", async () => {
     const input: ISignupInputDTO = {
-      email: "fulano@gmail.com",  
+      email: "fulano@gmail.com",
       name: "Fulano",
       password: "fulano123"
     }
@@ -33,5 +34,24 @@ describe("Testando UserBusiness", () => {
     const result = await userBusiness.login(input)
     expect(result.message).toBe("Login realizado com sucesso")
     expect(result.token).toBe("token-mock-admin")
+  })
+
+  test("Erro quando 'password' possuir menos de 6 caracteres", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 2,
+        email: "fulano@gmail.com",
+        password: "123"
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'name' inválido")
+      }
+    }
   })
 })
