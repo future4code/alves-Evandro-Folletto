@@ -265,7 +265,7 @@ describe("Testando UserBusiness", () => {
     try {
       const input: any = {
         email: "astrodev@gmail.com",
-        password: "bananinha",
+        password: "bananinhaa",
       };
 
       await userBusiness.login(input);

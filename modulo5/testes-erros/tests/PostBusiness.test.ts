@@ -8,6 +8,7 @@ import { IdGeneratorMock } from './mocks/IdGeneratorMock';
 import { AuthenticatorMock } from './mocks/AuthenticatorMock';
 import { PostDatabaseMock } from './mocks/PostDatabaseMock';
 import { Post } from './../src/models/Post';
+import { BaseError } from '../src/errors/BaseError';
 
 describe("Testando PostBusiness", () => {
   const postBusiness = new PostBusiness(
@@ -60,5 +61,59 @@ describe("Testando PostBusiness", () => {
     }
     const result = await postBusiness.removeLike(input)
     expect(result.message).toBe("Like removido com sucesso")
+  })
+
+  test("Erro ao criar post quando payload retorna false", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        token: "token-mock-adminn",
+        content: "post teste"
+      };
+
+      await postBusiness.createPost(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(401)
+        expect(error.message).toBe("Credenciais inválidas")
+      }
+    }
+  })
+
+  test("Erro em criar post quando 'content' não for do tipo string", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        token: "token-mock-admin",
+        content: 2
+      };
+      
+      await postBusiness.createPost(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'content' inválido")
+      }
+    }
+  })
+
+  test("Erro em criar post quando 'content' não tiver nenhum caracter", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        token: "token-mock-admin",
+        content: ""
+      };
+      
+      await postBusiness.createPost(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'content' inválido: mínimo de 1 caracteres")
+      }
+    }
   })
 })
