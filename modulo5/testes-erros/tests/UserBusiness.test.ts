@@ -36,14 +36,14 @@ describe("Testando UserBusiness", () => {
     expect(result.token).toBe("token-mock-admin")
   })
 
-  test("Erro quando 'password' possuir menos de 6 caracteres", async () => {
+  test("Erro quando 'name' não for do tipo string", async () => {
     expect.assertions(2);
 
     try {
       const input: any = {
-        name: 2,
+        name: 2111,
         email: "fulano@gmail.com",
-        password: "123"
+        password: "123123"
       };
       
       await userBusiness.signup(input);
@@ -51,6 +51,120 @@ describe("Testando UserBusiness", () => {
       if (error instanceof BaseError) {
         expect(error.statusCode).toBe(400)
         expect(error.message).toBe("Parâmetro 'name' inválido")
+      }
+    }
+  })
+
+  test("Erro quando 'email' não for do tipo string", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 'fulano',
+        email: 2,
+        password: "123123"
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' inválido")
+      }
+    }
+  })
+  
+  test("Erro quando 'password' não for do tipo string", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 'fulano',
+        email: "fulano@gmail.com",
+        password: 123123
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido")
+      }
+    }
+  })
+
+  test("Erro quando 'name' não tiver mais que 3 caracters", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 'fu',
+        email: "fulano@gmail.com",
+        password: "123123"
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'name' inválido: mínimo de 3 caracteres")
+      }
+    }
+  })
+
+  test("Erro quando 'password' não tiver mais que 6 caracters", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 'fulano',
+        email: "fulano@gmail.com",
+        password: "12345"
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido: mínimo de 6 caracteres")
+      }
+    }
+  })
+
+  test("Erro quando 'email' não tiver formato válido", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: 'fulano',
+        email: "fulanogmail.com",
+        password: "123456"
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' inválido")
+      }
+    }
+  })
+
+  test("Erro quando 'email' já cadastrado", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        name: "User Mock",
+        email: "usermock@gmail.com",
+        password: "hash-mock",
+      };
+      
+      await userBusiness.signup(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(409)
+        expect(error.message).toBe("Email já cadastrado")
       }
     }
   })
