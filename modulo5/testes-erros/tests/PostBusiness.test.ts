@@ -116,4 +116,21 @@ describe("Testando PostBusiness", () => {
       }
     }
   })
+
+  test("Erro ao obter posts quando payload retorna false", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: any = {
+        token: "token-mock-adminn"
+      };
+
+      await postBusiness.getPosts(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(401)
+        expect(error.message).toBe("Credenciais inválidas")
+      }
+    }
+  })
 })
