@@ -29,7 +29,6 @@ class Migrations extends BaseDatabase {
   createTables = async () => {
     await BaseDatabase.connection.raw(`
         DROP TABLE IF EXISTS ${UserDatabase.TABLE_LAMA_USERS};
-        DROP TABLE IF EXISTS ${UserDatabase.TABLE_LAMA_SHOWS};
         
         CREATE TABLE IF NOT EXISTS ${UserDatabase.TABLE_LAMA_USERS}(
             id VARCHAR(255) PRIMARY KEY,
@@ -37,12 +36,6 @@ class Migrations extends BaseDatabase {
             email VARCHAR(255) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL,
             role ENUM("NORMAL", "ADMIN") DEFAULT "NORMAL" NOT NULL
-        );
-        
-        CREATE TABLE IF NOT EXISTS ${UserDatabase.TABLE_LAMA_SHOWS}(
-            id VARCHAR(255) PRIMARY KEY,
-            band VARCHAR(255) NOT NULL,
-            stats_at DATE NOT NULL
         );
     `)
   }

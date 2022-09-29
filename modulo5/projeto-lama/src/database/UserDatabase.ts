@@ -3,7 +3,6 @@ import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
   public static TABLE_LAMA_USERS = "TABELA_LAMA_USERS"
-  public static TABLE_LAMA_SHOWS = "TABELA_LAMA_SHOWS"
 
   public toUserDBModel = (user: User): IUserDB => {
     const userDB: IUserDB = {
