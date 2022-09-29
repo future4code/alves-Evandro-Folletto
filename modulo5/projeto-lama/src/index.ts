@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from "dotenv";
 
 import { userRouter } from './router/userRouter';
+import { showRouter } from './router/showRouter';
 
 dotenv.config();
 
@@ -11,7 +12,8 @@ app.use(express.json());
 app.use(cors());
 
 app.listen(process.env.PORT || 3003, () => {
-    console.log(`Servidor rodando na porta ${process.env.PORT || 3003}`)
+  console.log(`Servidor rodando na porta ${process.env.PORT || 3003}`)
 })
 
-app.use("/users", userRouter)
+app.use("/users", userRouter);
+app.use("/shows", showRouter);

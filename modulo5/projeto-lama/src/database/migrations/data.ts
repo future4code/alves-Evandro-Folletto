@@ -1,3 +1,4 @@
+import { IShowDB } from "../../models/Show";
 import { IUserDB, USER_ROLES } from "../../models/User";
 
 export const users: IUserDB[] = [
@@ -22,4 +23,22 @@ export const users: IUserDB[] = [
     password: "$2a$12$LkWMqS3oPhP2iVMcZOVvWer9ahUPulxjB0EA4TWPxWaRuEEfYGu/i", // asdfg123
     role: USER_ROLES.NORMAL
   }
+]
+
+export const shows: IShowDB[] = [
+  {
+    id: "1000",
+    band: "Pearl Jam",
+    startsAt: new Date("2022/12/05")
+  },
+  {
+    id: "1001",
+    band: "The Strokes",
+    startsAt: new Date("2022/12/06")
+  },
+  {
+    id: "1002",
+    band: "The National",
+    startsAt: new Date("2022/12/07")
+  },
 ]
