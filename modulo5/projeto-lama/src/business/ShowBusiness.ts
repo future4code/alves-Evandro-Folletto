@@ -44,7 +44,6 @@ export class ShowBusiness {
     }
 
     const existShow = await this.showDatabase.findShowByDay(startsAt_date);
-    console.log(existShow)
 
     if(existShow){
       throw new ConflictError("Já existe show cadastrado nesta data");
@@ -62,6 +61,17 @@ export class ShowBusiness {
 
     const response = {
       message: "Show cadastrado com sucesso",
+    }
+
+    return response
+  }
+
+  public getShows = async () => {
+
+    const shows = await this.showDatabase.getShows();
+
+    const response = {
+      shows: shows
     }
 
     return response
