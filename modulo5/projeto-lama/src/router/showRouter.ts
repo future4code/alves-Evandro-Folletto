@@ -17,4 +17,3 @@ const showController = new ShowController(
 
 showRouter.post("/create", showController.create);
 showRouter.get("/all", showController.getShows);
-showRouter.post("/buy/:id", showController.buyTicket);

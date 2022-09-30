@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { userRouter } from './router/userRouter';
 import { showRouter } from './router/showRouter';
+import { ticketRouter } from './router/ticketRouter';
 
 dotenv.config();
 
@@ -17,3 +18,4 @@ app.listen(process.env.PORT || 3003, () => {
 
 app.use("/users", userRouter);
 app.use("/shows", showRouter);
+app.use("/ticket", ticketRouter);
