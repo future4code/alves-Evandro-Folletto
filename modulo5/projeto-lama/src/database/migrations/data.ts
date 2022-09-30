@@ -41,4 +41,9 @@ export const shows: IShowDB[] = [
     band: "The National",
     startsAt: new Date("2022/12/07")
   },
+  {
+    id: "1003",
+    band: "Arctic Monkeys",
+    startsAt: new Date("2022/12/08")
+  },
 ]

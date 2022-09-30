@@ -1,7 +1,7 @@
 import { NotFoundError } from "../errors/NotFoundError";
 import { ConflictError } from "../errors/ConflictError";
 import { ParamsError } from "../errors/ParamsError";
-import { ICreateShowInputDTO, Show } from "../models/Show";
+import { ICreateShowInputDTO, ITicketDB, Show } from "../models/Show";
 import { Authenticator, ITokenPayload } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { AuthenticationError } from "../errors/AuthenticationError";
@@ -72,6 +72,45 @@ export class ShowBusiness {
 
     const response = {
       shows: shows
+    }
+
+    return response
+  }
+
+  public buyTicket = async (token: string, id_show: string) => {
+
+    const payload = this.authenticator.getTokenPayload(token);
+    if (!payload) {
+      throw new AuthenticationError("Token inválido");
+    }
+
+    const existShow = await this.showDatabase.findShowById(id_show);
+    if(!existShow){
+      throw new NotFoundError("Não foram encontrados shows com este ID");
+    }
+
+    const existBuy = await this.showDatabase.findShowByIdShowIdUser(id_show, payload.id);
+    if(existBuy){
+      throw new ConflictError("Só é permitido comprar 1 ingresso por show");
+    }
+
+    const numberTickets = await this.showDatabase.counterTicketsByIdShow(id_show);
+    if(numberTickets >= 5000){
+      throw new ConflictError("Ingressos esgotados!");
+    }
+
+    const id = this.idGenerator.generate();
+
+    const buy: ITicketDB = {
+      id,
+      show_id: id_show,
+      user_id: payload.id
+    }
+
+    await this.showDatabase.buyTicket(buy);
+
+    const response = {
+      message: "Compra efetuada com sucesso!",
     }
 
     return response

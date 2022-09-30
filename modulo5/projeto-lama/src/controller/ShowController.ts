@@ -40,4 +40,20 @@ export class ShowController {
       res.status(500).send({ message: "Erro inesperado ao buscar shows" })
     }
   }
+
+  public buyTicket = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string;
+      const id_show = req.params.id;
+
+      const response = await this.showBusiness.buyTicket(token, id_show)
+      res.status(201).send(response)
+    } catch (error) {
+      console.log(error)
+      if (error instanceof BaseError) {
+        return res.status(error.statusCode).send({ message: error.message })
+      }
+      res.status(500).send({ message: "Erro inesperado ao comprar ingresso" })
+    }
+  }
 }

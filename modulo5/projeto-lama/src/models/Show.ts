@@ -4,8 +4,14 @@ export interface IShowDB {
   startsAt: Date
 }
 
+export interface ITicketDB {
+  id: string,
+  show_id: string,
+  user_id: string
+}
+
 export class Show {
-  private tickets: number = 0
+  private tickets: number = 5000
   
   constructor(
     private id: string,
@@ -42,7 +48,7 @@ export class Show {
   }
 
   public setTickets = (newTicketsAt: number) => {
-    this.tickets = newTicketsAt
+    this.tickets -= newTicketsAt
   }
 }
 
