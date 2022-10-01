@@ -1,6 +1,4 @@
 import { ShowBusiness } from "../../src/business/ShowBusiness";
-import { BaseError } from "../../src/errors/BaseError";
-import { ICreateShowInputDTO } from "../../src/models/Show";
 import { AuthenticatorMock } from "../mocks/AuthenticatorMock";
 import { IdGeneratorMock } from "../mocks/IdGeneratorMock";
 import { ShowDatabaseMock } from "../mocks/ShowDatabaseMock";

@@ -1,4 +1,4 @@
-import { IShowDB, Show } from "../models/Show";
+import { IShowDB } from "../models/Show";
 import { ITicketDB } from "../models/Show";
 import { BaseDatabase } from "./BaseDatabase";
 

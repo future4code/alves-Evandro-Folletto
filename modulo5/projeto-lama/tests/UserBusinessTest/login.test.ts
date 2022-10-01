@@ -1,6 +1,6 @@
 import { UserBusiness } from "../../src/business/UserBusiness";
 import { BaseError } from "../../src/errors/BaseError";
-import { ILoginInputDTO, ISignupInputDTO } from "../../src/models/User";
+import { ILoginInputDTO } from "../../src/models/User";
 import { AuthenticatorMock } from ".././mocks/AuthenticatorMock";
 import { HashManagerMock } from ".././mocks/HashManagerMock";
 import { IdGeneratorMock } from ".././mocks/IdGeneratorMock";

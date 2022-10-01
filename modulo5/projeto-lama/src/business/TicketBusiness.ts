@@ -1,13 +1,10 @@
 import { NotFoundError } from "../errors/NotFoundError";
 import { ConflictError } from "../errors/ConflictError";
-import { ParamsError } from "../errors/ParamsError";
-import { ICreateShowInputDTO, ITicketDB, Show } from "../models/Show";
-import { Authenticator, ITokenPayload } from "../services/Authenticator";
+import { ITicketDB } from "../models/Show";
+import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import { AuthenticationError } from "../errors/AuthenticationError";
 import { TicketDatabase } from "../database/TicketDatabase";
-import { USER_ROLES } from "../models/User";
-import { AuthorizationError } from "../errors/AuthorizationError";
 
 export class TicketBusiness {
   constructor(

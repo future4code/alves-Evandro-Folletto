@@ -1,4 +1,4 @@
-import { ITicketDB, IShowDB, Show } from "./../../src/models/Show";
+import { ITicketDB, IShowDB } from "./../../src/models/Show";
 import { BaseDatabase } from "./../../src/database/BaseDatabase";
 
 export class TicketDatabaseMock extends BaseDatabase {

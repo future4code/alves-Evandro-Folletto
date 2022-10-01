@@ -1,8 +1,6 @@
 import { TicketBusiness } from "../../src/business/TicketBusiness";
 import { BaseError } from "../../src/errors/BaseError";
-import { ISignupInputDTO } from "../../src/models/User";
 import { AuthenticatorMock } from ".././mocks/AuthenticatorMock";
-import { HashManagerMock } from ".././mocks/HashManagerMock";
 import { IdGeneratorMock } from ".././mocks/IdGeneratorMock";
 import { TicketDatabaseMock } from ".././mocks/TicketDatabaseMock";
 
