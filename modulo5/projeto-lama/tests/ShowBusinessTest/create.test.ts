@@ -1,28 +1,26 @@
-import { UserBusiness } from "../../src/business/UserBusiness";
+import { ShowBusiness } from "../../src/business/ShowBusiness";
 import { BaseError } from "../../src/errors/BaseError";
-import { ILoginInputDTO, ISignupInputDTO } from "../../src/models/User";
-import { AuthenticatorMock } from ".././mocks/AuthenticatorMock";
-import { HashManagerMock } from ".././mocks/HashManagerMock";
-import { IdGeneratorMock } from ".././mocks/IdGeneratorMock";
-import { UserDatabaseMock } from ".././mocks/UserDatabaseMock";
+import { ICreateShowInputDTO } from "../../src/models/Show";
+import { AuthenticatorMock } from "../mocks/AuthenticatorMock";
+import { IdGeneratorMock } from "../mocks/IdGeneratorMock";
+import { ShowDatabaseMock } from "../mocks/ShowDatabaseMock";
 
-describe("Testando o método login da UserBusiness", () => {
-  const userBusiness = new UserBusiness(
-    new UserDatabaseMock(),
+describe("Testando o método createShow da ShowBusiness", () => {
+  const showBusiness = new ShowBusiness(
+    new ShowDatabaseMock(),
     new IdGeneratorMock(),
-    new HashManagerMock(),
     new AuthenticatorMock()
   )
 
-  test("Um token é retornado quando o login é bem-sucedido", async () => {
-    const input: ILoginInputDTO = {
-      email: "astrodev@gmail.com",
-      password: "bananinha"
+  test("Uma mensagem de sucesso é retornada quando a criação de show é bem-sucedida", async () => {
+    const input: ICreateShowInputDTO = {
+      band: "Radiohead",
+      startsAt: "08/12/2022"
     }
+    const token = "token-mock-admin";
 
-    const response = await userBusiness.login(input)
-    expect(response.message).toBe("Login realizado com sucesso")
-    expect(response.token).toBe("token-mock-admin")
+    const response = await showBusiness.create(input, token);
+    expect(response.message).toBe("Show cadastrado com sucesso");
   })
 
   // test("Erro quando 'password' possuir menos de 6 caracteres", async () => {

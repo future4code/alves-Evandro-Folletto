@@ -17,7 +17,6 @@ export class TicketBusiness {
   ) { }
 
   public buyTicket = async (token: string, id_show: string) => {
-
     const payload = this.authenticator.getTokenPayload(token);
     if (!payload) {
       throw new AuthenticationError("Token inválido");
@@ -28,7 +27,7 @@ export class TicketBusiness {
       throw new NotFoundError("Não foram encontrados shows com este ID");
     }
 
-    const existBuy = await this.ticketDatabase.findShowByIdShowIdUser(id_show, payload.id);
+    const existBuy = await this.ticketDatabase.findBuyByIdShowIdUser(id_show, payload.id);
     if(existBuy){
       throw new ConflictError("Só é permitido comprar 1 ingresso por show");
     }

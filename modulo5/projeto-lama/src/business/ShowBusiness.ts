@@ -26,7 +26,7 @@ export class ShowBusiness {
       throw new ParamsError("Parâmetro 'startsAt' inválido: deve ser uma data")
     }
 
-    const startsAt_date = new Date( startsAt.split('/').reverse().join('/') );
+    const startsAt_date = new Date( startsAt.split('/').reverse().join('-') );
     const dateReference = new Date("2022/12/05");
 
     if (startsAt_date.getTime() < dateReference.getTime()) {
@@ -43,7 +43,6 @@ export class ShowBusiness {
     }
 
     const existShow = await this.showDatabase.findShowByDay(startsAt_date);
-
     if(existShow){
       throw new ConflictError("Já existe show cadastrado nesta data");
     }
@@ -66,7 +65,6 @@ export class ShowBusiness {
   }
 
   public getShows = async () => {
-
     const shows = await this.showDatabase.getShows();
 
     const response = {

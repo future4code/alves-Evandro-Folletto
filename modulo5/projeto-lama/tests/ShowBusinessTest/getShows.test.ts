@@ -1,28 +1,20 @@
-import { UserBusiness } from "../../src/business/UserBusiness";
+import { ShowBusiness } from "../../src/business/ShowBusiness";
 import { BaseError } from "../../src/errors/BaseError";
-import { ILoginInputDTO, ISignupInputDTO } from "../../src/models/User";
-import { AuthenticatorMock } from ".././mocks/AuthenticatorMock";
-import { HashManagerMock } from ".././mocks/HashManagerMock";
-import { IdGeneratorMock } from ".././mocks/IdGeneratorMock";
-import { UserDatabaseMock } from ".././mocks/UserDatabaseMock";
+import { ICreateShowInputDTO } from "../../src/models/Show";
+import { AuthenticatorMock } from "../mocks/AuthenticatorMock";
+import { IdGeneratorMock } from "../mocks/IdGeneratorMock";
+import { ShowDatabaseMock } from "../mocks/ShowDatabaseMock";
 
-describe("Testando o método login da UserBusiness", () => {
-  const userBusiness = new UserBusiness(
-    new UserDatabaseMock(),
+describe("Testando o método getShows da ShowBusiness", () => {
+  const showBusiness = new ShowBusiness(
+    new ShowDatabaseMock(),
     new IdGeneratorMock(),
-    new HashManagerMock(),
     new AuthenticatorMock()
   )
 
-  test("Um token é retornado quando o login é bem-sucedido", async () => {
-    const input: ILoginInputDTO = {
-      email: "astrodev@gmail.com",
-      password: "bananinha"
-    }
-
-    const response = await userBusiness.login(input)
-    expect(response.message).toBe("Login realizado com sucesso")
-    expect(response.token).toBe("token-mock-admin")
+  test("Todos os shows devem ser retornados quando o getShows é bem sucedido", async () => {
+    const response = await showBusiness.getShows();
+    expect(response.shows.length).toBe(4);
   })
 
   // test("Erro quando 'password' possuir menos de 6 caracteres", async () => {

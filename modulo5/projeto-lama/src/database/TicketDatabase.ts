@@ -15,8 +15,8 @@ export class TicketDatabase extends BaseDatabase {
     return result[0]
   }
 
-  public findShowByIdShowIdUser = async (id_show: string, id_user: string): Promise<IShowDB | undefined> => {
-    const result: IShowDB[] = await BaseDatabase
+  public findBuyByIdShowIdUser = async (id_show: string, id_user: string): Promise<ITicketDB | undefined> => {
+    const result: ITicketDB[] = await BaseDatabase
       .connection(TicketDatabase.TABLE_LAMA_TICKET)
       .select()
       .where({show_id: id_show})
@@ -41,8 +41,8 @@ export class TicketDatabase extends BaseDatabase {
       .insert(input)
   }
 
-  public findBuyByIdIdUser = async (id_buy: string, id_user: string): Promise<IShowDB | undefined> => {
-    const result: IShowDB[] = await BaseDatabase
+  public findBuyByIdIdUser = async (id_buy: string, id_user: string): Promise<ITicketDB | undefined> => {
+    const result: ITicketDB[] = await BaseDatabase
       .connection(TicketDatabase.TABLE_LAMA_TICKET)
       .select()
       .where({id: id_buy})

@@ -15,8 +15,8 @@ describe("Testando o método signup da UserBusiness", () => {
 
   test("Um token é retornado quando o cadastro é bem-sucedido", async () => {
     const input: ISignupInputDTO = {
-      email: "teste@gmail.com",
       name: "Teste",
+      email: "teste@gmail.com",
       password: "teste123"
     }
 

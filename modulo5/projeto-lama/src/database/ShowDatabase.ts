@@ -32,7 +32,7 @@ export class ShowDatabase extends BaseDatabase {
     return result[0]
   }
 
-  public getShows = async (): Promise<IShowDB[] | undefined> => {
+  public getShows = async (): Promise<IShowDB[]> => {
     const result: IShowDB[] = await BaseDatabase
       .connection(ShowDatabase.TABLE_LAMA_SHOWS)
       .select('*')
