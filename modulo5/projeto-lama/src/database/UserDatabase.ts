@@ -33,6 +33,8 @@ export class UserDatabase extends BaseDatabase {
       .insert(userDB)
   }
 
+  // FUNCÇÕES QUE FAZEM O MESMO DO QUE ESTÁ ACIMA, PORÉM, UTILIZANDO .RAW
+
   // public findByEmail = async (email: string): Promise<IUserDB | undefined> => {
   //   const result: IUserDB[] = await BaseDatabase
   //     .connection.raw(`
