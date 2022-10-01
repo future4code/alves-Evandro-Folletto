@@ -23,7 +23,7 @@ export class ShowDatabase extends BaseDatabase {
       .insert(showDB)
   }
 
-  public findShowByDay = async (date: object): Promise<IShowDB | undefined> => {
+  public findShowByDay = async (date: Date): Promise<IShowDB | undefined> => {
     const result: IShowDB[] = await BaseDatabase
       .connection(ShowDatabase.TABLE_LAMA_SHOWS)
       .select()

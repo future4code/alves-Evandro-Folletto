@@ -17,14 +17,17 @@ export class ShowDatabaseMock extends BaseDatabase {
 
   public create = async (show: Show): Promise<void> => { }
 
-  public findShowByDay = async (date: object): Promise<IShowDB | undefined> => {
-    // const result: IShowDB[] = await BaseDatabase
-    //   .connection(ShowDatabaseMock.TABLE_LAMA_SHOWS)
-    //   .select()
-    //   .where({startsAt: date})
-
-    // return result[0]
-
+  public findShowByDay = async (date: Date): Promise<IShowDB | undefined> => {
+    const [day, month, year] = [ date.getDate(), date.getMonth()+1, date.getFullYear() ]
+    const newDate = day > 9 ? `${day}/${month}/${year}` : `0${day}/${month}/${year}`;
+    if(newDate === "08/12/2022"){
+      const showDay: IShowDB = {
+        id: "1003",
+        band: "Arctic Monkeys",
+        startsAt: new Date("2022/12/08")
+      }
+      return showDay  
+    }
     return undefined
   }
 

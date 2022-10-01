@@ -25,42 +25,115 @@ describe("Testando o método login da UserBusiness", () => {
     expect(response.token).toBe("token-mock-admin")
   })
 
-  // test("Erro quando 'password' possuir menos de 6 caracteres", async () => {
-  //   expect.assertions(2)
+  test("Erro quando o parâmetro 'email' não é do tipo string", async () => {
+    expect.assertions(2)
 
-  //   try {
-  //     const input: ISignupInputDTO = {
-  //       email: "fulano@gmail.com",
-  //       name: "Fulano",
-  //       password: "123"
-  //     }
+    try {
+      const input: any = {
+        email: 2,
+        password: "123"
+      }
 
-  //     await userBusiness.signup(input)
+      await userBusiness.login(input)
 
-  //   } catch (error) {
-  //     if (error instanceof BaseError) {
-  //       expect(error.statusCode).toBe(400)
-  //       expect(error.message).toBe("Parâmetro 'password' inválido: mínimo de 6 caracteres")
-  //     }
-  //   }
-  // })
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' inválido: deve ser uma string")
+      }
+    }
+  })
 
-  // test("Erro quando 'password' for incorreto", async () => {
-  //   expect.assertions(2)
+  test("Erro quando o parâmetro 'password' não é do tipo string", async () => {
+    expect.assertions(2)
 
-  //   try {
-  //     const input: ILoginInputDTO = {
-  //       email: "astrodev@gmail.com",
-  //       password: "bananinha123"
-  //     }
+    try {
+      const input: any = {
+        email: "fulano@gmail.com",
+        password: 2
+      }
 
-  //     await userBusiness.login(input)
+      await userBusiness.login(input)
 
-  //   } catch (error) {
-  //     if (error instanceof BaseError) {
-  //       expect(error.statusCode).toBe(401)
-  //       expect(error.message).toBe("Password incorreto")
-  //     }
-  //   }
-  // })
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido: deve ser uma string")
+      }
+    }
+  })
+
+  test("Erro quando 'password' possuir menos de 6 caracteres", async () => {
+    expect.assertions(2)
+
+    try {
+      const input: ILoginInputDTO = {
+        email: "fulano@gmail.com",
+        password: "12345"
+      }
+
+      await userBusiness.login(input)
+
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'password' inválido: mínimo de 6 caracteres")
+      }
+    }
+  })
+
+  test("Erro quando 'email' não tiver formato válido", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: ILoginInputDTO = {
+        email: "fulanogmail.com",
+        password: "123456"
+      };
+
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(400)
+        expect(error.message).toBe("Parâmetro 'email' e/ou 'password' inválido(s)")
+      }
+    }
+  })
+
+  test("Erro quando 'email' não existir nos cadastros", async () => {
+    expect.assertions(2);
+
+    try {
+      const input: ILoginInputDTO = {
+        email: "fulano@gmail.com",
+        password: "123456"
+      };
+
+      await userBusiness.login(input);
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(404)
+        expect(error.message).toBe("Parâmetro 'email' e/ou 'password' inválido(s)")
+      }
+    }
+  })
+
+  test("Erro quando 'password' for incorreto", async () => {
+    expect.assertions(2)
+
+    try {
+      const input: ILoginInputDTO = {
+        email: "astrodev@gmail.com",
+        password: "bananinha123"
+      }
+
+      await userBusiness.login(input)
+
+    } catch (error) {
+      if (error instanceof BaseError) {
+        expect(error.statusCode).toBe(401)
+        expect(error.message).toBe("Password incorreto")
+      }
+    }
+  })
 })

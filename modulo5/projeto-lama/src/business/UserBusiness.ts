@@ -80,11 +80,11 @@ export class UserBusiness {
     const { email, password } = input
 
     if (typeof email !== "string") {
-      throw new ParamsError("Parâmetro 'email' inválido")
+      throw new ParamsError("Parâmetro 'email' inválido: deve ser uma string")
     }
 
     if (typeof password !== "string") {
-      throw new ParamsError("Parâmetro 'password' inválido")
+      throw new ParamsError("Parâmetro 'password' inválido: deve ser uma string")
     }
 
     if (password.length < 6) {
@@ -96,7 +96,6 @@ export class UserBusiness {
     }
 
     const userDB = await this.userDatabase.findByEmail(email)
-
     if (!userDB) {
       throw new NotFoundError("Parâmetro 'email' e/ou 'password' inválido(s)")
     }
@@ -113,7 +112,6 @@ export class UserBusiness {
       password,
       user.getPassword()
     )
-
     if (!isPasswordCorrect) {
       throw new AuthenticationError("Password incorreto")
     }

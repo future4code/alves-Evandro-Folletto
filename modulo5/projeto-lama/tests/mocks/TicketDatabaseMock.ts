@@ -20,13 +20,20 @@ export class TicketDatabaseMock extends BaseDatabase {
         startsAt: new Date("2022/12/06")
       }
       return show
+    } else if (id_show === "1002") {
+      const show: IShowDB = {
+        id: "1002",
+        band: "The National",
+        startsAt: new Date("2022/12/07")
+      }
+      return show
     } else {
       return undefined
     }
   }
 
   public findBuyByIdShowIdUser = async (id_show: string, id_user: string): Promise<ITicketDB | undefined> => {
-    if(id_show === '1002' && id_user === 'id-mock'){
+    if(id_show === '1001' && id_user === 'id-mock'){
       const result: ITicketDB = {
         id: "string",
         show_id: "string",

@@ -23,14 +23,14 @@ export class ShowBusiness {
     }
 
     if (typeof startsAt !== "string") {
-      throw new ParamsError("Parâmetro 'startsAt' inválido: deve ser uma data")
+      throw new ParamsError("Parâmetro 'startsAt' inválido: deve ser uma string")
     }
 
-    const startsAt_date = new Date( startsAt.split('/').reverse().join('-') );
+    const startsAt_date = new Date( startsAt.split('/').reverse().join('/') );
     const dateReference = new Date("2022/12/05");
 
     if (startsAt_date.getTime() < dateReference.getTime()) {
-      throw new ParamsError("A data do show não pode ser anterior a data de ínicio do festival")
+      throw new ParamsError("A data do show não pode ser anterior a data de início do festival")
     }
 
     const payload = this.authenticator.getTokenPayload(token);
