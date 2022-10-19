@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-// import img_fundo from "./../assets/images/bg.svg";
 
 export default createGlobalStyle`
   * {
@@ -12,8 +11,7 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: #d4ffef;
-    /* background-image: url({img_fundo}); // lembrar de colocar o $na frente das chaves do img */
+    background-color: lightgray;
   }
   body, input, textarea, button {
     font: 14px sans-serif;
@@ -23,7 +21,7 @@ export default createGlobalStyle`
      width: 10px
   }
   ::-webkit-scrollbar-thumb {
-    background-color: grey;
+    background-color: #3b3b3b;
     border-radius: 7px;
   }
 `

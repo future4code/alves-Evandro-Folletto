@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { Text, Textos, ButtonBack } from "./styled-AboutPage";
+import { Text, ButtonBack } from "./styled-AboutPage";
 import * as s from "./styled-AboutPage";
 import { goToStartPage } from "../../router/coordinator.js";
 
@@ -12,23 +12,19 @@ export default function About(props) {
     <s.General>
       
       <s.CenterBox>
-        <s.Title>Projeto Shopper</s.Title>
+        <s.Title>search GitHub</s.Title>
 
         <s.Texts>
           <Text>
-            Este projeto faz parte do processo de seleção da empresa Shopper, o qual consiste em um formulário de cadastro de pedidos de supermercado.
+          Este projeto foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API pública do GitHub.
           </Text>
 
           <Text>
-            Trata-se de uma ferramenta onde o usuário navega por uma lista de produtos e adiciona os mesmos ao seu carrinho. Na sequência, informa o nome e a data de entrega e salva sua compra (além de editar os itens do carrinho caso queira). É possível ter acesso a uma lista de todas as compras salvas, obter detalhes e deletar as mesmas.
+            Trata-se de uma ferramenta onde o usuário digita, no campo de buscas, o perfil que quer buscar no GitHub, então, lhe são devolvidos dados do perfil, caso não encontre é retornada uma mensagem. O usuário pode ver uma lista de todos os perfis pesquisados e também limpar o histórico.
           </Text>
 
           <Text>
-            Foram desenvolvidos tanto o frontend quanto backend. O projeto foi hospedado na aws.
-            <br />
-            <b>Frontend:</b> foram utilizados HTML, JavaScript, Styled-Components e paradigma funcional.
-            <br />
-            <b>Backend:</b> foram utilizados TypeScript, MySQL, Express, Knex (usando query raw e query builder), paradigma de orientação a objetos e conceito de APIs REST.
+            O projeto foi desenvolvido em JavaScript, utilizando React e styled-components. As requisições foram feitas utilizando a biblioteca axios. O projeto foi hospedado no surge.
           </Text>
         </s.Texts>
 

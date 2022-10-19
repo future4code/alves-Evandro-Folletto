@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import * as s from "./styled-StartPage";
-import img_logo from './../../assets/images/logo.png';
-import { goToProductsPage, goToAboutPage } from "./../../router/coordinator.js";
+import img_search from './../../assets/images/search.png';
+import { goToSearchPage, goToAboutPage } from "./../../router/coordinator.js";
 
-export default function Inicio(props) {
+export default function Inicio() {
 
   const navigate = useNavigate();
 
@@ -15,11 +15,13 @@ export default function Inicio(props) {
         <s.Title>Seja bem vindo(a) a</s.Title>
 
         <s.Center>
-          <s.ImgLogo src={img_logo} />
+        <s.ImgSearch src={img_search}/>
+        <s.Search>search</s.Search>
+        <s.Github>GitHub</s.Github>
         </s.Center>
 
         <s.Buttons>
-          <s.ButtonShopper onClick={() => goToProductsPage(navigate)}>Shopper</s.ButtonShopper>
+          <s.ButtonApplication onClick={() => goToSearchPage(navigate)}>Aplicação</s.ButtonApplication>
           <s.ButtonAbout onClick={() => goToAboutPage(navigate)}>Sobre</s.ButtonAbout>
         </s.Buttons>
       </s.CenterBox>

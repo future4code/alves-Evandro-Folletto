@@ -6,19 +6,17 @@ export const General = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
-  background-color: #d4ffef;
+  background-color: lightgray;
 `
 
 export const CenterBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 475px;
+  width: 375px;
   height: 600px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 20px;
-  background-color: #8AF2CC;
+  background-color: gray;
 `
 
 export const Title = styled.h1`
@@ -44,6 +42,7 @@ export const Text = styled.div`
 
 export const ButtonBack = styled.button`
   font-size: 20px;
+  color: #fffafa;
   height: 40px;
   margin: 10px;
   text-align: center;

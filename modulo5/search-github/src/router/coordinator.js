@@ -10,10 +10,6 @@ export const goToHistoricPage = (navigate) => {
   navigate("/historic")
 }
 
-export const goToProductsPage = (navigate) => {
-  navigate("/products")
-}
-
-export const goToPurchasePage = (navigate) => {
-  navigate("/purchase")
+export const goToSearchPage = (navigate) => {
+  navigate("/search")
 }

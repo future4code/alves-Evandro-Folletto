@@ -6,18 +6,17 @@ export const General = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #d4ffef;
+  background-color: lightgray;
 `
 
 export const CenterBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 425px;
+  height: 309px;
   width: 309px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 20px;
-  background-color: #8AF2CC;
+  background-color: gray;
 `
 
 export const Title = styled.h1`
@@ -31,10 +30,22 @@ export const Center = styled.div`
   align-items: center;
 `
 
-export const ImgLogo = styled.img`
+export const ImgSearch = styled.img`
   margin: 0 10px 0 0;
-  width: 225px;
-  height: 61.3px;
+  width: 40px;
+  height: 40px;
+`
+
+export const Search = styled.h1`
+  color: #910000;
+  margin: 0 0 0 10px;
+`
+
+export const Github = styled.h1`
+  color: #646464;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #e7e7e7;
 `
 
 export const Buttons = styled.div`
@@ -46,10 +57,11 @@ export const Buttons = styled.div`
   height: 50px;
 `
 
-export const ButtonShopper = styled.button`
+export const ButtonApplication = styled.button`
   font-size: 18px;
-  height: 40px;
-  width: 100%;
+  color: #fffafa;
+  height: 35px;
+  width: 125px;
   margin: 0 5px 0 10px;
   text-align: center;
   border: none;
@@ -65,8 +77,9 @@ export const ButtonShopper = styled.button`
 
 export const ButtonAbout = styled.button`
   font-size: 18px;
-  height: 40px;
-  width: 100%;
+  color: #fffafa;
+  height: 35px;
+  width: 125px;
   margin: 0 10px 0 5px;
   text-align: center;
   background-color: #2CA378;

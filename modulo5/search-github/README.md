@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# `Projeto`
+searchGitHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `Link`
+[Clique aqui!](https://folletto-searchgithub.surge.sh/)
 
-## Available Scripts
+# `Descrição`
+O Projeto searchGitHub foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API pública do GitHub.
 
-In the project directory, you can run:
+Trata-se de uma ferramenta onde o usuário digita, no campo de buscas, o perfil que quer buscar no GitHub, então, lhe são devolvidos dados do perfil, caso não encontre é retornada uma mensagem. O usuário pode ver uma lista de todos os perfis pesquisados e também limpar o histórico.
+</br>
 
-### `npm start`
+# `Modo de usar`
+Ao iniciar a ferramenta, o usuário é direcionado para a página inicial, composta por um texto de boas vindas e dois botões: o botão "Sobre" direciona para uma página composta por um pequeno resumo sobre o projeto e o botão "Aplicação" redireciona para a página da aplicação em si.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A página da aplicação é composta por um campo de busca onde o usuário pode digitar o nome do perfil que deseja buscar e três botões: 
+- "Voltar": redireciona para a página inicial de boas vindas.
+- "Histórico": redireciona o usuário para o histórico de usuários que ele pesquisou.
+- "Pesquisar": executa a pesquisa.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Caso o perfil que o usuário digitou foi encontra, o mesmo é mostrado na tela. Caso o perfil não foi encontrado, uma mensagem é mostrada.
 
-### `npm test`
+Na página de histórico, são listados os perfis que o usuário pesquisou e que foram encontrados na plataforma. Os perfis estão listados de acordo com a data de pesquisa: no topo da lista está o perfil mais recentemente pesquisado. Ainda, é exibido um botão "Limpar histórico", onde é possível deletar todos os perfis do histórico.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# `Instalando e rodando o projeto`
+Fazer o clone do projeto:
+- git clone link-do-repositório
 
-### `npm run build`
+Instalar as dependências:
+- npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Rodar o projeto:
+- npm run start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# `Tecnologias utilizadas`
+<div>
+<img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+<img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white">
+<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
+</div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# `Autor`
+Evandro Paulo Folletto
+</br>
+<a href="https://www.linkedin.com/in/evandrofolletto/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a> <a href="https://github.com/epfolletto"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> 
+</br>
 
-### `npm run eject`
+# `Imagens`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Tela Inicial
+<img src="./src/assets/images/readme/site_1.png"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tela Sobre
+<img src="./src/assets/images/readme/site_2.png"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Tela Searches
+<img src="./src/assets/images/readme/site_3.png"/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Tela Profile
+<img src="./src/assets/images/readme/site_4.png"/>
 
-## Learn More
+### Tela histórico
+<img src="./src/assets/images/readme/site_5.png"/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Tela histórico vazio
+<img src="./src/assets/images/readme/site_6.png"/>
