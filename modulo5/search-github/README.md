@@ -7,7 +7,7 @@ searchGitHub
 # `Descrição`
 O Projeto searchGitHub foi desenvolvido como uma atividade dentro do curso Full-Stack Web Developer da Labenu, o qual consiste em requisições para a API pública do GitHub.
 
-Trata-se de uma ferramenta onde o usuário digita, no campo de buscas, o perfil que quer buscar no GitHub, então, lhe são devolvidos dados do perfil, caso não encontre é retornada uma mensagem. O usuário pode ver uma lista de todos os perfis pesquisados e também limpar o histórico.
+Trata-se de uma ferramenta onde o usuário digita, no campo de buscas, o perfil que quer buscar no GitHub, então, lhe são devolvidos dados do perfil. Caso não for encontrado nenhum perfil é retornada uma mensagem. O usuário pode ver uma lista de todos os perfis pesquisados e também limpar o histórico.
 </br>
 
 # `Modo de usar`
@@ -18,9 +18,9 @@ A página da aplicação é composta por um campo de busca onde o usuário pode 
 - "Histórico": redireciona o usuário para o histórico de usuários que ele pesquisou.
 - "Pesquisar": executa a pesquisa.
 
-Caso o perfil que o usuário digitou foi encontra, o mesmo é mostrado na tela. Caso o perfil não foi encontrado, uma mensagem é mostrada.
+Caso o perfil que o usuário digitou foi encontrado, o mesmo é mostrado na tela. Caso o perfil não foi encontrado, uma mensagem é mostrada.
 
-Na página de histórico, são listados os perfis que o usuário pesquisou e que foram encontrados na plataforma. Os perfis estão listados de acordo com a data de pesquisa: no topo da lista está o perfil mais recentemente pesquisado. Ainda, é exibido um botão "Limpar histórico", onde é possível deletar todos os perfis do histórico.
+Na página de histórico são listados os perfis que o usuário pesquisou e que foram encontrados na plataforma. Os perfis estão ordenados de acordo com a data de pesquisa: no topo da lista está o perfil mais recentemente pesquisado. Ainda, é exibido um botão "Limpar histórico", onde é possível deletar todos os perfis do histórico.
 
 # `Instalando e rodando o projeto`
 Fazer o clone do projeto:
